@@ -160,11 +160,13 @@ Usage:
   python3 checklist/generate_module.py <category_name>
   python3 checklist/generate_module.py <category_name> --update
   python3 checklist/generate_module.py --regenerate-all
+  python3 checklist/generate_module.py --regenerate-all --merged
 
 Examples:
   python3 checklist/generate_module.py center_panel
   python3 checklist/generate_module.py radio_panel --update
   python3 checklist/generate_module.py --regenerate-all
+  python3 checklist/generate_module.py --regenerate-all --merged
 
 What it does:
 1. Reads the checklist JSON file (checklist/<category_name>.json)
@@ -191,6 +193,11 @@ Flags:
 - --regenerate-all: Deletes all TFDI_MD11_*.yaml modules, cleans "// present" comments from all JSON
   checklist files, regenerates all modules with the latest logic, and runs check_events.py to verify
   coverage. Useful for applying fixes across all modules.
+- --merged: When used with --regenerate-all, writes all events directly into the main aircraft YAML file
+  (definitions/aircraft/TFDi Design - MD-11.yaml) instead of creating separate module files. The main
+  file will only include the 4 standard module includes (navigation, physics_rad, radios, transponder).
+  All TFDI MD-11 events are written directly into the shared: section of the main file. This creates
+  a single consolidated file instead of multiple module files.
 
 IMPORTANT: Grouping Logic Fixes (Achieved 100% Coverage)
 --------------------------------------------------------
