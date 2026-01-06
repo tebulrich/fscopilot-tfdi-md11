@@ -65,6 +65,7 @@ your-controls-tfdi-md11/
 ├── tfdi-md11-data/
 │   ├── *.json                          # Category definition files
 │   └── variables.json                  # L: variable definitions
+├── config.json                          # Configuration file (optional)
 ├── generate.py                          # Module generator script
 ├── validate.py                          # Coverage verification script
 └── README.md                           # This file
@@ -321,10 +322,11 @@ python3 validate.py <category_name>
 
 ## File Locations
 
-- Main aircraft config: `definitions/aircraft/TFDi Design - MD-11.yaml`
+- Main aircraft config: `definitions/aircraft/TFDi Design - MD-11.yaml` (or custom path from `config.json`)
 - Module files (non-merged): `definitions/modules/tfdi-md11/TFDi_MD11_*.yaml`
 - Category files: `tfdi-md11-data/*.json`
 - Variables file: `tfdi-md11-data/variables.json`
+- Configuration file: `config.json` (optional, for default output path)
 - Validation script: `validate.py`
 - Generator script: `generate.py`
 
