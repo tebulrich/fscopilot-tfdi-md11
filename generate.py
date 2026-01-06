@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate YAML module file from checklist JSON file.
+Generate YAML module file from category JSON file.
 
 Usage:
     python3 generate.py [category_name] [--split]
@@ -60,8 +60,8 @@ def format_comment_name(event_name):
 def load_variables():
     """Load L: variables from variables.json file."""
     script_dir = Path(__file__).parent
-    checklist_dir = script_dir / "tfdi-md11-data"
-    variables_file = checklist_dir / "variables.json"
+    data_dir = script_dir / "tfdi-md11-data"
+    variables_file = data_dir / "variables.json"
     
     if not variables_file.exists():
         print(f"Warning: variables.json not found at {variables_file}", file=sys.stderr)
@@ -532,21 +532,21 @@ def parse_aircraft_yaml(aircraft_file):
         'master': '\n'.join(master_lines).rstrip() if master_lines else ''
     }
 
-def merge_all_categories_to_aircraft_file(aircraft_file, checklist_dir, variables):
+def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
     """Merge all categories into the main aircraft YAML file."""
     # Parse the aircraft file
     parsed = parse_aircraft_yaml(aircraft_file)
     
-    # Get all checklist files
-    checklist_files = sorted(checklist_dir.glob("*.json"))
-    checklist_files = [f for f in checklist_files if f.name != "variables.json"]
+    # Get all category files
+    category_files = sorted(data_dir.glob("*.json"))
+    category_files = [f for f in category_files if f.name != "variables.json"]
     
     # Generate shared content for all categories
     all_shared_content = []
-    for checklist_file in checklist_files:
-        category = checklist_file.stem
+    for category_file in category_files:
+        category = category_file.stem
         try:
-            with open(checklist_file) as f:
+            with open(category_file) as f:
                 data = json.load(f)
             
             events = data.get('events', [])
@@ -574,8 +574,8 @@ def merge_all_categories_to_aircraft_file(aircraft_file, checklist_dir, variable
             shared_content = generate_shared_content(category, events, description, variables)
             all_shared_content.append(shared_content)
             
-            # Update checklist file to mark events as present
-            update_checklist_file(checklist_file, events)
+            # Update category file to mark events as present
+            update_category_file(category_file, events)
         except Exception as e:
             print(f"  ERROR processing {category}: {e}")
             import traceback
@@ -640,14 +640,14 @@ def merge_all_categories_to_aircraft_file(aircraft_file, checklist_dir, variable
     
     print(f"Merged all categories into: {aircraft_file}")
 
-def update_aircraft_file_includes(aircraft_file, checklist_files):
+def update_aircraft_file_includes(aircraft_file, category_files):
     """Update the aircraft file to include all generated TFDI MD-11 modules."""
     parsed = parse_aircraft_yaml(aircraft_file)
     
     # Build list of TFDI module includes
     tfdi_includes = []
-    for checklist_file in sorted(checklist_files):
-        category = checklist_file.stem
+    for category_file in sorted(category_files):
+        category = category_file.stem
         tfdi_includes.append(f"  - definitions/modules/tfdi-md11/TFDi_MD11_{category}.yaml")
     
     # Reconstruct includes section: standard includes + TFDI includes
@@ -728,9 +728,9 @@ def update_existing_yaml(output_file, events, description, variables):
     
     print(f"Updated: {output_file}")
 
-def clean_checklist_file(checklist_file):
-    """Remove '// present' markers from checklist file."""
-    with open(checklist_file, 'r', encoding='utf-8') as f:
+def clean_category_file(category_file):
+    """Remove '// present' markers from category file."""
+    with open(category_file, 'r', encoding='utf-8') as f:
         content = f.read()
     
     # Remove " // present" from event strings
@@ -742,20 +742,20 @@ def clean_checklist_file(checklist_file):
     
     cleaned_content = '\n'.join(cleaned_lines)
     
-    with open(checklist_file, 'w', encoding='utf-8') as f:
+    with open(category_file, 'w', encoding='utf-8') as f:
         f.write(cleaned_content)
     
     # Count events
-    with open(checklist_file, 'r', encoding='utf-8') as f:
+    with open(category_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     return len(data.get('events', []))
 
-def update_checklist_file(checklist_file, events):
-    """Mark events as present in checklist file.
+def update_category_file(category_file, events):
+    """Mark events as present in category file.
     
     Handles both string format and object format for events.
     """
-    with open(checklist_file, 'r', encoding='utf-8') as f:
+    with open(category_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
     # Extract event names from the events list (they may be strings or objects)
@@ -800,11 +800,11 @@ def update_checklist_file(checklist_file, events):
     data['present_count'] = present_count
     data['total_count'] = len(updated_events)
     
-    with open(checklist_file, 'w', encoding='utf-8') as f:
+    with open(category_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write('\n')  # Add trailing newline
     
-    print(f"Updated checklist: {checklist_file.name} ({present_count}/{len(updated_events)} events marked as present)")
+    print(f"Updated category file: {category_file.name} ({present_count}/{len(updated_events)} events marked as present)")
 
 def regenerate_all_modules(split_mode=False):
     """Regenerate all TFDI MD-11 modules from scratch.
@@ -813,7 +813,7 @@ def regenerate_all_modules(split_mode=False):
         split_mode: If True, generate separate module files. If False (default), merge into main file.
     """
     script_dir = Path(__file__).parent
-    checklist_dir = script_dir / "tfdi-md11-data"
+    data_dir = script_dir / "tfdi-md11-data"
     modules_dir = script_dir / "definitions" / "modules" / "tfdi-md11"
     aircraft_file = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
     
@@ -840,18 +840,18 @@ def regenerate_all_modules(split_mode=False):
     if split_mode:
         modules_dir.mkdir(parents=True, exist_ok=True)
     
-    # Step 2: Clean all JSON checklist files (remove // present comments)
-    print("\nStep 2: Cleaning JSON checklist files (removing // present comments)...")
-    checklist_files = sorted(checklist_dir.glob("*.json"))
+    # Step 2: Clean all JSON category files (remove // present comments)
+    print("\nStep 2: Cleaning JSON category files (removing // present comments)...")
+    category_files = sorted(data_dir.glob("*.json"))
     # Exclude variables.json
-    checklist_files = [f for f in checklist_files if f.name != "variables.json"]
+    category_files = [f for f in category_files if f.name != "variables.json"]
     
     cleaned_count = 0
-    for checklist_file in checklist_files:
-        event_count = clean_checklist_file(checklist_file)
+    for category_file in category_files:
+        event_count = clean_category_file(category_file)
         cleaned_count += 1
-        print(f"  Cleaned: {checklist_file.name} ({event_count} events)")
-    print(f"Cleaned {cleaned_count} checklist files")
+        print(f"  Cleaned: {category_file.name} ({event_count} events)")
+    print(f"Cleaned {cleaned_count} category files")
     
     # Step 3: Generate modules or merge into aircraft file
     print("\nStep 3: Generating modules...")
@@ -859,13 +859,13 @@ def regenerate_all_modules(split_mode=False):
     
     if split_mode:
         generated_count = 0
-        for checklist_file in checklist_files:
-            category = checklist_file.stem
+        for category_file in category_files:
+            category = category_file.stem
             output_file = modules_dir / f"TFDi_MD11_{category}.yaml"
             
             try:
-                # Read checklist
-                with open(checklist_file) as f:
+                # Read category file
+                with open(category_file) as f:
                     data = json.load(f)
                 
                 events = data.get('events', [])
@@ -906,8 +906,8 @@ def regenerate_all_modules(split_mode=False):
                 
                 print(f"  Generated: {category} ({len(events)} events, {toggle_count} ToggleSwitches, {num_increment_count} NumIncrements)")
                 
-                # Update checklist file to mark events as present
-                update_checklist_file(checklist_file, events)
+                # Update category file to mark events as present
+                update_category_file(category_file, events)
                 
                 generated_count += 1
             except Exception as e:
@@ -918,7 +918,7 @@ def regenerate_all_modules(split_mode=False):
         print(f"\nGenerated {generated_count} modules")
         
         # Update aircraft file to include all generated modules
-        update_aircraft_file_includes(aircraft_file, checklist_files)
+        update_aircraft_file_includes(aircraft_file, category_files)
         
         # Validate the updated aircraft file
         validation_error = validate_yaml_file(aircraft_file)
@@ -928,7 +928,7 @@ def regenerate_all_modules(split_mode=False):
             sys.exit(1)
     else:
         # Default: merge mode - write everything into main aircraft file
-        merge_all_categories_to_aircraft_file(aircraft_file, checklist_dir, variables)
+        merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables)
         print("\nMerged all categories into aircraft file")
         
         # Validate the merged aircraft file
@@ -953,13 +953,13 @@ def regenerate_all_modules(split_mode=False):
     total_present = 0
     total_events = 0
     
-    for checklist_file in checklist_files:
+    for category_file in category_files:
         try:
-            present, total = validate_module.check_events_for_category(checklist_file)
+            present, total = validate_module.check_events_for_category(category_file)
             total_present += present
             total_events += total
         except Exception as e:
-            print(f"ERROR checking {checklist_file.name}: {e}")
+            print(f"ERROR checking {category_file.name}: {e}")
             import traceback
             traceback.print_exc()
     
@@ -985,18 +985,18 @@ def main():
     category = args[0]
     
     script_dir = Path(__file__).parent
-    checklist_dir = script_dir / "tfdi-md11-data"
-    checklist_file = checklist_dir / f"{category}.json"
+    data_dir = script_dir / "tfdi-md11-data"
+    category_file = data_dir / f"{category}.json"
     
-    if not checklist_file.exists():
-        print(f"Error: Checklist file not found: {checklist_file}", file=sys.stderr)
+    if not category_file.exists():
+        print(f"Error: Category file not found: {category_file}", file=sys.stderr)
         sys.exit(1)
     
     # Load variables
     variables = load_variables()
     
-    # Read checklist
-    with open(checklist_file) as f:
+    # Read category file
+    with open(category_file) as f:
         data = json.load(f)
     
     events = data.get('events', [])
@@ -1052,7 +1052,7 @@ def main():
         # Update aircraft file to include this module
         script_dir = Path(__file__).parent
         aircraft_file = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
-        update_aircraft_file_includes(aircraft_file, [checklist_file])
+        update_aircraft_file_includes(aircraft_file, [category_file])
         
         # Validate the updated aircraft file
         validation_error = validate_yaml_file(aircraft_file)
@@ -1134,8 +1134,8 @@ def main():
         if num_increment_count > 0:
             print(f"NumIncrements: {num_increment_count}")
     
-    # Update checklist file to mark all events as present
-    update_checklist_file(checklist_file, events)
+    # Update category file to mark all events as present
+    update_category_file(category_file, events)
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Check which events from checklist JSON files are already present in YAML definition files.
+Check which events from category JSON files are already present in YAML definition files.
 Updates the JSON files by appending " // present" to event names that are found.
 """
 
@@ -11,7 +11,7 @@ from pathlib import Path
 
 # Paths
 script_dir = Path(__file__).parent
-CHECKLIST_DIR = script_dir / "tfdi-md11-data"
+DATA_DIR = script_dir / "tfdi-md11-data"
 AIRCRAFT_FILE = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
 MODULES_DIR = script_dir / "definitions" / "modules" / "tfdi-md11"
 
@@ -58,7 +58,7 @@ def check_events_for_category(category_file):
     """Check events for a specific category and update the JSON file."""
     print(f"\nChecking {category_file.name}...")
     
-    # Load checklist JSON
+    # Load category JSON
     with open(category_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
@@ -132,7 +132,7 @@ def check_events_for_category(category_file):
     return present_count, len(events)
 
 def main():
-    """Main function to check all checklist files."""
+    """Main function to check all category files."""
     import sys
     
     # Parse command line arguments
@@ -146,15 +146,15 @@ def main():
             target_file = target_arg
         else:
             # Try to find matching file
-            possible_files = list(CHECKLIST_DIR.glob(f"{target_arg}*.json"))
+            possible_files = list(DATA_DIR.glob(f"{target_arg}*.json"))
             if possible_files:
                 target_file = possible_files[0].name
             else:
-                print(f"ERROR: No checklist file found matching '{target_arg}'")
-                print(f"Available files: {', '.join([f.name for f in CHECKLIST_DIR.glob('*.json')])}")
+                print(f"ERROR: No category file found matching '{target_arg}'")
+                print(f"Available files: {', '.join([f.name for f in DATA_DIR.glob('*.json')])}")
                 return
     
-    print("Checking events in checklist files...")
+    print("Checking events in category files...")
     print(f"Aircraft file: {AIRCRAFT_FILE}")
     print(f"Modules directory: {MODULES_DIR}")
     
@@ -167,31 +167,33 @@ def main():
     
     # Get JSON files to process
     if target_file:
-        checklist_file_path = CHECKLIST_DIR / target_file
-        if not checklist_file_path.exists():
-            print(f"ERROR: Checklist file not found: {target_file}")
+        category_file_path = DATA_DIR / target_file
+        if not category_file_path.exists():
+            print(f"ERROR: Category file not found: {target_file}")
             return
-        checklist_files = [checklist_file_path]
+        category_files = [category_file_path]
         print(f"\nScanning only: {target_file}")
     else:
-        # Get all JSON files in checklist directory
-        checklist_files = sorted(CHECKLIST_DIR.glob("*.json"))
-        print(f"\nScanning all checklist files...")
+        # Get all JSON files in data directory
+        category_files = sorted(DATA_DIR.glob("*.json"))
+        # Exclude variables.json
+        category_files = [f for f in category_files if f.name != "variables.json"]
+        print(f"\nScanning all category files...")
     
-    if not checklist_files:
-        print("No checklist files found!")
+    if not category_files:
+        print("No category files found!")
         return
     
     total_present = 0
     total_events = 0
     
-    for checklist_file in checklist_files:
+    for category_file in category_files:
         try:
-            present, total = check_events_for_category(checklist_file)
+            present, total = check_events_for_category(category_file)
             total_present += present
             total_events += total
         except Exception as e:
-            print(f"ERROR processing {checklist_file.name}: {e}")
+            print(f"ERROR processing {category_file.name}: {e}")
             import traceback
             traceback.print_exc()
     

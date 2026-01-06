@@ -9,7 +9,7 @@ YourControls configuration files for the TFDi Design MD-11 aircraft. This projec
 - [Documentation References](#documentation-references)
 - [Project Structure](#project-structure)
 - [Quick Start](#quick-start)
-- [Checklist System](#checklist-system)
+- [Category System](#category-system)
 - [Module Generator](#module-generator)
 - [Event Type Patterns](#event-type-patterns)
 - [Workflow](#workflow)
@@ -63,7 +63,7 @@ your-controls-tfdi-md11/
 │       ├── tfdi-md11/                   # TFDi MD-11 modules (when not merged)
 │       └── *.yaml                       # Standard YourControls modules
 ├── tfdi-md11-data/
-│   ├── *.json                          # Event checklist files
+│   ├── *.json                          # Category definition files
 │   └── variables.json                  # L: variable definitions
 ├── generate.py                          # Module generator script
 ├── validate.py                          # Coverage verification script
@@ -91,7 +91,7 @@ Regenerate all categories and merge into main file:
 python3 generate.py
 ```
 
-## Checklist System
+## Category System
 
 The `tfdi-md11-data/` folder contains JSON files for each panel/system category. Each JSON file lists all events from the documentation that should be implemented for that category.
 
@@ -102,7 +102,7 @@ The `validate.py` script:
 
 ## Module Generator
 
-A Python script (`generate.py`) automatically generates YAML module files from JSON checklist files.
+A Python script (`generate.py`) automatically generates YAML module files from category JSON files.
 
 ### Usage
 
@@ -122,12 +122,12 @@ python3 generate.py <category_name> --split
 
 ### What It Does
 
-1. Reads the checklist JSON file (`tfdi-md11-data/<category_name>.json`)
+1. Reads the category JSON file (`tfdi-md11-data/<category_name>.json`)
 2. Extracts all events (automatically filters out "// present" markers)
 3. Groups events by control type (buttons, wheels, switches, etc.)
 4. Detects L: variables from `tfdi-md11-data/variables.json` to determine control types
 5. Generates properly formatted YAML with appropriate types (event, ToggleSwitch, NumIncrement)
-6. Marks all implemented events as "// present" in the JSON checklist file
+6. Marks all implemented events as "// present" in the JSON category file
 
 ### Features
 
@@ -268,7 +268,7 @@ The generator script automatically:
 - Groups related events together
 - Detects appropriate control types (ToggleSwitch, NumIncrement, event)
 - Formats YAML with proper indentation and comments
-- Updates checklist files to mark events as present
+- Updates category files to mark events as present
 
 ### Verification
 
@@ -294,7 +294,7 @@ python3 validate.py <category_name>
 
 - Main aircraft config: `definitions/aircraft/TFDi Design - MD-11.yaml`
 - Module files (non-merged): `definitions/modules/tfdi-md11/TFDi_MD11_*.yaml`
-- Checklist files: `tfdi-md11-data/*.json`
+- Category files: `tfdi-md11-data/*.json`
 - Variables file: `tfdi-md11-data/variables.json`
 - Validation script: `validate.py`
 - Generator script: `generate.py`
