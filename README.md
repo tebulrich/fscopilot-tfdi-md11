@@ -64,9 +64,9 @@ your-controls-tfdi-md11/
 │       └── *.yaml                       # Standard YourControls modules
 ├── tfdi-md11-data/
 │   ├── *.json                          # Event checklist files
-│   ├── variables.json                  # L: variable definitions
-│   ├── generate.py                     # Module generator script
-│   └── check_events.py                 # Coverage verification script
+│   └── variables.json                  # L: variable definitions
+├── generate.py                          # Module generator script
+├── validate.py                          # Coverage verification script
 └── README.md                           # This file
 ```
 
@@ -76,48 +76,48 @@ your-controls-tfdi-md11/
 
 Check coverage for a specific category:
 ```bash
-python3 tfdi-md11-data/check_events.py <category_name>
+python3 validate.py <category_name>
 ```
 
 Check all categories:
 ```bash
-python3 tfdi-md11-data/check_events.py
+python3 validate.py
 ```
 
 ### Regenerate Configuration
 
 Regenerate all categories and merge into main file:
 ```bash
-python3 tfdi-md11-data/generate.py
+python3 generate.py
 ```
 
 ## Checklist System
 
 The `tfdi-md11-data/` folder contains JSON files for each panel/system category. Each JSON file lists all events from the documentation that should be implemented for that category.
 
-The `check_events.py` script:
+The `validate.py` script:
 - Searches for each event in the main aircraft YAML file
 - Marks events as "// present" in the JSON file if found
 - Reports coverage percentage
 
 ## Module Generator
 
-A Python script (`tfdi-md11-data/generate.py`) automatically generates YAML module files from JSON checklist files.
+A Python script (`generate.py`) automatically generates YAML module files from JSON checklist files.
 
 ### Usage
 
 ```bash
 # Regenerate all categories (merges into main aircraft file by default)
-python3 tfdi-md11-data/generate.py
+python3 generate.py
 
 # Generate a single category (merges into main aircraft file)
-python3 tfdi-md11-data/generate.py <category_name>
+python3 generate.py <category_name>
 
 # Regenerate all categories as separate module files
-python3 tfdi-md11-data/generate.py --split
+python3 generate.py --split
 
 # Generate a single category as separate module file
-python3 tfdi-md11-data/generate.py <category_name> --split
+python3 generate.py <category_name> --split
 ```
 
 ### What It Does
@@ -183,10 +183,10 @@ The generator will automatically apply these overrides to the generated YAML ent
 
 ### Behavior
 
-- Running without arguments (`python3 tfdi-md11-data/generate.py`): Regenerates all categories and merges into main aircraft file
-- Running with a category name (`python3 tfdi-md11-data/generate.py center_panel`): Regenerates only that category and merges into main aircraft file
-- Running with `--split` flag (`python3 tfdi-md11-data/generate.py --split`): Regenerates all categories as separate module files
-- Running with category and `--split` (`python3 tfdi-md11-data/generate.py center_panel --split`): Generates that category as a separate module file
+- Running without arguments (`python3 generate.py`): Regenerates all categories and merges into main aircraft file
+- Running with a category name (`python3 generate.py center_panel`): Regenerates only that category and merges into main aircraft file
+- Running with `--split` flag (`python3 generate.py --split`): Regenerates all categories as separate module files
+- Running with category and `--split` (`python3 generate.py center_panel --split`): Generates that category as a separate module file
 
 ## Event Type Patterns
 
@@ -234,10 +234,10 @@ To regenerate the entire configuration from scratch:
 
 ```bash
 # Regenerate all categories and merge into main aircraft file
-python3 tfdi-md11-data/generate.py
+python3 generate.py
 
 # Verify coverage
-python3 tfdi-md11-data/check_events.py
+python3 validate.py
 ```
 
 ### Updating a Single Category
@@ -246,10 +246,10 @@ To regenerate a specific category:
 
 ```bash
 # Regenerate a single category
-python3 tfdi-md11-data/generate.py <category_name>
+python3 generate.py <category_name>
 
 # Verify coverage for that category
-python3 tfdi-md11-data/check_events.py <category_name>
+python3 validate.py <category_name>
 ```
 
 ### Working with Separate Module Files
@@ -258,10 +258,10 @@ If you prefer to work with separate module files instead of a merged configurati
 
 ```bash
 # Generate all categories as separate module files
-python3 tfdi-md11-data/generate.py --split
+python3 generate.py --split
 
 # Generate a single category as a separate module file
-python3 tfdi-md11-data/generate.py <category_name> --split
+python3 generate.py <category_name> --split
 ```
 
 The generator script automatically:
@@ -276,10 +276,10 @@ After generating or modifying the configuration, always verify coverage:
 
 ```bash
 # Check all categories
-python3 tfdi-md11-data/check_events.py
+python3 validate.py
 
 # Check a specific category
-python3 tfdi-md11-data/check_events.py <category_name>
+python3 validate.py <category_name>
 ```
 
 ## Important Notes
@@ -287,7 +287,7 @@ python3 tfdi-md11-data/check_events.py <category_name>
 1. Event prefixes follow specific patterns: Observer events use `OBS_` prefix, Captain/First Officer events use `PED_CPT_` and `PED_FO_` prefixes
 2. Some controls have both button events (`_BT_LEFT_BUTTON_DOWN/UP`) and wheel events (`_KB_WHEEL_UP/DOWN`)
 3. Not all events have corresponding L: variables - the generator automatically uses `type: event` when no variable exists
-4. The `check_events.py` script marks events as "// present" in JSON files - this is expected behavior and helps track coverage
+4. The `validate.py` script marks events as "// present" in JSON files - this is expected behavior and helps track coverage
 5. YAML syntax requires strict indentation (2 spaces) - the generator handles this automatically
 
 ## File Locations
@@ -296,8 +296,8 @@ python3 tfdi-md11-data/check_events.py <category_name>
 - Module files (non-merged): `definitions/modules/tfdi-md11/TFDi_MD11_*.yaml`
 - Checklist files: `tfdi-md11-data/*.json`
 - Variables file: `tfdi-md11-data/variables.json`
-- Check script: `tfdi-md11-data/check_events.py`
-- Generator script: `tfdi-md11-data/generate.py`
+- Validation script: `validate.py`
+- Generator script: `generate.py`
 
 ## Grouping Logic
 

@@ -10,9 +10,10 @@ import re
 from pathlib import Path
 
 # Paths
-CHECKLIST_DIR = Path(__file__).parent
-AIRCRAFT_FILE = CHECKLIST_DIR.parent / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
-MODULES_DIR = CHECKLIST_DIR.parent / "definitions" / "modules" / "tfdi-md11"
+script_dir = Path(__file__).parent
+CHECKLIST_DIR = script_dir / "tfdi-md11-data"
+AIRCRAFT_FILE = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
+MODULES_DIR = script_dir / "definitions" / "modules" / "tfdi-md11"
 
 def load_yaml_file(filepath):
     """Load YAML file content as text for searching."""

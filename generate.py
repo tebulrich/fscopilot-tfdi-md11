@@ -60,7 +60,8 @@ def format_comment_name(event_name):
 def load_variables():
     """Load L: variables from variables.json file."""
     script_dir = Path(__file__).parent
-    variables_file = script_dir / "variables.json"
+    checklist_dir = script_dir / "tfdi-md11-data"
+    variables_file = checklist_dir / "variables.json"
     
     if not variables_file.exists():
         print(f"Warning: variables.json not found at {variables_file}", file=sys.stderr)
@@ -811,9 +812,10 @@ def regenerate_all_modules(split_mode=False):
     Args:
         split_mode: If True, generate separate module files. If False (default), merge into main file.
     """
-    checklist_dir = Path(__file__).parent
-    modules_dir = checklist_dir.parent / "definitions" / "modules" / "tfdi-md11"
-    aircraft_file = checklist_dir.parent / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
+    script_dir = Path(__file__).parent
+    checklist_dir = script_dir / "tfdi-md11-data"
+    modules_dir = script_dir / "definitions" / "modules" / "tfdi-md11"
+    aircraft_file = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
     
     print("=" * 60)
     if split_mode:
@@ -936,23 +938,24 @@ def regenerate_all_modules(split_mode=False):
             print(f"{validation_error}")
             sys.exit(1)
     
-    # Step 4: Run check_events on all categories
-    print("\nStep 4: Running check_events on all categories...")
+    # Step 4: Run validate on all categories
+    print("\nStep 4: Running validate on all categories...")
     print("-" * 60)
     
-    # Import check_events module
+    # Import validate module
     import importlib.util
-    check_events_path = checklist_dir / "check_events.py"
-    spec = importlib.util.spec_from_file_location("check_events", check_events_path)
-    check_events_module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(check_events_module)
+    script_dir = Path(__file__).parent
+    validate_path = script_dir / "validate.py"
+    spec = importlib.util.spec_from_file_location("validate", validate_path)
+    validate_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(validate_module)
     
     total_present = 0
     total_events = 0
     
     for checklist_file in checklist_files:
         try:
-            present, total = check_events_module.check_events_for_category(checklist_file)
+            present, total = validate_module.check_events_for_category(checklist_file)
             total_present += present
             total_events += total
         except Exception as e:
@@ -981,7 +984,9 @@ def main():
     # Single category specified
     category = args[0]
     
-    checklist_file = Path(__file__).parent / f"{category}.json"
+    script_dir = Path(__file__).parent
+    checklist_dir = script_dir / "tfdi-md11-data"
+    checklist_file = checklist_dir / f"{category}.json"
     
     if not checklist_file.exists():
         print(f"Error: Checklist file not found: {checklist_file}", file=sys.stderr)
@@ -1014,7 +1019,8 @@ def main():
     
     if split_mode:
         # Generate separate module file
-        modules_dir = Path(__file__).parent.parent / "definitions" / "modules" / "tfdi-md11"
+        script_dir = Path(__file__).parent
+        modules_dir = script_dir / "definitions" / "modules" / "tfdi-md11"
         modules_dir.mkdir(parents=True, exist_ok=True)
         output_file = modules_dir / f"TFDi_MD11_{category}.yaml"
         
@@ -1044,7 +1050,8 @@ def main():
             print(f"NumIncrements: {num_increment_count}")
         
         # Update aircraft file to include this module
-        aircraft_file = Path(__file__).parent.parent / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
+        script_dir = Path(__file__).parent
+        aircraft_file = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
         update_aircraft_file_includes(aircraft_file, [checklist_file])
         
         # Validate the updated aircraft file
@@ -1055,7 +1062,8 @@ def main():
             sys.exit(1)
     else:
         # Merge this single category into the aircraft file (default behavior)
-        aircraft_file = Path(__file__).parent.parent / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
+        script_dir = Path(__file__).parent
+        aircraft_file = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
         parsed = parse_aircraft_yaml(aircraft_file)
         
         # Generate shared content for this category
