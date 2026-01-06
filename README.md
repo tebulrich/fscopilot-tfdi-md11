@@ -139,6 +139,43 @@ python3 tfdi-md11-data/generate.py <category_name> --split
 - Automatically detects NumIncrement types for wheel controls with numeric L: variables
 - Generates appropriate comments for each control group
 - Creates standard headers with references to documentation
+- Supports property overrides via object format in JSON files
+
+### Event Overrides
+
+The generator supports overriding YAML properties for individual events. While the default format uses simple strings:
+
+```json
+"events": [
+  "CTR_ANTISKID_BT_LEFT_BUTTON_DOWN",
+  "CTR_ANTISKID_BT_LEFT_BUTTON_UP"
+]
+```
+
+You can use an object format to specify overrides:
+
+```json
+"events": [
+  "CTR_ANTISKID_BT_LEFT_BUTTON_DOWN",
+  {
+    "event": "CTR_AUX_HYD_PUMP_BT_LEFT_BUTTON_DOWN",
+    "unreliable": true,
+    "use_calculator": true
+  }
+]
+```
+
+**Supported Override Properties:**
+- `type` - Override the control type (e.g., `"NumSet"`, `"ToggleSwitch"`, `"event"`)
+- `unreliable` - Mark the event as unreliable (boolean)
+- `use_calculator` - Enable calculator for value transformations (boolean)
+- `add_by` - Add an offset value (number)
+- `multiply_by` - Multiply by a factor (number)
+- `increment_by` - Override increment step size (number, for NumIncrement)
+- `cancel_h_events` - Cancel H events (boolean)
+- Any other YAML property supported by YourControls
+
+The generator will automatically apply these overrides to the generated YAML entries. Both formats can be mixed in the same JSON file - the generator maintains backward compatibility with the string format.
 
 ### Flags
 

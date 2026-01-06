@@ -106,17 +106,46 @@ def find_l_variable(event_name, variables):
     
     return None
 
+def parse_event_entry(entry):
+    """Parse an event entry which can be a string or an object with overrides.
+    
+    Returns:
+        tuple: (event_name, overrides_dict)
+    """
+    if isinstance(entry, str):
+        # Backward compatibility: simple string format
+        event_name = entry.strip().replace(' // present', '')
+        return event_name, {}
+    elif isinstance(entry, dict):
+        # New format: object with event and optional overrides
+        event_name = entry.get('event', '').strip()
+        # All other keys are treated as overrides (except metadata keys)
+        overrides = {k: v for k, v in entry.items() if k != 'event'}
+        return event_name, overrides
+    else:
+        return None, {}
+
 def group_events(events, variables=None):
-    """Group events by control, handling DOWN/UP pairs and wheel events."""
+    """Group events by control, handling DOWN/UP pairs and wheel events.
+    
+    Now supports event entries as either strings or objects with overrides.
+    """
     if variables is None:
         variables = set()
     
     grouped = {}
+    event_overrides = {}  # Store overrides per event name
     
-    for event in events:
-        event = event.strip().replace(' // present', '')
-        if not event:
+    for entry in events:
+        event_name, overrides = parse_event_entry(entry)
+        if not event_name:
             continue
+        
+        # Store overrides for this event
+        if overrides:
+            event_overrides[event_name] = overrides
+        
+        event = event_name
             
         # Extract base name
         # Handle brightness wheel events (e.g., PED_DU1_BRT_KB_WHEEL_UP)
@@ -179,10 +208,16 @@ def group_events(events, variables=None):
                 'events': [],
                 'is_wheel': is_wheel,
                 'l_variable': None,
-                'control_type': None
+                'control_type': None,
+                'overrides': {}  # Store overrides for this group
             }
         
         grouped[base]['events'].append(event)
+        
+        # Store overrides for this event in the group
+        if event in event_overrides:
+            # Merge overrides (event-specific overrides take precedence)
+            grouped[base]['overrides'].update(event_overrides[event])
         
         if '_WHEEL_DOWN' in event or '_BT_LEFT_BUTTON_DOWN' in event or '_SW_LEFT_BUTTON_DOWN' in event:
             grouped[base]['DOWN'] = event
@@ -210,6 +245,36 @@ def group_events(events, variables=None):
                 group['control_type'] = 'ToggleSwitch'
     
     return grouped
+
+def format_override_lines(overrides):
+    """Format override key-value pairs as YAML lines.
+    
+    Args:
+        overrides: Dictionary of override key-value pairs
+    
+    Returns:
+        List of formatted YAML lines
+    """
+    if not overrides:
+        return []
+    
+    lines = []
+    for key, value in sorted(overrides.items()):
+        # Skip keys that are already handled by the generator
+        if key in ['event', 'events']:  # Skip metadata keys
+            continue
+        
+        # Format the value appropriately
+        if isinstance(value, bool):
+            lines.append(f"    {key}: {str(value).lower()}")
+        elif isinstance(value, (int, float)):
+            lines.append(f"    {key}: {value}")
+        elif isinstance(value, str):
+            lines.append(f"    {key}: {value}")
+        else:
+            lines.append(f"    {key}: {value}")
+    
+    return lines
 
 def generate_yaml(category_name, events, description, variables=None, merged_mode=False):
     """Generate YAML content from events.
@@ -242,78 +307,134 @@ def generate_yaml(category_name, events, description, variables=None, merged_mod
         # Handle wheel events with L: variables (NumIncrement)
         if group['is_wheel'] and group['l_variable'] and group['DOWN'] and group['UP']:
             lines.append(f"  - # {comment}")
-            lines.append(f"    type: NumIncrement")
+            # Apply type override if present, otherwise use default
+            entry_type = group['overrides'].get('type', 'NumIncrement')
+            lines.append(f"    type: {entry_type}")
             lines.append(f"    var_name: {group['l_variable']}")
             lines.append(f"    var_units: Number")
             lines.append(f"    var_type: f64")
             lines.append(f"    up_event_name: {group['UP']}")
             lines.append(f"    down_event_name: {group['DOWN']}")
-            lines.append(f"    increment_by: 1")
+            # Apply increment_by override if present
+            increment_by = group['overrides'].get('increment_by', 1)
+            lines.append(f"    increment_by: {increment_by}")
+            # Apply other overrides (insert after increment_by)
+            overrides = {k: v for k, v in group['overrides'].items() 
+                        if k not in ['type', 'increment_by']}
+            override_lines = format_override_lines(overrides)
+            if override_lines:
+                lines.extend(override_lines)
             lines.append("")  # Blank line between groups
             continue
         
         # Handle wheel events without L: variables (regular events)
         if group['is_wheel']:
             lines.append(f"  - # {comment}")
+            entry_type = group['overrides'].get('type', 'event')
             if group['DOWN']:
-                lines.append(f"    type: event")
+                lines.append(f"    type: {entry_type}")
                 lines.append(f"    event_name: {group['DOWN']}")
+                # Apply overrides for DOWN event (insert after event_name)
+                overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
+                override_lines = format_override_lines(overrides)
+                if override_lines:
+                    lines.extend(override_lines)
             if group['UP']:
                 if group['DOWN']:
                     lines.append("  -")
-                lines.append(f"    type: event")
+                lines.append(f"    type: {entry_type}")
                 lines.append(f"    event_name: {group['UP']}")
+                # Apply overrides for UP event (insert after event_name)
+                overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
+                override_lines = format_override_lines(overrides)
+                if override_lines:
+                    lines.extend(override_lines)
             lines.append("")  # Blank line between groups
             continue
         
         # Handle button/switch events with L: variables (ToggleSwitch)
         if group['l_variable'] and group['DOWN'] and group['UP']:
             lines.append(f"  - # {comment}")
-            lines.append(f"    type: ToggleSwitch")
+            # Apply type override if present, otherwise use default
+            entry_type = group['overrides'].get('type', 'ToggleSwitch')
+            lines.append(f"    type: {entry_type}")
             lines.append(f"    var_name: {group['l_variable']}")
             lines.append(f"    var_units: Bool")
             lines.append(f"    var_type: bool")
             lines.append(f"    event_name: {group['DOWN']}")
             lines.append(f"    off_event_name: {group['UP']}")
+            # Apply other overrides (insert after off_event_name)
+            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
+            override_lines = format_override_lines(overrides)
+            if override_lines:
+                lines.extend(override_lines)
             lines.append("")  # Blank line between groups
             continue
         
         # Handle button/switch events without L: variables (regular events)
         lines.append(f"  - # {comment}")
         
+        # Apply type override if present, otherwise use default
+        entry_type = group['overrides'].get('type', 'event')
+        
         # Add DOWN event if present
         if group['DOWN']:
-            lines.append(f"    type: event")
+            lines.append(f"    type: {entry_type}")
             lines.append(f"    event_name: {group['DOWN']}")
+            # Apply overrides for DOWN event (insert after event_name)
+            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
+            override_lines = format_override_lines(overrides)
+            if override_lines:
+                lines.extend(override_lines)
         
         # Add UP event if present
         if group['UP']:
             if group['DOWN']:
                 lines.append("  -")
-            lines.append(f"    type: event")
+            lines.append(f"    type: {entry_type}")
             lines.append(f"    event_name: {group['UP']}")
+            # Apply overrides for UP event (insert after event_name)
+            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
+            override_lines = format_override_lines(overrides)
+            if override_lines:
+                lines.extend(override_lines)
         
         # Add RIGHT event (for switches)
         if group['RIGHT']:
             if group['DOWN'] or group['UP']:
                 lines.append("  -")
-            lines.append(f"    type: event")
+            lines.append(f"    type: {entry_type}")
             lines.append(f"    event_name: {group['RIGHT']}")
+            # Apply overrides for RIGHT event (insert after event_name)
+            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
+            override_lines = format_override_lines(overrides)
+            if override_lines:
+                lines.extend(override_lines)
         
         # Add GRD event (for ground buttons)
         if group['GRD']:
             if group['DOWN'] or group['UP'] or group['RIGHT']:
                 lines.append("  -")
-            lines.append(f"    type: event")
+            lines.append(f"    type: {entry_type}")
             lines.append(f"    event_name: {group['GRD']}")
+            # Apply overrides for GRD event (insert after event_name)
+            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
+            override_lines = format_override_lines(overrides)
+            if override_lines:
+                lines.extend(override_lines)
         
         # If only single events without DOWN/UP pattern, list them all
         if not group['DOWN'] and not group['UP'] and not group['RIGHT'] and not group['GRD']:
             for event in group['events']:
                 if group['events'].index(event) > 0:
                     lines.append("  -")
-                lines.append(f"    type: event")
+                lines.append(f"    type: {entry_type}")
                 lines.append(f"    event_name: {event}")
+                # Apply overrides for each event (insert after event_name)
+                overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
+                override_lines = format_override_lines(overrides)
+                if override_lines:
+                    lines.extend(override_lines)
         
         lines.append("")  # Blank line between groups
     
@@ -430,9 +551,21 @@ def merge_all_categories_to_aircraft_file(aircraft_file, checklist_dir, variable
             events = data.get('events', [])
             description = data.get('description', category.replace('_', ' ').title())
             
-            # Strip any remaining "// present" markers
-            events = [e.strip().replace(' // present', '') for e in events if e.strip()]
+            # Filter out "// present" markers but preserve format
+            # Events can be strings or objects
+            filtered_events = []
+            for entry in events:
+                event_name, overrides = parse_event_entry(entry)
+                if event_name:
+                    # Reconstruct entry without // present marker
+                    if isinstance(entry, dict):
+                        # Keep object format
+                        filtered_events.append(entry)
+                    else:
+                        # String format - strip // present
+                        filtered_events.append(event_name)
             
+            events = filtered_events
             if not events:
                 continue
             
@@ -617,28 +750,60 @@ def clean_checklist_file(checklist_file):
     return len(data.get('events', []))
 
 def update_checklist_file(checklist_file, events):
-    """Mark events as present in checklist file."""
+    """Mark events as present in checklist file.
+    
+    Handles both string format and object format for events.
+    """
     with open(checklist_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
+    # Extract event names from the events list (they may be strings or objects)
+    event_names = set()
+    for entry in events:
+        event_name, _ = parse_event_entry(entry)
+        if event_name:
+            event_names.add(event_name)
+    
     # Update events list
     updated_events = []
-    for event in data.get('events', []):
-        event_clean = event.strip().replace(' // present', '')
-        if event_clean in events:
-            updated_events.append(f"{event_clean} // present")
+    for entry in data.get('events', []):
+        event_name, overrides = parse_event_entry(entry)
+        if not event_name:
+            continue
+        
+        # Check if this event is in the generated events
+        if event_name in event_names:
+            # Mark as present, preserving format
+            if isinstance(entry, str):
+                # String format: add // present
+                updated_events.append(f"{event_name} // present")
+            elif isinstance(entry, dict):
+                # Object format: keep the object as-is (overrides are preserved)
+                updated_events.append(entry)
+            else:
+                updated_events.append(f"{event_name} // present")
         else:
-            updated_events.append(event_clean)
+            # Not present, keep original format
+            if isinstance(entry, str):
+                updated_events.append(event_name)
+            elif isinstance(entry, dict):
+                updated_events.append(entry)
+            else:
+                updated_events.append(event_name)
     
     data['events'] = updated_events
-    data['present_count'] = len([e for e in updated_events if '// present' in e])
+    # Count present events (check both string and object formats)
+    present_count = sum(1 for e in updated_events 
+                       if (isinstance(e, str) and '// present' in e) or 
+                          (isinstance(e, dict) and e.get('event')))
+    data['present_count'] = present_count
     data['total_count'] = len(updated_events)
     
     with open(checklist_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write('\n')  # Add trailing newline
     
-    print(f"Updated checklist: {checklist_file.name} ({len(events)}/{len(events)} events marked as present)")
+    print(f"Updated checklist: {checklist_file.name} ({present_count}/{len(updated_events)} events marked as present)")
 
 def regenerate_all_modules(split_mode=False):
     """Regenerate all TFDI MD-11 modules from scratch.
@@ -704,8 +869,16 @@ def regenerate_all_modules(split_mode=False):
                 events = data.get('events', [])
                 description = data.get('description', category.replace('_', ' ').title())
                 
-                # Strip any remaining "// present" markers
-                events = [e.strip().replace(' // present', '') for e in events if e.strip()]
+                # Filter out "// present" markers but preserve format
+                filtered_events = []
+                for entry in events:
+                    event_name, overrides = parse_event_entry(entry)
+                    if event_name:
+                        if isinstance(entry, dict):
+                            filtered_events.append(entry)
+                        else:
+                            filtered_events.append(event_name)
+                events = filtered_events
                 
                 if not events:
                     print(f"  Skipping {category} (no events)")
@@ -824,8 +997,16 @@ def main():
     events = data.get('events', [])
     description = data.get('description', category.replace('_', ' ').title())
     
-    # Strip "// present" markers
-    events = [e.strip().replace(' // present', '') for e in events if e.strip()]
+    # Filter out "// present" markers but preserve format
+    filtered_events = []
+    for entry in events:
+        event_name, overrides = parse_event_entry(entry)
+        if event_name:
+            if isinstance(entry, dict):
+                filtered_events.append(entry)
+            else:
+                filtered_events.append(event_name)
+    events = filtered_events
     
     if not events:
         print(f"No events found in {category}.json")
