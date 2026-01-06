@@ -40,5 +40,6 @@
     "PED_OBS_RADIO_PNL_XFER_BT_LEFT_BUTTON_DOWN // present",
     "PED_OBS_RADIO_PNL_XFER_BT_LEFT_BUTTON_UP // present"
   ],
-  "present_count": 36
+  "present_count": 36,
+  "total_count": 36
 }

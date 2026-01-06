@@ -204,5 +204,6 @@
     "PED_FO_AUDIO_PNL_VOR2_VOL_KB_WHEEL_DOWN // present",
     "PED_FO_AUDIO_PNL_VOR2_VOL_KB_WHEEL_UP // present"
   ],
-  "present_count": 200
+  "present_count": 200,
+  "total_count": 200
 }

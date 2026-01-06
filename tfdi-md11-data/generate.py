@@ -3,20 +3,20 @@
 Generate YAML module file from checklist JSON file.
 
 Usage:
-    python3 generate_module.py <category_name> [--update] [--merged]
-    python3 generate_module.py --regenerate-all [--merged]
+    python3 generate.py [category_name] [--split]
     
 Example:
-    python3 generate_module.py center_panel
-    python3 generate_module.py radio_panel --update
-    python3 generate_module.py --regenerate-all --merged
+    python3 generate.py                    # Regenerate all categories (merged)
+    python3 generate.py center_panel        # Regenerate only center_panel (merged)
+    python3 generate.py --split            # Regenerate all as separate module files
+    python3 generate.py center_panel --split  # Generate center_panel as separate module file
     
-This will read checklist/<category_name>.json and generate/update 
-definitions/modules/TFDI_MD11_<category_name>.yaml
+By default, all events are merged directly into the main aircraft YAML file.
+This will read tfdi-md11-data/<category_name>.json and merge into 
+definitions/aircraft/TFDi Design - MD-11.yaml
 
-With --update flag, it will update an existing YAML file instead of overwriting it.
-With --merged flag, it will write everything directly into the main aircraft YAML file
-instead of creating separate module files.
+With --split flag, it will create separate module files in definitions/modules/tfdi-md11/ 
+instead of merging into the main aircraft file. Works with both all categories and single category.
 """
 
 import json
@@ -455,6 +455,54 @@ def merge_all_categories_to_aircraft_file(aircraft_file, checklist_dir, variable
     
     print(f"Merged all categories into: {aircraft_file}")
 
+def update_aircraft_file_includes(aircraft_file, checklist_files):
+    """Update the aircraft file to include all generated TFDI MD-11 modules."""
+    parsed = parse_aircraft_yaml(aircraft_file)
+    
+    # Build list of TFDI module includes
+    tfdi_includes = []
+    for checklist_file in sorted(checklist_files):
+        category = checklist_file.stem
+        tfdi_includes.append(f"  - definitions/modules/tfdi-md11/TFDI_MD11_{category}.yaml")
+    
+    # Reconstruct includes section: standard includes + TFDI includes
+    include_lines = ['include:']
+    # Add standard includes
+    for line in parsed['includes'].split('\n')[1:]:  # Skip 'include:' line
+        if line.strip():
+            include_lines.append(line)
+    # Add TFDI includes
+    if tfdi_includes:
+        include_lines.append("")
+        include_lines.append("  # TFDI MD-11 Modules")
+        include_lines.extend(tfdi_includes)
+    
+    # Reconstruct the file
+    output_lines = []
+    output_lines.append(parsed['header'])
+    output_lines.append("")
+    output_lines.append('\n'.join(include_lines))
+    output_lines.append("")
+    output_lines.append("shared:")
+    
+    # Add existing shared content
+    existing_shared = '\n'.join(parsed['shared'][1:]).strip()  # Skip 'shared:' line
+    if existing_shared:
+        output_lines.append(existing_shared)
+    
+    # Add master section if it exists
+    if parsed['master']:
+        output_lines.append("")
+        output_lines.append(parsed['master'])
+    
+    # Write the file
+    with open(aircraft_file, 'w') as f:
+        f.write('\n'.join(output_lines))
+        if not output_lines[-1].endswith('\n'):
+            f.write('\n')
+    
+    print(f"Updated aircraft file includes: {len(tfdi_includes)} TFDI modules")
+
 def update_existing_yaml(output_file, events, description, variables):
     """Update existing YAML file with new events, preserving structure."""
     if not output_file.exists():
@@ -515,31 +563,38 @@ def update_checklist_file(checklist_file, events):
     
     print(f"Updated checklist: {checklist_file.name} ({len(events)}/{len(events)} events marked as present)")
 
-def regenerate_all_modules(merged_mode=False):
-    """Regenerate all TFDI MD-11 modules from scratch."""
+def regenerate_all_modules(split_mode=False):
+    """Regenerate all TFDI MD-11 modules from scratch.
+    
+    Args:
+        split_mode: If True, generate separate module files. If False (default), merge into main file.
+    """
     checklist_dir = Path(__file__).parent
-    modules_dir = checklist_dir.parent / "definitions" / "modules"
+    modules_dir = checklist_dir.parent / "definitions" / "modules" / "tfdi-md11"
     aircraft_file = checklist_dir.parent / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
     
     print("=" * 60)
-    if merged_mode:
-        print("REGENERATING ALL TFDI MD-11 MODULES (MERGED MODE)")
+    if split_mode:
+        print("REGENERATING ALL TFDI MD-11 MODULES (SPLIT MODE)")
     else:
-        print("REGENERATING ALL TFDI MD-11 MODULES")
+        print("REGENERATING ALL TFDI MD-11 MODULES (MERGED MODE - DEFAULT)")
     print("=" * 60)
     
-    # Step 1: Delete all TFDI_MD11_*.yaml files (unless in merged mode)
-    if not merged_mode:
-        print("\nStep 1: Deleting existing TFDI_MD11_*.yaml files...")
-        deleted_count = 0
-        if modules_dir.exists():
-            for module_file in modules_dir.glob("TFDI_MD11_*.yaml"):
-                module_file.unlink()
-                deleted_count += 1
-                print(f"  Deleted: {module_file.name}")
-        print(f"Deleted {deleted_count} module files")
-    else:
-        print("\nStep 1: Skipping module file deletion (merged mode)")
+    # Step 1: Delete all TFDI_MD11_*.yaml files
+    # In split mode, delete them to regenerate fresh
+    # In merged mode (default), delete them since everything goes into the main file
+    print("\nStep 1: Deleting existing TFDI_MD11_*.yaml files...")
+    deleted_count = 0
+    if modules_dir.exists():
+        for module_file in modules_dir.glob("TFDI_MD11_*.yaml"):
+            module_file.unlink()
+            deleted_count += 1
+            print(f"  Deleted: {module_file.name}")
+    print(f"Deleted {deleted_count} module files")
+    
+    # Ensure the tfdi-md11 directory exists (needed for split mode)
+    if split_mode:
+        modules_dir.mkdir(parents=True, exist_ok=True)
     
     # Step 2: Clean all JSON checklist files (remove // present comments)
     print("\nStep 2: Cleaning JSON checklist files (removing // present comments)...")
@@ -558,10 +613,7 @@ def regenerate_all_modules(merged_mode=False):
     print("\nStep 3: Generating modules...")
     variables = load_variables()
     
-    if merged_mode:
-        merge_all_categories_to_aircraft_file(aircraft_file, checklist_dir, variables)
-        print("\nMerged all categories into aircraft file")
-    else:
+    if split_mode:
         generated_count = 0
         for checklist_file in checklist_files:
             category = checklist_file.stem
@@ -605,6 +657,13 @@ def regenerate_all_modules(merged_mode=False):
                 traceback.print_exc()
         
         print(f"\nGenerated {generated_count} modules")
+        
+        # Update aircraft file to include all generated modules
+        update_aircraft_file_includes(aircraft_file, checklist_files)
+    else:
+        # Default: merge mode - write everything into main aircraft file
+        merge_all_categories_to_aircraft_file(aircraft_file, checklist_dir, variables)
+        print("\nMerged all categories into aircraft file")
     
     # Step 4: Run check_events on all categories
     print("\nStep 4: Running check_events on all categories...")
@@ -637,27 +696,21 @@ def regenerate_all_modules(merged_mode=False):
     print("=" * 60)
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python3 generate_module.py <category_name> [--update] [--merged]", file=sys.stderr)
-        print("       python3 generate_module.py --regenerate-all [--merged]", file=sys.stderr)
-        sys.exit(1)
+    # Parse arguments
+    args = [arg for arg in sys.argv[1:] if not arg.startswith('--')]
+    flags = [arg for arg in sys.argv[1:] if arg.startswith('--')]
     
-    merged_mode = '--merged' in sys.argv
+    split_mode = '--split' in flags
     
-    # Check for --regenerate-all flag
-    if '--regenerate-all' in sys.argv:
-        regenerate_all_modules(merged_mode=merged_mode)
+    # If no category specified, regenerate all
+    if not args:
+        regenerate_all_modules(split_mode=split_mode)
         return
     
-    category = sys.argv[1]
-    update_mode = '--update' in sys.argv
-    
-    if merged_mode:
-        print("Error: --merged flag can only be used with --regenerate-all", file=sys.stderr)
-        sys.exit(1)
+    # Single category specified
+    category = args[0]
     
     checklist_file = Path(__file__).parent / f"{category}.json"
-    output_file = Path(__file__).parent.parent / "definitions" / "modules" / f"TFDI_MD11_{category}.yaml"
     
     if not checklist_file.exists():
         print(f"Error: Checklist file not found: {checklist_file}", file=sys.stderr)
@@ -673,17 +726,23 @@ def main():
     events = data.get('events', [])
     description = data.get('description', category.replace('_', ' ').title())
     
-    # Strip "// present" markers (added by check_events.py or generate_module.py)
+    # Strip "// present" markers
     events = [e.strip().replace(' // present', '') for e in events if e.strip()]
     
-    if update_mode:
-        update_existing_yaml(output_file, events, description, variables)
-    else:
+    if not events:
+        print(f"No events found in {category}.json")
+        return
+    
+    if split_mode:
+        # Generate separate module file
+        modules_dir = Path(__file__).parent.parent / "definitions" / "modules" / "tfdi-md11"
+        modules_dir.mkdir(parents=True, exist_ok=True)
+        output_file = modules_dir / f"TFDI_MD11_{category}.yaml"
+        
         # Generate YAML
         yaml_content = generate_yaml(category, events, description, variables)
         
         # Write output
-        output_file.parent.mkdir(parents=True, exist_ok=True)
         with open(output_file, 'w') as f:
             f.write(yaml_content)
         
@@ -693,6 +752,56 @@ def main():
         # Count control types
         toggle_count = yaml_content.count('type: ToggleSwitch')
         num_increment_count = yaml_content.count('type: NumIncrement')
+        if toggle_count > 0:
+            print(f"ToggleSwitches: {toggle_count}")
+        if num_increment_count > 0:
+            print(f"NumIncrements: {num_increment_count}")
+        
+        # Update aircraft file to include this module
+        aircraft_file = Path(__file__).parent.parent / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
+        update_aircraft_file_includes(aircraft_file, [checklist_file])
+    else:
+        # Merge this single category into the aircraft file (default behavior)
+        aircraft_file = Path(__file__).parent.parent / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
+        parsed = parse_aircraft_yaml(aircraft_file)
+        
+        # Generate shared content for this category
+        shared_content = generate_shared_content(category, events, description, variables)
+        
+        # Reconstruct the file
+        output_lines = []
+        output_lines.append(parsed['header'])
+        output_lines.append("")
+        output_lines.append(parsed['includes'])
+        output_lines.append("")
+        output_lines.append("shared:")
+        
+        # Add existing shared content
+        existing_shared = '\n'.join(parsed['shared'][1:]).strip()  # Skip 'shared:' line
+        if existing_shared:
+            output_lines.append(existing_shared)
+            output_lines.append("")
+        
+        # Add new category content
+        output_lines.append(shared_content)
+        
+        # Add master section if it exists
+        if parsed['master']:
+            output_lines.append("")
+            output_lines.append(parsed['master'])
+        
+        # Write the file
+        with open(aircraft_file, 'w') as f:
+            f.write('\n'.join(output_lines))
+            if not output_lines[-1].endswith('\n'):
+                f.write('\n')
+        
+        print(f"Merged {category} into: {aircraft_file}")
+        print(f"Events: {len(events)}")
+        
+        # Count control types
+        toggle_count = shared_content.count('type: ToggleSwitch')
+        num_increment_count = shared_content.count('type: NumIncrement')
         if toggle_count > 0:
             print(f"ToggleSwitches: {toggle_count}")
         if num_increment_count > 0:

@@ -419,5 +419,6 @@
     "RMCDU_Z_BT_LEFT_BUTTON_DOWN // present",
     "RMCDU_Z_BT_LEFT_BUTTON_UP // present"
   ],
-  "present_count": 415
+  "present_count": 415,
+  "total_count": 415
 }
