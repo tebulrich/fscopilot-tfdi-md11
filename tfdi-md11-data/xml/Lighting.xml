@@ -1,0 +1,3309 @@
+<ModelBehaviors version="2">
+	<Template Name="TFDi_Design_MD11_FlightDeck_Lights">
+		<Component ID="MD11_Audio_Knob_Lights">
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VHF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VHF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VHF3_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_HF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_HF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_SAT_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_INT_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_CAB_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_PA_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VOR1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VOR2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_ILS1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_ILS2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_ADF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_ADF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_CPT_AUDIO_PNL_MKR_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_VHF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_VHF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_VHF3_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_HF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_HF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_SAT_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_INT_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_CAB_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_PA_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_VOR1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_VOR2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_ILS1_VOL_KB</NODE_ID>
+</UseTemplate>
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_ILS2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_ADF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_ADF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_PED_FO_AUDIO_PNL_MKR_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_VHF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_VHF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_VHF3_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_HF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_HF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_SAT_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_INT_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_CAB_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_PA_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_VOR1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_VOR2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_ILS1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_ILS2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_ADF1_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_ADF2_VOL_KB</NODE_ID>
+</UseTemplate>
+
+<UseTemplate Name = "MD11_IntegralLighting_Template">
+	<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+	<NODE_ID>MD11_OBS_AUDIO_PNL_MKR_VOL_KB</NODE_ID>
+</UseTemplate>
+
+</Component>
+
+<Component ID="MD11_PA_Lights">
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_PA_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_PA_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_ALL_STA_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_ALL_STA_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_FWD_ATTND_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_FWD_ATTND_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_MID_ATTND_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_MID_ATTND_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_OVW_ATTND_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_OVW_ATTND_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_AFT_ATTND_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_AFT_ATTND_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_MAINT_INTP_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_MAINT_INTP_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_MECH_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_MECH_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_CREW_REST_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_CREW_REST_BT</NODE_ID>
+	</UseTemplate>
+	
+	<UseTemplate Name = "MD11_PA_Lights_Template">
+		<VAR_NAME>MD11_OVHD_LTS_CREW_REST_LT</VAR_NAME>
+		<NODE_ID>MD11_OVHD_LTS_CREW_REST_BT_F</NODE_ID>
+	</UseTemplate>
+</Component>
+		<Component ID="MD11_IntegralLighting_OVHD">
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_OVHD_LTS_STBY_COMP_LT</VAR_NAME>
+				<NODE_ID>MD11_OVHD_STBY_CMPS_RNG</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_pax</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>pneumatic_panel_pax</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>pneumatic_panel_cargo</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>overhead_panels_updated</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>ER_fuel_panel</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_IRS_1_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_IRS_2_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_IRS_3_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_PNEU_FWD_CARGO_TEMP</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_PNEU_AFT_CARGO_TEMP</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_L_WIPER_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_R_WIPER_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_LTS_OUTER_OVHD_PNL_FLOOD_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_LTS_INNER_OVHD_PNL_FLOOD_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_LTS_OUTER_INSTR_PED_PNL_FLOOD_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_LTS_INNER_INSTR_PED_PNL_FLOOD_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_PNEU_COCKPIT_TEMP</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_PNEU_FWD_CAB_TEMP</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_PNEU_MID_CAB_TEMP</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_PNEU_AFT_CAB_TEMP</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_ELEC_EMER_PWR_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_ELEC_SMOKE_ELEC_AIR_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_FLTCTL_FLAPLIM_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_FLTCTL_ELEVFEEL_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_PNEU_CLBDES_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OVHD_PNEU_OUTFLO_VALVE_RNG</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>evac_panel</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>call_panel_pax</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>deflected_ailerons_panel</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OPT_AUTO_AICE</NODE_ID>
+			</UseTemplate>
+		</Component>
+		<Component ID="MD11_IntegralLighting_CGS">
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CGS</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CGS_FLOOD_LT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CGS_PNL_LT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CGS_NAV_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CGS_APPRLAND_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CGS_AUTOFLIGHT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CGS_PROF_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CGS_FMSSPD_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_TRFC_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_DATA_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_WPT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_VORNDB_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_ARPT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_MAP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_VOR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_PLAN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_APPR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_TCAS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_VOR1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_INCR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_VOR2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_ADF1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_DECR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LECP_ADF2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_TRFC_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_DATA_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_WPT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_VORNDB_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_ARPT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_MAP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_VOR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_PLAN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_APPR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_TCAS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_VOR1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_INCR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_VOR2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_ADF1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_DECR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CGS_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RECP_ADF2_BT</NODE_ID>
+			</UseTemplate>
+		</Component>
+		<Component ID="MD11_IntegralLighting_MIP">
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>pedestal</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>analog_gauges</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RSIDE_TIMER_SW</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RSIDE_TIMER_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RSIDE_BRIEFCASE_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LSIDE_TIMER_SW</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LSIDE_TIMER_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LSIDE_BRIEFCASE_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_DIALAFLAP_IND_RNG</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>panels_misc</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>backup_inst_mechanical</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>needle_asi</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>needle_altitude_10000</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>needle_altitude_1000</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>needle_altitude_100</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>drum_kohlsman_mb_thousands</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>drum_kohlsman_mb_hundreds</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>drum_kohlsman_mb_tenths</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>drum_kohlsman_mb_units</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>drum_kohlsman_tenths</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>drum_kohlsman_units</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>drum_kohlsman_decimals</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>drum_kohlsman_cents</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>attitude_indicator_backup_pitch</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>stby_attitude_bar</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_MIP</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_A_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_B_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_C_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_D_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_E_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_F_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_G_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_H_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_I_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_J_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_K_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_M_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_N_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_O_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_P_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_Q_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_S_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_T_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_U_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_V_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_W_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_X_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_Y_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_Z_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_0_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_3_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_4_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_5_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_6_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_7_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_8_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_9_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_DOT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_SLASH_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_SP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_CLR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_PLUS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_MINUS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_DIR_INTC_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_NAV_RAD_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_PERF_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_INIT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_TOAPPR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_FPLN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_PROG_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_FIX_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_SEC_FPLN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_REF_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_ENG_OUT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_MENU_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_UP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_NEXTPAGE_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_DOWN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_1L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_2L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_3L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_4L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_5L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_6L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_1R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_2R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_3R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_4R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_5R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_LMCDU_LSK_6R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_A_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_B_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_C_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_D_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_E_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_F_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_G_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_H_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_I_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_J_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_K_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_M_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_N_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_O_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_P_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_Q_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_S_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_T_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_U_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_V_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_W_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_X_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_Y_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_Z_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_0_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_3_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_4_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_5_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_6_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_7_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_8_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_9_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_DOT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_SLASH_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_SP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_CLR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_PLUS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_MINUS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_DIR_INTC_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_NAV_RAD_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_PERF_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_INIT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_TOAPPR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_FPLN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_PROG_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_FIX_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_SEC_FPLN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_REF_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_ENG_OUT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_MENU_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_UP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_NEXTPAGE_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_DOWN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_1L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_2L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_3L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_4L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_5L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_6L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_1R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_2R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_3R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_4R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_5R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_RMCDU_LSK_6R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_A_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_B_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_C_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_D_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_E_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_F_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_G_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_H_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_I_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_J_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_K_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_M_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_N_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_O_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_P_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_Q_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_S_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_T_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_U_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_V_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_W_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_X_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_Y_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_Z_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_0_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_3_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_4_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_5_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_6_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_7_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_8_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_9_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_DOT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_SLASH_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_SP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_CLR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_PLUS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_MINUS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_DIR_INTC_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_NAV_RAD_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_PERF_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_INIT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_TOAPPR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_FPLN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_PROG_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_FIX_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_SEC_FPLN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_REF_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_ENG_OUT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_MENU_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_UP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_NEXTPAGE_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_DOWN_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_1L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_2L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_3L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_4L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_5L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_6L_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_1R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_2R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_3R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_4R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_5R_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_CMCDU_LSK_6R_BT</NODE_ID>
+			</UseTemplate>
+		</Component>
+		<Component ID="MD11_IntegralLighting_PED">
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_THR_PARK_LT</VAR_NAME>
+				<NODE_ID>park_brk_light_cover</NODE_ID>
+				<INTENSITY>10</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>cockpit_door_panel</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_DU1_BRT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_DU2_BRT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_DU3_BRT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_DU4_BRT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_DU5_BRT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_DU6_BRT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_VHF1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_VHF2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_VHF3_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_HF1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_HF2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_XFER_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_XFER_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_XFER_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_ALT_RPTG_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_SEL_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_RUD_TRIM_IND</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_AIL_TRIM_IND</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_CKPTDOOR_LOCK_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_VHF1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_VHF2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_VHF3_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_HF1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_HF2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_VHF1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_VHF2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_VHF3_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_HF1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_HF2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_ENG_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_ND_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_CONSEQ_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_STATUS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_HYD_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_ELEC_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_AIR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_FUEL_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_CONFIG_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_SD_MISC_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_1_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_2_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_3_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_4_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_5_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_6_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_7_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_0_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_CLR_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_TEST_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_XPNDR_IDENT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_OFF_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_TEST_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_WX_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_WXT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_MAP_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_SYS_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_IDNT_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_STAB_BT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_GAIN_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_INSTPED_INTEG</VAR_NAME>
+				<NODE_ID>MD11_PED_WXR_TILT_KB</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<NODE_ID>ENG1_FIRE_LT_COVER</NODE_ID>
+				<VAR_NAME>MD11_AOVHD_ENG1FIRE_LT</VAR_NAME>
+				<INTENSITY>10</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<NODE_ID>ENG2_FIRE_LT_COVER</NODE_ID>
+				<VAR_NAME>MD11_AOVHD_ENG2FIRE_LT</VAR_NAME>
+				<INTENSITY>10</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<NODE_ID>ENG3_FIRE_LT_COVER</NODE_ID>
+				<VAR_NAME>MD11_AOVHD_ENG3FIRE_LT</VAR_NAME>
+				<INTENSITY>10</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<NODE_ID>APU_FIRE_LT_COVER</NODE_ID>
+				<VAR_NAME>MD11_AOVHD_APUFIRE_LT</VAR_NAME>
+				<INTENSITY>10</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<NODE_ID>MD11_THR_L_START_SW</NODE_ID>
+				<VAR_NAME>MD11_THR_L_START_LT</VAR_NAME>
+				<INTENSITY>10</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<NODE_ID>MD11_THR_C_START_SW</NODE_ID>
+				<VAR_NAME>MD11_THR_C_START_LT</VAR_NAME>
+				<INTENSITY>10</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<NODE_ID>MD11_THR_R_START_SW</NODE_ID>
+				<VAR_NAME>MD11_THR_R_START_LT</VAR_NAME>
+				<INTENSITY>10</INTENSITY>
+			</UseTemplate>
+		</Component>
+		<Component ID="MD11_IntegralLighting_Breakers">
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CKTBK_INTEG</VAR_NAME>
+				<NODE_ID>breakers</NODE_ID>
+				<INTENSITY>0.5</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CKTBK_INTEG</VAR_NAME>
+				<NODE_ID>OBS_headphone_panel</NODE_ID>
+				<INTENSITY>0.5</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CKTBK_INTEG</VAR_NAME>
+				<NODE_ID>breaker_light_panel</NODE_ID>
+				<INTENSITY>0.5</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CKTBK_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OBS_CKTBKR_LT_KB</NODE_ID>
+				<INTENSITY>0.5</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_IntegralLighting_Template">
+				<VAR_NAME>MD11_LTS_CKTBK_INTEG</VAR_NAME>
+				<NODE_ID>MD11_OBS_CKTBKR_LT_KB</NODE_ID>
+				<INTENSITY>5</INTENSITY>
+			</UseTemplate>
+		</Component>
+		<Component ID="MD11_light_sources">
+			<UseTemplate Name="MD11_Floodlight_bulbs">
+				<NODE_ID>dome_lt_bulb</NODE_ID>
+				<VAR_NAME>LIGHT POTENTIOMETER</VAR_NAME>
+				<INDEX>1</INDEX>
+				<UNITS>percent over 100</UNITS>
+				<INTENSITY>5.0</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_Floodlight_bulbs">
+				<NODE_ID>CGS_flood_bulb</NODE_ID>
+				<VAR_NAME>LIGHT POTENTIOMETER</VAR_NAME>
+				<INDEX>16</INDEX>
+				<UNITS>percent over 100</UNITS>
+				<INTENSITY>5.0</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_Floodlight_bulbs">
+				<NODE_ID>OVHD_flood_bulbs</NODE_ID>
+				<VAR_NAME>LIGHT POTENTIOMETER</VAR_NAME>
+				<INDEX>17</INDEX>
+				<UNITS>percent over 100</UNITS>
+				<INTENSITY>10.0</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_Floodlight_bulbs">
+				<NODE_ID>briefcase_LT_L_bulb</NODE_ID>
+				<VAR_NAME>LIGHT POTENTIOMETER</VAR_NAME>
+				<INDEX>3</INDEX>
+				<UNITS>percent over 100</UNITS>
+				<INTENSITY>5.0</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_Floodlight_bulbs">
+				<NODE_ID>briefcase_LT_R_bulb</NODE_ID>
+				<VAR_NAME>LIGHT POTENTIOMETER</VAR_NAME>
+				<INDEX>4</INDEX>
+				<UNITS>percent over 100</UNITS>
+				<INTENSITY>5.0</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_Floodlight_bulbs">
+				<NODE_ID>PED_flood_bulb</NODE_ID>
+				<VAR_NAME>LIGHT POTENTIOMETER</VAR_NAME>
+				<INDEX>2</INDEX>
+				<UNITS>percent over 100</UNITS>
+				<INTENSITY>10.0</INTENSITY>
+			</UseTemplate>
+			<UseTemplate Name="MD11_Floodlight_bulbs">
+				<NODE_ID>MIP_flood_bulbs</NODE_ID>
+				<VAR_NAME>LIGHT POTENTIOMETER</VAR_NAME>
+				<INDEX>2</INDEX>
+				<UNITS>percent over 100</UNITS>
+				<INTENSITY>3.0</INTENSITY>
+			</UseTemplate>
+		</Component>
+		<Component ID="TFDi_Design_MD11_Annunciators">
+			<!--
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_PA_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_FWD_ATTND_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_MID_ATTND_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_OVW_ATTND_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_AFT_ATTND_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_MAINT_INTP_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_MECH_CALL_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_PAINUSE_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_MOVIE_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_CREW_REST_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_CKPTDOOR_FAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_CKPTDOOR_AUTO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AIL_DEFL_OVRD_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_A_MAN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_B_MAN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_VHF1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_VHF2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_VHF3_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_HF1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_CPT_RADIO_PNL_HF2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_VHF1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_VHF2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_VHF3_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_HF1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_FO_RADIO_PNL_HF2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_VHF1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_VHF2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_VHF3_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_HF1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_OBS_RADIO_PNL_HF2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_VHF1_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF1_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_VHF1_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF1_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_VHF2_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF2_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_VHF2_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF2_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_VHF3_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF3_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_VHF3_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF3_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_HF1_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_HF1_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_HF1_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_HF1_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_HF2_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_HF2_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_HF2_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_HF2_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_CPT_SAT_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_SAT_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_SAT_TEL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_SAT_TEL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_INT_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_INT_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_INT_MECH_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_INT_MECH_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_CAB_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_CAB_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_CAB_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_CAB_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_VHF1_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF1_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_VHF1_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF1_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_VHF2_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF2_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_VHF2_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF2_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_VHF3_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF3_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_VHF3_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF3_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_HF1_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_HF1_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_HF1_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_HF1_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_HF2_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_HF2_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_HF2_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_HF2_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_SAT_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_SAT_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_SAT_TELL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_SAT_TELL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_INT_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_INT_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_INT_MECH_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_INT_MECH_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_CAB_MIC_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_CAB_MIC_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_CAB_CALL_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_CAB_CALL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VHF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VHF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VHF3_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VHF3_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_HF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_HF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_HF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_HF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_INT_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_INT_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_SAT_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_SAT_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_CAB_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_CAB_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_PA_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_PA_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VOR1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VOR1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_VOR2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_VOR2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_ILS1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_ILS1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_ILS2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_ILS2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_ADF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_ADF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_ADF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_ADF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_CPT_AUDIO_PNL_MKR_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_MKR_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_VHF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_VHF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_VHF3_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VHF3_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_HF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_HF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_HF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_HF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_SAT_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_SAT_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_INT_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_INT_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_CAB_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_CAB_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_PA_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_PA_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_VOR1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VOR1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_VOR2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_VOR2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_ILS1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_ILS1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_ILS2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_ILS2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_ADF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_ADF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_ADF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_ADF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_PED_FO_AUDIO_PNL_MKR_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_MKR_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CPT_AUDIO_PNL_IDENT_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_CPT_AUDIO_PNL_IDENT_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_FO_AUDIO_PNL_IDENT_LT</NODE_ID>
+				<VIS_VAR>MD11_PED_FO_AUDIO_PNL_IDENT_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_SD_ENG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_SD_HYD_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_SD_ELEC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_SD_AIR_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_SD_FUEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_SD_CONFIG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_PED_SD_MISC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_APU_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_APU_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_APU_FUEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_APU_FAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_APU_DOOR_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_APU_BLANK_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_APU_GEN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_ENG1AGENT1LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_ENG1AGENT2LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_ENG2AGENT1LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_ENG2AGENT2LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_ENG3AGENT1LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_ENG3AGENT2LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_FWD_HEAT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_FWD_SMOKE_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_FWD_VENTDISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_FWD_VENTOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_FWD_AGNT1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_FWD_AGNT1LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_FWD_AGNT2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_FWD_AGNT2LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_TEST_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_AFT_HEAT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_AFT_SMOKE_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_AFT_VENTDISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_AFT_VENTOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_AFT_AGNT1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_AFT_AGNT1LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_AFT_AGNT2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_CRGSMK_AFT_AGNT2LO_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_GPWS_TERROVRD_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_FLTDIROFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_FLTDIRCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_FLTDIRFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_CADCCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_CADCFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_IRS_CAPTAUX_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_IRS_FOAUX_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_FMSCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_FMSFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_VORCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_VORFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_APPRCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_APPRFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_EIS_FO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_EIS_FOAUX_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_EIS_CAPAUX_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LSIDE_INP_EIS_CAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_CTR_GEAR_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_NOSE_RED_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_NOSE_GREEN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_LEFT_RED_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_LEFT_GREEN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_CTR_RED_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_CTR_GREEN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_RIGHT_RED_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_MIP_RIGHT_GREEN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_FLTDIROFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_FLTDIRCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_FLTDIRFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_CADCCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_CADCFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_IRS_CAPTAUX_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_IRS_FOAUX_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_FMSCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_FMSFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_VORCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_VORFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_APPRCAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_APPRFO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_EIS_FO1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_EIS_FOAUX_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_EIS_CAPAUX_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RSIDE_INP_EIS_CAP2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_THR_L_FUEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_THR_C_FUEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_THR_R_FUEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_THR_PARK_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LMCDU_DSPY_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LMCDU_FAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LMCDU_MSG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_LMCDU_OFST_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RMCDU_DSPY_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RMCDU_FAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RMCDU_MSG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_RMCDU_OFST_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CTR_AUX_HYD_PUMP_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CTR_ANTISKID_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSL_ENG_FAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSL_MST_WRN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSL_MST_CAUT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSR_ENG_FAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSR_MST_WRN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSR_MST_CAUT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSL_BELOW_GS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSL_GS_INHIBIT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSR_BELOW_GS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSR_GS_INHIBIT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSL_ABS_DISARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_GSR_ABS_DISARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_AOVHD_EMER_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_IRS_1_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_IRS_2_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_IRS_3_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN1_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN1_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN1_DRIVE_DISCONNECT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN1_DRIVE_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN2_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN2_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN2_DRIVE_DISCONNECT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN2_DRIVE_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN3_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN3_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN3_DRIVE_DISCONNECT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GEN3_DRIVE_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_CABIN_BUS_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_L_EMER_AC_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC1_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC2_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC_GND_SVC_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_APU_PWR_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_APU_PWR_AVAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC3_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_R_EMER_AC_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_EMER_PWR_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_EMER_PWR_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC1_TIE_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC1_TIE_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GLY_EXT_PWR_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_GLY_EXT_PWR_AVAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC2_TIE_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC2_TIE_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_EXT_PWR_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_EXT_PWR_AVAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC3_TIE_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_AC3_TIE_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_ADG_ELEC_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_BATT_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_BATT_BUS_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_L_EMER_DC_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_DC1_BUS_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_DC1_TIE_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_DC2_BUS_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_DC_GND_SVC_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_DC3_TIE_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_DC3_BUS_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_R_EMER_DC_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_SYS_SEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ELEC_SYS_MANUAL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_SYS_1_PRESS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_SYS_2_PRESS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_SYS_3_PRESS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_AUX_PUMP_1_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_AUX_PUMP_2_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_SYS_SEL_LT</NODE_ID>
+				<VIS_VAR>MD11_OVHD_HYD_SYS_SELECT_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_SYS_MANUAL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_1_3_RMP_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_1_3_RMP_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_2_3_RMP_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_2_3_RMP_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_1_L_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_1_L_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_1_R_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_1_R_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_2_L_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_2_L_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_2_R_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_2_R_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_3_L_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_3_L_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_3_R_FAULT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_EDP_3_R_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_HYD_TEST_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_1_FILL_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_1_FILL_FILL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_1_PUMP_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_1_PUMP_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_1_XFEED_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_1_XFEED_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_2_FILL_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_2_FILL_FILL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_2_PUMP_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_2_PUMP_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_2_XFEED_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_2_XFEED_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_3_FILL_ARM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_3_FILL_FILL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_3_PUMP_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_3_PUMP_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_3_XFEED_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_3_XFEED_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_SYSTEM_SEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_SYSTEM_MAN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_1_TRANS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_1_TRANS_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_2_TRANS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_2_TRANS_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_3_TRANS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TANK_3_TRANS_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_DUMP_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_LEFT_TRANS_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_LEFT_TRANS_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_RIGHT_TRANS_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_RIGHT_TRANS_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TAIL_TRANS_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_TAIL_TRANS_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_ALT_PUMP_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_ALT_PUMP_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MANF_DRAIN_LT</NODE_ID>
+				<VIS_VAR>MD11_OVHD_FUEL_MANF_DRAIN_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_STBY_COMP_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_RWY_TURNOFF_L_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_RWY_TURNOFF_R_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_NAV_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_LOGO_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_LOGO_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_BCN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_LTS_HI_INT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_PACK_1_FLOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_PACK_1_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_PACK_2_FLOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_PACK_2_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_PACK_3_FLOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_PACK_3_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_SYSTEM_SEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_SYSTEM_MAN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_TRIM_AIR_AVIONICS_OVHT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_TRIM_AIR_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_CABIN_SYSTEM_SEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_CABIN_SYSTEM_MAN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_OUTFLOW_CLOSED_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_1_PRESS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_1_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_1_MANF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_1_TEMP_HI_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_2_PRESS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_2_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_2_MANF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_2_TEMP_HI_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_3_PRESS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_3_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_3_MANF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_BLEED_3_TEMP_HI_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_APU_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_APU_USE_ENG_AIR_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_AVIONICS_FAN_FLOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_AVIONICS_FAN_OVRD_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_NO_MASKS_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_ISOL_1_2_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_ISOL_1_2_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_ISOL_1_3_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_ISOL_1_3_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_PNEU_DITCHING_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_FADEC_1_SEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_FADEC_2_SEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_FADEC_3_SEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_FADEC_1_ALTN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_FADEC_2_ALTN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_FADEC_3_ALTN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_IGN_OFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_A_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_B_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_ENG_IGN_OVRD_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_CRG_DOOR_TEST_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_GEN_BUS_1_RESET_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_GEN_BUS_2_RESET_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_GEN_BUS_3_RESET_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_DUMP_STOP_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_FLAPLIM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_ELEVFEEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_UYDAFAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_UYDAOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_UYDBFAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_UYDBOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_LYDAFAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_LYDAOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_LYDBFAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_LYDBOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_LLOFAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_LLOFOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_LLIFAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_LLIFOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_RLIFAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_RLIFOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_RLOFAIL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FLTCTL_RLOFOFF_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_ENG1_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_ENG1_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_ENG2_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_ENG2_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_ENG3_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_ENG3_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_WING_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_WING_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_TAIL_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_TAIL_DISAG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_WNDSHLD_AICE_L_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_WNDSHLD_AICE_HIGH_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_WNDSHLD_AICE_NORM_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_WNDSHLD_AICE_R_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_WNDSHLD_AICE_DEFOG_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_AICE_SYSTEM_MAN_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_UPRAUX_BYP_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_FWDAUX_LTRANS_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_FWDAUX_LTRANS_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_FWDAUX_RTRANS_ON_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OVHD_FUEL_FWDAUX_RTRANS_LOW_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF1_MIC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF1_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF2_MIC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF2_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF3_MIC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF3_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_HF1_MIC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_HF1_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_HF2_MIC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_HF2_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_SAT_MIC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_SAT_TEL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_INT_MIC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_INT_MECH_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_CAB_MIC_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_CAB_CALL_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_VHF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_VHF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VHF3_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_VHF3_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_HF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_HF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_HF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_HF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_SAT_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_SAT_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_INT_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_INT_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_CAB_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_CAB_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_PA_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_PA_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VOR1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_VOR1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_VOR2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_VOR2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_ILS1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_ILS1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_ILS2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_ILS2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_ADF1_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_ADF1_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_ADF2_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_ADF2_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Volume_Knob_Light">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_MKR_VOL_KB</NODE_ID>
+				<VIS_VAR>MD11_OBS_AUDIO_PNL_MKR_VOL_LT</VIS_VAR>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_OBS_AUDIO_PNL_IDENT_LT</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="TFDi_Design_MD11_Annunciator">
+				<NODE_ID>MD11_CTR_SLAT_STOW_LT</NODE_ID>
+			</UseTemplate>
+		-->
+		</Component>
+	</Template>
+	
+</ModelBehaviors>

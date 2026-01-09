@@ -11,7 +11,7 @@ from pathlib import Path
 
 # Paths
 script_dir = Path(__file__).parent
-DATA_DIR = script_dir / "tfdi-md11-data"
+DATA_DIR = script_dir / "tfdi-md11-data" / "json"
 AIRCRAFT_FILE = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
 MODULES_DIR = script_dir / "definitions" / "modules" / "tfdi-md11"
 

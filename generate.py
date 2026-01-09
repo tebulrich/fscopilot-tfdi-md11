@@ -13,7 +13,7 @@ Example:
     python3 generate.py --output-path E:\YourControls\definitions\aircraft  # Custom output path
     
 By default, all events are merged directly into the main aircraft YAML file.
-This will read tfdi-md11-data/<category_name>.json and merge into 
+This will read tfdi-md11-data/json/<category_name>.json and merge into 
 definitions/aircraft/TFDi Design - MD-11.yaml
 
 With --split flag, it will create separate module files in definitions/modules/tfdi-md11/ 
@@ -108,7 +108,7 @@ def get_aircraft_file_path(custom_output_path=None):
 def load_variables():
     """Load L: variables from variables.json file."""
     script_dir = Path(__file__).parent
-    data_dir = script_dir / "tfdi-md11-data"
+    data_dir = script_dir / "tfdi-md11-data" / "json"
     variables_file = data_dir / "variables.json"
     
     if not variables_file.exists():
@@ -942,7 +942,7 @@ def regenerate_all_modules(split_mode=False, custom_output_path=None):
         custom_output_path: Optional custom output directory path for aircraft file
     """
     script_dir = Path(__file__).parent
-    data_dir = script_dir / "tfdi-md11-data"
+    data_dir = script_dir / "tfdi-md11-data" / "json"
     modules_dir = script_dir / "definitions" / "modules" / "tfdi-md11"
     aircraft_file = get_aircraft_file_path(custom_output_path)
     
@@ -1131,7 +1131,7 @@ def main():
     category = args[0]
     
     script_dir = Path(__file__).parent
-    data_dir = script_dir / "tfdi-md11-data"
+    data_dir = script_dir / "tfdi-md11-data" / "json"
     category_file = data_dir / f"{category}.json"
     
     if not category_file.exists():

@@ -63,8 +63,11 @@ your-controls-tfdi-md11/
 │       ├── tfdi-md11/                   # TFDi MD-11 modules (when not merged)
 │       └── *.yaml                       # Standard YourControls modules
 ├── tfdi-md11-data/
-│   ├── *.json                          # Category definition files
-│   └── variables.json                  # L: variable definitions
+│   ├── json/
+│   │   ├── *.json                      # Category definition files
+│   │   └── variables.json              # L: variable definitions
+│   └── xml/
+│       └── *.xml                       # XML definition files
 ├── config.json                          # Configuration file (optional)
 ├── generate.py                          # Module generator script
 ├── validate.py                          # Coverage verification script
@@ -128,10 +131,10 @@ python3 generate.py <category_name> --output-path E:\YourControls\definitions\ai
 
 ### What It Does
 
-1. Reads the category JSON file (`tfdi-md11-data/<category_name>.json`)
+1. Reads the category JSON file (`tfdi-md11-data/json/<category_name>.json`)
 2. Extracts all events (automatically filters out "// present" markers)
 3. Groups events by control type (buttons, wheels, switches, etc.)
-4. Detects L: variables from `tfdi-md11-data/variables.json` to determine control types
+4. Detects L: variables from `tfdi-md11-data/json/variables.json` to determine control types
 5. Generates properly formatted YAML with appropriate types (event, ToggleSwitch, NumIncrement)
 6. Marks all implemented events as "// present" in the JSON category file
 
@@ -324,8 +327,9 @@ python3 validate.py <category_name>
 
 - Main aircraft config: `definitions/aircraft/TFDi Design - MD-11.yaml` (or custom path from `config.json`)
 - Module files (non-merged): `definitions/modules/tfdi-md11/TFDi_MD11_*.yaml`
-- Category files: `tfdi-md11-data/*.json`
-- Variables file: `tfdi-md11-data/variables.json`
+- Category files: `tfdi-md11-data/json/*.json`
+- Variables file: `tfdi-md11-data/json/variables.json`
+- XML files: `tfdi-md11-data/xml/*.xml`
 - Configuration file: `config.json` (optional, for default output path)
 - Validation script: `validate.py`
 - Generator script: `generate.py`

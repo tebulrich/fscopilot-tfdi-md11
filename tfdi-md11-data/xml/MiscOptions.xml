@@ -1,0 +1,304 @@
+<ModelBehaviors version="2">
+  <Template Name="TFDi_Design_MD11_FlightDeck_MiscOptions">
+    <!-- Click Interaction Overrides -->
+     <Component ID="MD11_FlightDeck_MiscOptions_ClickOverrides">
+    <UseTemplate Name="TFDi_Design_MD11_NonInteractive">
+      <NODE_ID>cockpit_mouserect_shield1</NODE_ID>
+    </UseTemplate>
+    <UseTemplate Name="TFDi_Design_MD11_NonInteractive">
+      <NODE_ID>cockpit_mouserect_shield2</NODE_ID>
+    </UseTemplate>
+    <UseTemplate Name="TFDi_Design_MD11_NonInteractive">
+      <NODE_ID>cockpit_mouserect_shield3</NODE_ID>
+    </UseTemplate>
+    <UseTemplate Name="TFDi_Design_MD11_NonInteractive">
+      <NODE_ID>L_EFB_collider</NODE_ID>
+    </UseTemplate>
+    <UseTemplate Name="TFDi_Design_MD11_NonInteractive">
+      <NODE_ID>R_EFB_collider</NODE_ID>
+    </UseTemplate>
+    </Component>
+    <!-- OPTIONS START -->
+    <!-- VIS TAG DEFL AIL START -->
+    <Component ID="MD11_FlightDeck_MiscOptions">
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OPT_DEF_AIL</NODE_ID>
+        <VIS_CODE>(L:MD11_OVHD_AIL_DEFL_OVRD_LT, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>deflected_ailerons_panel</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_DEF_AIL, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_AIL_DEFL_OVRD_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_DEF_AIL, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_AIL_DEFL_OVRD_GRD</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_DEF_AIL, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>switch_guard_transp028</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_DEF_AIL, bool)</VIS_CODE>
+      </UseTemplate>
+      <!-- VIS TAG DEFL AIL END -->
+      
+      <!-- VIS TAG ANALOG STANDBY START -->
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>attitude_bank_needle</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>backup_alt_screw</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>backup_inst_mechanical</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_MIP_STBY_AI_CAGE_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>drum_kohlsman_cents</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>drum_kohlsman_decimals</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>drum_kohlsman_mb_hundreds</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>drum_kohlsman_mb_tenths</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>drum_kohlsman_mb_thousands</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>drum_kohlsman_mb_units</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>drum_kohlsman_tenths</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>drum_kohlsman_units</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>attitude_indicator_backup_pitch</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>knob_kohlsman</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_MIP_STBY_AI_OFF_RNG</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_MIP_STBY_AI_SLIP_RNG</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>mechanical_stby_glass</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>needle_altitude_100</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>needle_altitude_1000</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>needle_altitude_10000</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>needle_asi</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>slip_indicator</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>stby_attitude_bar</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ANALOG_STBY, bool)</VIS_CODE>
+      </UseTemplate>
+      <!-- VIS TAG ANALOG STANDBY END -->
+      
+      <!-- VIS TAG ISFD START -->
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_MIP_ISFD_BARO_KB</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ISFD, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>isis_digital</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ISFD, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>ISIS_glass</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ISFD, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>isis_screen</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ISFD, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_MIP_ISFD_INHP_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ISFD, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_MIP_ISFD_TEST_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ISFD, bool)</VIS_CODE>
+      </UseTemplate>
+      <!-- VIS TAG ISFD END -->
+      
+      <!-- VIS TAG AUTO ICE START -->
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OPT_AUTO_AICE</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_AUTO_AICE, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_AICE_SYSTEM_SEL_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_AUTO_AICE, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_AICE_SYSTEM_MAN_LT</NODE_ID>
+        <VIS_CODE>(L:MD11_OVHD_AICE_SYSTEM_MAN_LT, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="MD11_IntegralLighting_Template">
+        <VAR_NAME>MD11_LTS_OVHD_INTEG</VAR_NAME>
+        <NODE_ID>MD11_OPT_AUTO_AICE</NODE_ID>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Annunciator">
+        <NODE_ID>MD11_OVHD_AIL_DEFL_OVRD_LT</NODE_ID>
+      </UseTemplate>
+      <!-- VIS TAG AUTO ICE END -->
+      
+      <!-- VIS TAG ER START -->
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>ER_fuel_panel</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ER, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_FWDAUX_L_TRANS_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ER, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_FWDAUX_LTRANS_LOW_LT</NODE_ID>
+        <VIS_CODE>(L:MD11_OVHD_FUEL_FWDAUX_LTRANS_LOW_LT, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_FWDAUX_LTRANS_ON_LT</NODE_ID>
+        <VIS_CODE>(L:MD11_OVHD_FUEL_FWDAUX_LTRANS_ON_LT, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_FWDAUX_R_TRANS_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ER, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_FWDAUX_RTRANS_LOW_LT</NODE_ID>
+        <VIS_CODE>(L:MD11_OVHD_FUEL_FWDAUX_RTRANS_LOW_LT, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_FWDAUX_RTRANS_ON_LT</NODE_ID>
+        <VIS_CODE>(L:MD11_OVHD_FUEL_FWDAUX_RTRANS_ON_LT, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_UPRAUX_BYP_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ER, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_UPRAUX_BYP_LT</NODE_ID>
+        <VIS_CODE>(L:MD11_OVHD_FUEL_UPRAUX_BYP_LT, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_OVHD_FUEL_UPRAUX_BYP_GRD</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ER, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>switch_guard_transp047</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_ER, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_L_EFB</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_EFB, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_R_EFB</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_EFB, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>L_EFB_glass</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_EFB, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>R_EFB_glass</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_EFB, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>L_EFB_screen</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_EFB, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>R_EFB_screen</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_EFB, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>L_EFB_collider</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_EFB, bool)</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>R_EFB_collider</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_EFB, bool)</VIS_CODE>
+      </UseTemplate>
+      <!-- Yoke-->
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>l_yoke_column</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_YOKE, bool) !</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>r_yoke_column</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_YOKE, bool) !</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>yoke_wheel_l</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_YOKE, bool) !</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>yoke_wheel_r</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_YOKE, bool) !</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_LYOKE_TRIM_SW</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_YOKE, bool) !</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_LYOKE_TRIM_SW001</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_YOKE, bool) !</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_LYOKE_AP_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_YOKE, bool) !</VIS_CODE>
+      </UseTemplate>
+      <UseTemplate Name="TFDi_Design_MD11_Vistag">
+        <NODE_ID>MD11_RYOKE_AP_BT</NODE_ID>
+        <VIS_CODE>(L:MD11_OPT_YOKE, bool) !</VIS_CODE>
+      </UseTemplate>
+    </Component>
+  </Template>
+  
+  
+</ModelBehaviors>
