@@ -26,15 +26,153 @@ The path can have or omit a trailing slash.
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 import yaml
 from pathlib import Path
 
-def format_comment_name(event_name):
-    """Extract and format a readable name for comments from event name."""
-    # Remove common prefixes (handled by module prefix in header)
-    name = event_name
+def load_xml_control_data():
+    """Load comprehensive control data from XML files.
     
-    # Extract the base control name
+    Returns:
+        Dictionary with:
+        - 'tooltips': NODE_ID -> TOOLTIPID mapping
+        - 'controls': NODE_ID -> control metadata (template_type, num_states, has_guard, events)
+    """
+    script_dir = Path(__file__).parent
+    xml_dir = script_dir / "tfdi-md11-data" / "xml"
+    
+    if not xml_dir.exists():
+        return {'tooltips': {}, 'controls': {}}
+    
+    tooltip_map = {}
+    control_map = {}
+    
+    for xml_file in xml_dir.glob("*.xml"):
+        try:
+            tree = ET.parse(xml_file)
+            root = tree.getroot()
+            
+            # Find all UseTemplate elements
+            for template in root.findall(".//UseTemplate"):
+                node_id_elem = template.find("NODE_ID")
+                tooltip_elem = template.find("TOOLTIPID")
+                template_name_attr = template.get("Name", "")
+                
+                if node_id_elem is not None:
+                    node_id = node_id_elem.text
+                    if not node_id:
+                        continue
+                    
+                    # Remove MD11_ prefix if present
+                    if node_id.startswith("MD11_"):
+                        node_id_base = node_id[5:]  # Remove "MD11_"
+                    else:
+                        node_id_base = node_id
+                    
+                    # Extract tooltip
+                    if tooltip_elem is not None and tooltip_elem.text:
+                        tooltip = tooltip_elem.text
+                        # Clean up tooltip: remove dynamic parts
+                        clean_tooltip = re.sub(r'\s*\(.*?\).*$', '', tooltip)
+                        clean_tooltip = clean_tooltip.strip()
+                        if node_id_base not in tooltip_map:
+                            tooltip_map[node_id_base] = clean_tooltip
+                    
+                    # Extract control metadata
+                    control_info = {
+                        'template_type': template_name_attr,
+                        'num_states': None,
+                        'has_guard': False,
+                        'has_left_button': False,
+                        'has_right_button': False,
+                        'has_wheel': False,
+                        'guard_id': None
+                    }
+                    
+                    # Check for NUM_STATES
+                    num_states_elem = template.find("NUM_STATES")
+                    if num_states_elem is not None and num_states_elem.text:
+                        try:
+                            control_info['num_states'] = int(num_states_elem.text)
+                        except ValueError:
+                            pass
+                    
+                    # Check for GUARD_ID
+                    guard_id_elem = template.find("GUARD_ID")
+                    if guard_id_elem is not None and guard_id_elem.text:
+                        control_info['has_guard'] = True
+                        guard_id = guard_id_elem.text
+                        if guard_id.startswith("MD11_"):
+                            control_info['guard_id'] = guard_id[5:]
+                        else:
+                            control_info['guard_id'] = guard_id
+                    
+                    # Check for event types
+                    if template.find("LEFT_BUTTON_DOWN") is not None:
+                        control_info['has_left_button'] = True
+                    if template.find("RIGHT_BUTTON_DOWN") is not None:
+                        control_info['has_right_button'] = True
+                    if template.find("WHEEL_UP") is not None or template.find("WHEEL_DOWN") is not None:
+                        control_info['has_wheel'] = True
+                    
+                    # Store control info
+                    if node_id_base not in control_map:
+                        control_map[node_id_base] = control_info
+        except Exception as e:
+            # Silently skip XML files that can't be parsed
+            continue
+    
+    return {'tooltips': tooltip_map, 'controls': control_map}
+
+# Cache XML data globally
+_xml_data_cache = None
+
+def get_xml_data():
+    """Get cached XML data, loading if necessary."""
+    global _xml_data_cache
+    if _xml_data_cache is None:
+        _xml_data_cache = load_xml_control_data()
+    return _xml_data_cache
+
+def get_xml_tooltips():
+    """Get cached XML tooltips, loading if necessary."""
+    return get_xml_data()['tooltips']
+
+def get_xml_controls():
+    """Get cached XML control metadata, loading if necessary."""
+    return get_xml_data()['controls']
+
+def format_comment_name(event_name):
+    """Extract and format a readable name for comments from event name.
+    
+    First tries to match against XML TOOLTIPID values, then falls back to parsing.
+    """
+    tooltips = get_xml_tooltips()
+    
+    # Try to find matching NODE_ID base from XML
+    # Event names like "OBS_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_DOWN"
+    # Should match NODE_ID base "OBS_AUDIO_PNL_VHF1_MIC_BT"
+    
+    # Extract potential base names by removing event suffixes
+    suffixes = [
+        '_LEFT_BUTTON_DOWN', '_LEFT_BUTTON_UP',
+        '_RIGHT_BUTTON_DOWN', '_RIGHT_BUTTON_UP',
+        '_WHEEL_UP', '_WHEEL_DOWN',
+        '_PULL_DOWN', '_PUSH_UP',
+        '_GRD_LEFT_BUTTON_DOWN', '_GRD_LEFT_BUTTON_UP',
+    ]
+    
+    for suffix in suffixes:
+        if event_name.endswith(suffix):
+            base = event_name[:-len(suffix)]
+            if base in tooltips:
+                return tooltips[base]
+    
+    # Also try direct match (for cases where event name = NODE_ID base)
+    if event_name in tooltips:
+        return tooltips[event_name]
+    
+    # Fallback to original parsing logic
     patterns = [
         (r'.*_BRT_KB_WHEEL', 'BRT Wheel Controls'),
         (r'.*_KB_WHEEL_(UP|DOWN)', 'Wheel Controls'),
@@ -425,17 +563,41 @@ def generate_yaml(category_name, events, description, variables=None, merged_mod
             continue
         
         # Handle button/switch events with L: variables (ToggleSwitch)
+        # BUT: Check XML to see if it's actually a single-event switch (NUM_STATES=1)
         if group['l_variable'] and group['DOWN'] and group['UP']:
+            # Check XML metadata to determine correct type
+            xml_controls = get_xml_controls()
+            base_for_xml = base  # base already has _BT or _SW suffix
+            
+            # Check if XML says this is a single-event switch
+            should_be_event = False
+            if base_for_xml in xml_controls:
+                control_info = xml_controls[base_for_xml]
+                # If NUM_STATES=1, it's a single-event toggle (should be 'event', not ToggleSwitch)
+                if control_info.get('num_states') == 1:
+                    should_be_event = True
+            
             lines.append(f"  - # {comment}")
-            # Apply type override if present, otherwise use default
-            entry_type = group['overrides'].get('type', 'ToggleSwitch')
-            lines.append(f"    type: {entry_type}")
-            lines.append(f"    var_name: {group['l_variable']}")
-            lines.append(f"    var_units: Bool")
-            lines.append(f"    var_type: bool")
-            lines.append(f"    event_name: {group['DOWN']}")
-            lines.append(f"    off_event_name: {group['UP']}")
-            # Apply other overrides (insert after off_event_name)
+            # Use XML-suggested type if available, otherwise use override or default
+            if should_be_event:
+                entry_type = group['overrides'].get('type', 'event')
+            else:
+                entry_type = group['overrides'].get('type', 'ToggleSwitch')
+            
+            if should_be_event and entry_type == 'event':
+                # Single-event switch: only use DOWN event (UP is not used)
+                lines.append(f"    type: {entry_type}")
+                lines.append(f"    event_name: {group['DOWN']}")
+            else:
+                # ToggleSwitch: use both DOWN and UP
+                lines.append(f"    type: {entry_type}")
+                lines.append(f"    var_name: {group['l_variable']}")
+                lines.append(f"    var_units: Bool")
+                lines.append(f"    var_type: bool")
+                lines.append(f"    event_name: {group['DOWN']}")
+                lines.append(f"    off_event_name: {group['UP']}")
+            
+            # Apply other overrides
             overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
             override_lines = format_override_lines(overrides)
             if override_lines:
