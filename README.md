@@ -1,6 +1,6 @@
 # TFDi Design MD-11 FS Copilot Configuration
 
-FS Copilot configuration files for the TFDi Design MD-11 aircraft. This generator creates FS Copilot format YAML files that use `get:`/`set:` syntax and bypass the CEVENT limitation by supporting direct L: variable writes and >B: events (H-events).
+FS Copilot configuration files for the TFDi Design MD-11 aircraft. This generator creates FS Copilot format YAML files using `get:`/`set:` syntax.
 
 ## Table of Contents
 
@@ -18,9 +18,7 @@ FS Copilot configuration files for the TFDi Design MD-11 aircraft. This generato
 
 ## Overview
 
-This project generates comprehensive FS Copilot configuration files for the TFDi Design MD-11 aircraft. FS Copilot is a shared cockpit add-on for MSFS 2024 that uses a YAML-based configuration with JavaScript logic. Unlike YourControls, FS Copilot supports direct L: variable writes and >B: events, which completely bypass the CEVENT limitation where only one discrete value can be processed at a time.
-
-The configuration is organized into modular YAML files, with each module covering a specific panel/system. All events are consolidated into a single main aircraft configuration file.
+This project generates FS Copilot configuration files for the TFDi Design MD-11 aircraft. The generator creates YAML files in FS Copilot format, organized by cockpit system and panel location.
 
 ## Status
 
@@ -272,7 +270,7 @@ This ensures that running the generator multiple times does not create duplicate
 
 ## FS Copilot Format
 
-FS Copilot uses a different YAML format than YourControls. Instead of `type:`, `var_name:`, `event_name:`, FS Copilot uses `get:` and `set:` syntax.
+FS Copilot uses `get:` and `set:` syntax for its YAML format.
 
 > 📚 **For complete documentation on FS Copilot format, see the [FS Copilot Wiki](https://github.com/yury-sch/FsCopilot/wiki)** - This guide explains all fields (`get:`, `set:`, `skp:`), JavaScript expressions, implicit rules, and more.
 
@@ -362,17 +360,7 @@ For simple button presses or controls without state tracking:
 
 ## CEVENT Limitation Bypass
 
-### The Problem
-
-YourControls has a fundamental limitation: CEVENT values are sent on button presses, but only 1 discrete value may be output at a time. This means:
-
-- When the Pilot Flying (PF) is hand-flying and using the elevator trim constantly, many MCDU entries by the Pilot Monitoring (PM) will be lost
-- The CEVENT is capturing the trim commands and missing/ignoring the incoming MCDU commands
-- Only 1 person should perform any action at a time to avoid conflicts
-
-### The Solution
-
-FS Copilot bypasses this limitation in two ways:
+FS Copilot bypasses CEVENT limitations in three ways:
 
 1. **Direct L: Variable Writes**: FS Copilot can sync L: variable values directly (`get: L:MD11_VAR`). When the master changes the L: variable, it syncs to all clients, and the aircraft's internal logic reads it. This completely bypasses CEVENT.
 
@@ -454,7 +442,7 @@ python validate.py <category_name>
 
 5. **YAML Syntax**: YAML syntax requires strict indentation (2 spaces) - the generator handles this automatically.
 
-6. **FS Copilot Compatibility**: This generator creates FS Copilot format files. FS Copilot is for MSFS 2024 only. The format is not compatible with YourControls.
+6. **FS Copilot Compatibility**: This generator creates FS Copilot format files for MSFS 2024.
 
 7. **CEVENT Bypass**: Controls with L: variables use direct variable sync, which completely bypasses CEVENT. Controls without L: variables use >B: events for custom TFDi events (bypasses CEVENT) or >K: events for standard MSFS events.
 

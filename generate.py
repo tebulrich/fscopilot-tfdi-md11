@@ -2,9 +2,9 @@
 """
 Generate FS Copilot YAML definition files from category JSON files.
 
-This generator creates FS Copilot format YAML files (.yaml) that use get:/set: syntax
-instead of YourControls format. FS Copilot supports direct L: variable writes and
->B: events (H-events), which bypass the CEVENT limitation.
+This generator creates FS Copilot format YAML files (.yaml) that use get:/set: syntax.
+FS Copilot supports direct L: variable writes and >B: events (H-events), which bypass
+CEVENT limitations.
 
 Usage:
     python3 generate.py [category_name] [--split] [--split-grouped] [--output-path PATH]
@@ -1790,7 +1790,7 @@ def main():
             else:
                 existing_entries = []
         except Exception as e:
-            # If parsing fails (e.g., old YourControls format), start fresh
+            # If parsing fails, start fresh
             existing_entries = []
         
         for entry in existing_entries:
