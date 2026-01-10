@@ -12,8 +12,8 @@ from pathlib import Path
 # Paths
 script_dir = Path(__file__).parent
 DATA_DIR = script_dir / "tfdi-md11-data" / "json"
-AIRCRAFT_FILE = script_dir / "definitions" / "aircraft" / "TFDi Design - MD-11.yaml"
-MODULES_DIR = script_dir / "definitions" / "modules" / "tfdi-md11"
+AIRCRAFT_FILE = script_dir / "Definitions" / "TFDi_Design_MD-11.yaml"
+MODULES_DIR = script_dir / "Definitions" / "modules" / "tfdi-md11"
 
 def load_yaml_file(filepath):
     """Load YAML file content as text for searching."""
@@ -24,20 +24,24 @@ def load_yaml_file(filepath):
         return None
 
 def find_event_in_yaml(event_name, yaml_content):
-    """Check if event name appears in YAML content."""
+    """Check if event name appears in YAML content (FS Copilot format)."""
     if yaml_content is None:
         return False
     
     # Escape special regex characters in event name
     escaped_event = re.escape(event_name)
     
-    # Look for event_name: EVENT_NAME (with proper YAML spacing)
-    # Pattern: event_name: EVENT_NAME (at start of value, possibly with spaces)
+    # Look for FS Copilot format: set: (>B:EVENT_NAME) or set: (>K:EVENT_NAME)
+    # Also check within JavaScript expressions: "value ? '(>B:EVENT_UP)' : '(>B:EVENT_DOWN)'"
+    # And L: variable references: get: L:MD11_EVENT_NAME
     patterns = [
-        rf'event_name:\s+{escaped_event}\b',  # event_name: EVENT_NAME
-        rf'off_event_name:\s+{escaped_event}\b',  # off_event_name: EVENT_NAME
-        rf'up_event_name:\s+{escaped_event}\b',  # up_event_name: EVENT_NAME
-        rf'down_event_name:\s+{escaped_event}\b',  # down_event_name: EVENT_NAME
+        rf'set:\s+\(>B:{escaped_event}\)',  # set: (>B:EVENT_NAME)
+        rf'set:\s+\(>K:{escaped_event}\)',  # set: (>K:EVENT_NAME)
+        rf'set:\s+"[^"]*\(>B:{escaped_event}\)[^"]*"',  # set: "..." (>B:EVENT_NAME) ..."
+        rf'set:\s+"[^"]*\(>K:{escaped_event}\)[^"]*"',  # set: "..." (>K:EVENT_NAME) ..."
+        rf"set:\s+'[^']*\(>B:{escaped_event}\)[^']*'",  # set: '...' (>B:EVENT_NAME) ...'
+        rf"set:\s+'[^']*\(>K:{escaped_event}\)[^']*'",  # set: '...' (>K:EVENT_NAME) ...'
+        rf"get:\s+L:MD11_{escaped_event}\b",  # get: L:MD11_EVENT_NAME
     ]
     
     for pattern in patterns:
