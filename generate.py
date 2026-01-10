@@ -1,26 +1,37 @@
 #!/usr/bin/env python3
 """
-Generate YAML module file from category JSON file.
+Generate FS Copilot YAML definition files from category JSON files.
+
+This generator creates FS Copilot format YAML files (.yaml) that use get:/set: syntax
+instead of YourControls format. FS Copilot supports direct L: variable writes and
+>B: events (H-events), which bypass the CEVENT limitation.
 
 Usage:
-    python3 generate.py [category_name] [--split] [--output-path PATH]
+    python3 generate.py [category_name] [--split] [--split-grouped] [--output-path PATH]
     
 Example:
     python3 generate.py                    # Regenerate all categories (merged)
     python3 generate.py center_panel        # Regenerate only center_panel (merged)
-    python3 generate.py --split            # Regenerate all as separate module files
+    python3 generate.py --split            # Regenerate all as individual module files (one per category)
+    python3 generate.py --split-grouped    # Regenerate all as modular files grouped by cockpit system
     python3 generate.py center_panel --split  # Generate center_panel as separate module file
-    python3 generate.py --output-path E:\YourControls\definitions\aircraft  # Custom output path
+    python3 generate.py --output-path C:\\Users\\YourName\\Downloads\\FsCopilot_1.0-rc2\\Definitions
     
 By default, all events are merged directly into the main aircraft YAML file.
 This will read tfdi-md11-data/json/<category_name>.json and merge into 
-definitions/aircraft/TFDi Design - MD-11.yaml
+Definitions/TFDi_Design_MD-11.yaml (FS Copilot format)
 
-With --split flag, it will create separate module files in definitions/modules/tfdi-md11/ 
+With --split flag, it will create separate module files in Definitions/modules/tfdi-md11/ 
 instead of merging into the main aircraft file. Works with both all categories and single category.
 
 With --output-path, you can specify a custom directory for the output aircraft YAML file.
-The path can have or omit a trailing slash.
+The path can have or omit a trailing slash. Default is Definitions/ folder in project root.
+
+Output Format:
+    - Uses FS Copilot format: get:/set: syntax instead of type:/var_name:/event_name:
+    - For L: variables: get: L:MD11_VAR (syncs state directly, bypasses CEVENT)
+    - For events: set: "(>B:EVENT)" for custom TFDi events (bypasses CEVENT) or "(>K:EVENT)" for standard MSFS events
+    - Supports JavaScript expressions in set: for conditional logic
 """
 
 import json
@@ -86,6 +97,8 @@ def load_xml_control_data():
                         'has_left_button': False,
                         'has_right_button': False,
                         'has_wheel': False,
+                        'has_pull': False,
+                        'has_push': False,
                         'guard_id': None
                     }
                     
@@ -108,12 +121,16 @@ def load_xml_control_data():
                             control_info['guard_id'] = guard_id
                     
                     # Check for event types
-                    if template.find("LEFT_BUTTON_DOWN") is not None:
+                    if template.find("LEFT_BUTTON_DOWN") is not None or template.find("LEFT_BUTTON_UP") is not None:
                         control_info['has_left_button'] = True
-                    if template.find("RIGHT_BUTTON_DOWN") is not None:
+                    if template.find("RIGHT_BUTTON_DOWN") is not None or template.find("RIGHT_BUTTON_UP") is not None:
                         control_info['has_right_button'] = True
                     if template.find("WHEEL_UP") is not None or template.find("WHEEL_DOWN") is not None:
                         control_info['has_wheel'] = True
+                    if template.find("PULL_UP") is not None or template.find("PULL_DOWN") is not None:
+                        control_info['has_pull'] = True
+                    if template.find("PUSH_UP") is not None or template.find("PUSH_DOWN") is not None:
+                        control_info['has_push'] = True
                     
                     # Store control info
                     if node_id_base not in control_map:
@@ -158,7 +175,8 @@ def format_comment_name(event_name):
         '_LEFT_BUTTON_DOWN', '_LEFT_BUTTON_UP',
         '_RIGHT_BUTTON_DOWN', '_RIGHT_BUTTON_UP',
         '_WHEEL_UP', '_WHEEL_DOWN',
-        '_PULL_DOWN', '_PUSH_UP',
+        '_PULL_DOWN', '_PULL_UP',
+        '_PUSH_DOWN', '_PUSH_UP',
         '_GRD_LEFT_BUTTON_DOWN', '_GRD_LEFT_BUTTON_UP',
     ]
     
@@ -218,7 +236,7 @@ def load_config():
     return {}
 
 def get_aircraft_file_path(custom_output_path=None):
-    """Get the path to the aircraft YAML file.
+    """Get the path to the aircraft YAML file (FS Copilot format).
     
     Args:
         custom_output_path: Optional custom output directory path (overrides config)
@@ -227,7 +245,7 @@ def get_aircraft_file_path(custom_output_path=None):
         Path object to the aircraft YAML file
     """
     script_dir = Path(__file__).parent
-    aircraft_filename = "TFDi Design - MD-11.yaml"
+    aircraft_filename = "TFDi_Design_MD-11.yaml"
     
     # Use command-line argument if provided, otherwise check config file
     output_path = custom_output_path
@@ -240,8 +258,8 @@ def get_aircraft_file_path(custom_output_path=None):
         output_path = Path(str(output_path).rstrip('/\\'))
         return output_path / aircraft_filename
     else:
-        # Default location
-        return script_dir / "definitions" / "aircraft" / aircraft_filename
+        # Default location: FS Copilot uses Definitions/ folder
+        return script_dir / "Definitions" / aircraft_filename
 
 def load_variables():
     """Load L: variables from variables.json file."""
@@ -464,14 +482,12 @@ def format_override_lines(overrides):
     return lines
 
 def format_entry_as_yaml(entry):
-    """Format a YAML entry dictionary back to YAML text format."""
+    """Format a FS Copilot YAML entry dictionary back to YAML text format."""
     lines = []
     lines.append("  -")
     
-    # Sort keys for consistent output
-    key_order = ['type', 'var_name', 'var_units', 'var_type', 'event_name', 
-                 'off_event_name', 'up_event_name', 'down_event_name', 
-                 'increment_by', 'add_by', 'cancel_h_events', 'use_calculator', 'unreliable']
+    # FS Copilot format: sort keys with 'get' first, then 'set', then others
+    key_order = ['get', 'set', 'skp']
     other_keys = [k for k in sorted(entry.keys()) if k not in key_order]
     ordered_keys = [k for k in key_order if k in entry] + other_keys
     
@@ -482,12 +498,58 @@ def format_entry_as_yaml(entry):
         elif isinstance(value, (int, float)):
             lines.append(f"    {key}: {value}")
         else:
+            # String values - keep as-is (may contain JavaScript expressions)
             lines.append(f"    {key}: {value}")
     
     return lines
 
+def is_standard_msfs_event(event_name):
+    """Check if event is a standard MSFS event (uses >K:) or custom TFDi event (uses >B:)."""
+    if not event_name:
+        return False
+    
+    standard_prefixes = (
+        'COM_', 'COM1_', 'COM2_', 'COM3_', 'NAV_', 'NAV1_', 'NAV2_', 'NAV3_', 'NAV4_',
+        'ADF_', 'ADF1_', 'ADF2_', 'TRANSPONDER_', 'XPNDR_', 'TOGGLE_', 'SET_', 'AXIS_',
+        'RUDDER_', 'ELEVATOR_', 'AILERON_', 'THROTTLE_', 'THROTTLE1_', 'THROTTLE2_', 'THROTTLE3_',
+        'ELECTRICAL_', 'ENGINE_', 'FUEL_', 'LIGHT_', 'PITOT_', 'ANTI_ICE', 'BLEED_',
+        'APU_', 'GENERAL_ENG_', 'RECIP_ENG_', 'TURB_ENG_', 'RADIO_', 'KOHLSMAN_',
+        'HEADING_', 'SPEED_', 'ALTITUDE_', 'AUTOPILOT_', 'AP_', 'GPS_', 'MARKER_'
+    )
+    return any(event_name.startswith(prefix) for prefix in standard_prefixes)
+
+def generate_fscopilot_set_expression(event_name, value_expr=None):
+    """Generate FS Copilot set expression for an event.
+    
+    Uses >B: for custom TFDi events (bypasses CEVENT), >K: for standard MSFS events.
+    For L: variable direct writes, uses >L: syntax.
+    
+    Args:
+        event_name: Event name to trigger
+        value_expr: Optional value expression (e.g., "value", "value + 1")
+    
+    Returns:
+        String with set expression (quoted if contains JavaScript, unquoted if simple)
+    """
+    if not event_name:
+        return None
+    
+    # Determine event type: custom TFDi events use >B: (bypasses CEVENT), standard MSFS events use >K:
+    if is_standard_msfs_event(event_name):
+        event_expr = f"(>K:{event_name})"
+    else:
+        # Custom TFDi event - use >B: (Behavior/H-event, bypasses CEVENT limitation)
+        event_expr = f"(>B:{event_name})"
+    
+    if value_expr:
+        # Value expression needed (e.g., "value (>K:EVENT)" or "value + 1 (>B:EVENT)")
+        return f"`{value_expr} {event_expr}`"
+    else:
+        # Simple event trigger
+        return event_expr
+
 def generate_yaml(category_name, events, description, variables=None, merged_mode=False):
-    """Generate YAML content from events.
+    """Generate FS Copilot format YAML content from events.
     
     Args:
         category_name: Name of the category
@@ -500,6 +562,7 @@ def generate_yaml(category_name, events, description, variables=None, merged_mod
         variables = set()
     
     grouped = group_events(events, variables)
+    xml_controls = get_xml_controls()
     
     lines = []
     if not merged_mode:
@@ -514,165 +577,116 @@ def generate_yaml(category_name, events, description, variables=None, merged_mod
         group = grouped[base]
         comment = format_comment_name(group['events'][0] if group['events'] else base)
         
-        # Handle wheel events with L: variables (NumIncrement)
+        # Handle wheel events with L: variables (increment/decrement)
         if group['is_wheel'] and group['l_variable'] and group['DOWN'] and group['UP']:
+            # For wheel controls with L: vars, sync the variable value explicitly
+            # FS Copilot syncs L: variable values, bypassing CEVENT entirely
             lines.append(f"  - # {comment}")
-            # Apply type override if present, otherwise use default
-            entry_type = group['overrides'].get('type', 'NumIncrement')
-            lines.append(f"    type: {entry_type}")
-            lines.append(f"    var_name: {group['l_variable']}")
-            lines.append(f"    var_units: Number")
-            lines.append(f"    var_type: f64")
-            lines.append(f"    up_event_name: {group['UP']}")
-            lines.append(f"    down_event_name: {group['DOWN']}")
-            # Apply increment_by override if present
-            increment_by = group['overrides'].get('increment_by', 1)
-            lines.append(f"    increment_by: {increment_by}")
-            # Apply other overrides (insert after increment_by)
-            overrides = {k: v for k, v in group['overrides'].items() 
-                        if k not in ['type', 'increment_by']}
-            override_lines = format_override_lines(overrides)
-            if override_lines:
-                lines.extend(override_lines)
-            lines.append("")  # Blank line between groups
-            continue
-        
-        # Handle wheel events without L: variables (regular events)
-        if group['is_wheel']:
-            lines.append(f"  - # {comment}")
-            entry_type = group['overrides'].get('type', 'event')
-            if group['DOWN']:
-                lines.append(f"    type: {entry_type}")
-                lines.append(f"    event_name: {group['DOWN']}")
-                # Apply overrides for DOWN event (insert after event_name)
-                overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
-                override_lines = format_override_lines(overrides)
-                if override_lines:
-                    lines.extend(override_lines)
-            if group['UP']:
-                if group['DOWN']:
-                    lines.append("  -")
-                lines.append(f"    type: {entry_type}")
-                lines.append(f"    event_name: {group['UP']}")
-                # Apply overrides for UP event (insert after event_name)
-                overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
-                override_lines = format_override_lines(overrides)
-                if override_lines:
-                    lines.extend(override_lines)
-            lines.append("")  # Blank line between groups
-            continue
-        
-        # Handle button/switch events with L: variables (ToggleSwitch)
-        # BUT: Check XML to see if it's actually a single-event switch (NUM_STATES=1)
-        if group['l_variable'] and group['DOWN'] and group['UP']:
-            # Check XML metadata to determine correct type
-            xml_controls = get_xml_controls()
-            base_for_xml = base  # base already has _BT or _SW suffix
+            lines.append(f"    get: {group['l_variable']}")
+            # Explicit set to sync L: variable value directly (bypasses CEVENT)
+            # When master rotates wheel, L: var value changes and syncs to all clients
+            # Format: set: "value (>L:VAR_NAME)" - syncs the value both ways
+            var_name_no_prefix = group['l_variable'].replace('L:', '')
+            lines.append(f'    set: "`${{value}} (>L:{var_name_no_prefix})`"')
+            lines.append("")
             
-            # Check if XML says this is a single-event switch
-            should_be_event = False
+            # Note: Direct L: variable sync bypasses CEVENT limitation
+            # When master rotates wheel, the aircraft's internal logic changes L: var value
+            # FS Copilot syncs that value to all clients via explicit set
+            continue
+        
+        # Handle wheel events without L: variables (direct event triggers)
+        if group['is_wheel']:
+            # For wheels without L: vars, trigger events directly when master uses wheel
+            # These don't track state, so just trigger the event
+            if group['UP']:
+                lines.append(f"  - # {comment} (Wheel Up)")
+                set_expr = generate_fscopilot_set_expression(group['UP'])
+                lines.append(f'    set: {set_expr}')
+                lines.append("")
+            if group['DOWN']:
+                lines.append(f"  - # {comment} (Wheel Down)")
+                set_expr = generate_fscopilot_set_expression(group['DOWN'])
+                lines.append(f'    set: {set_expr}')
+                lines.append("")  # Blank line between groups
+            continue
+        
+        # Handle button/switch events with L: variables (ToggleSwitch behavior)
+        if group['l_variable'] and group['DOWN'] and group['UP']:
+            # Check XML to see if it's actually a single-event switch (NUM_STATES=1)
+            base_for_xml = base
+            should_be_single_event = False
             if base_for_xml in xml_controls:
                 control_info = xml_controls[base_for_xml]
-                # If NUM_STATES=1, it's a single-event toggle (should be 'event', not ToggleSwitch)
                 if control_info.get('num_states') == 1:
-                    should_be_event = True
+                    should_be_single_event = True
             
             lines.append(f"  - # {comment}")
-            # Use XML-suggested type if available, otherwise use override or default
-            if should_be_event:
-                entry_type = group['overrides'].get('type', 'event')
-            else:
-                entry_type = group['overrides'].get('type', 'ToggleSwitch')
+            lines.append(f"    get: {group['l_variable']}")
             
-            if should_be_event and entry_type == 'event':
-                # Single-event switch: only use DOWN event (UP is not used)
-                lines.append(f"    type: {entry_type}")
-                lines.append(f"    event_name: {group['DOWN']}")
+            if should_be_single_event:
+                # Single-event switch: trigger event when value changes
+                # These switches toggle on each DOWN event regardless of current state
+                set_expr = generate_fscopilot_set_expression(group['DOWN'])
+                lines.append(f'    set: {set_expr}')
             else:
-                # ToggleSwitch: use both DOWN and UP
-                lines.append(f"    type: {entry_type}")
-                lines.append(f"    var_name: {group['l_variable']}")
-                lines.append(f"    var_units: Bool")
-                lines.append(f"    var_type: bool")
-                lines.append(f"    event_name: {group['DOWN']}")
-                lines.append(f"    off_event_name: {group['UP']}")
-            
-            # Apply other overrides
-            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
-            override_lines = format_override_lines(overrides)
-            if override_lines:
-                lines.extend(override_lines)
+                # ToggleSwitch: Use JavaScript to trigger appropriate event based on value
+                # When master changes L: variable value, trigger DOWN event (turn on) or UP event (turn off)
+                # JavaScript: if value is 0/false (off), trigger DOWN to turn on; else trigger UP to turn off
+                down_event = group['DOWN']
+                up_event = group['UP']
+                down_expr = generate_fscopilot_set_expression(down_event)
+                up_expr = generate_fscopilot_set_expression(up_event)
+                # Use JavaScript conditional: value ? UP_event : DOWN_event
+                # Format as YAML string with single quotes for inner strings
+                # Example: set: "value ? '(>B:EVENT_UP)' : '(>B:EVENT_DOWN)'"
+                set_expr = f'value ? \'{up_expr}\' : \'{down_expr}\''
+                lines.append(f'    set: "{set_expr}"')
             lines.append("")  # Blank line between groups
             continue
         
-        # Handle button/switch events without L: variables (regular events)
-        lines.append(f"  - # {comment}")
-        
-        # Apply type override if present, otherwise use default
-        entry_type = group['overrides'].get('type', 'event')
-        
-        # Add DOWN event if present
+        # Handle button/switch events without L: variables (direct event triggers)
+        # For simple events without state tracking, just trigger the event when master presses
         if group['DOWN']:
-            lines.append(f"    type: {entry_type}")
-            lines.append(f"    event_name: {group['DOWN']}")
-            # Apply overrides for DOWN event (insert after event_name)
-            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
-            override_lines = format_override_lines(overrides)
-            if override_lines:
-                lines.extend(override_lines)
+            lines.append(f"  - # {comment}")
+            set_expr = generate_fscopilot_set_expression(group['DOWN'])
+            lines.append(f'    set: {set_expr}')
+            lines.append("")
         
-        # Add UP event if present
-        if group['UP']:
-            if group['DOWN']:
-                lines.append("  -")
-            lines.append(f"    type: {entry_type}")
-            lines.append(f"    event_name: {group['UP']}")
-            # Apply overrides for UP event (insert after event_name)
-            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
-            override_lines = format_override_lines(overrides)
-            if override_lines:
-                lines.extend(override_lines)
+        if group['UP'] and not group['l_variable']:
+            # Separate entry for UP event if no L: var (no state tracking)
+            if not group['DOWN']:
+                lines.append(f"  - # {comment}")
+            else:
+                lines.append(f"  - # {comment} (Up)")
+            set_expr = generate_fscopilot_set_expression(group['UP'])
+            lines.append(f'    set: {set_expr}')
+            lines.append("")
         
-        # Add RIGHT event (for switches)
         if group['RIGHT']:
-            if group['DOWN'] or group['UP']:
-                lines.append("  -")
-            lines.append(f"    type: {entry_type}")
-            lines.append(f"    event_name: {group['RIGHT']}")
-            # Apply overrides for RIGHT event (insert after event_name)
-            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
-            override_lines = format_override_lines(overrides)
-            if override_lines:
-                lines.extend(override_lines)
+            lines.append(f"  - # {comment} (Right)")
+            set_expr = generate_fscopilot_set_expression(group['RIGHT'])
+            lines.append(f'    set: {set_expr}')
+            lines.append("")
         
-        # Add GRD event (for ground buttons)
         if group['GRD']:
-            if group['DOWN'] or group['UP'] or group['RIGHT']:
-                lines.append("  -")
-            lines.append(f"    type: {entry_type}")
-            lines.append(f"    event_name: {group['GRD']}")
-            # Apply overrides for GRD event (insert after event_name)
-            overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
-            override_lines = format_override_lines(overrides)
-            if override_lines:
-                lines.extend(override_lines)
+            lines.append(f"  - # {comment} (Guard)")
+            set_expr = generate_fscopilot_set_expression(group['GRD'])
+            lines.append(f'    set: {set_expr}')
+            lines.append("")
         
-        # If only single events without DOWN/UP pattern, list them all
+        # Handle single events without DOWN/UP/RIGHT/GRD pattern
         if not group['DOWN'] and not group['UP'] and not group['RIGHT'] and not group['GRD']:
             for event in group['events']:
                 if group['events'].index(event) > 0:
-                    lines.append("  -")
-                lines.append(f"    type: {entry_type}")
-                lines.append(f"    event_name: {event}")
-                # Apply overrides for each event (insert after event_name)
-                overrides = {k: v for k, v in group['overrides'].items() if k != 'type'}
-                override_lines = format_override_lines(overrides)
-                if override_lines:
-                    lines.extend(override_lines)
-        
-        lines.append("")  # Blank line between groups
+                    lines.append("")
+                lines.append(f"  - # {comment}")
+                set_expr = generate_fscopilot_set_expression(event)
+                lines.append(f'    set: {set_expr}')
+            if group['events']:
+                lines.append("")  # Blank line after group
     
-    return "\n".join(lines) + "\n"
+    return "\n".join(lines).rstrip() + "\n" if lines else ""
 
 def generate_shared_content(category_name, events, description, variables=None):
     """Generate only the shared section content (for merged mode)."""
@@ -705,24 +719,17 @@ def validate_yaml_file(file_path):
         return f"Error reading/validating YAML file: {e}"
 
 def get_entry_key(entry):
-    """Generate a unique key for a YAML entry to identify duplicates.
+    """Generate a unique key for a FS Copilot YAML entry to identify duplicates.
     
-    Uses var_name if present, otherwise event_name, otherwise a combination of fields.
+    Uses 'get' field as the unique identifier for FS Copilot format.
     """
     if isinstance(entry, dict):
-        # Prefer var_name as the unique identifier
-        if 'var_name' in entry:
-            return ('var_name', entry['var_name'])
-        # Fall back to event_name
-        if 'event_name' in entry:
-            return ('event_name', entry['event_name'])
-        # For entries with up/down events, use both
-        if 'up_event_name' in entry and 'down_event_name' in entry:
-            return ('events', (entry['up_event_name'], entry['down_event_name']))
-        # Last resort: use a combination of type and first available field
-        for key in ['off_event_name', 'event_name']:
-            if key in entry:
-                return ('event', entry[key])
+        # FS Copilot format: use 'get' field as unique identifier
+        if 'get' in entry:
+            return ('get', entry['get'])
+        # Fall back: use 'set' if no get
+        if 'set' in entry:
+            return ('set', entry['set'])
     return None
 
 def parse_yaml_entries(yaml_content):
@@ -759,12 +766,12 @@ def parse_yaml_entries(yaml_content):
         return [], {}
 
 def parse_aircraft_yaml(aircraft_file):
-    """Parse the main aircraft YAML file to extract header, includes, shared, and master sections."""
+    """Parse the main aircraft YAML file to extract header, includes, shared, and master sections (FS Copilot format)."""
     # If file doesn't exist, return empty structure
     if not aircraft_file.exists():
         return {
-            'header': '# Version 1.0.0\n# TFDi Design MD-11 Configuration File\n# Events reference: https://docs.tfdidesign.com/md11/integration-guide/events\n# Variables reference: https://docs.tfdidesign.com/md11/integration-guide/variables',
-            'includes': 'include:\n  - definitions/modules/navigation.yaml\n  - definitions/modules/physics_rad.yaml\n  - definitions/modules/radios.yaml\n  - definitions/modules/transponder.yaml',
+            'header': '# TFDi Design MD-11 Configuration File for FS Copilot\n# Events reference: https://docs.tfdidesign.com/md11/integration-guide/events\n# Variables reference: https://docs.tfdidesign.com/md11/integration-guide/variables',
+            'includes': 'include:',
             'shared': ['shared:'],
             'master': ''
         }
@@ -786,7 +793,7 @@ def parse_aircraft_yaml(aircraft_file):
     if include_start is None:
         raise ValueError("Could not find 'include:' section in aircraft YAML file")
     
-    # Extract includes (only the 4 specified ones)
+    # Extract includes (FS Copilot format: relative paths)
     include_lines = ['include:']
     shared_start = None
     for i in range(include_start + 1, len(lines)):
@@ -795,11 +802,8 @@ def parse_aircraft_yaml(aircraft_file):
         if line.strip() == 'shared:' or (line and not line.startswith(' ') and line.strip() and not line.startswith('#')):
             shared_start = i
             break
-        # Only keep the 4 specified includes
-        if line.strip().startswith('- definitions/modules/navigation.yaml') or \
-           line.strip().startswith('- definitions/modules/physics_rad.yaml') or \
-           line.strip().startswith('- definitions/modules/radios.yaml') or \
-           line.strip().startswith('- definitions/modules/transponder.yaml'):
+        # Keep all includes (FS Copilot uses relative paths like 'modules/...')
+        if line.strip().startswith('- '):
             include_lines.append(line)
     
     if shared_start is None:
@@ -829,13 +833,14 @@ def parse_aircraft_yaml(aircraft_file):
     }
 
 def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
-    """Merge all categories into the main aircraft YAML file."""
+    """Merge all categories into the main aircraft YAML file (FS Copilot format)."""
     # Ensure output directory exists
     aircraft_file.parent.mkdir(parents=True, exist_ok=True)
     
     parsed = parse_aircraft_yaml(aircraft_file)
     
     # Extract manually-added entries by keeping lines that don't contain generated markers
+    # FS Copilot format uses 'get:' and 'set:' instead of 'type:', 'var_name:', 'event_name:'
     manually_added_lines = []
     current_entry = []
     
@@ -846,11 +851,10 @@ def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
             # New entry - check if previous entry was manually-added
             if current_entry:
                 entry_text = '\n'.join(current_entry)
+                # FS Copilot generated entries contain L:MD11_ variables or TFDi event patterns
                 if not ('L:MD11_' in entry_text or 
-                       '_BT_LEFT_BUTTON' in entry_text or 
-                       '_KB_WHEEL' in entry_text or
-                       '_SW_LEFT_BUTTON' in entry_text or
-                       '_GRD_LEFT_BUTTON' in entry_text):
+                       'get: L:MD11_' in entry_text or
+                       'set:' in entry_text and ('AOVHD_', 'OVHD_', 'PED_', 'OBS_', 'CTR_', 'LSIDE_', 'RSIDE_', 'CGS_', 'GSL_', 'GSR_', 'LECP_', 'RECP_', 'MIP_', 'THR_', 'YOKE_', 'CMCDU_', 'LMCDU_', 'RMCDU_' in entry_text)):
                     manually_added_lines.extend(current_entry)
                     manually_added_lines.append('')
                 current_entry = []
@@ -866,10 +870,8 @@ def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
     if current_entry:
         entry_text = '\n'.join(current_entry)
         if not ('L:MD11_' in entry_text or 
-               '_BT_LEFT_BUTTON' in entry_text or 
-               '_KB_WHEEL' in entry_text or
-               '_SW_LEFT_BUTTON' in entry_text or
-               '_GRD_LEFT_BUTTON' in entry_text):
+               'get: L:MD11_' in entry_text or
+               'set:' in entry_text and ('AOVHD_', 'OVHD_', 'PED_', 'OBS_', 'CTR_', 'LSIDE_', 'RSIDE_', 'CGS_', 'GSL_', 'GSR_', 'LECP_', 'RECP_', 'MIP_', 'THR_', 'YOKE_', 'CMCDU_', 'LMCDU_', 'RMCDU_' in entry_text)):
             manually_added_lines.extend(current_entry)
     
     # Generate fresh content from all categories
@@ -901,7 +903,7 @@ def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
             import traceback
             traceback.print_exc()
     
-    # Reconstruct file
+    # Reconstruct file (FS Copilot format)
     output_lines = [parsed['header'], "", parsed['includes'], "", "shared:"]
     
     if manually_added_lines:
@@ -911,7 +913,9 @@ def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
         output_lines.extend(manually_added_lines)
         output_lines.append("")
     
-    output_lines.append('\n'.join(all_shared_content))
+    # Add generated content from all categories
+    if all_shared_content:
+        output_lines.append('\n'.join(all_shared_content))
     
     if parsed['master']:
         output_lines.append("")
@@ -931,14 +935,15 @@ def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
     print(f"Merged {len(category_files)} categories into {aircraft_file}")
 
 def update_aircraft_file_includes(aircraft_file, category_files):
-    """Update the aircraft file to include all generated TFDI MD-11 modules."""
+    """Update the aircraft file to include all generated TFDI MD-11 modules (FS Copilot format)."""
     parsed = parse_aircraft_yaml(aircraft_file)
     
-    # Build list of TFDI module includes
+    # Build list of TFDI module includes (FS Copilot uses relative paths)
     tfdi_includes = []
     for category_file in sorted(category_files):
         category = category_file.stem
-        tfdi_includes.append(f"  - definitions/modules/tfdi-md11/TFDi_MD11_{category}.yaml")
+        # FS Copilot uses relative paths from Definitions/ folder
+        tfdi_includes.append(f"  - modules/tfdi-md11/TFDi_MD11_{category}.yaml")
     
     # Reconstruct includes section: standard includes + TFDI includes
     include_lines = ['include:']
@@ -1096,23 +1101,71 @@ def update_category_file(category_file, events):
     
     print(f"Updated category file: {category_file.name} ({present_count}/{len(updated_events)} events marked as present)")
 
-def regenerate_all_modules(split_mode=False, custom_output_path=None):
+def get_category_groups():
+    """Define logical groupings of categories for modular output with system grouping.
+    
+    Categories are organized by physical location and system functionality
+    to improve maintainability and organization of large configurations.
+    
+    Returns:
+        Dictionary mapping group name to list of category names
+    """
+    return {
+        'Glareshield': [
+            'glareshield_left',
+            'glareshield_right',
+            'center_glareshield'
+        ],
+        'Overhead': [
+            'overhead_panel',
+            'aft_overhead_panel'
+        ],
+        'Pedestal': [
+            'pedestal',
+            'radio_panel',
+            'audio_panel',
+            'throttle'
+        ],
+        'Instruments': [
+            'main_instruments_panel',
+            'left_side_panel',
+            'right_side_panel',
+            'center_panel',
+            'left_ecp',
+            'right_ecp'
+        ],
+        'Flight_Controls': [
+            'flight_controls',
+            'left_yoke',
+            'right_yoke'
+        ],
+        'FMC': [
+            'fmc_cdu'
+        ]
+    }
+
+def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_path=None):
     """Regenerate all TFDI MD-11 modules from scratch.
     
     Args:
-        split_mode: If True, generate separate module files. If False (default), merge into main file.
+        split_mode: If True, generate modular output files. If False (default), consolidate into main file.
+        grouped_split: If True and split_mode is True, organize categories by cockpit system and panel location.
         custom_output_path: Optional custom output directory path for aircraft file
     """
     script_dir = Path(__file__).parent
     data_dir = script_dir / "tfdi-md11-data" / "json"
-    modules_dir = script_dir / "definitions" / "modules" / "tfdi-md11"
+    # FS Copilot uses Definitions/modules/ folder structure
+    modules_dir = script_dir / "Definitions" / "modules" / "tfdi-md11"
     aircraft_file = get_aircraft_file_path(custom_output_path)
     
     print("=" * 60)
     if split_mode:
-        print("REGENERATING ALL TFDI MD-11 MODULES (SPLIT MODE)")
+        if grouped_split:
+            print("REGENERATING ALL TFDI MD-11 MODULES (MODULAR - SYSTEM GROUPING)")
+        else:
+            print("REGENERATING ALL TFDI MD-11 MODULES (MODULAR - INDIVIDUAL CATEGORIES)")
     else:
-        print("REGENERATING ALL TFDI MD-11 MODULES (MERGED MODE - DEFAULT)")
+        print("REGENERATING ALL TFDI MD-11 MODULES (CONSOLIDATED MODE)")
     print("=" * 60)
     
     # Step 1: Delete all TFDi_MD11_*.yaml files
@@ -1149,62 +1202,292 @@ def regenerate_all_modules(split_mode=False, custom_output_path=None):
     variables = load_variables()
     
     if split_mode:
-        generated_count = 0
-        for category_file in category_files:
-            category = category_file.stem
-            output_file = modules_dir / f"TFDi_MD11_{category}.yaml"
+        if grouped_split:
+            # Modular mode with system grouping: organize categories by cockpit system and panel location
+            groups = get_category_groups()
+            generated_count = 0
             
-            try:
-                # Read category file
-                with open(category_file) as f:
-                    data = json.load(f)
+            # Create a reverse mapping: category -> group
+            category_to_group = {}
+            for group_name, categories in groups.items():
+                for category in categories:
+                    category_to_group[category] = group_name
+            
+            # Process each group
+            for group_name, group_categories in groups.items():
+                group_output_file = modules_dir / f"TFDi_MD11_{group_name}.yaml"
                 
-                events = data.get('events', [])
-                description = data.get('description', category.replace('_', ' ').title())
+                # Collect all events from categories in this group
+                all_group_events = []
+                all_group_descriptions = []
+                group_category_files_in_group = []
                 
-                # Filter out "// present" markers but preserve format
-                filtered_events = []
-                for entry in events:
-                    event_name, overrides = parse_event_entry(entry)
-                    if event_name:
-                        if isinstance(entry, dict):
-                            filtered_events.append(entry)
-                        else:
-                            filtered_events.append(event_name)
-                events = filtered_events
+                for category_name in group_categories:
+                    category_file = data_dir / f"{category_name}.json"
+                    if not category_file.exists():
+                        continue
+                    if category_file not in category_files:
+                        continue
+                    
+                    try:
+                        with open(category_file) as f:
+                            data = json.load(f)
+                        
+                        events = data.get('events', [])
+                        description = data.get('description', category_name.replace('_', ' ').title())
+                        
+                        # Filter out "// present" markers
+                        filtered_events = []
+                        for entry in events:
+                            event_name, overrides = parse_event_entry(entry)
+                            if event_name:
+                                if isinstance(entry, dict):
+                                    filtered_events.append(entry)
+                                else:
+                                    filtered_events.append(event_name)
+                        
+                        if filtered_events:
+                            all_group_events.extend(filtered_events)
+                            all_group_descriptions.append(f"{description} ({len(filtered_events)} events)")
+                            group_category_files_in_group.append(category_file)
+                    except Exception as e:
+                        print(f"  ERROR reading {category_file.name}: {e}")
+                        continue
                 
-                if not events:
-                    print(f"  Skipping {category} (no events)")
+                if not all_group_events:
+                    print(f"  Skipping {group_name} group (no events)")
                     continue
                 
-                # Generate YAML
-                yaml_content = generate_yaml(category, events, description, variables)
+                # Generate combined YAML for the group
+                combined_description = f"{group_name.replace('_', ' ')} ({', '.join(all_group_descriptions)})"
+                yaml_content = generate_yaml(group_name, all_group_events, combined_description, variables)
                 
                 # Write output
-                output_file.parent.mkdir(parents=True, exist_ok=True)
-                with open(output_file, 'w') as f:
+                group_output_file.parent.mkdir(parents=True, exist_ok=True)
+                with open(group_output_file, 'w') as f:
                     f.write(yaml_content)
                 
-                # Validate the generated YAML
-                validation_error = validate_yaml_file(output_file)
+                # Validate
+                validation_error = validate_yaml_file(group_output_file)
                 if validation_error:
-                    print(f"  ERROR: Invalid YAML generated for {category}")
+                    print(f"  ERROR: Invalid YAML generated for {group_name}")
                     print(f"  {validation_error}")
-                    raise ValueError(f"Invalid YAML in {output_file.name}")
+                    raise ValueError(f"Invalid YAML in {group_output_file.name}")
                 
-                toggle_count = yaml_content.count('type: ToggleSwitch')
-                num_increment_count = yaml_content.count('type: NumIncrement')
+                # Count entries
+                get_with_lvar_count = yaml_content.count('get: L:MD11_')
+                set_count = yaml_content.count('set:')
                 
-                print(f"  Generated: {category} ({len(events)} events, {toggle_count} ToggleSwitches, {num_increment_count} NumIncrements)")
+                print(f"  Generated: {group_name} ({len(all_group_events)} total events, {get_with_lvar_count} L: variable syncs, {set_count} event triggers)")
                 
-                # Update category file to mark events as present
-                update_category_file(category_file, events)
+                # Update category files to mark events as present
+                for category_file in group_category_files_in_group:
+                    with open(category_file) as f:
+                        cat_data = json.load(f)
+                    cat_events = cat_data.get('events', [])
+                    filtered_cat_events = []
+                    for entry in cat_events:
+                        event_name, overrides = parse_event_entry(entry)
+                        if event_name:
+                            filtered_cat_events.append(event_name)
+                    update_category_file(category_file, filtered_cat_events)
                 
                 generated_count += 1
-            except Exception as e:
-                print(f"  ERROR generating {category}: {e}")
-                import traceback
-                traceback.print_exc()
+            
+            # Handle categories not in any group (shouldn't happen, but be safe)
+            ungrouped_files = []
+            for category_file in category_files:
+                category = category_file.stem
+                if category not in category_to_group:
+                    ungrouped_files.append(category_file)
+            
+            if ungrouped_files:
+                print(f"\n  WARNING: {len(ungrouped_files)} categories not in any group, creating individual files:")
+                for category_file in ungrouped_files:
+                    category = category_file.stem
+                    output_file = modules_dir / f"TFDi_MD11_{category}.yaml"
+                    
+                    try:
+                        with open(category_file) as f:
+                            data = json.load(f)
+                        
+                        events = data.get('events', [])
+                        description = data.get('description', category.replace('_', ' ').title())
+                        
+                        filtered_events = []
+                        for entry in events:
+                            event_name, overrides = parse_event_entry(entry)
+                            if event_name:
+                                if isinstance(entry, dict):
+                                    filtered_events.append(entry)
+                                else:
+                                    filtered_events.append(event_name)
+                        events = filtered_events
+                        
+                        if not events:
+                            continue
+                        
+                        yaml_content = generate_yaml(category, events, description, variables)
+                        output_file.parent.mkdir(parents=True, exist_ok=True)
+                        with open(output_file, 'w') as f:
+                            f.write(yaml_content)
+                        
+                        validation_error = validate_yaml_file(output_file)
+                        if validation_error:
+                            print(f"    ERROR: Invalid YAML generated for {category}")
+                            continue
+                        
+                        get_with_lvar_count = yaml_content.count('get: L:MD11_')
+                        set_count = yaml_content.count('set:')
+                        print(f"    Generated: {category} ({len(events)} events, {get_with_lvar_count} L: variable syncs, {set_count} event triggers)")
+                        
+                        update_category_file(category_file, events)
+                        generated_count += 1
+                    except Exception as e:
+                        print(f"    ERROR generating {category}: {e}")
+            
+            print(f"\nGenerated {generated_count} grouped modules")
+            
+            # Update aircraft file to include all generated grouped modules
+            grouped_output_files = []
+            for group_name in groups.keys():
+                group_file = modules_dir / f"TFDi_MD11_{group_name}.yaml"
+                if group_file.exists():
+                    # Create a dummy Path for the group (since we're grouping multiple categories)
+                    grouped_output_files.append(group_file)
+            
+            # Also add any ungrouped individual files
+            for category_file in ungrouped_files:
+                category = category_file.stem
+                output_file = modules_dir / f"TFDi_MD11_{category}.yaml"
+                if output_file.exists():
+                    grouped_output_files.append(output_file)
+            
+                # Update aircraft file includes with grouped files
+            if grouped_output_files:
+                # Update includes manually since we have grouped files
+                parsed = parse_aircraft_yaml(aircraft_file)
+                aircraft_file.parent.mkdir(parents=True, exist_ok=True)
+                
+                # Build includes list with grouped module paths
+                include_lines = ['include:']
+                # Add any existing standard includes (non-TFDi modules)
+                for line in parsed['includes'].split('\n')[1:]:  # Skip 'include:' line
+                    line = line.strip()
+                    if line and not line.startswith('#') and 'TFDi_MD11' not in line:
+                        include_lines.append(line)
+                
+                # Add grouped TFDi module includes
+                if grouped_output_files:
+                    include_lines.append("")
+                    include_lines.append("  # TFDI MD-11 Modules (Grouped)")
+                    for output_file in sorted(grouped_output_files):
+                        # FS Copilot uses relative paths from Definitions/ folder
+                        # Aircraft file is in Definitions/, grouped files are in Definitions/modules/tfdi-md11/
+                        # So relative path is: modules/tfdi-md11/TFDi_MD11_GroupName.yaml
+                        filename = output_file.name
+                        include_path = f"modules/tfdi-md11/{filename}"
+                        include_lines.append(f"  - {include_path}")
+                
+                # Reconstruct the file
+                output_lines = []
+                output_lines.append(parsed['header'])
+                output_lines.append("")
+                output_lines.append('\n'.join(include_lines))
+                output_lines.append("")
+                output_lines.append("shared:")
+                
+                # Add existing shared content
+                existing_shared_lines = []
+                for line in parsed['shared'][1:]:  # Skip 'shared:' line
+                    stripped = line.lstrip()
+                    if stripped.startswith('-'):
+                        leading_spaces = len(line) - len(stripped)
+                        if leading_spaces != 2:
+                            existing_shared_lines.append('  ' + stripped)
+                        else:
+                            existing_shared_lines.append(line)
+                    else:
+                        existing_shared_lines.append(line)
+                
+                existing_shared = '\n'.join(existing_shared_lines).rstrip()
+                if existing_shared:
+                    output_lines.append(existing_shared)
+                
+                if parsed['master']:
+                    output_lines.append("")
+                    output_lines.append(parsed['master'])
+                
+                with open(aircraft_file, 'w') as f:
+                    f.write('\n'.join(output_lines))
+                    if not output_lines[-1].endswith('\n'):
+                        f.write('\n')
+                
+                # Validate
+                validation_error = validate_yaml_file(aircraft_file)
+                if validation_error:
+                    print(f"\nERROR: Invalid YAML in aircraft file after updating includes")
+                    print(f"{validation_error}")
+                    sys.exit(1)
+        else:
+            # Modular mode with individual categories: one file per category
+            generated_count = 0
+            for category_file in category_files:
+                category = category_file.stem
+                output_file = modules_dir / f"TFDi_MD11_{category}.yaml"
+                
+                try:
+                    # Read category file
+                    with open(category_file) as f:
+                        data = json.load(f)
+                    
+                    events = data.get('events', [])
+                    description = data.get('description', category.replace('_', ' ').title())
+                    
+                    # Filter out "// present" markers but preserve format
+                    filtered_events = []
+                    for entry in events:
+                        event_name, overrides = parse_event_entry(entry)
+                        if event_name:
+                            if isinstance(entry, dict):
+                                filtered_events.append(entry)
+                            else:
+                                filtered_events.append(event_name)
+                    events = filtered_events
+                    
+                    if not events:
+                        print(f"  Skipping {category} (no events)")
+                        continue
+                    
+                    # Generate YAML
+                    yaml_content = generate_yaml(category, events, description, variables)
+                    
+                    # Write output
+                    output_file.parent.mkdir(parents=True, exist_ok=True)
+                    with open(output_file, 'w') as f:
+                        f.write(yaml_content)
+                    
+                    # Validate the generated YAML
+                    validation_error = validate_yaml_file(output_file)
+                    if validation_error:
+                        print(f"  ERROR: Invalid YAML generated for {category}")
+                        print(f"  {validation_error}")
+                        raise ValueError(f"Invalid YAML in {output_file.name}")
+                    
+                    # Count FS Copilot format entries
+                    get_with_lvar_count = yaml_content.count('get: L:MD11_')
+                    set_count = yaml_content.count('set:')
+                    
+                    print(f"  Generated: {category} ({len(events)} events, {get_with_lvar_count} L: variable syncs, {set_count} event triggers)")
+                    
+                    # Update category file to mark events as present
+                    update_category_file(category_file, events)
+                    
+                    generated_count += 1
+                except Exception as e:
+                    print(f"  ERROR generating {category}: {e}")
+                    import traceback
+                    traceback.print_exc()
         
         print(f"\nGenerated {generated_count} modules")
         
@@ -1218,7 +1501,7 @@ def regenerate_all_modules(split_mode=False, custom_output_path=None):
             print(f"{validation_error}")
             sys.exit(1)
     else:
-        # Default: merge mode - write everything into main aircraft file
+        # Consolidated mode: write everything into main aircraft file
         merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables)
         print("\nMerged all categories into aircraft file")
         
@@ -1283,10 +1566,11 @@ def main():
     flags = [arg for arg in processed_args if arg.startswith('--')]
     
     split_mode = '--split' in flags
+    grouped_split = '--split-grouped' in flags
     
     # If no category specified, regenerate all
     if not args:
-        regenerate_all_modules(split_mode=split_mode, custom_output_path=custom_output_path)
+        regenerate_all_modules(split_mode=split_mode, grouped_split=grouped_split, custom_output_path=custom_output_path)
         return
     
     # Single category specified
@@ -1326,9 +1610,10 @@ def main():
         return
     
     if split_mode:
-        # Generate separate module file
+        # Generate separate module file (FS Copilot format)
         script_dir = Path(__file__).parent
-        modules_dir = script_dir / "definitions" / "modules" / "tfdi-md11"
+        # FS Copilot uses Definitions/modules/ folder structure
+        modules_dir = script_dir / "Definitions" / "modules" / "tfdi-md11"
         modules_dir.mkdir(parents=True, exist_ok=True)
         output_file = modules_dir / f"TFDi_MD11_{category}.yaml"
         
@@ -1349,13 +1634,13 @@ def main():
         print(f"Generated: {output_file}")
         print(f"Events: {len(events)}")
         
-        # Count control types
-        toggle_count = yaml_content.count('type: ToggleSwitch')
-        num_increment_count = yaml_content.count('type: NumIncrement')
-        if toggle_count > 0:
-            print(f"ToggleSwitches: {toggle_count}")
-        if num_increment_count > 0:
-            print(f"NumIncrements: {num_increment_count}")
+        # Count FS Copilot format entries
+        get_with_lvar_count = yaml_content.count('get: L:MD11_')
+        set_count = yaml_content.count('set:')
+        if get_with_lvar_count > 0:
+            print(f"L: variable syncs: {get_with_lvar_count}")
+        if set_count > 0:
+            print(f"Event triggers: {set_count}")
         
         # Update aircraft file to include this module
         aircraft_file = get_aircraft_file_path(custom_output_path)
@@ -1392,30 +1677,42 @@ def main():
         except:
             pass
         
-        # Extract manually-added entries and filter out entries from this category
+        # Extract manually-added entries and filter out entries from this category (FS Copilot format)
         existing_shared_text = '\n'.join(parsed['shared'])
-        existing_data = yaml.safe_load(existing_shared_text) or {}
-        existing_entries = existing_data.get('shared', [])
-        
         manually_added = []
+        
+        try:
+            existing_data = yaml.safe_load(existing_shared_text)
+            if existing_data and isinstance(existing_data, dict):
+                existing_entries = existing_data.get('shared')
+                if existing_entries is None:
+                    existing_entries = []
+                elif not isinstance(existing_entries, list):
+                    existing_entries = []
+            else:
+                existing_entries = []
+        except Exception as e:
+            # If parsing fails (e.g., old YourControls format), start fresh
+            existing_entries = []
+        
         for entry in existing_entries:
             if isinstance(entry, dict):
-                var_name = str(entry.get('var_name', ''))
-                event_name = str(entry.get('event_name', ''))
-                up_event = str(entry.get('up_event_name', ''))
-                down_event = str(entry.get('down_event_name', ''))
+                get_var = str(entry.get('get', ''))
+                set_expr = str(entry.get('set', ''))
                 
                 # Check if this entry is from the category we're regenerating
                 key = get_entry_key(entry)
                 is_from_category = key and key in new_entries_map
                 
-                # Keep if it's manually-added (no L:MD11_ vars or generated patterns) 
+                # Keep if it's manually-added (no L:MD11_ vars or TFDi event patterns) 
                 # AND not from the category we're regenerating
                 if not is_from_category and not (
-                    var_name.startswith('L:MD11_') or 
-                    '_BT_LEFT_BUTTON' in event_name or '_KB_WHEEL' in event_name or
-                    '_SW_LEFT_BUTTON' in event_name or '_GRD_LEFT_BUTTON' in event_name or
-                    '_KB_WHEEL' in up_event or '_KB_WHEEL' in down_event
+                    get_var.startswith('L:MD11_') or
+                    'L:MD11_' in get_var or
+                    (set_expr and any(pattern in set_expr for pattern in 
+                     ('AOVHD_', 'OVHD_', 'PED_', 'OBS_', 'CTR_', 'LSIDE_', 'RSIDE_', 
+                      'CGS_', 'GSL_', 'GSR_', 'LECP_', 'RECP_', 'MIP_', 'THR_', 
+                      'YOKE_', 'CMCDU_', 'LMCDU_', 'RMCDU_', 'AOVHD_', 'OBS_')))
                 ):
                     manually_added.append(entry)
         
@@ -1451,12 +1748,13 @@ def main():
         print(f"Merged {category} into: {aircraft_file}")
         print(f"Events: {len(events)}")
         
-        toggle_count = shared_content.count('type: ToggleSwitch')
-        num_increment_count = shared_content.count('type: NumIncrement')
-        if toggle_count > 0:
-            print(f"ToggleSwitches: {toggle_count}")
-        if num_increment_count > 0:
-            print(f"NumIncrements: {num_increment_count}")
+        # Count FS Copilot format entries
+        get_with_lvar_count = shared_content.count('get: L:MD11_')
+        set_count = shared_content.count('set:')
+        if get_with_lvar_count > 0:
+            print(f"L: variable syncs: {get_with_lvar_count}")
+        if set_count > 0:
+            print(f"Event triggers: {set_count}")
     
     # Update category file to mark all events as present
     update_category_file(category_file, events)
