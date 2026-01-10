@@ -159,7 +159,6 @@ The generator reads category JSON files, groups events by control type, detects 
 - Automatically generates event triggers with appropriate prefixes (>B: for custom TFDi events, >K: for standard MSFS events)
 - Generates appropriate comments for each control group
 - Creates standard headers with references to documentation
-- Supports property overrides via object format in JSON files
 - Integrates XML metadata for improved comment generation and type detection
 - Supports modular output with system grouping
 
@@ -193,31 +192,6 @@ The script extracts the following metadata from XML files to improve comment gen
 - **PULL_UP/DOWN, PUSH_UP/DOWN**: Detects push-pull controls (e.g., fire handles)
 
 Note: VAR_NAME and ANIM_CODE fields are used for lighting/animation in the aircraft model and are not needed for control mapping.
-
-### Event Overrides
-
-The generator supports overriding YAML properties for individual events. While the default format uses simple strings:
-
-```json
-"events": [
-  "CTR_ANTISKID_BT_LEFT_BUTTON_DOWN",
-  "CTR_ANTISKID_BT_LEFT_BUTTON_UP"
-]
-```
-
-You can use an object format to specify overrides:
-
-```json
-"events": [
-  "CTR_ANTISKID_BT_LEFT_BUTTON_DOWN",
-  {
-    "event": "CTR_AUX_HYD_PUMP_BT_LEFT_BUTTON_DOWN",
-    "increment_by": 2
-  }
-]
-```
-
-The generator will automatically apply these overrides to the generated YAML entries. Both formats can be mixed in the same JSON file.
 
 ### Flags
 
