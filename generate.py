@@ -261,6 +261,86 @@ def get_aircraft_file_path(custom_output_path=None):
         # Default location: FS Copilot uses Definitions/ folder
         return script_dir / "Definitions" / aircraft_filename
 
+def get_local_definitions_path():
+    """Get the local Definitions folder path in the project root.
+    
+    Returns:
+        Path object to the local Definitions folder
+    """
+    script_dir = Path(__file__).parent
+    return script_dir / "Definitions"
+
+def write_file_to_multiple_locations(content, file_path, also_write_local=True):
+    """Write file content to the specified path and also to local Definitions folder if different.
+    
+    Args:
+        content: File content to write (string)
+        file_path: Primary destination path
+        also_write_local: If True, also write to local Definitions folder
+    
+    Returns:
+        List of paths where file was written
+    """
+    written_paths = []
+    
+    # Ensure content ends with newline
+    if not content.endswith('\n'):
+        content += '\n'
+    
+    # Write to primary location
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+    written_paths.append(file_path)
+    
+    # Also write to local Definitions folder if enabled and path is different
+    if also_write_local:
+        local_definitions = get_local_definitions_path()
+        local_file_path = local_definitions / file_path.name
+        
+        # Only write to local if it's a different path
+        if local_file_path.resolve() != file_path.resolve():
+            local_file_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(local_file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            written_paths.append(local_file_path)
+    
+    return written_paths
+
+def write_module_file_to_multiple_locations(content, module_file_path, custom_modules_dir=None):
+    """Write module file to primary location and also to local Definitions/modules/tfdi-md11/.
+    
+    Args:
+        content: File content to write (string)
+        module_file_path: Primary destination path (typically local Definitions/modules/tfdi-md11/)
+        custom_modules_dir: Optional custom modules directory path (also writes here if provided)
+    
+    Returns:
+        List of paths where file was written
+    """
+    written_paths = []
+    
+    # Ensure content ends with newline
+    if not content.endswith('\n'):
+        content += '\n'
+    
+    # Write to primary location (local Definitions/modules/tfdi-md11/)
+    module_file_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(module_file_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+    written_paths.append(module_file_path)
+    
+    # Also write to custom modules directory if provided and different
+    if custom_modules_dir:
+        custom_module_path = custom_modules_dir / module_file_path.name
+        if custom_module_path.resolve() != module_file_path.resolve():
+            custom_module_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(custom_module_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            written_paths.append(custom_module_path)
+    
+    return written_paths
+
 def load_variables():
     """Load L: variables from variables.json file."""
     script_dir = Path(__file__).parent
@@ -921,18 +1001,21 @@ def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
         output_lines.append("")
         output_lines.append(parsed['master'])
     
-    with open(aircraft_file, 'w') as f:
-        content = '\n'.join(output_lines)
-        if not content.endswith('\n'):
-            content += '\n'
-        f.write(content)
+    content = '\n'.join(output_lines)
+    write_file_to_multiple_locations(content, aircraft_file)
     
     validation_error = validate_yaml_file(aircraft_file)
     if validation_error:
         print(f"ERROR: Invalid YAML: {validation_error}")
         sys.exit(1)
     
-    print(f"Merged {len(category_files)} categories into {aircraft_file}")
+    local_definitions = get_local_definitions_path()
+    local_file_path = local_definitions / aircraft_file.name
+    if local_file_path.resolve() != aircraft_file.resolve():
+        print(f"Merged {len(category_files)} categories into {aircraft_file}")
+        print(f"Also exported to local: {local_file_path}")
+    else:
+        print(f"Merged {len(category_files)} categories into {aircraft_file}")
 
 def update_aircraft_file_includes(aircraft_file, category_files):
     """Update the aircraft file to include all generated TFDI MD-11 modules (FS Copilot format)."""
@@ -994,11 +1077,11 @@ def update_aircraft_file_includes(aircraft_file, category_files):
         output_lines.append("")
         output_lines.append(parsed['master'])
     
-    # Write the file
-    with open(aircraft_file, 'w') as f:
-        f.write('\n'.join(output_lines))
-        if not output_lines[-1].endswith('\n'):
-            f.write('\n')
+    # Write the file to both custom path and local Definitions
+    content = '\n'.join(output_lines)
+    if not output_lines[-1].endswith('\n'):
+        content += '\n'
+    written_paths = write_file_to_multiple_locations(content, aircraft_file)
     
     # Validate the updated aircraft file
     validation_error = validate_yaml_file(aircraft_file)
@@ -1007,7 +1090,12 @@ def update_aircraft_file_includes(aircraft_file, category_files):
         print(f"{validation_error}")
         sys.exit(1)
     
-    print(f"Updated aircraft file includes: {len(tfdi_includes)} TFDI modules")
+    if len(written_paths) > 1:
+        print(f"Updated aircraft file includes: {len(tfdi_includes)} TFDI modules")
+        print(f"  Exported to: {aircraft_file}")
+        print(f"  Also exported to: {written_paths[1]}")
+    else:
+        print(f"Updated aircraft file includes: {len(tfdi_includes)} TFDI modules")
 
 def update_existing_yaml(output_file, events, description, variables):
     """Update existing YAML file with new events, preserving structure."""
@@ -1018,9 +1106,8 @@ def update_existing_yaml(output_file, events, description, variables):
     # For now, just regenerate (could be improved to do true merging)
     yaml_content = generate_yaml(output_file.stem.replace('TFDi_MD11_', ''), events, description, variables)
     
-    with open(output_file, 'w') as f:
-        f.write(yaml_content)
-    
+    # For update_existing_yaml, we don't have custom_modules_dir context, so just write locally
+    written_paths = write_module_file_to_multiple_locations(yaml_content, output_file, None)
     print(f"Updated: {output_file}")
 
 def clean_category_file(category_file):
@@ -1150,13 +1237,19 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
     Args:
         split_mode: If True, generate modular output files. If False (default), consolidate into main file.
         grouped_split: If True and split_mode is True, organize categories by cockpit system and panel location.
-        custom_output_path: Optional custom output directory path for aircraft file
+        custom_output_path: Optional custom output directory path for aircraft file (modules also written here in split mode)
     """
     script_dir = Path(__file__).parent
     data_dir = script_dir / "tfdi-md11-data" / "json"
-    # FS Copilot uses Definitions/modules/ folder structure
+    # Always use local Definitions/modules/ folder structure for modules
     modules_dir = script_dir / "Definitions" / "modules" / "tfdi-md11"
     aircraft_file = get_aircraft_file_path(custom_output_path)
+    
+    # Determine custom modules directory if custom output path is provided
+    custom_modules_dir = None
+    if custom_output_path:
+        custom_path = Path(str(custom_output_path).rstrip('/\\'))
+        custom_modules_dir = custom_path / "modules" / "tfdi-md11"
     
     print("=" * 60)
     if split_mode:
@@ -1262,10 +1355,8 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                 combined_description = f"{group_name.replace('_', ' ')} ({', '.join(all_group_descriptions)})"
                 yaml_content = generate_yaml(group_name, all_group_events, combined_description, variables)
                 
-                # Write output
-                group_output_file.parent.mkdir(parents=True, exist_ok=True)
-                with open(group_output_file, 'w') as f:
-                    f.write(yaml_content)
+                # Write output to both custom path and local Definitions
+                written_paths = write_module_file_to_multiple_locations(yaml_content, group_output_file, custom_modules_dir)
                 
                 # Validate
                 validation_error = validate_yaml_file(group_output_file)
@@ -1328,9 +1419,7 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                             continue
                         
                         yaml_content = generate_yaml(category, events, description, variables)
-                        output_file.parent.mkdir(parents=True, exist_ok=True)
-                        with open(output_file, 'w') as f:
-                            f.write(yaml_content)
+                        written_paths = write_module_file_to_multiple_locations(yaml_content, output_file, custom_modules_dir)
                         
                         validation_error = validate_yaml_file(output_file)
                         if validation_error:
@@ -1418,10 +1507,11 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                     output_lines.append("")
                     output_lines.append(parsed['master'])
                 
-                with open(aircraft_file, 'w') as f:
-                    f.write('\n'.join(output_lines))
-                    if not output_lines[-1].endswith('\n'):
-                        f.write('\n')
+                # Write to both custom path and local Definitions
+                content = '\n'.join(output_lines)
+                if not output_lines[-1].endswith('\n'):
+                    content += '\n'
+                written_paths = write_file_to_multiple_locations(content, aircraft_file)
                 
                 # Validate
                 validation_error = validate_yaml_file(aircraft_file)
@@ -1429,6 +1519,11 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                     print(f"\nERROR: Invalid YAML in aircraft file after updating includes")
                     print(f"{validation_error}")
                     sys.exit(1)
+                
+                if len(written_paths) > 1:
+                    print(f"\n  Aircraft file updated and exported to:")
+                    print(f"    {aircraft_file}")
+                    print(f"    {written_paths[1]}")
         else:
             # Modular mode with individual categories: one file per category
             generated_count = 0
@@ -1462,10 +1557,8 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                     # Generate YAML
                     yaml_content = generate_yaml(category, events, description, variables)
                     
-                    # Write output
-                    output_file.parent.mkdir(parents=True, exist_ok=True)
-                    with open(output_file, 'w') as f:
-                        f.write(yaml_content)
+                    # Write output to both custom path and local Definitions
+                    written_paths = write_module_file_to_multiple_locations(yaml_content, output_file, custom_modules_dir)
                     
                     # Validate the generated YAML
                     validation_error = validate_yaml_file(output_file)
@@ -1617,12 +1710,17 @@ def main():
         modules_dir.mkdir(parents=True, exist_ok=True)
         output_file = modules_dir / f"TFDi_MD11_{category}.yaml"
         
+        # Determine custom modules directory if custom output path is provided
+        custom_modules_dir = None
+        if custom_output_path:
+            custom_path = Path(str(custom_output_path).rstrip('/\\'))
+            custom_modules_dir = custom_path / "modules" / "tfdi-md11"
+        
         # Generate YAML
         yaml_content = generate_yaml(category, events, description, variables)
         
-        # Write output
-        with open(output_file, 'w') as f:
-            f.write(yaml_content)
+        # Write output to both custom path and local Definitions
+        written_paths = write_module_file_to_multiple_locations(yaml_content, output_file, custom_modules_dir)
         
         # Validate the generated YAML
         validation_error = validate_yaml_file(output_file)
@@ -1734,18 +1832,19 @@ def main():
             output_lines.append("")
             output_lines.append(parsed['master'])
         
-        with open(aircraft_file, 'w') as f:
-            content = '\n'.join(output_lines)
-            if not content.endswith('\n'):
-                content += '\n'
-            f.write(content)
+        content = '\n'.join(output_lines)
+        written_paths = write_file_to_multiple_locations(content, aircraft_file)
         
         validation_error = validate_yaml_file(aircraft_file)
         if validation_error:
             print(f"ERROR: Invalid YAML: {validation_error}")
             sys.exit(1)
         
-        print(f"Merged {category} into: {aircraft_file}")
+        if len(written_paths) > 1:
+            print(f"Merged {category} into: {aircraft_file}")
+            print(f"Also exported to local: {written_paths[1]}")
+        else:
+            print(f"Merged {category} into: {aircraft_file}")
         print(f"Events: {len(events)}")
         
         # Count FS Copilot format entries
