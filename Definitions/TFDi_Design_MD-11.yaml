@@ -1,0 +1,3095 @@
+# TFDi Design MD-11 Configuration File for FS Copilot
+# Events reference: https://docs.tfdidesign.com/md11/integration-guide/events
+# Variables reference: https://docs.tfdidesign.com/md11/integration-guide/variables
+
+include:
+
+shared:
+  - # APU Fire Handle
+    get: L:MD11_AOVHD_APUFIRE_KB
+    set: "`${value} (>L:MD11_AOVHD_APUFIRE_KB)`"
+
+  - # APU Fire Handle
+    set: (>B:AOVHD_APUFIRE_KB_LEFT_BUTTON_DOWN)
+
+  - # APU Generator
+    get: L:MD11_AOVHD_APU_GEN_BT
+    set: "value ? '(>B:AOVHD_APU_GEN_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_APU_GEN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # APU Start
+    get: L:MD11_AOVHD_APU_START_BT
+    set: "value ? '(>B:AOVHD_APU_START_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_APU_START_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Aft Lower Cargo Fire Suppression Bottle 1
+    get: L:MD11_AOVHD_CRGSMK_AFT_AGNT1_BT
+    set: "value ? '(>B:AOVHD_CRGSMK_AFT_AGNT1_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_AFT_AGNT1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Aft Lower Cargo Fire Suppression Bottle 1 (Guard)
+    set: (>B:AOVHD_CRGSMK_AFT_AGNT1_GRD_LEFT_BUTTON_DOWN)
+
+  - # Aft Lower Cargo Fire Suppression Bottle 2
+    get: L:MD11_AOVHD_CRGSMK_AFT_AGNT2_BT
+    set: "value ? '(>B:AOVHD_CRGSMK_AFT_AGNT2_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_AFT_AGNT2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Aft Lower Cargo Fire Suppression Bottle 2 (Guard)
+    set: (>B:AOVHD_CRGSMK_AFT_AGNT2_GRD_LEFT_BUTTON_DOWN)
+
+  - # Aft Lower Cargo Ventilation
+    set: (>B:AOVHD_CRGSMK_AFT_VENT_SW_LEFT_BUTTON_DOWN)
+
+  - # Forward Lower Cargo Fire Suppression Bottle 1
+    get: L:MD11_AOVHD_CRGSMK_FWD_AGNT1_BT
+    set: "value ? '(>B:AOVHD_CRGSMK_FWD_AGNT1_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_FWD_AGNT1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Forward Lower Cargo Fire Suppression Bottle 1 (Guard)
+    set: (>B:AOVHD_CRGSMK_FWD_AGNT1_GRD_LEFT_BUTTON_DOWN)
+
+  - # Forward Lower Cargo Fire Suppression Bottle 2
+    get: L:MD11_AOVHD_CRGSMK_FWD_AGNT2_BT
+    set: "value ? '(>B:AOVHD_CRGSMK_FWD_AGNT2_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_FWD_AGNT2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Forward Lower Cargo Fire Suppression Bottle 2 (Guard)
+    set: (>B:AOVHD_CRGSMK_FWD_AGNT2_GRD_LEFT_BUTTON_DOWN)
+
+  - # Forward Lower Cargo Ventilation
+    set: (>B:AOVHD_CRGSMK_FWD_VENT_SW_LEFT_BUTTON_DOWN)
+
+  - # Cargo Fire and Smoke Test
+    get: L:MD11_AOVHD_CRGSMK_TEST_BT
+    set: "value ? '(>B:AOVHD_CRGSMK_TEST_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Eng1Fire 1
+    set: (>B:AOVHD_ENG1FIRE_1_KB_LEFT_BUTTON_DOWN)
+
+  - # Eng1Fire 2
+    set: (>B:AOVHD_ENG1FIRE_2_KB_LEFT_BUTTON_DOWN)
+
+  - # Engine 1 Fire Handle
+    get: L:MD11_AOVHD_ENG1FIRE_KB
+    set: "`${value} (>L:MD11_AOVHD_ENG1FIRE_KB)`"
+
+  - # Eng2Fire 1
+    set: (>B:AOVHD_ENG2FIRE_1_KB_LEFT_BUTTON_DOWN)
+
+  - # Eng2Fire 2
+    set: (>B:AOVHD_ENG2FIRE_2_KB_LEFT_BUTTON_DOWN)
+
+  - # Engine 2 Fire Handle
+    get: L:MD11_AOVHD_ENG2FIRE_KB
+    set: "`${value} (>L:MD11_AOVHD_ENG2FIRE_KB)`"
+
+  - # Eng3Fire 1
+    set: (>B:AOVHD_ENG3FIRE_1_KB_LEFT_BUTTON_DOWN)
+
+  - # Eng3Fire 2
+    set: (>B:AOVHD_ENG3FIRE_2_KB_LEFT_BUTTON_DOWN)
+
+  - # Engine 3 Fire Handle
+    get: L:MD11_AOVHD_ENG3FIRE_KB
+    set: "`${value} (>L:MD11_AOVHD_ENG3FIRE_KB)`"
+
+  - # Evac (Guard)
+    set: (>B:AOVHD_EVAC_GRD_LEFT_BUTTON_DOWN)
+
+  - # EVAC Horn Shutoff
+    set: (>B:AOVHD_EVAC_HORNSHUT_SW_LEFT_BUTTON_DOWN)
+
+  - # EVAC
+    set: (>B:AOVHD_EVAC_SW_LEFT_BUTTON_DOWN)
+
+  - # EVAC (Right)
+    set: (>B:AOVHD_EVAC_SW_RIGHT_BUTTON_DOWN)
+
+  - # APU Fire Test
+    get: L:MD11_AOVHD_FIRETEST_BT
+    set: "value ? '(>B:AOVHD_FIRETEST_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_FIRETEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Gpws (Guard)
+    set: (>B:AOVHD_GPWS_GRD_LEFT_BUTTON_DOWN)
+
+  - # GPWS
+    set: (>B:AOVHD_GPWS_SW_LEFT_BUTTON_DOWN)
+
+  - # GPWS (Right)
+    set: (>B:AOVHD_GPWS_SW_RIGHT_BUTTON_DOWN)
+
+  - # GPWS Terrain Override
+    get: L:MD11_AOVHD_GPWS_TERROVRD_BT
+    set: "value ? '(>B:AOVHD_GPWS_TERROVRD_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_GPWS_TERROVRD_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Gpws Terrovrd (Guard)
+    set: (>B:AOVHD_GPWS_TERROVRD_GRD_LEFT_BUTTON_DOWN)
+  - # Observer ADF1 Volume
+    get: L:MD11_OBS_AUDIO_PNL_ADF1_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_ADF1_VOL_KB)`"
+
+  - # Observer ADF1 Volume
+    set: (>B:OBS_AUDIO_PNL_ADF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer ADF2 Volume
+    get: L:MD11_OBS_AUDIO_PNL_ADF2_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_ADF2_VOL_KB)`"
+
+  - # Observer ADF2 Volume
+    set: (>B:OBS_AUDIO_PNL_ADF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer Cabin Mic Select
+    get: L:MD11_OBS_AUDIO_PNL_CAB_MIC_BT
+    set: "value ? '(>B:OBS_AUDIO_PNL_CAB_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_CAB_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer Cabin Volume
+    get: L:MD11_OBS_AUDIO_PNL_CAB_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_CAB_VOL_KB)`"
+
+  - # Observer Cabin Volume
+    set: (>B:OBS_AUDIO_PNL_CAB_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer HF1 Mic Select
+    get: L:MD11_OBS_AUDIO_PNL_HF1_MIC_BT
+    set: "value ? '(>B:OBS_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer HF1 Volume
+    get: L:MD11_OBS_AUDIO_PNL_HF1_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_HF1_VOL_KB)`"
+
+  - # Observer HF1 Volume
+    set: (>B:OBS_AUDIO_PNL_HF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer HF2 Mic Select
+    get: L:MD11_OBS_AUDIO_PNL_HF2_MIC_BT
+    set: "value ? '(>B:OBS_AUDIO_PNL_HF2_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_HF2_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer HF2 Volume
+    get: L:MD11_OBS_AUDIO_PNL_HF2_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_HF2_VOL_KB)`"
+
+  - # Observer HF2 Volume
+    set: (>B:OBS_AUDIO_PNL_HF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer Ident
+    get: L:MD11_OBS_AUDIO_PNL_IDENT_BT
+    set: "value ? '(>B:OBS_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer ILS1 Volume
+    get: L:MD11_OBS_AUDIO_PNL_ILS1_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_ILS1_VOL_KB)`"
+
+  - # Observer ILS1 Volume
+    set: (>B:OBS_AUDIO_PNL_ILS1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer ILS2 Volume
+    get: L:MD11_OBS_AUDIO_PNL_ILS2_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_ILS2_VOL_KB)`"
+
+  - # Observer ILS2 Volume
+    set: (>B:OBS_AUDIO_PNL_ILS2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer Interphone Mic Select
+    get: L:MD11_OBS_AUDIO_PNL_INT_MIC_BT
+    set: "value ? '(>B:OBS_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer Interphone/Radio Override
+    set: (>B:OBS_AUDIO_PNL_INT_RADIO_SW_LEFT_BUTTON_DOWN)
+
+  - # Observer Interphone/Radio Override (Right)
+    set: (>B:OBS_AUDIO_PNL_INT_RADIO_SW_RIGHT_BUTTON_DOWN)
+
+  - # Observer Interphone Volume
+    get: L:MD11_OBS_AUDIO_PNL_INT_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_INT_VOL_KB)`"
+
+  - # Observer Interphone Volume
+    set: (>B:OBS_AUDIO_PNL_INT_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer Marker Volume
+    get: L:MD11_OBS_AUDIO_PNL_MKR_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_MKR_VOL_KB)`"
+
+  - # Observer Marker Volume
+    set: (>B:OBS_AUDIO_PNL_MKR_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer PA Volume
+    get: L:MD11_OBS_AUDIO_PNL_PA_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_PA_VOL_KB)`"
+
+  - # Observer PA Volume
+    set: (>B:OBS_AUDIO_PNL_PA_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer Satellite Mic Select
+    get: L:MD11_OBS_AUDIO_PNL_SAT_MIC_BT
+    set: "value ? '(>B:OBS_AUDIO_PNL_SAT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_SAT_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer Satellite Volume
+    get: L:MD11_OBS_AUDIO_PNL_SAT_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_SAT_VOL_KB)`"
+
+  - # Observer Satellite Volume
+    set: (>B:OBS_AUDIO_PNL_SAT_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer VHF1 Mic Select
+    get: L:MD11_OBS_AUDIO_PNL_VHF1_MIC_BT
+    set: "value ? '(>B:OBS_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer VHF1 Volume
+    get: L:MD11_OBS_AUDIO_PNL_VHF1_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VHF1_VOL_KB)`"
+
+  - # Observer VHF1 Volume
+    set: (>B:OBS_AUDIO_PNL_VHF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer VHF2 Mic Select
+    get: L:MD11_OBS_AUDIO_PNL_VHF2_MIC_BT
+    set: "value ? '(>B:OBS_AUDIO_PNL_VHF2_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_VHF2_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer VHF2 Volume
+    get: L:MD11_OBS_AUDIO_PNL_VHF2_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VHF2_VOL_KB)`"
+
+  - # Observer VHF2 Volume
+    set: (>B:OBS_AUDIO_PNL_VHF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer VHF3 Mic Select
+    set: (>B:OBS_AUDIO_PNL_VHF3_MIC_BT_LEFT_BUTTON_UP)
+
+  - # Observer VHF3 Volume
+    get: L:MD11_OBS_AUDIO_PNL_VHF3_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VHF3_VOL_KB)`"
+
+  - # Observer VHF3 Volume
+    set: (>B:OBS_AUDIO_PNL_VHF3_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer VOR1 Volume
+    get: L:MD11_OBS_AUDIO_PNL_VOR1_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VOR1_VOL_KB)`"
+
+  - # Observer VOR1 Volume
+    set: (>B:OBS_AUDIO_PNL_VOR1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Observer VOR2 Volume
+    get: L:MD11_OBS_AUDIO_PNL_VOR2_VOL_KB
+    set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VOR2_VOL_KB)`"
+
+  - # Observer VOR2 Volume
+    set: (>B:OBS_AUDIO_PNL_VOR2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain ADF1 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_ADF1_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_ADF1_VOL_KB)`"
+
+  - # Captain ADF1 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_ADF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain ADF2 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_ADF2_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_ADF2_VOL_KB)`"
+
+  - # Captain ADF2 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_ADF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain Cabin Mic Select
+    get: L:MD11_PED_CPT_AUDIO_PNL_CAB_MIC_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_CAB_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_CAB_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Cabin Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_CAB_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_CAB_VOL_KB)`"
+
+  - # Captain Cabin Volume
+    set: (>B:PED_CPT_AUDIO_PNL_CAB_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain HF1 Mic Select
+    get: L:MD11_PED_CPT_AUDIO_PNL_HF1_MIC_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain HF1 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_HF1_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_HF1_VOL_KB)`"
+
+  - # Captain HF1 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_HF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain HF2 Mic Select
+    get: L:MD11_PED_CPT_AUDIO_PNL_HF2_MIC_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_HF2_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_HF2_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain HF2 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_HF2_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_HF2_VOL_KB)`"
+
+  - # Captain HF2 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_HF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain Ident
+    get: L:MD11_PED_CPT_AUDIO_PNL_IDENT_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ILS1 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_ILS1_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_ILS1_VOL_KB)`"
+
+  - # Captain ILS1 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_ILS1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain ILS2 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_ILS2_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_ILS2_VOL_KB)`"
+
+  - # Captain ILS2 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_ILS2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain Interphone Mic Select
+    get: L:MD11_PED_CPT_AUDIO_PNL_INT_MIC_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Interphone/Radio Override
+    set: (>B:PED_CPT_AUDIO_PNL_INT_RADIO_SW_LEFT_BUTTON_DOWN)
+
+  - # Captain Interphone/Radio Override (Right)
+    set: (>B:PED_CPT_AUDIO_PNL_INT_RADIO_SW_RIGHT_BUTTON_DOWN)
+
+  - # Captain Interphone Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_INT_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_INT_VOL_KB)`"
+
+  - # Captain Interphone Volume
+    set: (>B:PED_CPT_AUDIO_PNL_INT_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain Marker Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_MKR_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_MKR_VOL_KB)`"
+
+  - # Captain Marker Volume
+    set: (>B:PED_CPT_AUDIO_PNL_MKR_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain PA Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_PA_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_PA_VOL_KB)`"
+
+  - # Captain PA Volume
+    set: (>B:PED_CPT_AUDIO_PNL_PA_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain Satellite Mic Select
+    get: L:MD11_PED_CPT_AUDIO_PNL_SAT_MIC_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_SAT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_SAT_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Satellite Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_SAT_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_SAT_VOL_KB)`"
+
+  - # Captain VHF1 Mic Select
+    get: L:MD11_PED_CPT_AUDIO_PNL_VHF1_MIC_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain VHF1 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_VHF1_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VHF1_VOL_KB)`"
+
+  - # Captain VHF1 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_VHF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain VHF2 Mic Select
+    get: L:MD11_PED_CPT_AUDIO_PNL_VHF2_MIC_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_VHF2_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_VHF2_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain VHF2 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_VHF2_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VHF2_VOL_KB)`"
+
+  - # Captain VHF2 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_VHF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain VHF3 Mic Select
+    get: L:MD11_PED_CPT_AUDIO_PNL_VHF3_MIC_BT
+    set: "value ? '(>B:PED_CPT_AUDIO_PNL_VHF3_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_VHF3_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain VHF3 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_VHF3_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VHF3_VOL_KB)`"
+
+  - # Captain VHF3 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_VHF3_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain VOR1 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_VOR1_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VOR1_VOL_KB)`"
+
+  - # Captain VOR1 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_VOR1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain VOR2 Volume
+    get: L:MD11_PED_CPT_AUDIO_PNL_VOR2_VOL_KB
+    set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VOR2_VOL_KB)`"
+
+  - # Captain VOR2 Volume
+    set: (>B:PED_CPT_AUDIO_PNL_VOR2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer ADF1 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_ADF1_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_ADF1_VOL_KB)`"
+
+  - # First Officer ADF1 Volume
+    set: (>B:PED_FO_AUDIO_PNL_ADF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer ADF2 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_ADF2_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_ADF2_VOL_KB)`"
+
+  - # First Officer ADF2 Volume
+    set: (>B:PED_FO_AUDIO_PNL_ADF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer Cabin Mic Select
+    get: L:MD11_PED_FO_AUDIO_PNL_CAB_MIC_BT
+    set: "value ? '(>B:PED_FO_AUDIO_PNL_CAB_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_CAB_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Cabin Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_CAB_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_CAB_VOL_KB)`"
+
+  - # First Officer Cabin Volume
+    set: (>B:PED_FO_AUDIO_PNL_CAB_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer HF1 Mic Select
+    get: L:MD11_PED_FO_AUDIO_PNL_HF1_MIC_BT
+    set: "value ? '(>B:PED_FO_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer HF1 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_HF1_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_HF1_VOL_KB)`"
+
+  - # First Officer HF1 Volume
+    set: (>B:PED_FO_AUDIO_PNL_HF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer HF2 Mic Select
+    get: L:MD11_PED_FO_AUDIO_PNL_HF2_MIC_BT
+    set: "value ? '(>B:PED_FO_AUDIO_PNL_HF2_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_HF2_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer HF2 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_HF2_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_HF2_VOL_KB)`"
+
+  - # First Officer HF2 Volume
+    set: (>B:PED_FO_AUDIO_PNL_HF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer Ident
+    get: L:MD11_PED_FO_AUDIO_PNL_IDENT_BT
+    set: "value ? '(>B:PED_FO_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ILS1 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_ILS1_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_ILS1_VOL_KB)`"
+
+  - # First Officer ILS1 Volume
+    set: (>B:PED_FO_AUDIO_PNL_ILS1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer ILS2 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_ILS2_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_ILS2_VOL_KB)`"
+
+  - # First Officer ILS2 Volume
+    set: (>B:PED_FO_AUDIO_PNL_ILS2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer Interphone Mic Select
+    get: L:MD11_PED_FO_AUDIO_PNL_INT_MIC_BT
+    set: "value ? '(>B:PED_FO_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Interphone/Radio Override
+    set: (>B:PED_FO_AUDIO_PNL_INT_RADIO_SW_LEFT_BUTTON_DOWN)
+
+  - # First Officer Interphone/Radio Override (Right)
+    set: (>B:PED_FO_AUDIO_PNL_INT_RADIO_SW_RIGHT_BUTTON_DOWN)
+
+  - # First Officer Interphone Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_INT_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_INT_VOL_KB)`"
+
+  - # First Officer Interphone Volume
+    set: (>B:PED_FO_AUDIO_PNL_INT_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer Marker Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_MKR_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_MKR_VOL_KB)`"
+
+  - # First Officer Marker Volume
+    set: (>B:PED_FO_AUDIO_PNL_MKR_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer PA Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_PA_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_PA_VOL_KB)`"
+
+  - # First Officer Satellite Mic Select
+    get: L:MD11_PED_FO_AUDIO_PNL_SAT_MIC_BT
+    set: "value ? '(>B:PED_FO_AUDIO_PNL_SAT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_SAT_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Satellite Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_SAT_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_SAT_VOL_KB)`"
+
+  - # First Officer Satellite Volume
+    set: (>B:PED_FO_AUDIO_PNL_SAT_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer VHF1 Mic Select
+    get: L:MD11_PED_FO_AUDIO_PNL_VHF1_MIC_BT
+    set: "value ? '(>B:PED_FO_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer VHF1 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_VHF1_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VHF1_VOL_KB)`"
+
+  - # First Officer VHF1 Volume
+    set: (>B:PED_FO_AUDIO_PNL_VHF1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer VHF2 Mic Select
+    set: (>B:PED_FO_AUDIO_PNL_VHF2_MIC_BT_LEFT_BUTTON_DOWN)
+
+  - # First Officer VHF2 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_VHF2_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VHF2_VOL_KB)`"
+
+  - # First Officer VHF2 Volume
+    set: (>B:PED_FO_AUDIO_PNL_VHF2_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer VHF3 Mic Select
+    get: L:MD11_PED_FO_AUDIO_PNL_VHF3_MIC_BT
+    set: "value ? '(>B:PED_FO_AUDIO_PNL_VHF3_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_VHF3_MIC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer VHF3 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_VHF3_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VHF3_VOL_KB)`"
+
+  - # First Officer VHF3 Volume
+    set: (>B:PED_FO_AUDIO_PNL_VHF3_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer VOR1 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_VOR1_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VOR1_VOL_KB)`"
+
+  - # First Officer VOR1 Volume
+    set: (>B:PED_FO_AUDIO_PNL_VOR1_VOL_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer VOR2 Volume
+    get: L:MD11_PED_FO_AUDIO_PNL_VOR2_VOL_KB
+    set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VOR2_VOL_KB)`"
+
+  - # First Officer VOR2 Volume
+    set: (>B:PED_FO_AUDIO_PNL_VOR2_VOL_KB_LEFT_BUTTON_DOWN)
+  - # Autoflight System 1 Override
+    set: (>B:CGS_AFSOVRD1_SW_LEFT_BUTTON_DOWN)
+
+  - # Autoflight System 2 Override
+    set: (>B:CGS_AFSOVRD2_SW_LEFT_BUTTON_DOWN)
+
+  - # Autopilot Altitude Select
+    get: L:MD11_CGS_ALT_KB
+    set: "`${value} (>L:MD11_CGS_ALT_KB)`"
+
+  - # Alt Pull
+    get: L:MD11_CGS_ALT_PULL_BT
+    set: "value ? '(>B:CGS_ALT_PULL_BT_LEFT_BUTTON_UP)' : '(>B:CGS_ALT_PULL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Alt Push
+    get: L:MD11_CGS_ALT_PUSH_BT
+    set: "value ? '(>B:CGS_ALT_PUSH_BT_LEFT_BUTTON_UP)' : '(>B:CGS_ALT_PUSH_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Approach/Land Engage
+    get: L:MD11_CGS_APPRLAND_BT
+    set: "value ? '(>B:CGS_APPRLAND_BT_LEFT_BUTTON_UP)' : '(>B:CGS_APPRLAND_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Autoflight Engage
+    get: L:MD11_CGS_AUTOFLIGHT_BT
+    set: "value ? '(>B:CGS_AUTOFLIGHT_BT_LEFT_BUTTON_UP)' : '(>B:CGS_AUTOFLIGHT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # FGS Flood Lighting
+    get: L:MD11_CGS_FLOOD_LT_KB
+    set: "`${value} (>L:MD11_CGS_FLOOD_LT_KB)`"
+
+  - # FMS Speed Engage
+    get: L:MD11_CGS_FMSSPD_BT
+    set: "value ? '(>B:CGS_FMSSPD_BT_LEFT_BUTTON_UP)' : '(>B:CGS_FMSSPD_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Altitude Unit Select
+    get: L:MD11_CGS_FTM_BT
+    set: "value ? '(>B:CGS_FTM_BT_LEFT_BUTTON_UP)' : '(>B:CGS_FTM_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Heading/Track Select
+    get: L:MD11_CGS_HDGTRK_BT
+    set: "value ? '(>B:CGS_HDGTRK_BT_LEFT_BUTTON_UP)' : '(>B:CGS_HDGTRK_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Autopilot Bank Angle Limiter
+    set: (>B:CGS_HDG_BASE_KB_LEFT_BUTTON_DOWN)
+
+  - # Autopilot Bank Angle Limiter
+    set: (>B:CGS_HDG_BASE_KB_RIGHT_BUTTON_DOWN)
+
+  - # Autopilot %
+    get: L:MD11_CGS_HDG_KB
+    set: "`${value} (>L:MD11_CGS_HDG_KB)`"
+
+  - # Hdg Pull
+    get: L:MD11_CGS_HDG_PULL_BT
+    set: "value ? '(>B:CGS_HDG_PULL_BT_LEFT_BUTTON_UP)' : '(>B:CGS_HDG_PULL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Hdg Push
+    get: L:MD11_CGS_HDG_PUSH_BT
+    set: "value ? '(>B:CGS_HDG_PUSH_BT_LEFT_BUTTON_UP)' : '(>B:CGS_HDG_PUSH_BT_LEFT_BUTTON_DOWN)'"
+
+  - # IAS/MACH Select
+    get: L:MD11_CGS_IASMACH_BT
+    set: "value ? '(>B:CGS_IASMACH_BT_LEFT_BUTTON_UP)' : '(>B:CGS_IASMACH_BT_LEFT_BUTTON_DOWN)'"
+
+  - # NAV Engage
+    get: L:MD11_CGS_NAV_BT
+    set: "value ? '(>B:CGS_NAV_BT_LEFT_BUTTON_UP)' : '(>B:CGS_NAV_BT_LEFT_BUTTON_DOWN)'"
+
+  - # FGS Panel Lighting
+    get: L:MD11_CGS_PNL_LT_KB
+    set: "`${value} (>L:MD11_CGS_PNL_LT_KB)`"
+
+  - # PROF Engage
+    get: L:MD11_CGS_PROF_BT
+    set: "value ? '(>B:CGS_PROF_BT_LEFT_BUTTON_UP)' : '(>B:CGS_PROF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Autopilot %
+    get: L:MD11_CGS_SPD_KB
+    set: "`${value} (>L:MD11_CGS_SPD_KB)`"
+
+  - # Spd Pull
+    set: (>B:CGS_SPD_PULL_BT_LEFT_BUTTON_UP)
+
+  - # Spd Push
+    get: L:MD11_CGS_SPD_PUSH_BT
+    set: "value ? '(>B:CGS_SPD_PUSH_BT_LEFT_BUTTON_UP)' : '(>B:CGS_SPD_PUSH_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Vsfpa
+    get: L:MD11_CGS_VSFPA_BT
+    set: "value ? '(>B:CGS_VSFPA_BT_LEFT_BUTTON_UP)' : '(>B:CGS_VSFPA_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Autopilot %
+    get: L:MD11_CGS_VS_KB
+    set: "`${value} (>L:MD11_CGS_VS_KB)`"
+  - # Anti-Skid
+    get: L:MD11_CTR_ANTISKID_BT
+    set: "value ? '(>B:CTR_ANTISKID_BT_LEFT_BUTTON_UP)' : '(>B:CTR_ANTISKID_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Autobrake Switch
+    set: (>B:CTR_AUTOBRAKE_SW_LEFT_BUTTON_DOWN)
+
+  - # Autobrake Switch (Right)
+    set: (>B:CTR_AUTOBRAKE_SW_RIGHT_BUTTON_DOWN)
+
+  - # Auxiliary Hydraulic Pump 1
+    set: (>B:CTR_AUX_HYD_PUMP_BT_LEFT_BUTTON_DOWN)
+
+  - # Fltno1
+    set: (>B:CTR_FLTNO1_SW_WHEEL_DOWN)
+
+  - # Fltno1
+    set: (>B:CTR_FLTNO1_SW_WHEEL_UP)
+
+  - # Fltno2
+    set: (>B:CTR_FLTNO2_SW_WHEEL_DOWN)
+
+  - # Fltno2
+    set: (>B:CTR_FLTNO2_SW_WHEEL_UP)
+
+  - # Fltno3
+    set: (>B:CTR_FLTNO3_SW_WHEEL_DOWN)
+
+  - # Fltno3
+    set: (>B:CTR_FLTNO3_SW_WHEEL_UP)
+
+  - # Fltno4
+    set: (>B:CTR_FLTNO4_SW_WHEEL_DOWN)
+
+  - # Fltno4
+    set: (>B:CTR_FLTNO4_SW_WHEEL_UP)
+
+  - # Slat Stow
+    get: L:MD11_CTR_SLAT_STOW_BT
+    set: "value ? '(>B:CTR_SLAT_STOW_BT_LEFT_BUTTON_UP)' : '(>B:CTR_SLAT_STOW_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Slat Stow (Guard)
+    set: (>B:CTR_SLAT_STOW_GRD_LEFT_BUTTON_DOWN)
+  - # Dial-A-Flap
+    set: (>B:DIALAFLAP_WHEEL_RNG_WHEEL_DOWN)
+
+  - # Dial-A-Flap
+    set: (>B:DIALAFLAP_WHEEL_RNG_WHEEL_UP)
+
+  - # EFB_TOGGLE_LEFT_BUTTON_DOWN
+    set: (>B:EFB_TOGGLE_LEFT_BUTTON_DOWN)
+
+  - # Flaps/Slats
+    set: (>B:FLAP_LATCH_WHEEL_DOWN)
+
+  - # Flaps/Slats
+    set: (>B:FLAP_LATCH_WHEEL_UP)
+
+  - # FLIGHTDECK_DOOR_LEFT_BUTTON_DOWN
+    set: (>B:FLIGHTDECK_DOOR_LEFT_BUTTON_DOWN)
+
+  - # Spoilers
+    set: (>B:SPDBRK_HANDLE_LEFT_BUTTON_DOWN)
+
+  - # Spoilers
+    set: (>B:SPDBRK_HANDLE_WHEEL_DOWN)
+
+  - # Spoilers
+    set: (>B:SPDBRK_HANDLE_WHEEL_UP)
+  - # 0
+    get: L:MD11_CMCDU_0_BT
+    set: "value ? '(>B:CMCDU_0_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_0_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 1
+    get: L:MD11_CMCDU_1_BT
+    set: "value ? '(>B:CMCDU_1_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 2
+    get: L:MD11_CMCDU_2_BT
+    set: "value ? '(>B:CMCDU_2_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 3
+    get: L:MD11_CMCDU_3_BT
+    set: "value ? '(>B:CMCDU_3_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 4
+    get: L:MD11_CMCDU_4_BT
+    set: "value ? '(>B:CMCDU_4_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_4_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 5
+    get: L:MD11_CMCDU_5_BT
+    set: "value ? '(>B:CMCDU_5_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_5_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 6
+    get: L:MD11_CMCDU_6_BT
+    set: "value ? '(>B:CMCDU_6_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_6_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 7
+    get: L:MD11_CMCDU_7_BT
+    set: "value ? '(>B:CMCDU_7_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_7_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 8
+    get: L:MD11_CMCDU_8_BT
+    set: "value ? '(>B:CMCDU_8_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_8_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 9
+    get: L:MD11_CMCDU_9_BT
+    set: "value ? '(>B:CMCDU_9_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_9_BT_LEFT_BUTTON_DOWN)'"
+
+  - # A
+    get: L:MD11_CMCDU_A_BT
+    set: "value ? '(>B:CMCDU_A_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_A_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Center MCDU Brightness
+    get: L:MD11_CMCDU_BRT_KB
+    set: "`${value} (>L:MD11_CMCDU_BRT_KB)`"
+
+  - # B
+    get: L:MD11_CMCDU_B_BT
+    set: "value ? '(>B:CMCDU_B_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_B_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Clr
+    get: L:MD11_CMCDU_CLR_BT
+    set: "value ? '(>B:CMCDU_CLR_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_CLR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # C
+    get: L:MD11_CMCDU_C_BT
+    set: "value ? '(>B:CMCDU_C_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_C_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Dir Intc
+    get: L:MD11_CMCDU_DIR_INTC_BT
+    set: "value ? '(>B:CMCDU_DIR_INTC_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_DIR_INTC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Dot
+    set: (>B:CMCDU_DOT_BT_LEFT_BUTTON_DOWN)
+
+  - # Down
+    get: L:MD11_CMCDU_DOWN_BT
+    set: "value ? '(>B:CMCDU_DOWN_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_DOWN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # D
+    get: L:MD11_CMCDU_D_BT
+    set: "value ? '(>B:CMCDU_D_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_D_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Eng Out
+    get: L:MD11_CMCDU_ENG_OUT_BT
+    set: "value ? '(>B:CMCDU_ENG_OUT_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_ENG_OUT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # E
+    get: L:MD11_CMCDU_E_BT
+    set: "value ? '(>B:CMCDU_E_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_E_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fix
+    get: L:MD11_CMCDU_FIX_BT
+    set: "value ? '(>B:CMCDU_FIX_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_FIX_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fpln
+    get: L:MD11_CMCDU_FPLN_BT
+    set: "value ? '(>B:CMCDU_FPLN_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_FPLN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # F
+    get: L:MD11_CMCDU_F_BT
+    set: "value ? '(>B:CMCDU_F_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_F_BT_LEFT_BUTTON_DOWN)'"
+
+  - # G
+    get: L:MD11_CMCDU_G_BT
+    set: "value ? '(>B:CMCDU_G_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_G_BT_LEFT_BUTTON_DOWN)'"
+
+  - # H
+    get: L:MD11_CMCDU_H_BT
+    set: "value ? '(>B:CMCDU_H_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_H_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Init
+    get: L:MD11_CMCDU_INIT_BT
+    set: "value ? '(>B:CMCDU_INIT_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_INIT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # I
+    set: (>B:CMCDU_I_BT_LEFT_BUTTON_UP)
+
+  - # J
+    get: L:MD11_CMCDU_J_BT
+    set: "value ? '(>B:CMCDU_J_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_J_BT_LEFT_BUTTON_DOWN)'"
+
+  - # K
+    get: L:MD11_CMCDU_K_BT
+    set: "value ? '(>B:CMCDU_K_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_K_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 1L
+    get: L:MD11_CMCDU_LSK_1L_BT
+    set: "value ? '(>B:CMCDU_LSK_1L_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_1L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 1R
+    get: L:MD11_CMCDU_LSK_1R_BT
+    set: "value ? '(>B:CMCDU_LSK_1R_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_1R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 2L
+    get: L:MD11_CMCDU_LSK_2L_BT
+    set: "value ? '(>B:CMCDU_LSK_2L_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_2L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 2R
+    get: L:MD11_CMCDU_LSK_2R_BT
+    set: "value ? '(>B:CMCDU_LSK_2R_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_2R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 3L
+    get: L:MD11_CMCDU_LSK_3L_BT
+    set: "value ? '(>B:CMCDU_LSK_3L_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_3L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 3R
+    get: L:MD11_CMCDU_LSK_3R_BT
+    set: "value ? '(>B:CMCDU_LSK_3R_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_3R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 4L
+    get: L:MD11_CMCDU_LSK_4L_BT
+    set: "value ? '(>B:CMCDU_LSK_4L_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_4L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 4R
+    get: L:MD11_CMCDU_LSK_4R_BT
+    set: "value ? '(>B:CMCDU_LSK_4R_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_4R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 5L
+    get: L:MD11_CMCDU_LSK_5L_BT
+    set: "value ? '(>B:CMCDU_LSK_5L_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_5L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 5R
+    get: L:MD11_CMCDU_LSK_5R_BT
+    set: "value ? '(>B:CMCDU_LSK_5R_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_5R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 6L
+    get: L:MD11_CMCDU_LSK_6L_BT
+    set: "value ? '(>B:CMCDU_LSK_6L_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_6L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 6R
+    get: L:MD11_CMCDU_LSK_6R_BT
+    set: "value ? '(>B:CMCDU_LSK_6R_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_LSK_6R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # L
+    get: L:MD11_CMCDU_L_BT
+    set: "value ? '(>B:CMCDU_L_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Menu
+    get: L:MD11_CMCDU_MENU_BT
+    set: "value ? '(>B:CMCDU_MENU_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_MENU_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Minus
+    get: L:MD11_CMCDU_MINUS_BT
+    set: "value ? '(>B:CMCDU_MINUS_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_MINUS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # M
+    get: L:MD11_CMCDU_M_BT
+    set: "value ? '(>B:CMCDU_M_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_M_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Nav Rad
+    get: L:MD11_CMCDU_NAV_RAD_BT
+    set: "value ? '(>B:CMCDU_NAV_RAD_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_NAV_RAD_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Nextpage
+    get: L:MD11_CMCDU_NEXTPAGE_BT
+    set: "value ? '(>B:CMCDU_NEXTPAGE_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_NEXTPAGE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # N
+    get: L:MD11_CMCDU_N_BT
+    set: "value ? '(>B:CMCDU_N_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_N_BT_LEFT_BUTTON_DOWN)'"
+
+  - # O
+    get: L:MD11_CMCDU_O_BT
+    set: "value ? '(>B:CMCDU_O_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_O_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Perf
+    get: L:MD11_CMCDU_PERF_BT
+    set: "value ? '(>B:CMCDU_PERF_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_PERF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Plus
+    get: L:MD11_CMCDU_PLUS_BT
+    set: "value ? '(>B:CMCDU_PLUS_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_PLUS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Prog
+    get: L:MD11_CMCDU_PROG_BT
+    set: "value ? '(>B:CMCDU_PROG_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_PROG_BT_LEFT_BUTTON_DOWN)'"
+
+  - # P
+    get: L:MD11_CMCDU_P_BT
+    set: "value ? '(>B:CMCDU_P_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_P_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Q
+    get: L:MD11_CMCDU_Q_BT
+    set: "value ? '(>B:CMCDU_Q_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_Q_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Ref
+    get: L:MD11_CMCDU_REF_BT
+    set: "value ? '(>B:CMCDU_REF_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_REF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # R
+    get: L:MD11_CMCDU_R_BT
+    set: "value ? '(>B:CMCDU_R_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Sec Fpln
+    get: L:MD11_CMCDU_SEC_FPLN_BT
+    set: "value ? '(>B:CMCDU_SEC_FPLN_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_SEC_FPLN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Slash
+    get: L:MD11_CMCDU_SLASH_BT
+    set: "value ? '(>B:CMCDU_SLASH_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_SLASH_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Sp
+    get: L:MD11_CMCDU_SP_BT
+    set: "value ? '(>B:CMCDU_SP_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_SP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # S
+    get: L:MD11_CMCDU_S_BT
+    set: "value ? '(>B:CMCDU_S_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_S_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Toappr
+    get: L:MD11_CMCDU_TOAPPR_BT
+    set: "value ? '(>B:CMCDU_TOAPPR_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_TOAPPR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # T
+    get: L:MD11_CMCDU_T_BT
+    set: "value ? '(>B:CMCDU_T_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_T_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Up
+    get: L:MD11_CMCDU_UP_BT
+    set: "value ? '(>B:CMCDU_UP_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_UP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # U
+    get: L:MD11_CMCDU_U_BT
+    set: "value ? '(>B:CMCDU_U_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_U_BT_LEFT_BUTTON_DOWN)'"
+
+  - # V
+    get: L:MD11_CMCDU_V_BT
+    set: "value ? '(>B:CMCDU_V_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_V_BT_LEFT_BUTTON_DOWN)'"
+
+  - # W
+    get: L:MD11_CMCDU_W_BT
+    set: "value ? '(>B:CMCDU_W_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_W_BT_LEFT_BUTTON_DOWN)'"
+
+  - # X
+    get: L:MD11_CMCDU_X_BT
+    set: "value ? '(>B:CMCDU_X_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_X_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Y
+    get: L:MD11_CMCDU_Y_BT
+    set: "value ? '(>B:CMCDU_Y_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_Y_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Z
+    get: L:MD11_CMCDU_Z_BT
+    set: "value ? '(>B:CMCDU_Z_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_Z_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 0
+    get: L:MD11_LMCDU_0_BT
+    set: "value ? '(>B:LMCDU_0_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_0_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 1
+    get: L:MD11_LMCDU_1_BT
+    set: "value ? '(>B:LMCDU_1_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 2
+    get: L:MD11_LMCDU_2_BT
+    set: "value ? '(>B:LMCDU_2_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 3
+    get: L:MD11_LMCDU_3_BT
+    set: "value ? '(>B:LMCDU_3_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 4
+    get: L:MD11_LMCDU_4_BT
+    set: "value ? '(>B:LMCDU_4_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_4_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 5
+    get: L:MD11_LMCDU_5_BT
+    set: "value ? '(>B:LMCDU_5_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_5_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 6
+    get: L:MD11_LMCDU_6_BT
+    set: "value ? '(>B:LMCDU_6_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_6_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 7
+    get: L:MD11_LMCDU_7_BT
+    set: "value ? '(>B:LMCDU_7_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_7_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 8
+    get: L:MD11_LMCDU_8_BT
+    set: "value ? '(>B:LMCDU_8_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_8_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 9
+    get: L:MD11_LMCDU_9_BT
+    set: "value ? '(>B:LMCDU_9_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_9_BT_LEFT_BUTTON_DOWN)'"
+
+  - # A
+    get: L:MD11_LMCDU_A_BT
+    set: "value ? '(>B:LMCDU_A_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_A_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Left MCDU Brightness
+    get: L:MD11_LMCDU_BRT_KB
+    set: "`${value} (>L:MD11_LMCDU_BRT_KB)`"
+
+  - # B
+    get: L:MD11_LMCDU_B_BT
+    set: "value ? '(>B:LMCDU_B_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_B_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Clr
+    get: L:MD11_LMCDU_CLR_BT
+    set: "value ? '(>B:LMCDU_CLR_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_CLR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # C
+    get: L:MD11_LMCDU_C_BT
+    set: "value ? '(>B:LMCDU_C_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_C_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Dir Intc
+    get: L:MD11_LMCDU_DIR_INTC_BT
+    set: "value ? '(>B:LMCDU_DIR_INTC_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_DIR_INTC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Dot
+    get: L:MD11_LMCDU_DOT_BT
+    set: "value ? '(>B:LMCDU_DOT_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_DOT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Down
+    get: L:MD11_LMCDU_DOWN_BT
+    set: "value ? '(>B:LMCDU_DOWN_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_DOWN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # D
+    get: L:MD11_LMCDU_D_BT
+    set: "value ? '(>B:LMCDU_D_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_D_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Eng Out
+    get: L:MD11_LMCDU_ENG_OUT_BT
+    set: "value ? '(>B:LMCDU_ENG_OUT_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_ENG_OUT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # E
+    get: L:MD11_LMCDU_E_BT
+    set: "value ? '(>B:LMCDU_E_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_E_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fix
+    get: L:MD11_LMCDU_FIX_BT
+    set: "value ? '(>B:LMCDU_FIX_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_FIX_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fpln
+    get: L:MD11_LMCDU_FPLN_BT
+    set: "value ? '(>B:LMCDU_FPLN_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_FPLN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # F
+    get: L:MD11_LMCDU_F_BT
+    set: "value ? '(>B:LMCDU_F_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_F_BT_LEFT_BUTTON_DOWN)'"
+
+  - # G
+    get: L:MD11_LMCDU_G_BT
+    set: "value ? '(>B:LMCDU_G_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_G_BT_LEFT_BUTTON_DOWN)'"
+
+  - # H
+    get: L:MD11_LMCDU_H_BT
+    set: "value ? '(>B:LMCDU_H_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_H_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Init
+    get: L:MD11_LMCDU_INIT_BT
+    set: "value ? '(>B:LMCDU_INIT_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_INIT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # I
+    get: L:MD11_LMCDU_I_BT
+    set: "value ? '(>B:LMCDU_I_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_I_BT_LEFT_BUTTON_DOWN)'"
+
+  - # J
+    get: L:MD11_LMCDU_J_BT
+    set: "value ? '(>B:LMCDU_J_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_J_BT_LEFT_BUTTON_DOWN)'"
+
+  - # K
+    get: L:MD11_LMCDU_K_BT
+    set: "value ? '(>B:LMCDU_K_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_K_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 1L
+    get: L:MD11_LMCDU_LSK_1L_BT
+    set: "value ? '(>B:LMCDU_LSK_1L_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_1L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 1R
+    get: L:MD11_LMCDU_LSK_1R_BT
+    set: "value ? '(>B:LMCDU_LSK_1R_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_1R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 2L
+    get: L:MD11_LMCDU_LSK_2L_BT
+    set: "value ? '(>B:LMCDU_LSK_2L_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_2L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 2R
+    get: L:MD11_LMCDU_LSK_2R_BT
+    set: "value ? '(>B:LMCDU_LSK_2R_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_2R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 3L
+    get: L:MD11_LMCDU_LSK_3L_BT
+    set: "value ? '(>B:LMCDU_LSK_3L_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_3L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 3R
+    get: L:MD11_LMCDU_LSK_3R_BT
+    set: "value ? '(>B:LMCDU_LSK_3R_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_3R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 4L
+    get: L:MD11_LMCDU_LSK_4L_BT
+    set: "value ? '(>B:LMCDU_LSK_4L_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_4L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 4R
+    get: L:MD11_LMCDU_LSK_4R_BT
+    set: "value ? '(>B:LMCDU_LSK_4R_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_4R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 5L
+    get: L:MD11_LMCDU_LSK_5L_BT
+    set: "value ? '(>B:LMCDU_LSK_5L_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_5L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 5R
+    get: L:MD11_LMCDU_LSK_5R_BT
+    set: "value ? '(>B:LMCDU_LSK_5R_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_5R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 6L
+    get: L:MD11_LMCDU_LSK_6L_BT
+    set: "value ? '(>B:LMCDU_LSK_6L_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_6L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 6R
+    get: L:MD11_LMCDU_LSK_6R_BT
+    set: "value ? '(>B:LMCDU_LSK_6R_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_LSK_6R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # L
+    get: L:MD11_LMCDU_L_BT
+    set: "value ? '(>B:LMCDU_L_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Menu
+    get: L:MD11_LMCDU_MENU_BT
+    set: "value ? '(>B:LMCDU_MENU_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_MENU_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Minus
+    get: L:MD11_LMCDU_MINUS_BT
+    set: "value ? '(>B:LMCDU_MINUS_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_MINUS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # M
+    get: L:MD11_LMCDU_M_BT
+    set: "value ? '(>B:LMCDU_M_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_M_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Nav Rad
+    get: L:MD11_LMCDU_NAV_RAD_BT
+    set: "value ? '(>B:LMCDU_NAV_RAD_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_NAV_RAD_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Nextpage
+    get: L:MD11_LMCDU_NEXTPAGE_BT
+    set: "value ? '(>B:LMCDU_NEXTPAGE_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_NEXTPAGE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # N
+    get: L:MD11_LMCDU_N_BT
+    set: "value ? '(>B:LMCDU_N_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_N_BT_LEFT_BUTTON_DOWN)'"
+
+  - # O
+    get: L:MD11_LMCDU_O_BT
+    set: "value ? '(>B:LMCDU_O_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_O_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Perf
+    set: (>B:LMCDU_PERF_BT_LEFT_BUTTON_UP)
+
+  - # Plus
+    get: L:MD11_LMCDU_PLUS_BT
+    set: "value ? '(>B:LMCDU_PLUS_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_PLUS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Prog
+    get: L:MD11_LMCDU_PROG_BT
+    set: "value ? '(>B:LMCDU_PROG_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_PROG_BT_LEFT_BUTTON_DOWN)'"
+
+  - # P
+    get: L:MD11_LMCDU_P_BT
+    set: "value ? '(>B:LMCDU_P_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_P_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Q
+    get: L:MD11_LMCDU_Q_BT
+    set: "value ? '(>B:LMCDU_Q_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_Q_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Ref
+    get: L:MD11_LMCDU_REF_BT
+    set: "value ? '(>B:LMCDU_REF_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_REF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # R
+    get: L:MD11_LMCDU_R_BT
+    set: "value ? '(>B:LMCDU_R_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Sec Fpln
+    get: L:MD11_LMCDU_SEC_FPLN_BT
+    set: "value ? '(>B:LMCDU_SEC_FPLN_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_SEC_FPLN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Slash
+    get: L:MD11_LMCDU_SLASH_BT
+    set: "value ? '(>B:LMCDU_SLASH_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_SLASH_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Sp
+    get: L:MD11_LMCDU_SP_BT
+    set: "value ? '(>B:LMCDU_SP_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_SP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # S
+    get: L:MD11_LMCDU_S_BT
+    set: "value ? '(>B:LMCDU_S_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_S_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Toappr
+    get: L:MD11_LMCDU_TOAPPR_BT
+    set: "value ? '(>B:LMCDU_TOAPPR_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_TOAPPR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # T
+    get: L:MD11_LMCDU_T_BT
+    set: "value ? '(>B:LMCDU_T_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_T_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Up
+    get: L:MD11_LMCDU_UP_BT
+    set: "value ? '(>B:LMCDU_UP_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_UP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # U
+    get: L:MD11_LMCDU_U_BT
+    set: "value ? '(>B:LMCDU_U_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_U_BT_LEFT_BUTTON_DOWN)'"
+
+  - # V
+    get: L:MD11_LMCDU_V_BT
+    set: "value ? '(>B:LMCDU_V_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_V_BT_LEFT_BUTTON_DOWN)'"
+
+  - # W
+    get: L:MD11_LMCDU_W_BT
+    set: "value ? '(>B:LMCDU_W_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_W_BT_LEFT_BUTTON_DOWN)'"
+
+  - # X
+    get: L:MD11_LMCDU_X_BT
+    set: "value ? '(>B:LMCDU_X_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_X_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Y
+    get: L:MD11_LMCDU_Y_BT
+    set: "value ? '(>B:LMCDU_Y_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_Y_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Z
+    get: L:MD11_LMCDU_Z_BT
+    set: "value ? '(>B:LMCDU_Z_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_Z_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 0
+    get: L:MD11_RMCDU_0_BT
+    set: "value ? '(>B:RMCDU_0_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_0_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 1
+    get: L:MD11_RMCDU_1_BT
+    set: "value ? '(>B:RMCDU_1_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 2
+    get: L:MD11_RMCDU_2_BT
+    set: "value ? '(>B:RMCDU_2_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 3
+    get: L:MD11_RMCDU_3_BT
+    set: "value ? '(>B:RMCDU_3_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 4
+    get: L:MD11_RMCDU_4_BT
+    set: "value ? '(>B:RMCDU_4_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_4_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 5
+    get: L:MD11_RMCDU_5_BT
+    set: "value ? '(>B:RMCDU_5_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_5_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 6
+    get: L:MD11_RMCDU_6_BT
+    set: "value ? '(>B:RMCDU_6_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_6_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 7
+    get: L:MD11_RMCDU_7_BT
+    set: "value ? '(>B:RMCDU_7_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_7_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 8
+    get: L:MD11_RMCDU_8_BT
+    set: "value ? '(>B:RMCDU_8_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_8_BT_LEFT_BUTTON_DOWN)'"
+
+  - # 9
+    get: L:MD11_RMCDU_9_BT
+    set: "value ? '(>B:RMCDU_9_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_9_BT_LEFT_BUTTON_DOWN)'"
+
+  - # A
+    get: L:MD11_RMCDU_A_BT
+    set: "value ? '(>B:RMCDU_A_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_A_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Right MCDU Brightness
+    get: L:MD11_RMCDU_BRT_KB
+    set: "`${value} (>L:MD11_RMCDU_BRT_KB)`"
+
+  - # B
+    get: L:MD11_RMCDU_B_BT
+    set: "value ? '(>B:RMCDU_B_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_B_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Clr
+    get: L:MD11_RMCDU_CLR_BT
+    set: "value ? '(>B:RMCDU_CLR_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_CLR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # C
+    get: L:MD11_RMCDU_C_BT
+    set: "value ? '(>B:RMCDU_C_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_C_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Dir Intc
+    get: L:MD11_RMCDU_DIR_INTC_BT
+    set: "value ? '(>B:RMCDU_DIR_INTC_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_DIR_INTC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Dot
+    set: (>B:RMCDU_DOT_BT_LEFT_BUTTON_UP)
+
+  - # Down
+    get: L:MD11_RMCDU_DOWN_BT
+    set: "value ? '(>B:RMCDU_DOWN_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_DOWN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # D
+    get: L:MD11_RMCDU_D_BT
+    set: "value ? '(>B:RMCDU_D_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_D_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Eng Out
+    set: (>B:RMCDU_ENG_OUT_BT_LEFT_BUTTON_DOWN)
+
+  - # E
+    get: L:MD11_RMCDU_E_BT
+    set: "value ? '(>B:RMCDU_E_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_E_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fix
+    get: L:MD11_RMCDU_FIX_BT
+    set: "value ? '(>B:RMCDU_FIX_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_FIX_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fpln
+    get: L:MD11_RMCDU_FPLN_BT
+    set: "value ? '(>B:RMCDU_FPLN_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_FPLN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # F
+    get: L:MD11_RMCDU_F_BT
+    set: "value ? '(>B:RMCDU_F_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_F_BT_LEFT_BUTTON_DOWN)'"
+
+  - # G
+    get: L:MD11_RMCDU_G_BT
+    set: "value ? '(>B:RMCDU_G_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_G_BT_LEFT_BUTTON_DOWN)'"
+
+  - # H
+    get: L:MD11_RMCDU_H_BT
+    set: "value ? '(>B:RMCDU_H_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_H_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Init
+    get: L:MD11_RMCDU_INIT_BT
+    set: "value ? '(>B:RMCDU_INIT_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_INIT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # I
+    get: L:MD11_RMCDU_I_BT
+    set: "value ? '(>B:RMCDU_I_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_I_BT_LEFT_BUTTON_DOWN)'"
+
+  - # J
+    get: L:MD11_RMCDU_J_BT
+    set: "value ? '(>B:RMCDU_J_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_J_BT_LEFT_BUTTON_DOWN)'"
+
+  - # K
+    get: L:MD11_RMCDU_K_BT
+    set: "value ? '(>B:RMCDU_K_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_K_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 1L
+    get: L:MD11_RMCDU_LSK_1L_BT
+    set: "value ? '(>B:RMCDU_LSK_1L_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_1L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 1R
+    get: L:MD11_RMCDU_LSK_1R_BT
+    set: "value ? '(>B:RMCDU_LSK_1R_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_1R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 2L
+    get: L:MD11_RMCDU_LSK_2L_BT
+    set: "value ? '(>B:RMCDU_LSK_2L_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_2L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 2R
+    get: L:MD11_RMCDU_LSK_2R_BT
+    set: "value ? '(>B:RMCDU_LSK_2R_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_2R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 3L
+    get: L:MD11_RMCDU_LSK_3L_BT
+    set: "value ? '(>B:RMCDU_LSK_3L_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_3L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 3R
+    get: L:MD11_RMCDU_LSK_3R_BT
+    set: "value ? '(>B:RMCDU_LSK_3R_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_3R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 4L
+    get: L:MD11_RMCDU_LSK_4L_BT
+    set: "value ? '(>B:RMCDU_LSK_4L_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_4L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 4R
+    get: L:MD11_RMCDU_LSK_4R_BT
+    set: "value ? '(>B:RMCDU_LSK_4R_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_4R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 5L
+    get: L:MD11_RMCDU_LSK_5L_BT
+    set: "value ? '(>B:RMCDU_LSK_5L_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_5L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 5R
+    get: L:MD11_RMCDU_LSK_5R_BT
+    set: "value ? '(>B:RMCDU_LSK_5R_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_5R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 6L
+    get: L:MD11_RMCDU_LSK_6L_BT
+    set: "value ? '(>B:RMCDU_LSK_6L_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_6L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lsk 6R
+    get: L:MD11_RMCDU_LSK_6R_BT
+    set: "value ? '(>B:RMCDU_LSK_6R_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_LSK_6R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # L
+    get: L:MD11_RMCDU_L_BT
+    set: "value ? '(>B:RMCDU_L_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Menu
+    get: L:MD11_RMCDU_MENU_BT
+    set: "value ? '(>B:RMCDU_MENU_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_MENU_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Minus
+    get: L:MD11_RMCDU_MINUS_BT
+    set: "value ? '(>B:RMCDU_MINUS_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_MINUS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # M
+    get: L:MD11_RMCDU_M_BT
+    set: "value ? '(>B:RMCDU_M_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_M_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Nav Rad
+    get: L:MD11_RMCDU_NAV_RAD_BT
+    set: "value ? '(>B:RMCDU_NAV_RAD_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_NAV_RAD_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Nextpage
+    get: L:MD11_RMCDU_NEXTPAGE_BT
+    set: "value ? '(>B:RMCDU_NEXTPAGE_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_NEXTPAGE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # N
+    get: L:MD11_RMCDU_N_BT
+    set: "value ? '(>B:RMCDU_N_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_N_BT_LEFT_BUTTON_DOWN)'"
+
+  - # O
+    get: L:MD11_RMCDU_O_BT
+    set: "value ? '(>B:RMCDU_O_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_O_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Perf
+    get: L:MD11_RMCDU_PERF_BT
+    set: "value ? '(>B:RMCDU_PERF_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_PERF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Plus
+    get: L:MD11_RMCDU_PLUS_BT
+    set: "value ? '(>B:RMCDU_PLUS_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_PLUS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Prog
+    get: L:MD11_RMCDU_PROG_BT
+    set: "value ? '(>B:RMCDU_PROG_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_PROG_BT_LEFT_BUTTON_DOWN)'"
+
+  - # P
+    get: L:MD11_RMCDU_P_BT
+    set: "value ? '(>B:RMCDU_P_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_P_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Q
+    get: L:MD11_RMCDU_Q_BT
+    set: "value ? '(>B:RMCDU_Q_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_Q_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Ref
+    get: L:MD11_RMCDU_REF_BT
+    set: "value ? '(>B:RMCDU_REF_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_REF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # R
+    get: L:MD11_RMCDU_R_BT
+    set: "value ? '(>B:RMCDU_R_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Sec Fpln
+    get: L:MD11_RMCDU_SEC_FPLN_BT
+    set: "value ? '(>B:RMCDU_SEC_FPLN_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_SEC_FPLN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Slash
+    get: L:MD11_RMCDU_SLASH_BT
+    set: "value ? '(>B:RMCDU_SLASH_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_SLASH_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Sp
+    get: L:MD11_RMCDU_SP_BT
+    set: "value ? '(>B:RMCDU_SP_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_SP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # S
+    get: L:MD11_RMCDU_S_BT
+    set: "value ? '(>B:RMCDU_S_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_S_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Toappr
+    get: L:MD11_RMCDU_TOAPPR_BT
+    set: "value ? '(>B:RMCDU_TOAPPR_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_TOAPPR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # T
+    get: L:MD11_RMCDU_T_BT
+    set: "value ? '(>B:RMCDU_T_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_T_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Up
+    get: L:MD11_RMCDU_UP_BT
+    set: "value ? '(>B:RMCDU_UP_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_UP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # U
+    get: L:MD11_RMCDU_U_BT
+    set: "value ? '(>B:RMCDU_U_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_U_BT_LEFT_BUTTON_DOWN)'"
+
+  - # V
+    get: L:MD11_RMCDU_V_BT
+    set: "value ? '(>B:RMCDU_V_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_V_BT_LEFT_BUTTON_DOWN)'"
+
+  - # W
+    get: L:MD11_RMCDU_W_BT
+    set: "value ? '(>B:RMCDU_W_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_W_BT_LEFT_BUTTON_DOWN)'"
+
+  - # X
+    get: L:MD11_RMCDU_X_BT
+    set: "value ? '(>B:RMCDU_X_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_X_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Y
+    get: L:MD11_RMCDU_Y_BT
+    set: "value ? '(>B:RMCDU_Y_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_Y_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Z
+    get: L:MD11_RMCDU_Z_BT
+    set: "value ? '(>B:RMCDU_Z_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_Z_BT_LEFT_BUTTON_DOWN)'"
+  - # Glideslope Inhibit
+    get: L:MD11_GSL_GS_BT
+    set: "value ? '(>B:GSL_GS_BT_LEFT_BUTTON_UP)' : '(>B:GSL_GS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Master Caution
+    get: L:MD11_GSL_MST_CAUT_BT
+    set: "value ? '(>B:GSL_MST_CAUT_BT_LEFT_BUTTON_UP)' : '(>B:GSL_MST_CAUT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Master Warning
+    get: L:MD11_GSL_MST_WRN_BT
+    set: "value ? '(>B:GSL_MST_WRN_BT_LEFT_BUTTON_UP)' : '(>B:GSL_MST_WRN_BT_LEFT_BUTTON_DOWN)'"
+  - # Glideslope Inhibit
+    get: L:MD11_GSR_GS_BT
+    set: "value ? '(>B:GSR_GS_BT_LEFT_BUTTON_UP)' : '(>B:GSR_GS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Master Caution
+    get: L:MD11_GSR_MST_CAUT_BT
+    set: "value ? '(>B:GSR_MST_CAUT_BT_LEFT_BUTTON_UP)' : '(>B:GSR_MST_CAUT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Master Warning
+    get: L:MD11_GSR_MST_WRN_BT
+    set: "value ? '(>B:GSR_MST_WRN_BT_LEFT_BUTTON_UP)' : '(>B:GSR_MST_WRN_BT_LEFT_BUTTON_DOWN)'"
+  - # Captain ND ADF1 Needle
+    get: L:MD11_LECP_ADF1_BT
+    set: "value ? '(>B:LECP_ADF1_BT_LEFT_BUTTON_UP)' : '(>B:LECP_ADF1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND ADF2 Needle
+    get: L:MD11_LECP_ADF2_BT
+    set: "value ? '(>B:LECP_ADF2_BT_LEFT_BUTTON_UP)' : '(>B:LECP_ADF2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND Approach Mode
+    get: L:MD11_LECP_APPR_BT
+    set: "value ? '(>B:LECP_APPR_BT_LEFT_BUTTON_UP)' : '(>B:LECP_APPR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND Airport Display
+    get: L:MD11_LECP_ARPT_BT
+    set: "value ? '(>B:LECP_ARPT_BT_LEFT_BUTTON_UP)' : '(>B:LECP_ARPT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Altimeter Setting
+    set: (>B:LECP_BAROSET_CAP_LEFT_BUTTON_DOWN)
+
+  - # Captain Altimeter Setting
+    set: (>B:LECP_BAROSET_CAP_LEFT_BUTTON_UP)
+
+  - # Captain Altimeter Setting
+    set: (>B:LECP_BAROSET_CAP_WHEEL_DOWN)
+
+  - # Captain Altimeter Setting
+    set: (>B:LECP_BAROSET_CAP_WHEEL_UP)
+
+  - # Captain Altimeter Mode
+    set: (>B:LECP_BAROSET_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain ND Data Display
+    get: L:MD11_LECP_DATA_BT
+    set: "value ? '(>B:LECP_DATA_BT_LEFT_BUTTON_UP)' : '(>B:LECP_DATA_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND Range Decrease
+    get: L:MD11_LECP_DECR_BT
+    set: "value ? '(>B:LECP_DECR_BT_LEFT_BUTTON_UP)' : '(>B:LECP_DECR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND Range Increase
+    get: L:MD11_LECP_INCR_BT
+    set: "value ? '(>B:LECP_INCR_BT_LEFT_BUTTON_UP)' : '(>B:LECP_INCR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Altimeter Unit
+    get: L:MD11_LECP_INHP_BT
+    set: "value ? '(>B:LECP_INHP_BT_LEFT_BUTTON_UP)' : '(>B:LECP_INHP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND Heading Reference Select
+    get: L:MD11_LECP_MAGTRU_BT
+    set: "value ? '(>B:LECP_MAGTRU_BT_LEFT_BUTTON_UP)' : '(>B:LECP_MAGTRU_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND Map Mode
+    get: L:MD11_LECP_MAP_BT
+    set: "value ? '(>B:LECP_MAP_BT_LEFT_BUTTON_UP)' : '(>B:LECP_MAP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Minimums Setting
+    set: (>B:LECP_MINIMUMS_CAP_LEFT_BUTTON_DOWN)
+
+  - # Captain Minimums Setting
+    set: (>B:LECP_MINIMUMS_CAP_LEFT_BUTTON_UP)
+
+  - # Captain Minimums Setting
+    set: (>B:LECP_MINIMUMS_CAP_WHEEL_DOWN)
+
+  - # Captain Minimums Setting
+    set: (>B:LECP_MINIMUMS_CAP_WHEEL_UP)
+
+  - # Captain Minimums Mode
+    set: (>B:LECP_MINIMUMS_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain ND Plan Mode
+    get: L:MD11_LECP_PLAN_BT
+    set: "value ? '(>B:LECP_PLAN_BT_LEFT_BUTTON_UP)' : '(>B:LECP_PLAN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND TCAS Mode
+    get: L:MD11_LECP_TCAS_BT
+    set: "value ? '(>B:LECP_TCAS_BT_LEFT_BUTTON_UP)' : '(>B:LECP_TCAS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND Traffic Display
+    get: L:MD11_LECP_TRFC_BT
+    set: "value ? '(>B:LECP_TRFC_BT_LEFT_BUTTON_UP)' : '(>B:LECP_TRFC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND VOR1 Needle
+    get: L:MD11_LECP_VOR1_BT
+    set: "value ? '(>B:LECP_VOR1_BT_LEFT_BUTTON_UP)' : '(>B:LECP_VOR1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND VOR2 Needle
+    get: L:MD11_LECP_VOR2_BT
+    set: "value ? '(>B:LECP_VOR2_BT_LEFT_BUTTON_UP)' : '(>B:LECP_VOR2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND VOR/NDB Display
+    get: L:MD11_LECP_VORNDB_BT
+    set: "value ? '(>B:LECP_VORNDB_BT_LEFT_BUTTON_UP)' : '(>B:LECP_VORNDB_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND VOR Mode
+    get: L:MD11_LECP_VOR_BT
+    set: "value ? '(>B:LECP_VOR_BT_LEFT_BUTTON_UP)' : '(>B:LECP_VOR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain ND Waypoints Display
+    get: L:MD11_LECP_WPT_BT
+    set: "value ? '(>B:LECP_WPT_BT_LEFT_BUTTON_UP)' : '(>B:LECP_WPT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Weather Radar/Terrain Display Brightness
+    get: L:MD11_LECP_WXBRT_KB
+    set: "`${value} (>L:MD11_LECP_WXBRT_KB)`"
+
+  - # Captain Weather Radar/Terrain Display Brightness
+    set: (>B:LECP_WXBRT_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain Weather Radar/Terrain Display Brightness
+    set: (>B:LECP_WXBRT_KB_LEFT_BUTTON_UP)
+  - # Captain Briefcase Light
+    get: L:MD11_LSIDE_BRIEFCASE_KB
+    set: "`${value} (>L:MD11_LSIDE_BRIEFCASE_KB)`"
+
+  - # Captain Floor Light
+    set: (>B:LSIDE_FLOOR_SW_LEFT_BUTTON_DOWN)
+
+  - # Captain Floor Light (Right)
+    set: (>B:LSIDE_FLOOR_SW_RIGHT_BUTTON_DOWN)
+
+  - # Captain ILS Source
+    get: L:MD11_LSIDE_INP_APPR_BT
+    set: "value ? '(>B:LSIDE_INP_APPR_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_INP_APPR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Air Data Source
+    get: L:MD11_LSIDE_INP_CADC_BT
+    set: "value ? '(>B:LSIDE_INP_CADC_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_INP_CADC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain EIS Source
+    set: (>B:LSIDE_INP_EIS_KB_LEFT_BUTTON_DOWN)
+
+  - # Captain EIS Source
+    set: (>B:LSIDE_INP_EIS_KB_RIGHT_BUTTON_DOWN)
+
+  - # Captain Flight Director
+    get: L:MD11_LSIDE_INP_FLTDIROFF_BT
+    set: "value ? '(>B:LSIDE_INP_FLTDIROFF_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_INP_FLTDIROFF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Flight Director Source
+    get: L:MD11_LSIDE_INP_FLTDIR_BT
+    set: "value ? '(>B:LSIDE_INP_FLTDIR_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_INP_FLTDIR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain FMS Source
+    get: L:MD11_LSIDE_INP_FMS_BT
+    set: "value ? '(>B:LSIDE_INP_FMS_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_INP_FMS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain IRS Source
+    get: L:MD11_LSIDE_INP_IRS_BT
+    set: "value ? '(>B:LSIDE_INP_IRS_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_INP_IRS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain VOR Source
+    get: L:MD11_LSIDE_INP_VOR_BT
+    set: "value ? '(>B:LSIDE_INP_VOR_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_INP_VOR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain PTT
+    get: L:MD11_LSIDE_PTT_BT
+    set: "value ? '(>B:LSIDE_PTT_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_PTT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Timer Start/Reset
+    get: L:MD11_LSIDE_TIMER_BT
+    set: "value ? '(>B:LSIDE_TIMER_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_TIMER_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Timer Mode
+    set: (>B:LSIDE_TIMER_SW_LEFT_BUTTON_DOWN)
+
+  - # Captain Timer Mode (Right)
+    set: (>B:LSIDE_TIMER_SW_RIGHT_BUTTON_DOWN)
+  - # Captain Autopilot Disconnect
+    get: L:MD11_LYOKE_AP_BT
+    set: "value ? '(>B:LYOKE_AP_BT_LEFT_BUTTON_UP)' : '(>B:LYOKE_AP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain Elevator Trim Switch
+    set: (>B:LYOKE_TRIM_SW_LEFT_BUTTON_DOWN)
+
+  - # Captain Elevator Trim Switch (Right)
+    set: (>B:LYOKE_TRIM_SW_RIGHT_BUTTON_DOWN)
+
+  - # Captain Elevator Trim Switch
+    set: (>B:LYOKE_TRIM_SW_LEFT_BUTTON_UP)
+
+  - # Captain Elevator Trim Switch
+    set: (>B:LYOKE_TRIM_SW_RIGHT_BUTTON_UP)
+  - # Captain FDR Event Marker
+    set: (>B:MIP_CAPT_EVTMKR_SW_LEFT_BUTTON_DOWN)
+
+  - # Center Main Gear Uplock
+    set: (>B:MIP_CTR_GEAR_BT_LEFT_BUTTON_DOWN)
+
+  - # Center Main Gear Uplock (Guard)
+    set: (>B:MIP_CTR_GEAR_GRD_LEFT_BUTTON_DOWN)
+
+  - # First Officer FDR Event Marker
+    set: (>B:MIP_FO_EVTMKR_SW_LEFT_BUTTON_DOWN)
+
+  - # Gear Lever
+    set: (>B:MIP_GEAR_SW_LEFT_BUTTON_DOWN)
+
+  - # Gear Lever Release
+    set: (>B:MIP_HANDLEREL_BT_LEFT_BUTTON_UP)
+
+  - # Integrated Standby Flight Display Altimeter Setting
+    get: L:MD11_MIP_ISFD_BARO_KB
+    set: "`${value} (>L:MD11_MIP_ISFD_BARO_KB)`"
+
+  - # Integrated Standby Flight Display Altimeter Setting
+    set: (>B:MIP_ISFD_BARO_KB_LEFT_BUTTON_DOWN)
+
+  - # Integrated Standby Flight Display Altimeter Setting
+    set: (>B:MIP_ISFD_BARO_KB_LEFT_BUTTON_UP)
+
+  - # Integrated Standby Flight Display Altimeter Unit Select
+    get: L:MD11_MIP_ISFD_INHP_BT
+    set: "value ? '(>B:MIP_ISFD_INHP_BT_LEFT_BUTTON_UP)' : '(>B:MIP_ISFD_INHP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Integrated Standby Flight Display Test
+    get: L:MD11_MIP_ISFD_TEST_BT
+    set: "value ? '(>B:MIP_ISFD_TEST_BT_LEFT_BUTTON_UP)' : '(>B:MIP_ISFD_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Standby Attitude Indicator Cage
+    get: L:MD11_MIP_STBY_AI_CAGE_BT
+    set: "value ? '(>B:MIP_STBY_AI_CAGE_BT_LEFT_BUTTON_UP)' : '(>B:MIP_STBY_AI_CAGE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Stby Alt Baro
+    get: L:MD11_MIP_STBY_ALT_BARO_KB
+    set: "`${value} (>L:MD11_MIP_STBY_ALT_BARO_KB)`"
+  - # Circuit Breaker Panel Lighting
+    get: L:MD11_OBS_CKTBKR_LT_KB
+    set: "`${value} (>L:MD11_OBS_CKTBKR_LT_KB)`"
+
+  - # Pax Load Selector
+    set: (>B:OVHD_100_PAX_LOAD_SW_LEFT_BUTTON_DOWN)
+
+  - # Pax Load Selector (Right)
+    set: (>B:OVHD_100_PAX_LOAD_SW_RIGHT_BUTTON_DOWN)
+
+  - # Pax Load Selector (Right)
+    set: (>B:OVHD_10_PAX_LOAD_SW_RIGHT_BUTTON_DOWN)
+
+  - # Pax Load Selector
+    set: (>B:OVHD_1_PAX_LOAD_SW_LEFT_BUTTON_DOWN)
+
+  - # Pax Load Selector (Right)
+    set: (>B:OVHD_1_PAX_LOAD_SW_RIGHT_BUTTON_DOWN)
+
+  - # Aice Auto
+    get: L:MD11_OVHD_AICE_AUTO_BT
+    set: "value ? '(>B:OVHD_AICE_AUTO_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AICE_AUTO_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 1 Anti Ice
+    get: L:MD11_OVHD_AICE_ENG1_BT
+    set: "value ? '(>B:OVHD_AICE_ENG1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AICE_ENG1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 2 Anti Ice
+    get: L:MD11_OVHD_AICE_ENG2_BT
+    set: "value ? '(>B:OVHD_AICE_ENG2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AICE_ENG2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 3 Anti Ice
+    get: L:MD11_OVHD_AICE_ENG3_BT
+    set: "value ? '(>B:OVHD_AICE_ENG3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AICE_ENG3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Anti Ice System Mode
+    get: L:MD11_OVHD_AICE_SYSTEM_SEL_BT
+    set: "value ? '(>B:OVHD_AICE_SYSTEM_SEL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AICE_SYSTEM_SEL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tail Anti Ice
+    get: L:MD11_OVHD_AICE_TAIL_BT
+    set: "value ? '(>B:OVHD_AICE_TAIL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AICE_TAIL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Wing Anti Ice
+    get: L:MD11_OVHD_AICE_WING_BT
+    set: "value ? '(>B:OVHD_AICE_WING_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AICE_WING_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Aileron Deflect Override
+    get: L:MD11_OVHD_AIL_DEFL_OVRD_BT
+    set: "value ? '(>B:OVHD_AIL_DEFL_OVRD_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AIL_DEFL_OVRD_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Aileron Deflect Override (Guard)
+    set: (>B:OVHD_AIL_DEFL_OVRD_GRD_LEFT_BUTTON_DOWN)
+
+  - # Annunciator Light Brightness
+    set: (>B:OVHD_ANNUNLT_BRTDIM_BT_LEFT_BUTTON_DOWN)
+
+  - # Annunciator test
+    get: L:MD11_OVHD_ANNUNLT_TEST_BT
+    set: "value ? '(>B:OVHD_ANNUNLT_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ANNUNLT_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Attendant Call Reset
+    get: L:MD11_OVHD_CALL_RESET_BT
+    set: "value ? '(>B:OVHD_CALL_RESET_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_CALL_RESET_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Cargo Door Test
+    get: L:MD11_OVHD_CRG_DOOR_TEST_BT
+    set: "value ? '(>B:OVHD_CRG_DOOR_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_CRG_DOOR_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Cockpit Voice Recorder Erase
+    get: L:MD11_OVHD_CVR_ERASE_BT
+    set: "value ? '(>B:OVHD_CVR_ERASE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_CVR_ERASE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Cockpit Voice Recorder Test
+    get: L:MD11_OVHD_CVR_TEST_BT
+    set: "value ? '(>B:OVHD_CVR_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_CVR_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # AC Bus Tie 1
+    get: L:MD11_OVHD_ELEC_AC_TIE1_BT
+    set: "value ? '(>B:OVHD_ELEC_AC_TIE1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_AC_TIE1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # AC Bus Tie 2
+    get: L:MD11_OVHD_ELEC_AC_TIE2_BT
+    set: "value ? '(>B:OVHD_ELEC_AC_TIE2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_AC_TIE2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # AC Bus Tie 3
+    get: L:MD11_OVHD_ELEC_AC_TIE3_BT
+    set: "value ? '(>B:OVHD_ELEC_AC_TIE3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_AC_TIE3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Air Driven Generator
+    set: (>B:OVHD_ELEC_ADG_ELEC_BT_LEFT_BUTTON_DOWN)
+
+  - # APU Power
+    get: L:MD11_OVHD_ELEC_APU_PWR_BT
+    set: "value ? '(>B:OVHD_ELEC_APU_PWR_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_APU_PWR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Battery
+    get: L:MD11_OVHD_ELEC_BATT_BT
+    set: "value ? '(>B:OVHD_ELEC_BATT_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_BATT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Battery (Guard)
+    set: (>B:OVHD_ELEC_BATT_GRD_LEFT_BUTTON_DOWN)
+
+  - # Cabin Bus
+    set: (>B:OVHD_ELEC_CAB_BUS_BT_LEFT_BUTTON_DOWN)
+
+  - # Cabin Bus (Guard)
+    set: (>B:OVHD_ELEC_CAB_BUS_GRD_LEFT_BUTTON_DOWN)
+
+  - # DC Bus Tie 1
+    get: L:MD11_OVHD_ELEC_DC_TIE1_BT
+    set: "value ? '(>B:OVHD_ELEC_DC_TIE1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_DC_TIE1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # DC Bus Tie 3
+    get: L:MD11_OVHD_ELEC_DC_TIE3_BT
+    set: "value ? '(>B:OVHD_ELEC_DC_TIE3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_DC_TIE3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Emergency Power
+    set: (>B:OVHD_ELEC_EMER_PWR_KB_LEFT_BUTTON_DOWN)
+
+  - # Emergency Power
+    set: (>B:OVHD_ELEC_EMER_PWR_KB_RIGHT_BUTTON_DOWN)
+
+  - # External Power
+    get: L:MD11_OVHD_ELEC_EXT_PWR_BT
+    set: "value ? '(>B:OVHD_ELEC_EXT_PWR_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_EXT_PWR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 1
+    get: L:MD11_OVHD_ELEC_GEN1_BT
+    set: "value ? '(>B:OVHD_ELEC_GEN1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GEN1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 1 IDG Disconnect
+    get: L:MD11_OVHD_ELEC_GEN1_DRIVE_BT
+    set: "value ? '(>B:OVHD_ELEC_GEN1_DRIVE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GEN1_DRIVE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 1 IDG Disconnect (Guard)
+    set: (>B:OVHD_ELEC_GEN1_DRIVE_GRD_LEFT_BUTTON_DOWN)
+
+  - # Generator 2
+    set: (>B:OVHD_ELEC_GEN2_BT_LEFT_BUTTON_UP)
+
+  - # Generator 2 IDG Disconnect
+    get: L:MD11_OVHD_ELEC_GEN2_DRIVE_BT
+    set: "value ? '(>B:OVHD_ELEC_GEN2_DRIVE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GEN2_DRIVE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 2 IDG Disconnect (Guard)
+    set: (>B:OVHD_ELEC_GEN2_DRIVE_GRD_LEFT_BUTTON_DOWN)
+
+  - # Generator 3
+    get: L:MD11_OVHD_ELEC_GEN3_BT
+    set: "value ? '(>B:OVHD_ELEC_GEN3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GEN3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 3 IDG Disconnect
+    get: L:MD11_OVHD_ELEC_GEN3_DRIVE_BT
+    set: "value ? '(>B:OVHD_ELEC_GEN3_DRIVE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GEN3_DRIVE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 3 IDG Disconnect (Guard)
+    set: (>B:OVHD_ELEC_GEN3_DRIVE_GRD_LEFT_BUTTON_DOWN)
+
+  - # External Galley Power
+    get: L:MD11_OVHD_ELEC_GLY_EXT_PWR_BT
+    set: "value ? '(>B:OVHD_ELEC_GLY_EXT_PWR_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GLY_EXT_PWR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Smoke Electric/Air System Off
+    set: (>B:OVHD_ELEC_SMOKE_ELEC_AIR_KB_LEFT_BUTTON_DOWN)
+
+  - # Smoke Electric/Air System Off
+    set: (>B:OVHD_ELEC_SMOKE_ELEC_AIR_KB_RIGHT_BUTTON_DOWN)
+
+  - # Electrical System Mode
+    set: (>B:OVHD_ELEC_SYSTEM_SEL_BT_LEFT_BUTTON_DOWN)
+
+  - # Reset Engine Limit Exceedance Pointers
+    get: L:MD11_OVHD_ENGMAXPTRRESET_BT
+    set: "value ? '(>B:OVHD_ENGMAXPTRRESET_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENGMAXPTRRESET_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine Ignition System A
+    get: L:MD11_OVHD_ENG_A_BT
+    set: "value ? '(>B:OVHD_ENG_A_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_A_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine Ignition System B
+    get: L:MD11_OVHD_ENG_B_BT
+    set: "value ? '(>B:OVHD_ENG_B_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_B_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 1 FADEC Mode
+    get: L:MD11_OVHD_ENG_FADEC_1_BT
+    set: "value ? '(>B:OVHD_ENG_FADEC_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_FADEC_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 1 FADEC Mode (Guard)
+    set: (>B:OVHD_ENG_FADEC_1_GRD_LEFT_BUTTON_DOWN)
+
+  - # Engine 2 FADEC Mode
+    get: L:MD11_OVHD_ENG_FADEC_2_BT
+    set: "value ? '(>B:OVHD_ENG_FADEC_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_FADEC_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 2 FADEC Mode (Guard)
+    set: (>B:OVHD_ENG_FADEC_2_GRD_LEFT_BUTTON_DOWN)
+
+  - # Engine 3 FADEC Mode
+    get: L:MD11_OVHD_ENG_FADEC_3_BT
+    set: "value ? '(>B:OVHD_ENG_FADEC_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_FADEC_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 3 FADEC Mode (Guard)
+    set: (>B:OVHD_ENG_FADEC_3_GRD_LEFT_BUTTON_DOWN)
+
+  - # Engine Ignition System Override
+    get: L:MD11_OVHD_ENG_IGN_OVRD_BT
+    set: "value ? '(>B:OVHD_ENG_IGN_OVRD_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_IGN_OVRD_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Elevator Feel
+    get: L:MD11_OVHD_FLTCTL_ELEVFEEL_KB
+    set: "`${value} (>L:MD11_OVHD_FLTCTL_ELEVFEEL_KB)`"
+
+  - # Flap Limit
+    set: (>B:OVHD_FLTCTL_FLAPLIM_KB_LEFT_BUTTON_DOWN)
+
+  - # Flap Limit
+    set: (>B:OVHD_FLTCTL_FLAPLIM_KB_RIGHT_BUTTON_DOWN)
+
+  - # Left Inboard Elevator LSAS
+    get: L:MD11_OVHD_FLTCTL_LLI_BT
+    set: "value ? '(>B:OVHD_FLTCTL_LLI_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_LLI_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Left Outboard Elevator LSAS
+    get: L:MD11_OVHD_FLTCTL_LLO_BT
+    set: "value ? '(>B:OVHD_FLTCTL_LLO_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_LLO_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lower Rudder Yaw Damper Channel A
+    get: L:MD11_OVHD_FLTCTL_LYDA_BT
+    set: "value ? '(>B:OVHD_FLTCTL_LYDA_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_LYDA_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Lower Rudder Yaw Damper Channel B
+    get: L:MD11_OVHD_FLTCTL_LYDB_BT
+    set: "value ? '(>B:OVHD_FLTCTL_LYDB_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_LYDB_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Right Inboard Elevator LSAS
+    get: L:MD11_OVHD_FLTCTL_RLI_BT
+    set: "value ? '(>B:OVHD_FLTCTL_RLI_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_RLI_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Right Outboard Elevator LSAS
+    set: (>B:OVHD_FLTCTL_RLO_BT_LEFT_BUTTON_DOWN)
+
+  - # Upper Rudder Yaw Damper Channel A
+    get: L:MD11_OVHD_FLTCTL_UYDA_BT
+    set: "value ? '(>B:OVHD_FLTCTL_UYDA_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_UYDA_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Upper Rudder Yaw Damper Channel B
+    get: L:MD11_OVHD_FLTCTL_UYDB_BT
+    set: "value ? '(>B:OVHD_FLTCTL_UYDB_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_UYDB_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Reset Fuel Used Display
+    get: L:MD11_OVHD_FUELUSEDRESET_BT
+    set: "value ? '(>B:OVHD_FUELUSEDRESET_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUELUSEDRESET_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 2 Alternate Feed Pump
+    get: L:MD11_OVHD_FUEL_ALT_PUMP_BT
+    set: "value ? '(>B:OVHD_FUEL_ALT_PUMP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_ALT_PUMP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fuel Dump
+    get: L:MD11_OVHD_FUEL_DUMP_BT
+    set: "value ? '(>B:OVHD_FUEL_DUMP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_DUMP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fuel Dump (Guard)
+    set: (>B:OVHD_FUEL_DUMP_GRD_LEFT_BUTTON_DOWN)
+
+  - # Fuel Dump Emergency Stop
+    get: L:MD11_OVHD_FUEL_DUMP_STOP_BT
+    set: "value ? '(>B:OVHD_FUEL_DUMP_STOP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_DUMP_STOP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fuel Dump Emergency Stop (Guard)
+    set: (>B:OVHD_FUEL_DUMP_STOP_GRD_LEFT_BUTTON_DOWN)
+
+  - # Tank 1 Fill Valve
+    get: L:MD11_OVHD_FUEL_FILL_TANK_1_BT
+    set: "value ? '(>B:OVHD_FUEL_FILL_TANK_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_FILL_TANK_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 2 Fill Valve
+    get: L:MD11_OVHD_FUEL_FILL_TANK_2_BT
+    set: "value ? '(>B:OVHD_FUEL_FILL_TANK_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_FILL_TANK_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 3 Fill Valve
+    get: L:MD11_OVHD_FUEL_FILL_TANK_3_BT
+    set: "value ? '(>B:OVHD_FUEL_FILL_TANK_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_FILL_TANK_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Forward Left Auxiliary Tank Bypass
+    get: L:MD11_OVHD_FUEL_FWDAUX_L_TRANS_BT
+    set: "value ? '(>B:OVHD_FUEL_FWDAUX_L_TRANS_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_FWDAUX_L_TRANS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Forward Right Auxiliary Tank Bypass
+    get: L:MD11_OVHD_FUEL_FWDAUX_R_TRANS_BT
+    set: "value ? '(>B:OVHD_FUEL_FWDAUX_R_TRANS_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_FWDAUX_R_TRANS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Auxiliary Tanks Left Transfer Pumps
+    get: L:MD11_OVHD_FUEL_LEFT_TRANS_BT
+    set: "value ? '(>B:OVHD_FUEL_LEFT_TRANS_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_LEFT_TRANS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fuel Manifold Drain
+    get: L:MD11_OVHD_FUEL_MANF_DRAIN_BT
+    set: "value ? '(>B:OVHD_FUEL_MANF_DRAIN_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_MANF_DRAIN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fuel Manifold Drain (Guard)
+    set: (>B:OVHD_FUEL_MANF_DRAIN_GRD_LEFT_BUTTON_DOWN)
+
+  - # Tank 1 Fuel Pumps
+    get: L:MD11_OVHD_FUEL_PUMP_TANK_1_BT
+    set: "value ? '(>B:OVHD_FUEL_PUMP_TANK_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_PUMP_TANK_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 2 Fuel Pumps
+    get: L:MD11_OVHD_FUEL_PUMP_TANK_2_BT
+    set: "value ? '(>B:OVHD_FUEL_PUMP_TANK_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_PUMP_TANK_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 3 Fuel Pumps
+    get: L:MD11_OVHD_FUEL_PUMP_TANK_3_BT
+    set: "value ? '(>B:OVHD_FUEL_PUMP_TANK_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_PUMP_TANK_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fuel Quantity Test
+    get: L:MD11_OVHD_FUEL_QTY_TEST_BT
+    set: "value ? '(>B:OVHD_FUEL_QTY_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_QTY_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Auxiliary Tanks Right Transfer Pumps
+    get: L:MD11_OVHD_FUEL_RIGHT_TRANS_BT
+    set: "value ? '(>B:OVHD_FUEL_RIGHT_TRANS_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_RIGHT_TRANS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Fuel System Mode
+    get: L:MD11_OVHD_FUEL_SYSTEM_SEL_BT
+    set: "value ? '(>B:OVHD_FUEL_SYSTEM_SEL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_SYSTEM_SEL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tail Tank Transfer Pumps
+    get: L:MD11_OVHD_FUEL_TAIL_TRANS_BT
+    set: "value ? '(>B:OVHD_FUEL_TAIL_TRANS_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_TAIL_TRANS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 1 Transfer Pump
+    get: L:MD11_OVHD_FUEL_TRANS_TANK_1_BT
+    set: "value ? '(>B:OVHD_FUEL_TRANS_TANK_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_TRANS_TANK_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 2 Transfer Pump
+    get: L:MD11_OVHD_FUEL_TRANS_TANK_2_BT
+    set: "value ? '(>B:OVHD_FUEL_TRANS_TANK_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_TRANS_TANK_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 3 Transfer Pump
+    get: L:MD11_OVHD_FUEL_TRANS_TANK_3_BT
+    set: "value ? '(>B:OVHD_FUEL_TRANS_TANK_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_TRANS_TANK_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Upper Auxiliary Tank Bypass
+    get: L:MD11_OVHD_FUEL_UPRAUX_BYP_BT
+    set: "value ? '(>B:OVHD_FUEL_UPRAUX_BYP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_UPRAUX_BYP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Upper Auxiliary Tank Bypass (Guard)
+    set: (>B:OVHD_FUEL_UPRAUX_BYP_GRD_LEFT_BUTTON_DOWN)
+
+  - # Tank 1 Cross Feed Valve
+    get: L:MD11_OVHD_FUEL_XFEED_TANK_1_BT
+    set: "value ? '(>B:OVHD_FUEL_XFEED_TANK_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_XFEED_TANK_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 2 Cross Feed Valve
+    get: L:MD11_OVHD_FUEL_XFEED_TANK_2_BT
+    set: "value ? '(>B:OVHD_FUEL_XFEED_TANK_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_XFEED_TANK_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Tank 3 Cross Feed Valve
+    get: L:MD11_OVHD_FUEL_XFEED_TANK_3_BT
+    set: "value ? '(>B:OVHD_FUEL_XFEED_TANK_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_XFEED_TANK_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Galley Bus 1
+    get: L:MD11_OVHD_GALLEY_BUS_1_BT
+    set: "value ? '(>B:OVHD_GALLEY_BUS_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_GALLEY_BUS_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Galley Bus 2
+    get: L:MD11_OVHD_GALLEY_BUS_2_BT
+    set: "value ? '(>B:OVHD_GALLEY_BUS_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_GALLEY_BUS_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Galley Bus 3
+    get: L:MD11_OVHD_GALLEY_BUS_3_BT
+    set: "value ? '(>B:OVHD_GALLEY_BUS_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_GALLEY_BUS_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 1 Bus Fault Reset
+    set: (>B:OVHD_GEN_BUS_1_RESET_BT_LEFT_BUTTON_UP)
+
+  - # Generator 1 Bus Fault Reset (Guard)
+    set: (>B:OVHD_GEN_BUS_1_RESET_GRD_LEFT_BUTTON_DOWN)
+
+  - # Generator 2 Bus Fault Reset
+    get: L:MD11_OVHD_GEN_BUS_2_RESET_BT
+    set: "value ? '(>B:OVHD_GEN_BUS_2_RESET_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_GEN_BUS_2_RESET_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 2 Bus Fault Reset (Guard)
+    set: (>B:OVHD_GEN_BUS_2_RESET_GRD_LEFT_BUTTON_DOWN)
+
+  - # Generator 3 Bus Fault Reset
+    get: L:MD11_OVHD_GEN_BUS_3_RESET_BT
+    set: "value ? '(>B:OVHD_GEN_BUS_3_RESET_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_GEN_BUS_3_RESET_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Generator 3 Bus Fault Reset (Guard)
+    set: (>B:OVHD_GEN_BUS_3_RESET_GRD_LEFT_BUTTON_DOWN)
+
+  - # Hydraulic System 1<->3 Reversible Motor Pump
+    get: L:MD11_OVHD_HYD_1_3_RMP_BT
+    set: "value ? '(>B:OVHD_HYD_1_3_RMP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_1_3_RMP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Hydraulic System 2<->3 Reversible Motor Pump
+    get: L:MD11_OVHD_HYD_2_3_RMP_BT
+    set: "value ? '(>B:OVHD_HYD_2_3_RMP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_2_3_RMP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Auxiliary Hydraulic Pump 1
+    get: L:MD11_OVHD_HYD_AUX_PUMP_1_BT
+    set: "value ? '(>B:OVHD_HYD_AUX_PUMP_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_AUX_PUMP_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Auxiliary Hydraulic Pump 2
+    get: L:MD11_OVHD_HYD_AUX_PUMP_2_BT
+    set: "value ? '(>B:OVHD_HYD_AUX_PUMP_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_AUX_PUMP_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 1 Left Engine Driven Hydraulic Pump
+    get: L:MD11_OVHD_HYD_EDP_1_L_BT
+    set: "value ? '(>B:OVHD_HYD_EDP_1_L_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_EDP_1_L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 1 Right Engine Driven Hydraulic Pump
+    get: L:MD11_OVHD_HYD_EDP_1_R_BT
+    set: "value ? '(>B:OVHD_HYD_EDP_1_R_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_EDP_1_R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 2 Left Engine Driven Hydraulic Pump
+    get: L:MD11_OVHD_HYD_EDP_2_L_BT
+    set: "value ? '(>B:OVHD_HYD_EDP_2_L_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_EDP_2_L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 2 Right Engine Driven Hydraulic Pump
+    get: L:MD11_OVHD_HYD_EDP_2_R_BT
+    set: "value ? '(>B:OVHD_HYD_EDP_2_R_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_EDP_2_R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 3 Left Engine Driven Hydraulic Pump
+    get: L:MD11_OVHD_HYD_EDP_3_L_BT
+    set: "value ? '(>B:OVHD_HYD_EDP_3_L_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_EDP_3_L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 3 Right Engine Driven Hydraulic Pump
+    get: L:MD11_OVHD_HYD_EDP_3_R_BT
+    set: "value ? '(>B:OVHD_HYD_EDP_3_R_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_EDP_3_R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Hydraulic System Test
+    get: L:MD11_OVHD_HYD_HYD_TEST_BT
+    set: "value ? '(>B:OVHD_HYD_HYD_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_HYD_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Hydraulic System Test (Guard)
+    set: (>B:OVHD_HYD_HYD_TEST_GRD_LEFT_BUTTON_DOWN)
+
+  - # Hydraulic System Mode
+    get: L:MD11_OVHD_HYD_SYSTEM_SEL_BT
+    set: "value ? '(>B:OVHD_HYD_SYSTEM_SEL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_SYSTEM_SEL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # IRS 1
+    set: (>B:OVHD_IRS_1_KB_LEFT_BUTTON_DOWN)
+
+  - # IRS 2
+    set: (>B:OVHD_IRS_2_KB_LEFT_BUTTON_DOWN)
+
+  - # Auxiliary IRS
+    set: (>B:OVHD_IRS_3_KB_LEFT_BUTTON_DOWN)
+
+  - # Aft Attendant Call
+    get: L:MD11_OVHD_LTS_AFT_ATTND_BT
+    set: "value ? '(>B:OVHD_LTS_AFT_ATTND_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_AFT_ATTND_BT_LEFT_BUTTON_DOWN)'"
+
+  - # All Station Call
+    get: L:MD11_OVHD_LTS_ALL_STA_BT
+    set: "value ? '(>B:OVHD_LTS_ALL_STA_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_ALL_STA_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Beacon Lights
+    get: L:MD11_OVHD_LTS_BCN_BT
+    set: "value ? '(>B:OVHD_LTS_BCN_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_BCN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Crew Rest Call
+    get: L:MD11_OVHD_LTS_CREW_REST_BT
+    set: "value ? '(>B:OVHD_LTS_CREW_REST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_CREW_REST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Dome Light
+    get: L:MD11_OVHD_LTS_DOME_BT
+    set: "value ? '(>B:OVHD_LTS_DOME_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_DOME_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Emergency Lights
+    set: (>B:OVHD_LTS_EMER_SW_LEFT_BUTTON_DOWN)
+
+  - # Emergency Lights (Right)
+    set: (>B:OVHD_LTS_EMER_SW_RIGHT_BUTTON_DOWN)
+
+  - # Emergency Lights Test
+    get: L:MD11_OVHD_LTS_EMER_TEST_BT
+    set: "value ? '(>B:OVHD_LTS_EMER_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_EMER_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Forward Attendant Call
+    get: L:MD11_OVHD_LTS_FWD_ATTND_BT
+    set: "value ? '(>B:OVHD_LTS_FWD_ATTND_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_FWD_ATTND_BT_LEFT_BUTTON_DOWN)'"
+
+  - # High Intensity Lights
+    set: (>B:OVHD_LTS_HI_INT_BT_LEFT_BUTTON_UP)
+
+  - # Main Instrument Panel and Pedestal Flood Lighting
+    get: L:MD11_OVHD_LTS_INNER_INSTR_PED_PNL_FLOOD_KB
+    set: "`${value} (>L:MD11_OVHD_LTS_INNER_INSTR_PED_PNL_FLOOD_KB)`"
+
+  - # Overhead Flood Lighting
+    get: L:MD11_OVHD_LTS_INNER_OVHD_PNL_FLOOD_KB
+    set: "`${value} (>L:MD11_OVHD_LTS_INNER_OVHD_PNL_FLOOD_KB)`"
+
+  - # Left Landing Light
+    set: (>B:OVHD_LTS_LDG_L_SW_LEFT_BUTTON_DOWN)
+
+  - # Left Landing Light (Right)
+    set: (>B:OVHD_LTS_LDG_L_SW_RIGHT_BUTTON_DOWN)
+
+  - # Right Landing Light
+    set: (>B:OVHD_LTS_LDG_R_SW_LEFT_BUTTON_DOWN)
+
+  - # Right Landing Light (Right)
+    set: (>B:OVHD_LTS_LDG_R_SW_RIGHT_BUTTON_DOWN)
+
+  - # Logo Light
+    get: L:MD11_OVHD_LTS_LOGO_BT
+    set: "value ? '(>B:OVHD_LTS_LOGO_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_LOGO_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Maintenance Interphone
+    get: L:MD11_OVHD_LTS_MAINT_INTP_BT
+    set: "value ? '(>B:OVHD_LTS_MAINT_INTP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_MAINT_INTP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Mechanic Call
+    get: L:MD11_OVHD_LTS_MECH_BT
+    set: "value ? '(>B:OVHD_LTS_MECH_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_MECH_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Middle Attendant Call
+    get: L:MD11_OVHD_LTS_MID_ATTND_BT
+    set: "value ? '(>B:OVHD_LTS_MID_ATTND_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_MID_ATTND_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Navigation Lights
+    get: L:MD11_OVHD_LTS_NAV_BT
+    set: "value ? '(>B:OVHD_LTS_NAV_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_NAV_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Nose Light
+    set: (>B:OVHD_LTS_NOSE_SW_LEFT_BUTTON_DOWN)
+
+  - # Nose Light (Right)
+    set: (>B:OVHD_LTS_NOSE_SW_RIGHT_BUTTON_DOWN)
+
+  - # No Smoking Signs
+    set: (>B:OVHD_LTS_NO_SMOKE_SW_LEFT_BUTTON_DOWN)
+
+  - # No Smoking Signs (Right)
+    set: (>B:OVHD_LTS_NO_SMOKE_SW_RIGHT_BUTTON_DOWN)
+
+  - # Main Instrument Panel and Pedestal Panel Lighting
+    get: L:MD11_OVHD_LTS_OUTER_INSTR_PED_PNL_FLOOD_KB
+    set: "`${value} (>L:MD11_OVHD_LTS_OUTER_INSTR_PED_PNL_FLOOD_KB)`"
+
+  - # Overhead Panel Lighting
+    get: L:MD11_OVHD_LTS_OUTER_OVHD_PNL_FLOOD_KB
+    set: "`${value} (>L:MD11_OVHD_LTS_OUTER_OVHD_PNL_FLOOD_KB)`"
+
+  - # Overwing Attendant Call
+    get: L:MD11_OVHD_LTS_OVW_ATTND_BT
+    set: "value ? '(>B:OVHD_LTS_OVW_ATTND_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_OVW_ATTND_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Passenger Addressing
+    get: L:MD11_OVHD_LTS_PA_BT
+    set: "value ? '(>B:OVHD_LTS_PA_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_PA_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Left Wing and Runway Turnoff Light
+    get: L:MD11_OVHD_LTS_RWY_TURNOFF_L_BT
+    set: "value ? '(>B:OVHD_LTS_RWY_TURNOFF_L_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_RWY_TURNOFF_L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Right Wing and Runway Turnoff Light
+    get: L:MD11_OVHD_LTS_RWY_TURNOFF_R_BT
+    set: "value ? '(>B:OVHD_LTS_RWY_TURNOFF_R_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_RWY_TURNOFF_R_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Seat Belt Signs
+    set: (>B:OVHD_LTS_SEAT_BELTS_SW_LEFT_BUTTON_DOWN)
+
+  - # Seat Belt Signs (Right)
+    set: (>B:OVHD_LTS_SEAT_BELTS_SW_RIGHT_BUTTON_DOWN)
+
+  - # Standby Compass Light
+    get: L:MD11_OVHD_LTS_STBY_COMP_BT
+    set: "value ? '(>B:OVHD_LTS_STBY_COMP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_STBY_COMP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Thunderstorm Dome Light
+    set: (>B:OVHD_LTS_THNDRSTRM_SW_LEFT_BUTTON_DOWN)
+
+  - # L Rain Replnt
+    get: L:MD11_OVHD_L_RAIN_REPLNT_BT
+    set: "value ? '(>B:OVHD_L_RAIN_REPLNT_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_L_RAIN_REPLNT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Left Windshield Wiper
+    set: (>B:OVHD_L_WIPER_KB_LEFT_BUTTON_DOWN)
+
+  - # Left Windshield Wiper
+    set: (>B:OVHD_L_WIPER_KB_RIGHT_BUTTON_DOWN)
+
+  - # Air System 1<->2 Isolation Valve
+    get: L:MD11_OVHD_PNEU_1_2_ISOL_BT
+    set: "value ? '(>B:OVHD_PNEU_1_2_ISOL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_1_2_ISOL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Air System 1<->3 Isolation Valve
+    get: L:MD11_OVHD_PNEU_1_3_ISOL_BT
+    set: "value ? '(>B:OVHD_PNEU_1_3_ISOL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_1_3_ISOL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Aft Cabin Temperature
+    set: (>B:OVHD_PNEU_AFT_CAB_TEMP_LEFT_BUTTON_DOWN)
+
+  - # Aft Cabin Temperature
+    set: (>B:OVHD_PNEU_AFT_CAB_TEMP_RIGHT_BUTTON_DOWN)
+
+  - # Aft Lower Cargo Temperature
+    set: (>B:OVHD_PNEU_AFT_CARGO_TEMP_LEFT_BUTTON_DOWN)
+
+  - # Aft Lower Cargo Temperature
+    set: (>B:OVHD_PNEU_AFT_CARGO_TEMP_RIGHT_BUTTON_DOWN)
+
+  - # APU Bleed
+    get: L:MD11_OVHD_PNEU_APU_BLEED_BT
+    set: "value ? '(>B:OVHD_PNEU_APU_BLEED_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_APU_BLEED_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Avionics Fan
+    get: L:MD11_OVHD_PNEU_AVIONICS_FAN_BT
+    set: "value ? '(>B:OVHD_PNEU_AVIONICS_FAN_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_AVIONICS_FAN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Bleed 1 Manifold
+    get: L:MD11_OVHD_PNEU_BLEED_1_MANF_TEMP_HI_BT
+    set: "value ? '(>B:OVHD_PNEU_BLEED_1_MANF_TEMP_HI_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_BLEED_1_MANF_TEMP_HI_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Bleed 1
+    get: L:MD11_OVHD_PNEU_BLEED_1_OFF_BT
+    set: "value ? '(>B:OVHD_PNEU_BLEED_1_OFF_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_BLEED_1_OFF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Bleed 2 Manifold
+    get: L:MD11_OVHD_PNEU_BLEED_2_MANF_TEMP_HI_BT
+    set: "value ? '(>B:OVHD_PNEU_BLEED_2_MANF_TEMP_HI_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_BLEED_2_MANF_TEMP_HI_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Bleed 2
+    get: L:MD11_OVHD_PNEU_BLEED_2_OFF_BT
+    set: "value ? '(>B:OVHD_PNEU_BLEED_2_OFF_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_BLEED_2_OFF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Bleed 3 Manifold
+    get: L:MD11_OVHD_PNEU_BLEED_3_MANF_TEMP_HI_BT
+    set: "value ? '(>B:OVHD_PNEU_BLEED_3_MANF_TEMP_HI_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_BLEED_3_MANF_TEMP_HI_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Bleed 3
+    get: L:MD11_OVHD_PNEU_BLEED_3_OFF_BT
+    set: "value ? '(>B:OVHD_PNEU_BLEED_3_OFF_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_BLEED_3_OFF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Cabin Pressurization System Mode
+    get: L:MD11_OVHD_PNEU_CABIN_SYSTEM_SEL_BT
+    set: "value ? '(>B:OVHD_PNEU_CABIN_SYSTEM_SEL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_CABIN_SYSTEM_SEL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Cabin Air
+    get: L:MD11_OVHD_PNEU_CAB_AIR_BT
+    set: "value ? '(>B:OVHD_PNEU_CAB_AIR_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_CAB_AIR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Cabin Air (Guard)
+    set: (>B:OVHD_PNEU_CAB_AIR_GRD_LEFT_BUTTON_DOWN)
+
+  - # Cabin Climb/Descend
+    set: (>B:OVHD_PNEU_CLBDES_KB_LEFT_BUTTON_DOWN)
+
+  - # Cabin Climb/Descend
+    set: (>B:OVHD_PNEU_CLBDES_KB_LEFT_BUTTON_UP)
+
+  - # Cabin Climb/Descend
+    set: (>B:OVHD_PNEU_CLBDES_KB_RIGHT_BUTTON_DOWN)
+
+  - # Cabin Climb/Descend
+    set: (>B:OVHD_PNEU_CLBDES_KB_RIGHT_BUTTON_UP)
+
+  - # Cockpit Temperature
+    set: (>B:OVHD_PNEU_COCKPIT_TEMP_LEFT_BUTTON_DOWN)
+
+  - # Cockpit Temperature
+    set: (>B:OVHD_PNEU_COCKPIT_TEMP_RIGHT_BUTTON_DOWN)
+
+  - # Cabin Pressurization Ditching Mode
+    get: L:MD11_OVHD_PNEU_DITCHING_BT
+    set: "value ? '(>B:OVHD_PNEU_DITCHING_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_DITCHING_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Cabin Pressurization Ditching Mode (Guard)
+    set: (>B:OVHD_PNEU_DITCHING_GRD_LEFT_BUTTON_DOWN)
+
+  - # ECON Mode
+    get: L:MD11_OVHD_PNEU_ECON_BT
+    set: "value ? '(>B:OVHD_PNEU_ECON_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_ECON_BT_LEFT_BUTTON_DOWN)'"
+
+  - # %
+    set: (>B:OVHD_PNEU_FWD_CAB_TEMP_LEFT_BUTTON_DOWN)
+
+  - # %
+    set: (>B:OVHD_PNEU_FWD_CAB_TEMP_RIGHT_BUTTON_DOWN)
+
+  - # Forward Lower Cargo Temperature
+    set: (>B:OVHD_PNEU_FWD_CARGO_TEMP_LEFT_BUTTON_DOWN)
+
+  - # Forward Lower Cargo Temperature
+    set: (>B:OVHD_PNEU_FWD_CARGO_TEMP_RIGHT_BUTTON_DOWN)
+
+  - # Passenger Oxygen Masks Manual Deploy
+    get: L:MD11_OVHD_PNEU_MASKS_BT
+    set: "value ? '(>B:OVHD_PNEU_MASKS_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_MASKS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Passenger Oxygen Masks Manual Deploy (Guard)
+    set: (>B:OVHD_PNEU_MASKS_GRD_LEFT_BUTTON_DOWN)
+
+  - # %
+    set: (>B:OVHD_PNEU_MID_CAB_TEMP_LEFT_BUTTON_DOWN)
+
+  - # %
+    set: (>B:OVHD_PNEU_MID_CAB_TEMP_RIGHT_BUTTON_DOWN)
+
+  - # Manual Landing Elevation
+    get: L:MD11_OVHD_PNEU_MLDG_ALT_KB
+    set: "`${value} (>L:MD11_OVHD_PNEU_MLDG_ALT_KB)`"
+
+  - # Pneu Outflow Valve Pos
+    set: (>B:OVHD_PNEU_OUTFLOW_VALVE_POS_SW_LEFT_BUTTON_DOWN)
+
+  - # Pneu Outflow Valve Pos (Right)
+    set: (>B:OVHD_PNEU_OUTFLOW_VALVE_POS_SW_RIGHT_BUTTON_DOWN)
+
+  - # Pack 1
+    get: L:MD11_OVHD_PNEU_PACK_1_BT
+    set: "value ? '(>B:OVHD_PNEU_PACK_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_PACK_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Pack 2
+    get: L:MD11_OVHD_PNEU_PACK_2_BT
+    set: "value ? '(>B:OVHD_PNEU_PACK_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_PACK_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Pack 3
+    get: L:MD11_OVHD_PNEU_PACK_3_BT
+    set: "value ? '(>B:OVHD_PNEU_PACK_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_PACK_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Air System Mode
+    get: L:MD11_OVHD_PNEU_SYSTEM_SEL_BT
+    set: "value ? '(>B:OVHD_PNEU_SYSTEM_SEL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_SYSTEM_SEL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Trim Air
+    get: L:MD11_OVHD_PNEU_TRIM_AIR_BT
+    set: "value ? '(>B:OVHD_PNEU_TRIM_AIR_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_TRIM_AIR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # R Rain Replnt
+    get: L:MD11_OVHD_R_RAIN_REPLNT_BT
+    set: "value ? '(>B:OVHD_R_RAIN_REPLNT_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_R_RAIN_REPLNT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Right Windshield Wiper
+    set: (>B:OVHD_R_WIPER_KB_LEFT_BUTTON_DOWN)
+
+  - # Right Windshield Wiper
+    set: (>B:OVHD_R_WIPER_KB_RIGHT_BUTTON_DOWN)
+
+  - # Standby Compass
+    set: (>B:OVHD_STBY_CMPS_SW_LEFT_BUTTON_DOWN)
+
+  - # Windshield Anti Ice Strength
+    get: L:MD11_OVHD_WNDSHLD_AICE_BT
+    set: "value ? '(>B:OVHD_WNDSHLD_AICE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_WNDSHLD_AICE_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Windshield Defog
+    get: L:MD11_OVHD_WNDSHLD_AICE_DEFOG_BT
+    set: "value ? '(>B:OVHD_WNDSHLD_AICE_DEFOG_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_WNDSHLD_AICE_DEFOG_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Left Windshield Anti Ice
+    get: L:MD11_OVHD_WNDSHLD_AICE_L_BT
+    set: "value ? '(>B:OVHD_WNDSHLD_AICE_L_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_WNDSHLD_AICE_L_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Right Windshield Anti Ice
+    get: L:MD11_OVHD_WNDSHLD_AICE_R_BT
+    set: "value ? '(>B:OVHD_WNDSHLD_AICE_R_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_WNDSHLD_AICE_R_BT_LEFT_BUTTON_DOWN)'"
+  - # ADG Deploy Lever
+    set: (>B:PED_ADG_LVR_LEFT_BUTTON_DOWN)
+
+  - # Aileron Trim
+    get: L:MD11_PED_AIL_TRIM_KB
+    set: "`${value} (>L:MD11_PED_AIL_TRIM_KB)`"
+
+  - # Cockpit Door Lock
+    set: (>B:PED_CKPTDOOR_LOCK_KB_LEFT_BUTTON_DOWN)
+
+  - # Cockpit Door Lock
+    set: (>B:PED_CKPTDOOR_LOCK_KB_RIGHT_BUTTON_DOWN)
+
+  - # Captain KHz Tuner
+    get: L:MD11_PED_CPT_INNER_RADIO_FREQ_SEL_KB
+    set: "`${value} (>L:MD11_PED_CPT_INNER_RADIO_FREQ_SEL_KB)`"
+
+  - # Captain MHz Tuner (Wheel Up)
+    set: (>B:PED_CPT_OUTER_RADIO_FREQ_SEL_KB_WHEEL_UP)
+
+  - # DU1 Brightness
+    get: L:MD11_PED_DU1_BRT_KB
+    set: "`${value} (>L:MD11_PED_DU1_BRT_KB)`"
+
+  - # DU2 Brightness
+    get: L:MD11_PED_DU2_BRT_KB
+    set: "`${value} (>L:MD11_PED_DU2_BRT_KB)`"
+
+  - # DU3 Brightness
+    get: L:MD11_PED_DU3_BRT_KB
+    set: "`${value} (>L:MD11_PED_DU3_BRT_KB)`"
+
+  - # DU4 Brightness
+    get: L:MD11_PED_DU4_BRT_KB
+    set: "`${value} (>L:MD11_PED_DU4_BRT_KB)`"
+
+  - # DU5 Brightness
+    get: L:MD11_PED_DU5_BRT_KB
+    set: "`${value} (>L:MD11_PED_DU5_BRT_KB)`"
+
+  - # DU6 Brightness
+    get: L:MD11_PED_DU6_BRT_KB
+    set: "`${value} (>L:MD11_PED_DU6_BRT_KB)`"
+
+  - # First Officer KHz Tuner
+    get: L:MD11_PED_FO_INNER_RADIO_FREQ_SEL_KB
+    set: "`${value} (>L:MD11_PED_FO_INNER_RADIO_FREQ_SEL_KB)`"
+
+  - # First Officer MHz Tuner
+    get: L:MD11_PED_FO_OUTER_RADIO_FREQ_SEL_KB
+    set: "`${value} (>L:MD11_PED_FO_OUTER_RADIO_FREQ_SEL_KB)`"
+
+  - # Observer KHz Tuner
+    get: L:MD11_PED_OBS_INNER_RADIO_FREQ_SEL_KB
+    set: "`${value} (>L:MD11_PED_OBS_INNER_RADIO_FREQ_SEL_KB)`"
+
+  - # Observer MHz Tuner
+    get: L:MD11_PED_OBS_OUTER_RADIO_FREQ_SEL_KB
+    set: "`${value} (>L:MD11_PED_OBS_OUTER_RADIO_FREQ_SEL_KB)`"
+
+  - # Rudder Trim
+    set: (>B:PED_RUD_TRIM_SW_LEFT_BUTTON_DOWN)
+
+  - # Rudder Trim (Right)
+    set: (>B:PED_RUD_TRIM_SW_RIGHT_BUTTON_DOWN)
+
+  - # Rudder Trim
+    set: (>B:PED_RUD_TRIM_SW_LEFT_BUTTON_UP)
+
+  - # Rudder Trim
+    set: (>B:PED_RUD_TRIM_SW_RIGHT_BUTTON_UP)
+
+  - # SD Air Page
+    set: (>B:PED_SD_AIR_BT_LEFT_BUTTON_UP)
+
+  - # SD Configuration Page
+    get: L:MD11_PED_SD_CONFIG_BT
+    set: "value ? '(>B:PED_SD_CONFIG_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_CONFIG_BT_LEFT_BUTTON_DOWN)'"
+
+  - # SD Consequences Page
+    get: L:MD11_PED_SD_CONSEQ_BT
+    set: "value ? '(>B:PED_SD_CONSEQ_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_CONSEQ_BT_LEFT_BUTTON_DOWN)'"
+
+  - # SD Electrical Page
+    get: L:MD11_PED_SD_ELEC_BT
+    set: "value ? '(>B:PED_SD_ELEC_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_ELEC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # SD Engine Page
+    get: L:MD11_PED_SD_ENG_BT
+    set: "value ? '(>B:PED_SD_ENG_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_ENG_BT_LEFT_BUTTON_DOWN)'"
+
+  - # SD Fuel Page
+    get: L:MD11_PED_SD_FUEL_BT
+    set: "value ? '(>B:PED_SD_FUEL_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_FUEL_BT_LEFT_BUTTON_DOWN)'"
+
+  - # SD Hydraulics Page
+    get: L:MD11_PED_SD_HYD_BT
+    set: "value ? '(>B:PED_SD_HYD_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_HYD_BT_LEFT_BUTTON_DOWN)'"
+
+  - # SD Miscellaneous Page
+    get: L:MD11_PED_SD_MISC_BT
+    set: "value ? '(>B:PED_SD_MISC_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_MISC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # SD Third ND
+    get: L:MD11_PED_SD_ND_BT
+    set: "value ? '(>B:PED_SD_ND_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_ND_BT_LEFT_BUTTON_DOWN)'"
+
+  - # SD Status Page
+    get: L:MD11_PED_SD_STATUS_BT
+    set: "value ? '(>B:PED_SD_STATUS_BT_LEFT_BUTTON_UP)' : '(>B:PED_SD_STATUS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Weather Radar Gain
+    get: L:MD11_PED_WXR_GAIN_KB
+    set: "`${value} (>L:MD11_PED_WXR_GAIN_KB)`"
+
+  - # Weather Radar GCS
+    get: L:MD11_PED_WXR_IDNT_BT
+    set: "value ? '(>B:PED_WXR_IDNT_BT_LEFT_BUTTON_UP)' : '(>B:PED_WXR_IDNT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Weather Radar MAP Mode
+    get: L:MD11_PED_WXR_MAP_BT
+    set: "value ? '(>B:PED_WXR_MAP_BT_LEFT_BUTTON_UP)' : '(>B:PED_WXR_MAP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Weather Radar OFF
+    get: L:MD11_PED_WXR_OFF_BT
+    set: "value ? '(>B:PED_WXR_OFF_BT_LEFT_BUTTON_UP)' : '(>B:PED_WXR_OFF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Weather Radar Stabilization
+    get: L:MD11_PED_WXR_STAB_BT
+    set: "value ? '(>B:PED_WXR_STAB_BT_LEFT_BUTTON_UP)' : '(>B:PED_WXR_STAB_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Weather Radar System Select
+    get: L:MD11_PED_WXR_SYS_BT
+    set: "value ? '(>B:PED_WXR_SYS_BT_LEFT_BUTTON_UP)' : '(>B:PED_WXR_SYS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Weather Radar TEST Mode
+    get: L:MD11_PED_WXR_TEST_BT
+    set: "value ? '(>B:PED_WXR_TEST_BT_LEFT_BUTTON_UP)' : '(>B:PED_WXR_TEST_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Weather Radar Tilt
+    get: L:MD11_PED_WXR_TILT_KB
+    set: "`${value} (>L:MD11_PED_WXR_TILT_KB)`"
+
+  - # Weather Radar WX+T Mode
+    get: L:MD11_PED_WXR_WXT_BT
+    set: "value ? '(>B:PED_WXR_WXT_BT_LEFT_BUTTON_UP)' : '(>B:PED_WXR_WXT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Weather Radar WX Mode
+    get: L:MD11_PED_WXR_WX_BT
+    set: "value ? '(>B:PED_WXR_WX_BT_LEFT_BUTTON_UP)' : '(>B:PED_WXR_WX_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Xpndr 0
+    get: L:MD11_PED_XPNDR_0_BT
+    set: "value ? '(>B:PED_XPNDR_0_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_0_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Xpndr 1
+    get: L:MD11_PED_XPNDR_1_BT
+    set: "value ? '(>B:PED_XPNDR_1_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Xpndr 2
+    get: L:MD11_PED_XPNDR_2_BT
+    set: "value ? '(>B:PED_XPNDR_2_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Xpndr 3
+    get: L:MD11_PED_XPNDR_3_BT
+    set: "value ? '(>B:PED_XPNDR_3_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Xpndr 4
+    get: L:MD11_PED_XPNDR_4_BT
+    set: "value ? '(>B:PED_XPNDR_4_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_4_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Xpndr 5
+    get: L:MD11_PED_XPNDR_5_BT
+    set: "value ? '(>B:PED_XPNDR_5_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_5_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Xpndr 6
+    get: L:MD11_PED_XPNDR_6_BT
+    set: "value ? '(>B:PED_XPNDR_6_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_6_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Xpndr 7
+    get: L:MD11_PED_XPNDR_7_BT
+    set: "value ? '(>B:PED_XPNDR_7_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_7_BT_LEFT_BUTTON_DOWN)'"
+
+  - # TCAS Filter
+    set: (>B:PED_XPNDR_ABV_BLW_SW_LEFT_BUTTON_DOWN)
+
+  - # TCAS Filter (Right)
+    set: (>B:PED_XPNDR_ABV_BLW_SW_RIGHT_BUTTON_DOWN)
+
+  - # Transponder Altitude Reporting
+    set: (>B:PED_XPNDR_ALT_RPTG_KB_LEFT_BUTTON_DOWN)
+
+  - # Xpndr Clr
+    get: L:MD11_PED_XPNDR_CLR_BT
+    set: "value ? '(>B:PED_XPNDR_CLR_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_CLR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Transponder Ident
+    get: L:MD11_PED_XPNDR_IDENT_BT
+    set: "value ? '(>B:PED_XPNDR_IDENT_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_IDENT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Transponder/TCAS Mode
+    set: (>B:PED_XPNDR_MODE_KB_LEFT_BUTTON_DOWN)
+
+  - # Transponder/TCAS Mode
+    set: (>B:PED_XPNDR_MODE_KB_RIGHT_BUTTON_DOWN)
+
+  - # Transponder System Select
+    set: (>B:PED_XPNDR_SEL_KB_LEFT_BUTTON_DOWN)
+
+  - # TCAS Test
+    get: L:MD11_PED_XPNDR_TEST_BT
+    set: "value ? '(>B:PED_XPNDR_TEST_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_TEST_BT_LEFT_BUTTON_DOWN)'"
+  - # Captain HF1 Frequency Select
+    get: L:MD11_PED_CPT_RADIO_PNL_HF1_BT
+    set: "value ? '(>B:PED_CPT_RADIO_PNL_HF1_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_RADIO_PNL_HF1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain HF2 Frequency Select
+    get: L:MD11_PED_CPT_RADIO_PNL_HF2_BT
+    set: "value ? '(>B:PED_CPT_RADIO_PNL_HF2_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_RADIO_PNL_HF2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain VHF1 Frequency Select
+    get: L:MD11_PED_CPT_RADIO_PNL_VHF1_BT
+    set: "value ? '(>B:PED_CPT_RADIO_PNL_VHF1_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_RADIO_PNL_VHF1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain VHF2 Frequency Select
+    get: L:MD11_PED_CPT_RADIO_PNL_VHF2_BT
+    set: "value ? '(>B:PED_CPT_RADIO_PNL_VHF2_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_RADIO_PNL_VHF2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Captain VHF3 Frequency Select
+    get: L:MD11_PED_CPT_RADIO_PNL_VHF3_BT
+    set: "value ? '(>B:PED_CPT_RADIO_PNL_VHF3_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_RADIO_PNL_VHF3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Swap Captain Frequencies
+    get: L:MD11_PED_CPT_RADIO_PNL_XFER_BT
+    set: "value ? '(>B:PED_CPT_RADIO_PNL_XFER_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_RADIO_PNL_XFER_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer HF1 Frequency Select
+    get: L:MD11_PED_FO_RADIO_PNL_HF1_BT
+    set: "value ? '(>B:PED_FO_RADIO_PNL_HF1_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_RADIO_PNL_HF1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer HF2 Frequency Select
+    get: L:MD11_PED_FO_RADIO_PNL_HF2_BT
+    set: "value ? '(>B:PED_FO_RADIO_PNL_HF2_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_RADIO_PNL_HF2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer VHF1 Frequency Select
+    get: L:MD11_PED_FO_RADIO_PNL_VHF1_BT
+    set: "value ? '(>B:PED_FO_RADIO_PNL_VHF1_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_RADIO_PNL_VHF1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer VHF2 Frequency Select
+    get: L:MD11_PED_FO_RADIO_PNL_VHF2_BT
+    set: "value ? '(>B:PED_FO_RADIO_PNL_VHF2_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_RADIO_PNL_VHF2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer VHF3 Frequency Select
+    get: L:MD11_PED_FO_RADIO_PNL_VHF3_BT
+    set: "value ? '(>B:PED_FO_RADIO_PNL_VHF3_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_RADIO_PNL_VHF3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Swap First Officer Frequencies
+    get: L:MD11_PED_FO_RADIO_PNL_XFER_BT
+    set: "value ? '(>B:PED_FO_RADIO_PNL_XFER_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_RADIO_PNL_XFER_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer HF1 Frequency Select
+    get: L:MD11_PED_OBS_RADIO_PNL_HF1_BT
+    set: "value ? '(>B:PED_OBS_RADIO_PNL_HF1_BT_LEFT_BUTTON_UP)' : '(>B:PED_OBS_RADIO_PNL_HF1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer HF2 Frequency Select
+    get: L:MD11_PED_OBS_RADIO_PNL_HF2_BT
+    set: "value ? '(>B:PED_OBS_RADIO_PNL_HF2_BT_LEFT_BUTTON_UP)' : '(>B:PED_OBS_RADIO_PNL_HF2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer VHF1 Frequency Select
+    get: L:MD11_PED_OBS_RADIO_PNL_VHF1_BT
+    set: "value ? '(>B:PED_OBS_RADIO_PNL_VHF1_BT_LEFT_BUTTON_UP)' : '(>B:PED_OBS_RADIO_PNL_VHF1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer VHF2 Frequency Select
+    get: L:MD11_PED_OBS_RADIO_PNL_VHF2_BT
+    set: "value ? '(>B:PED_OBS_RADIO_PNL_VHF2_BT_LEFT_BUTTON_UP)' : '(>B:PED_OBS_RADIO_PNL_VHF2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Observer VHF3 Frequency Select
+    get: L:MD11_PED_OBS_RADIO_PNL_VHF3_BT
+    set: "value ? '(>B:PED_OBS_RADIO_PNL_VHF3_BT_LEFT_BUTTON_UP)' : '(>B:PED_OBS_RADIO_PNL_VHF3_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Swap Observer Frequencies
+    get: L:MD11_PED_OBS_RADIO_PNL_XFER_BT
+    set: "value ? '(>B:PED_OBS_RADIO_PNL_XFER_BT_LEFT_BUTTON_UP)' : '(>B:PED_OBS_RADIO_PNL_XFER_BT_LEFT_BUTTON_DOWN)'"
+  - # First Officer ND ADF1 Needle
+    get: L:MD11_RECP_ADF1_BT
+    set: "value ? '(>B:RECP_ADF1_BT_LEFT_BUTTON_UP)' : '(>B:RECP_ADF1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND ADF2 Needle
+    get: L:MD11_RECP_ADF2_BT
+    set: "value ? '(>B:RECP_ADF2_BT_LEFT_BUTTON_UP)' : '(>B:RECP_ADF2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND Approach Mode
+    get: L:MD11_RECP_APPR_BT
+    set: "value ? '(>B:RECP_APPR_BT_LEFT_BUTTON_UP)' : '(>B:RECP_APPR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND Airport Display
+    get: L:MD11_RECP_ARPT_BT
+    set: "value ? '(>B:RECP_ARPT_BT_LEFT_BUTTON_UP)' : '(>B:RECP_ARPT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Altimeter Setting
+    set: (>B:RECP_BAROSET_CAP_LEFT_BUTTON_DOWN)
+
+  - # First Officer Altimeter Setting
+    set: (>B:RECP_BAROSET_CAP_LEFT_BUTTON_UP)
+
+  - # First Officer Altimeter Setting
+    set: (>B:RECP_BAROSET_CAP_WHEEL_DOWN)
+
+  - # First Officer Altimeter Setting
+    set: (>B:RECP_BAROSET_CAP_WHEEL_UP)
+
+  - # First Officer Altimeter Mode
+    set: (>B:RECP_BAROSET_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer ND Data Display
+    get: L:MD11_RECP_DATA_BT
+    set: "value ? '(>B:RECP_DATA_BT_LEFT_BUTTON_UP)' : '(>B:RECP_DATA_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND Range Decrease
+    get: L:MD11_RECP_DECR_BT
+    set: "value ? '(>B:RECP_DECR_BT_LEFT_BUTTON_UP)' : '(>B:RECP_DECR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND Range Increase
+    get: L:MD11_RECP_INCR_BT
+    set: "value ? '(>B:RECP_INCR_BT_LEFT_BUTTON_UP)' : '(>B:RECP_INCR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Altimeter Unit
+    get: L:MD11_RECP_INHP_BT
+    set: "value ? '(>B:RECP_INHP_BT_LEFT_BUTTON_UP)' : '(>B:RECP_INHP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND Heading Reference
+    get: L:MD11_RECP_MAGTRU_BT
+    set: "value ? '(>B:RECP_MAGTRU_BT_LEFT_BUTTON_UP)' : '(>B:RECP_MAGTRU_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND Map Mode
+    get: L:MD11_RECP_MAP_BT
+    set: "value ? '(>B:RECP_MAP_BT_LEFT_BUTTON_UP)' : '(>B:RECP_MAP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Minimums Setting
+    set: (>B:RECP_MINIMUMS_CAP_LEFT_BUTTON_DOWN)
+
+  - # First Officer Minimums Setting
+    set: (>B:RECP_MINIMUMS_CAP_LEFT_BUTTON_UP)
+
+  - # First Officer Minimums Setting
+    set: (>B:RECP_MINIMUMS_CAP_WHEEL_DOWN)
+
+  - # First Officer Minimums Setting
+    set: (>B:RECP_MINIMUMS_CAP_WHEEL_UP)
+
+  - # First Officer Minimums Mode
+    set: (>B:RECP_MINIMUMS_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer ND Plan Mode
+    get: L:MD11_RECP_PLAN_BT
+    set: "value ? '(>B:RECP_PLAN_BT_LEFT_BUTTON_UP)' : '(>B:RECP_PLAN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND TCAS Mode
+    get: L:MD11_RECP_TCAS_BT
+    set: "value ? '(>B:RECP_TCAS_BT_LEFT_BUTTON_UP)' : '(>B:RECP_TCAS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND Traffic Display
+    get: L:MD11_RECP_TRFC_BT
+    set: "value ? '(>B:RECP_TRFC_BT_LEFT_BUTTON_UP)' : '(>B:RECP_TRFC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND VOR1 Needle
+    get: L:MD11_RECP_VOR1_BT
+    set: "value ? '(>B:RECP_VOR1_BT_LEFT_BUTTON_UP)' : '(>B:RECP_VOR1_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND VOR2 Needle
+    get: L:MD11_RECP_VOR2_BT
+    set: "value ? '(>B:RECP_VOR2_BT_LEFT_BUTTON_UP)' : '(>B:RECP_VOR2_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND VOR/NDB Display
+    get: L:MD11_RECP_VORNDB_BT
+    set: "value ? '(>B:RECP_VORNDB_BT_LEFT_BUTTON_UP)' : '(>B:RECP_VORNDB_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND VOR Mode
+    get: L:MD11_RECP_VOR_BT
+    set: "value ? '(>B:RECP_VOR_BT_LEFT_BUTTON_UP)' : '(>B:RECP_VOR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer ND Waypoint Display
+    get: L:MD11_RECP_WPT_BT
+    set: "value ? '(>B:RECP_WPT_BT_LEFT_BUTTON_UP)' : '(>B:RECP_WPT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Weather Radar/Terrain Display Brightness
+    get: L:MD11_RECP_WXBRT_KB
+    set: "`${value} (>L:MD11_RECP_WXBRT_KB)`"
+
+  - # First Officer Weather Radar/Terrain Display Brightness
+    set: (>B:RECP_WXBRT_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer Weather Radar/Terrain Display Brightness
+    set: (>B:RECP_WXBRT_KB_LEFT_BUTTON_UP)
+  - # First Officer Briefcase Light
+    get: L:MD11_RSIDE_BRIEFCASE_KB
+    set: "`${value} (>L:MD11_RSIDE_BRIEFCASE_KB)`"
+
+  - # First Officer Floor Light (Right)
+    set: (>B:RSIDE_FLOOR_SW_RIGHT_BUTTON_DOWN)
+
+  - # First Officer ILS Source
+    get: L:MD11_RSIDE_INP_APPR_BT
+    set: "value ? '(>B:RSIDE_INP_APPR_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_INP_APPR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Air Data Source
+    get: L:MD11_RSIDE_INP_CADC_BT
+    set: "value ? '(>B:RSIDE_INP_CADC_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_INP_CADC_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer EIS Source
+    set: (>B:RSIDE_INP_EIS_KB_LEFT_BUTTON_DOWN)
+
+  - # First Officer EIS Source
+    set: (>B:RSIDE_INP_EIS_KB_RIGHT_BUTTON_DOWN)
+
+  - # First Officer Flight Director
+    get: L:MD11_RSIDE_INP_FLTDIROFF_BT
+    set: "value ? '(>B:RSIDE_INP_FLTDIROFF_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_INP_FLTDIROFF_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Flight Director Source
+    get: L:MD11_RSIDE_INP_FLTDIR_BT
+    set: "value ? '(>B:RSIDE_INP_FLTDIR_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_INP_FLTDIR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer FMS Source
+    get: L:MD11_RSIDE_INP_FMS_BT
+    set: "value ? '(>B:RSIDE_INP_FMS_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_INP_FMS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer IRS Source
+    get: L:MD11_RSIDE_INP_IRS_BT
+    set: "value ? '(>B:RSIDE_INP_IRS_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_INP_IRS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer VOR Source
+    get: L:MD11_RSIDE_INP_VOR_BT
+    set: "value ? '(>B:RSIDE_INP_VOR_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_INP_VOR_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer PTT
+    get: L:MD11_RSIDE_PTT_BT
+    set: "value ? '(>B:RSIDE_PTT_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_PTT_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Timer Start/Reset
+    get: L:MD11_RSIDE_TIMER_BT
+    set: "value ? '(>B:RSIDE_TIMER_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_TIMER_BT_LEFT_BUTTON_DOWN)'"
+
+  - # First Officer Timer Mode
+    set: (>B:RSIDE_TIMER_SW_LEFT_BUTTON_DOWN)
+
+  - # First Officer Timer Mode (Right)
+    set: (>B:RSIDE_TIMER_SW_RIGHT_BUTTON_DOWN)
+  - # First Officer Autopilot Disconnect
+    get: L:MD11_RYOKE_AP_BT
+    set: "value ? '(>B:RYOKE_AP_BT_LEFT_BUTTON_UP)' : '(>B:RYOKE_AP_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Trim
+    set: (>B:RYOKE_TRIM_SW_LEFT_BUTTON_DOWN)
+
+  - # Trim (Right)
+    set: (>B:RYOKE_TRIM_SW_RIGHT_BUTTON_DOWN)
+
+  - # Trim
+    set: (>B:RYOKE_TRIM_SW_LEFT_BUTTON_UP)
+
+  - # Trim
+    set: (>B:RYOKE_TRIM_SW_RIGHT_BUTTON_UP)
+  - # Engine 2 Fuel
+    set: (>B:THR_C_FUEL_SW_LEFT_BUTTON_DOWN)
+
+  - # Engine 2 Starter
+    set: (>B:THR_C_START_SW_LEFT_BUTTON_DOWN)
+
+  - # Go Around Mode
+    get: L:MD11_THR_GA_BT
+    set: "value ? '(>B:THR_GA_BT_LEFT_BUTTON_UP)' : '(>B:THR_GA_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Gear Horn Silence
+    get: L:MD11_THR_GEAR_HORN_BT
+    set: "value ? '(>B:THR_GEAR_HORN_BT_LEFT_BUTTON_UP)' : '(>B:THR_GEAR_HORN_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Elevator Trim
+    set: (>B:THR_LONG_TRIM_SW_LEFT_BUTTON_DOWN)
+
+  - # Elevator Trim (Right)
+    set: (>B:THR_LONG_TRIM_SW_RIGHT_BUTTON_DOWN)
+
+  - # Elevator Trim
+    set: (>B:THR_LONG_TRIM_SW_LEFT_BUTTON_UP)
+
+  - # Elevator Trim
+    set: (>B:THR_LONG_TRIM_SW_RIGHT_BUTTON_UP)
+
+  - # Autothrust Disconnect
+    get: L:MD11_THR_L_ATS_BT
+    set: "value ? '(>B:THR_L_ATS_BT_LEFT_BUTTON_UP)' : '(>B:THR_L_ATS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 1 Fuel
+    set: (>B:THR_L_FUEL_SW_LEFT_BUTTON_DOWN)
+
+  - # Engine 1 Starter
+    set: (>B:THR_L_START_SW_LEFT_BUTTON_DOWN)
+
+  - # Parking Brake
+    set: (>B:THR_PARK_LVR_LEFT_BUTTON_DOWN)
+
+  - # Autothrust Disconnect
+    get: L:MD11_THR_R_ATS_BT
+    set: "value ? '(>B:THR_R_ATS_BT_LEFT_BUTTON_UP)' : '(>B:THR_R_ATS_BT_LEFT_BUTTON_DOWN)'"
+
+  - # Engine 3 Fuel
+    set: (>B:THR_R_FUEL_SW_LEFT_BUTTON_DOWN)
+
+  - # Engine 3 Starter
+    set: (>B:THR_R_START_SW_LEFT_BUTTON_DOWN)
