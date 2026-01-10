@@ -392,43 +392,33 @@ def find_l_variable(event_name, variables):
     return None
 
 def parse_event_entry(entry):
-    """Parse an event entry which can be a string or an object with overrides.
+    """Parse an event entry which can be a string or an object with event key.
     
     Returns:
-        tuple: (event_name, overrides_dict)
+        str: Event name, or None if invalid
     """
     if isinstance(entry, str):
-        # Backward compatibility: simple string format
+        # Simple string format
         event_name = entry.strip().replace(' // present', '')
-        return event_name, {}
+        return event_name
     elif isinstance(entry, dict):
-        # New format: object with event and optional overrides
+        # Object format: extract event name from 'event' key
         event_name = entry.get('event', '').strip()
-        # All other keys are treated as overrides (except metadata keys)
-        overrides = {k: v for k, v in entry.items() if k != 'event'}
-        return event_name, overrides
+        return event_name if event_name else None
     else:
-        return None, {}
+        return None
 
 def group_events(events, variables=None):
-    """Group events by control, handling DOWN/UP pairs and wheel events.
-    
-    Now supports event entries as either strings or objects with overrides.
-    """
+    """Group events by control, handling DOWN/UP pairs and wheel events."""
     if variables is None:
         variables = set()
     
     grouped = {}
-    event_overrides = {}  # Store overrides per event name
     
     for entry in events:
-        event_name, overrides = parse_event_entry(entry)
+        event_name = parse_event_entry(entry)
         if not event_name:
             continue
-        
-        # Store overrides for this event
-        if overrides:
-            event_overrides[event_name] = overrides
         
         event = event_name
             
@@ -493,16 +483,10 @@ def group_events(events, variables=None):
                 'events': [],
                 'is_wheel': is_wheel,
                 'l_variable': None,
-                'control_type': None,
-                'overrides': {}  # Store overrides for this group
+                'control_type': None
             }
         
         grouped[base]['events'].append(event)
-        
-        # Store overrides for this event in the group
-        if event in event_overrides:
-            # Merge overrides (event-specific overrides take precedence)
-            grouped[base]['overrides'].update(event_overrides[event])
         
         if '_WHEEL_DOWN' in event or '_BT_LEFT_BUTTON_DOWN' in event or '_SW_LEFT_BUTTON_DOWN' in event:
             grouped[base]['DOWN'] = event
@@ -530,36 +514,6 @@ def group_events(events, variables=None):
                 group['control_type'] = 'ToggleSwitch'
     
     return grouped
-
-def format_override_lines(overrides):
-    """Format override key-value pairs as YAML lines.
-    
-    Args:
-        overrides: Dictionary of override key-value pairs
-    
-    Returns:
-        List of formatted YAML lines
-    """
-    if not overrides:
-        return []
-    
-    lines = []
-    for key, value in sorted(overrides.items()):
-        # Skip keys that are already handled by the generator
-        if key in ['event', 'events']:  # Skip metadata keys
-            continue
-        
-        # Format the value appropriately
-        if isinstance(value, bool):
-            lines.append(f"    {key}: {str(value).lower()}")
-        elif isinstance(value, (int, float)):
-            lines.append(f"    {key}: {value}")
-        elif isinstance(value, str):
-            lines.append(f"    {key}: {value}")
-        else:
-            lines.append(f"    {key}: {value}")
-    
-    return lines
 
 def format_entry_as_yaml(entry):
     """Format a FS Copilot YAML entry dictionary back to YAML text format."""
@@ -970,9 +924,9 @@ def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
             
             filtered_events = []
             for entry in events:
-                event_name, overrides = parse_event_entry(entry)
+                event_name = parse_event_entry(entry)
                 if event_name:
-                    filtered_events.append(entry if isinstance(entry, dict) else event_name)
+                    filtered_events.append(event_name)
             
             if filtered_events:
                 shared_content = generate_shared_content(category, filtered_events, description, variables)
@@ -1143,42 +1097,33 @@ def update_category_file(category_file, events):
     # Extract event names from the events list (they may be strings or objects)
     event_names = set()
     for entry in events:
-        event_name, _ = parse_event_entry(entry)
+        event_name = parse_event_entry(entry)
         if event_name:
             event_names.add(event_name)
     
     # Update events list
     updated_events = []
     for entry in data.get('events', []):
-        event_name, overrides = parse_event_entry(entry)
+        event_name = parse_event_entry(entry)
         if not event_name:
             continue
         
         # Check if this event is in the generated events
         if event_name in event_names:
-            # Mark as present, preserving format
-            if isinstance(entry, str):
-                # String format: add // present
-                updated_events.append(f"{event_name} // present")
-            elif isinstance(entry, dict):
-                # Object format: keep the object as-is (overrides are preserved)
-                updated_events.append(entry)
-            else:
-                updated_events.append(f"{event_name} // present")
+            # Mark as present (always write as string format)
+            updated_events.append(f"{event_name} // present")
         else:
-            # Not present, keep original format
+            # Not present, keep original format (convert dict to string if needed)
             if isinstance(entry, str):
-                updated_events.append(event_name)
-            elif isinstance(entry, dict):
                 updated_events.append(entry)
             else:
+                # Convert dict entries to string format (ignore any override properties)
                 updated_events.append(event_name)
     
     data['events'] = updated_events
-    # Count present events (check both string and object formats)
+    # Count present events (string format only)
     present_count = sum(1 for e in updated_events 
-                       if (isinstance(e, str) and '// present' in e) or 
-                          (isinstance(e, dict) and e.get('event')))
+                       if isinstance(e, str) and '// present' in e)
     data['present_count'] = present_count
     data['total_count'] = len(updated_events)
     
@@ -1332,12 +1277,9 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                         # Filter out "// present" markers
                         filtered_events = []
                         for entry in events:
-                            event_name, overrides = parse_event_entry(entry)
+                            event_name = parse_event_entry(entry)
                             if event_name:
-                                if isinstance(entry, dict):
-                                    filtered_events.append(entry)
-                                else:
-                                    filtered_events.append(event_name)
+                                filtered_events.append(event_name)
                         
                         if filtered_events:
                             all_group_events.extend(filtered_events)
@@ -1378,7 +1320,7 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                     cat_events = cat_data.get('events', [])
                     filtered_cat_events = []
                     for entry in cat_events:
-                        event_name, overrides = parse_event_entry(entry)
+                        event_name = parse_event_entry(entry)
                         if event_name:
                             filtered_cat_events.append(event_name)
                     update_category_file(category_file, filtered_cat_events)
@@ -1407,12 +1349,9 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                         
                         filtered_events = []
                         for entry in events:
-                            event_name, overrides = parse_event_entry(entry)
+                            event_name = parse_event_entry(entry)
                             if event_name:
-                                if isinstance(entry, dict):
-                                    filtered_events.append(entry)
-                                else:
-                                    filtered_events.append(event_name)
+                                filtered_events.append(event_name)
                         events = filtered_events
                         
                         if not events:
@@ -1542,12 +1481,9 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                     # Filter out "// present" markers but preserve format
                     filtered_events = []
                     for entry in events:
-                        event_name, overrides = parse_event_entry(entry)
+                        event_name = parse_event_entry(entry)
                         if event_name:
-                            if isinstance(entry, dict):
-                                filtered_events.append(entry)
-                            else:
-                                filtered_events.append(event_name)
+                            filtered_events.append(event_name)
                     events = filtered_events
                     
                     if not events:
@@ -1690,12 +1626,9 @@ def main():
     # Filter out "// present" markers but preserve format
     filtered_events = []
     for entry in events:
-        event_name, overrides = parse_event_entry(entry)
+        event_name = parse_event_entry(entry)
         if event_name:
-            if isinstance(entry, dict):
-                filtered_events.append(entry)
-            else:
-                filtered_events.append(event_name)
+            filtered_events.append(event_name)
     events = filtered_events
     
     if not events:
