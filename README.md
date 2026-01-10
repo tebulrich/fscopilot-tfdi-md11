@@ -11,7 +11,6 @@ FS Copilot configuration files for the TFDi Design MD-11 aircraft. This generato
 - [Quick Start](#quick-start)
 - [Category System](#category-system)
 - [Module Generator](#module-generator)
-- [FS Copilot Format](#fs-copilot-format)
 - [Workflow](#workflow)
 - [File Locations](#file-locations)
 
@@ -117,12 +116,7 @@ python validate.py
 
 ## Category System
 
-The `tfdi-md11-data/json/` folder contains JSON files for each panel/system category. Each JSON file lists all events from the documentation that should be implemented for that category.
-
-The `validate.py` script:
-- Searches for each event in the main aircraft YAML file
-- Marks events as "// present" in the JSON file if found
-- Reports coverage percentage
+The `tfdi-md11-data/json/` folder contains JSON files for each panel/system category. The `validate.py` script checks coverage and marks implemented events.
 
 ## Module Generator
 
@@ -140,7 +134,7 @@ python generate.py <category_name>
 # Regenerate all categories as separate module files (one file per category)
 python generate.py --split
 
-# Regenerate all categories as modular files grouped by cockpit system (recommended for large configs)
+# Regenerate all categories as modular files grouped by cockpit system
 python generate.py --split-grouped
 
 # Generate a single category as separate module file
@@ -152,12 +146,7 @@ python generate.py --output-path C:\Path\To\FS\Copilot\Definitions
 
 ### What It Does
 
-1. Reads the category JSON file (`tfdi-md11-data/json/<category_name>.json`)
-2. Extracts all events (automatically filters out "// present" markers)
-3. Groups events by control type (buttons, wheels, switches, etc.)
-4. Detects L: variables from `tfdi-md11-data/json/variables.json` to determine control types
-5. Generates FS Copilot format YAML with `get:`/`set:` syntax
-6. Marks all implemented events as "// present" in the JSON category file
+The generator reads category JSON files, groups events by control type, detects L: variables, and generates FS Copilot format YAML files with appropriate `get:`/`set:` syntax.
 
 ### Features
 
@@ -166,24 +155,23 @@ python generate.py --output-path C:\Path\To\FS\Copilot\Definitions
 - Handles switches with LEFT/RIGHT buttons
 - Handles ground buttons (GRD_LEFT_BUTTON_DOWN)
 - Handles push/pull buttons (PUSH_UP/DOWN, PULL_UP/DOWN) from XML metadata
-- Automatically syncs L: variables for state synchronization
-- Automatically generates event triggers with >B: for custom TFDi events
-- Uses >K: for standard MSFS events
+- Automatically syncs L: variables when available
+- Automatically generates event triggers with appropriate prefixes (>B: for custom TFDi events, >K: for standard MSFS events)
 - Generates appropriate comments for each control group
 - Creates standard headers with references to documentation
 - Supports property overrides via object format in JSON files
 - Integrates XML metadata for improved comment generation and type detection
-- Supports modular output with system grouping for better maintainability of large configurations
+- Supports modular output with system grouping
 
 ### Output Modes
 
 The generator supports three output modes:
 
-1. **Consolidated Mode (Default)**: All categories are consolidated into a single `TFDi_Design_MD-11.yaml` file. Suitable for smaller configurations or when a unified file structure is preferred.
+1. **Consolidated Mode (Default)**: All categories are consolidated into a single `TFDi_Design_MD-11.yaml` file.
 
-2. **Modular Mode - Individual Categories (`--split`)**: Generates one module file per category (e.g., `TFDi_MD11_glareshield_left.yaml`, `TFDi_MD11_overhead_panel.yaml`). Results in multiple smaller, category-specific files.
+2. **Modular Mode - Individual Categories (`--split`)**: Generates one module file per category (e.g., `TFDi_MD11_glareshield_left.yaml`, `TFDi_MD11_overhead_panel.yaml`).
 
-3. **Modular Mode - System Grouping (`--split-grouped`)**: Organizes related categories by cockpit system functionality and panel location into logically grouped module files:
+3. **Modular Mode - System Grouping (`--split-grouped`)**: Organizes related categories by cockpit system and panel location into grouped module files:
    - **Glareshield**: glareshield_left, glareshield_right, center_glareshield
    - **Overhead**: overhead_panel, aft_overhead_panel
    - **Pedestal**: pedestal, radio_panel, audio_panel, throttle
@@ -191,7 +179,6 @@ The generator supports three output modes:
    - **Flight Controls**: flight_controls, left_yoke, right_yoke
    - **FMC**: fmc_cdu
 
-   System grouping mode is recommended for large aircraft configurations as it improves maintainability and organization while keeping related controls grouped by cockpit location. Ideal for configurations exceeding 2000 lines.
 
 ### XML Metadata Integration
 
@@ -218,7 +205,7 @@ The generator supports overriding YAML properties for individual events. While t
 ]
 ```
 
-You can use an object format to specify overrides (note: FS Copilot format may have different override options):
+You can use an object format to specify overrides:
 
 ```json
 "events": [
@@ -234,9 +221,9 @@ The generator will automatically apply these overrides to the generated YAML ent
 
 ### Flags
 
-- `--split`: Creates separate module files in `Definitions/modules/tfdi-md11/` instead of merging into the main aircraft file. The aircraft file will include references to these modules. Works with both all categories and single category. By default (without `--split`), all events are merged directly into the main aircraft YAML file.
-
-- `--output-path` or `--output`: Specifies a custom directory path for the output aircraft YAML file. The path can include or omit a trailing slash. The output file will be named `TFDi_Design_MD-11.yaml` in the specified directory. If the directory doesn't exist, it will be created automatically. This overrides the path specified in `config.json`.
+- `--split`: Creates separate module files in `Definitions/modules/tfdi-md11/` instead of merging into the main aircraft file
+- `--split-grouped`: Creates grouped module files organized by cockpit system and panel location
+- `--output-path` or `--output`: Specifies a custom directory path for the output aircraft YAML file. Overrides the path specified in `config.json`
 
 ### Configuration File
 
@@ -250,184 +237,35 @@ You can create a `config.json` file in the project root to set default values:
 
 The `output_path` setting will be used automatically if no `--output-path` argument is provided. Command-line arguments always override the config file.
 
-### Behavior
-
-- Running without arguments (`python generate.py`): Regenerates all categories and merges into main aircraft file
-- Running with a category name (`python generate.py center_panel`): Regenerates only that category and merges into main aircraft file
-- Running with `--split` flag (`python generate.py --split`): Regenerates all categories as separate module files
-- Running with category and `--split` (`python generate.py center_panel --split`): Generates that category as a separate module file
-
-### Deduplication
-
-The generator automatically prevents duplicate entries when merging categories:
-
-- **All categories mode**: Preserves manually-added entries (those without `L:MD11_` variables or generated event patterns) and replaces all generated entries with fresh content from categories
-- **Single category mode**: Preserves manually-added entries and entries from other categories, but replaces entries from the category being regenerated to prevent duplicates
-- Generated entries are identified by the presence of `L:MD11_` variables or event patterns like `_BT_LEFT_BUTTON`, `_KB_WHEEL`, `_SW_LEFT_BUTTON`, or `_GRD_LEFT_BUTTON`
-
-This ensures that running the generator multiple times does not create duplicate entries in the output file.
-
-## FS Copilot Format
-
-FS Copilot uses `get:` and `set:` syntax for its YAML format.
-
-> 📚 **For complete documentation on FS Copilot format, see the [FS Copilot Wiki](https://github.com/yury-sch/FsCopilot/wiki)** - This guide explains all fields (`get:`, `set:`, `skp:`), JavaScript expressions, implicit rules, and more.
-
-### Format Overview
-
-FS Copilot format entries use:
-- `get:` - Reads/syncs a variable (L: variable, A: variable, or H: event)
-- `set:` - Executes when the `get:` variable changes, can contain JavaScript expressions or calculator code
-
-### L: Variable Sync (State Synchronization)
-
-For controls with L: variables, FS Copilot syncs the variable value directly:
-
-```yaml
-  - # Control Name
-    get: L:MD11_VARIABLE_NAME
-```
-
-When the master changes the L: variable value, it automatically syncs to all clients. The aircraft's internal logic reads the L: variable and reacts accordingly.
-
-### Event Triggers
-
-For controls without L: variables or for direct event triggering:
-
-```yaml
-  - # Control Name
-    set: (>B:CUSTOM_TFDI_EVENT_NAME)
-```
-
-or for standard MSFS events:
-
-```yaml
-  - # Control Name
-    set: (>K:STANDARD_MSFS_EVENT)
-```
-
-### Toggle Switches with L: Variables
-
-For toggle switches with L: variables, FS Copilot syncs the variable directly:
-
-```yaml
-  - # Switch Name
-    get: L:MD11_SWITCH_VAR
-```
-
-The variable value is synced automatically, and the aircraft's logic reacts to the L: variable change.
-
-For single-event switches (NUM_STATES=1 from XML), events are triggered:
-
-```yaml
-  - # Single-Event Switch
-    get: L:MD11_SWITCH_VAR
-    set: (>B:SWITCH_EVENT_DOWN)
-```
-
-### Wheel Controls with L: Variables
-
-For wheel controls with L: variables, the L: variable is synced directly:
-
-```yaml
-  - # Wheel Control Name
-    get: L:MD11_WHEEL_VAR
-```
-
-The master's wheel action changes the L: variable value, which syncs to all clients.
-
-### Wheel Controls without L: Variables
-
-For wheel controls without L: variables, events are triggered directly:
-
-```yaml
-  - # Wheel Control Name (Wheel Up)
-    set: (>B:WHEEL_UP_EVENT)
-  
-  - # Wheel Control Name (Wheel Down)
-    set: (>B:WHEEL_DOWN_EVENT)
-```
-
-### Simple Event Triggers
-
-For simple button presses or controls without state tracking:
-
-```yaml
-  - # Button Name
-    set: (>B:EVENT_NAME)
-```
-
 ## Workflow
 
-### Regenerating the Configuration
-
-To regenerate the entire configuration from scratch:
-
+Regenerate all categories:
 ```bash
-# Regenerate all categories and merge into main aircraft file
 python generate.py
-
-# Verify coverage
-python validate.py
 ```
 
-### Updating a Single Category
-
-To regenerate a specific category:
-
+Regenerate a specific category:
 ```bash
-# Regenerate a single category
 python generate.py <category_name>
-
-# Verify coverage for that category
-python validate.py <category_name>
 ```
 
-### Working with Separate Module Files
-
-If you prefer to work with separate module files instead of a merged configuration:
-
+Generate with separate module files:
 ```bash
-# Generate all categories as separate module files
 python generate.py --split
-
-# Generate a single category as a separate module file
-python generate.py <category_name> --split
+python generate.py --split-grouped
 ```
 
-The generator script automatically:
-- Groups related events together
-- Detects appropriate control types (L: variable sync vs event triggers)
-- Formats YAML with proper indentation and comments
-- Updates category files to mark events as present
-
-### Verification
-
-After generating or modifying the configuration, always verify coverage:
-
+Verify coverage:
 ```bash
-# Check all categories
 python validate.py
-
-# Check a specific category
 python validate.py <category_name>
 ```
 
 ## Important Notes
 
-1. **Event Prefixes**: Event prefixes follow specific patterns: Observer events use `OBS_` prefix, Captain/First Officer events use `PED_CPT_` and `PED_FO_` prefixes.
-
-2. **Control Types**: Some controls have both button events (`_BT_LEFT_BUTTON_DOWN/UP`) and wheel events (`_KB_WHEEL_UP/DOWN`).
-
-3. **L: Variables**: Not all events have corresponding L: variables - the generator automatically uses event triggers when no variable exists.
-
-4. **Validation**: The `validate.py` script marks events as "// present" in JSON files - this is expected behavior and helps track coverage.
-
-5. **YAML Syntax**: YAML syntax requires strict indentation (2 spaces) - the generator handles this automatically.
-
-6. **FS Copilot Compatibility**: This generator creates FS Copilot format files for MSFS 2024.
-
-7. **Event Routing**: Controls with L: variables use direct variable sync. Controls without L: variables use >B: events for custom TFDi events or >K: events for standard MSFS events.
+- The generator automatically detects L: variables and uses them when available, otherwise generates event triggers
+- Event prefixes follow patterns: `OBS_` for Observer, `PED_CPT_` and `PED_FO_` for Captain/First Officer
+- The `validate.py` script marks events as "// present" in JSON files to track coverage
 
 ## File Locations
 
@@ -442,13 +280,10 @@ python validate.py <category_name>
 
 ## Grouping Logic
 
-The grouping logic in `generate.py` has been carefully refined to handle all event patterns:
-
-1. **Control Type Distinction**: Buttons (_BT) and switches (_SW) are grouped separately even if they share the same base name
-2. **Brightness Wheel Events**: _BRT_KB_WHEEL events extract the full prefix (e.g., PED_DU1_BRT_KB)
-3. **Ground Button Events**: _GRD_LEFT_BUTTON_DOWN events are preserved as separate controls with _GRD suffix
-4. **Switch RIGHT Buttons**: _SW_RIGHT_BUTTON_DOWN events are grouped with their corresponding _SW_LEFT_BUTTON_DOWN control
-5. **L: Variable Detection**: The script loads variables from `tfdi-md11-data/json/variables.json` (1477 variables) and automatically detects which controls should use L: variable sync vs event triggers
-6. **XML Metadata Integration**: XML files provide tooltip information for better comment generation and NUM_STATES information for correct type detection (single-event switches vs toggle switches)
-
-These features ensure that all events are correctly grouped, generated, and detected, achieving complete coverage across all categories.
+The generator handles event patterns automatically:
+- Buttons (_BT) and switches (_SW) are grouped separately
+- Brightness wheel events (_BRT_KB_WHEEL) extract the full prefix
+- Ground buttons (_GRD_LEFT_BUTTON_DOWN) are preserved as separate controls
+- Switch RIGHT buttons are grouped with their corresponding LEFT buttons
+- L: variables are detected from `variables.json` (1477 variables) to determine control types
+- XML metadata (TOOLTIPID, NUM_STATES, etc.) is used for improved comment generation and type detection
