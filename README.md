@@ -59,7 +59,7 @@ All events are consolidated in: `Definitions/TFDi_Design_MD-11.yaml`
 ## Project Structure
 
 ```
-md11/
+fscopilot-tfdi-md11/
 ├── Definitions/
 │   ├── TFDi_Design_MD-11.yaml          # Main aircraft configuration (FS Copilot format)
 │   └── modules/
