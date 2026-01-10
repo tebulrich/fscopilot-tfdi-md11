@@ -1,3 +1,6 @@
 *.pyc
 *.pyo
 __pycache__/
+
+# Local configuration file (do not commit)
+config.json

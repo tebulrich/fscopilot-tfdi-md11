@@ -72,7 +72,7 @@ fscopilot-tfdi-md11/
 │   │   └── variables.json               # L: variable definitions
 │   └── xml/
 │       └── *.xml                        # XML definition files (for metadata)
-├── config.json                          # Configuration file (optional)
+├── config.json                          # Local configuration file (optional, not committed to repository)
 ├── generate.py                          # Module generator script
 ├── validate.py                          # Coverage verification script
 └── README.md                           # This file
@@ -243,7 +243,7 @@ The generator will automatically apply these overrides to the generated YAML ent
 
 ### Configuration File
 
-You can create a `config.json` file in the project root to set default values:
+You can create a local `config.json` file in the project root to set default values. **Note: This file should not be committed to the repository** - it's meant for local configuration only and is automatically ignored by git.
 
 ```json
 {
@@ -465,7 +465,7 @@ python validate.py <category_name>
 - Category files: `tfdi-md11-data/json/*.json`
 - Variables file: `tfdi-md11-data/json/variables.json`
 - XML files: `tfdi-md11-data/xml/*.xml` (used for metadata extraction)
-- Configuration file: `config.json` (optional, for default output path)
+- Configuration file: `config.json` (optional, local only - not committed to repository)
 - Validation script: `validate.py`
 - Generator script: `generate.py`
 
