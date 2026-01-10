@@ -12,7 +12,6 @@ FS Copilot configuration files for the TFDi Design MD-11 aircraft. This generato
 - [Category System](#category-system)
 - [Module Generator](#module-generator)
 - [FS Copilot Format](#fs-copilot-format)
-- [CEVENT Limitation Bypass](#cevent-limitation-bypass)
 - [Workflow](#workflow)
 - [File Locations](#file-locations)
 
@@ -167,8 +166,8 @@ python generate.py --output-path C:\Path\To\FS\Copilot\Definitions
 - Handles switches with LEFT/RIGHT buttons
 - Handles ground buttons (GRD_LEFT_BUTTON_DOWN)
 - Handles push/pull buttons (PUSH_UP/DOWN, PULL_UP/DOWN) from XML metadata
-- Automatically syncs L: variables for state synchronization (bypasses CEVENT)
-- Automatically generates event triggers with >B: for custom TFDi events (bypasses CEVENT)
+- Automatically syncs L: variables for state synchronization
+- Automatically generates event triggers with >B: for custom TFDi events
 - Uses >K: for standard MSFS events
 - Generates appropriate comments for each control group
 - Creates standard headers with references to documentation
@@ -282,7 +281,7 @@ FS Copilot format entries use:
 
 ### L: Variable Sync (State Synchronization)
 
-For controls with L: variables, FS Copilot syncs the variable value directly, bypassing CEVENT entirely:
+For controls with L: variables, FS Copilot syncs the variable value directly:
 
 ```yaml
   - # Control Name
@@ -335,7 +334,7 @@ For wheel controls with L: variables, the L: variable is synced directly:
     get: L:MD11_WHEEL_VAR
 ```
 
-The master's wheel action changes the L: variable value, which syncs to all clients, bypassing the need for event-based control and the CEVENT limitation.
+The master's wheel action changes the L: variable value, which syncs to all clients.
 
 ### Wheel Controls without L: Variables
 
@@ -357,22 +356,6 @@ For simple button presses or controls without state tracking:
   - # Button Name
     set: (>B:EVENT_NAME)
 ```
-
-## CEVENT Limitation Bypass
-
-FS Copilot bypasses CEVENT limitations in three ways:
-
-1. **Direct L: Variable Writes**: FS Copilot can sync L: variable values directly (`get: L:MD11_VAR`). When the master changes the L: variable, it syncs to all clients, and the aircraft's internal logic reads it. This completely bypasses CEVENT.
-
-2. **>B: Events (H-events)**: FS Copilot uses >B: syntax for custom TFDi events (Behavior/H-events), which bypass CEVENT. Standard MSFS events use >K: syntax (Key events).
-
-3. **>L: Direct Variable Writes**: FS Copilot supports direct L: variable writes using `>L:VAR_NAME` syntax in `set:` expressions, allowing direct state manipulation without events.
-
-This means:
-- Multiple pilots can interact with different systems simultaneously
-- MCDU entries won't be lost while trim is being used
-- State synchronization works reliably for all controls with L: variables
-- Custom TFDi events are properly routed without CEVENT conflicts
 
 ## Workflow
 
@@ -444,7 +427,7 @@ python validate.py <category_name>
 
 6. **FS Copilot Compatibility**: This generator creates FS Copilot format files for MSFS 2024.
 
-7. **CEVENT Bypass**: Controls with L: variables use direct variable sync, which completely bypasses CEVENT. Controls without L: variables use >B: events for custom TFDi events (bypasses CEVENT) or >K: events for standard MSFS events.
+7. **Event Routing**: Controls with L: variables use direct variable sync. Controls without L: variables use >B: events for custom TFDi events or >K: events for standard MSFS events.
 
 ## File Locations
 
