@@ -2,15 +2,10 @@
 # Events reference: https://docs.tfdidesign.com/md11/integration-guide/events
 # Variables reference: https://docs.tfdidesign.com/md11/integration-guide/variables
 
-include:
-
 shared:
   - # APU Fire Handle
     get: L:MD11_AOVHD_APUFIRE_KB
     set: "`${value} (>L:MD11_AOVHD_APUFIRE_KB)`"
-
-  - # APU Fire Handle
-    set: (>B:AOVHD_APUFIRE_KB_LEFT_BUTTON_DOWN)
 
   - # APU Generator
     get: L:MD11_AOVHD_APU_GEN_BT
@@ -24,114 +19,48 @@ shared:
     get: L:MD11_AOVHD_CRGSMK_AFT_AGNT1_BT
     set: "value ? '(>B:AOVHD_CRGSMK_AFT_AGNT1_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_AFT_AGNT1_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Aft Lower Cargo Fire Suppression Bottle 1 (Guard)
-    set: (>B:AOVHD_CRGSMK_AFT_AGNT1_GRD_LEFT_BUTTON_DOWN)
-
   - # Aft Lower Cargo Fire Suppression Bottle 2
     get: L:MD11_AOVHD_CRGSMK_AFT_AGNT2_BT
     set: "value ? '(>B:AOVHD_CRGSMK_AFT_AGNT2_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_AFT_AGNT2_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Aft Lower Cargo Fire Suppression Bottle 2 (Guard)
-    set: (>B:AOVHD_CRGSMK_AFT_AGNT2_GRD_LEFT_BUTTON_DOWN)
-
-  - # Aft Lower Cargo Ventilation
-    set: (>B:AOVHD_CRGSMK_AFT_VENT_SW_LEFT_BUTTON_DOWN)
 
   - # Forward Lower Cargo Fire Suppression Bottle 1
     get: L:MD11_AOVHD_CRGSMK_FWD_AGNT1_BT
     set: "value ? '(>B:AOVHD_CRGSMK_FWD_AGNT1_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_FWD_AGNT1_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Forward Lower Cargo Fire Suppression Bottle 1 (Guard)
-    set: (>B:AOVHD_CRGSMK_FWD_AGNT1_GRD_LEFT_BUTTON_DOWN)
-
   - # Forward Lower Cargo Fire Suppression Bottle 2
     get: L:MD11_AOVHD_CRGSMK_FWD_AGNT2_BT
     set: "value ? '(>B:AOVHD_CRGSMK_FWD_AGNT2_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_FWD_AGNT2_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Forward Lower Cargo Fire Suppression Bottle 2 (Guard)
-    set: (>B:AOVHD_CRGSMK_FWD_AGNT2_GRD_LEFT_BUTTON_DOWN)
-
-  - # Forward Lower Cargo Ventilation
-    set: (>B:AOVHD_CRGSMK_FWD_VENT_SW_LEFT_BUTTON_DOWN)
 
   - # Cargo Fire and Smoke Test
     get: L:MD11_AOVHD_CRGSMK_TEST_BT
     set: "value ? '(>B:AOVHD_CRGSMK_TEST_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_CRGSMK_TEST_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Eng1Fire 1
-    set: (>B:AOVHD_ENG1FIRE_1_KB_LEFT_BUTTON_DOWN)
-
-  - # Eng1Fire 2
-    set: (>B:AOVHD_ENG1FIRE_2_KB_LEFT_BUTTON_DOWN)
-
   - # Engine 1 Fire Handle
     get: L:MD11_AOVHD_ENG1FIRE_KB
     set: "`${value} (>L:MD11_AOVHD_ENG1FIRE_KB)`"
-
-  - # Eng2Fire 1
-    set: (>B:AOVHD_ENG2FIRE_1_KB_LEFT_BUTTON_DOWN)
-
-  - # Eng2Fire 2
-    set: (>B:AOVHD_ENG2FIRE_2_KB_LEFT_BUTTON_DOWN)
 
   - # Engine 2 Fire Handle
     get: L:MD11_AOVHD_ENG2FIRE_KB
     set: "`${value} (>L:MD11_AOVHD_ENG2FIRE_KB)`"
 
-  - # Eng3Fire 1
-    set: (>B:AOVHD_ENG3FIRE_1_KB_LEFT_BUTTON_DOWN)
-
-  - # Eng3Fire 2
-    set: (>B:AOVHD_ENG3FIRE_2_KB_LEFT_BUTTON_DOWN)
-
   - # Engine 3 Fire Handle
     get: L:MD11_AOVHD_ENG3FIRE_KB
     set: "`${value} (>L:MD11_AOVHD_ENG3FIRE_KB)`"
-
-  - # Evac (Guard)
-    set: (>B:AOVHD_EVAC_GRD_LEFT_BUTTON_DOWN)
-
-  - # EVAC Horn Shutoff
-    set: (>B:AOVHD_EVAC_HORNSHUT_SW_LEFT_BUTTON_DOWN)
-
-  - # EVAC
-    set: (>B:AOVHD_EVAC_SW_LEFT_BUTTON_DOWN)
-
-  - # EVAC (Right)
-    set: (>B:AOVHD_EVAC_SW_RIGHT_BUTTON_DOWN)
 
   - # APU Fire Test
     get: L:MD11_AOVHD_FIRETEST_BT
     set: "value ? '(>B:AOVHD_FIRETEST_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_FIRETEST_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Gpws (Guard)
-    set: (>B:AOVHD_GPWS_GRD_LEFT_BUTTON_DOWN)
-
-  - # GPWS
-    set: (>B:AOVHD_GPWS_SW_LEFT_BUTTON_DOWN)
-
-  - # GPWS (Right)
-    set: (>B:AOVHD_GPWS_SW_RIGHT_BUTTON_DOWN)
-
   - # GPWS Terrain Override
     get: L:MD11_AOVHD_GPWS_TERROVRD_BT
     set: "value ? '(>B:AOVHD_GPWS_TERROVRD_BT_LEFT_BUTTON_UP)' : '(>B:AOVHD_GPWS_TERROVRD_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Gpws Terrovrd (Guard)
-    set: (>B:AOVHD_GPWS_TERROVRD_GRD_LEFT_BUTTON_DOWN)
   - # Observer ADF1 Volume
     get: L:MD11_OBS_AUDIO_PNL_ADF1_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_ADF1_VOL_KB)`"
 
-  - # Observer ADF1 Volume
-    set: (>B:OBS_AUDIO_PNL_ADF1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Observer ADF2 Volume
     get: L:MD11_OBS_AUDIO_PNL_ADF2_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_ADF2_VOL_KB)`"
-
-  - # Observer ADF2 Volume
-    set: (>B:OBS_AUDIO_PNL_ADF2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Observer Cabin Mic Select
     get: L:MD11_OBS_AUDIO_PNL_CAB_MIC_BT
@@ -141,9 +70,6 @@ shared:
     get: L:MD11_OBS_AUDIO_PNL_CAB_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_CAB_VOL_KB)`"
 
-  - # Observer Cabin Volume
-    set: (>B:OBS_AUDIO_PNL_CAB_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Observer HF1 Mic Select
     get: L:MD11_OBS_AUDIO_PNL_HF1_MIC_BT
     set: "value ? '(>B:OBS_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_DOWN)'"
@@ -151,9 +77,6 @@ shared:
   - # Observer HF1 Volume
     get: L:MD11_OBS_AUDIO_PNL_HF1_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_HF1_VOL_KB)`"
-
-  - # Observer HF1 Volume
-    set: (>B:OBS_AUDIO_PNL_HF1_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Observer HF2 Mic Select
     get: L:MD11_OBS_AUDIO_PNL_HF2_MIC_BT
@@ -163,9 +86,6 @@ shared:
     get: L:MD11_OBS_AUDIO_PNL_HF2_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_HF2_VOL_KB)`"
 
-  - # Observer HF2 Volume
-    set: (>B:OBS_AUDIO_PNL_HF2_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Observer Ident
     get: L:MD11_OBS_AUDIO_PNL_IDENT_BT
     set: "value ? '(>B:OBS_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_DOWN)'"
@@ -174,46 +94,25 @@ shared:
     get: L:MD11_OBS_AUDIO_PNL_ILS1_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_ILS1_VOL_KB)`"
 
-  - # Observer ILS1 Volume
-    set: (>B:OBS_AUDIO_PNL_ILS1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Observer ILS2 Volume
     get: L:MD11_OBS_AUDIO_PNL_ILS2_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_ILS2_VOL_KB)`"
-
-  - # Observer ILS2 Volume
-    set: (>B:OBS_AUDIO_PNL_ILS2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Observer Interphone Mic Select
     get: L:MD11_OBS_AUDIO_PNL_INT_MIC_BT
     set: "value ? '(>B:OBS_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Observer Interphone/Radio Override
-    set: (>B:OBS_AUDIO_PNL_INT_RADIO_SW_LEFT_BUTTON_DOWN)
-
-  - # Observer Interphone/Radio Override (Right)
-    set: (>B:OBS_AUDIO_PNL_INT_RADIO_SW_RIGHT_BUTTON_DOWN)
-
   - # Observer Interphone Volume
     get: L:MD11_OBS_AUDIO_PNL_INT_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_INT_VOL_KB)`"
-
-  - # Observer Interphone Volume
-    set: (>B:OBS_AUDIO_PNL_INT_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Observer Marker Volume
     get: L:MD11_OBS_AUDIO_PNL_MKR_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_MKR_VOL_KB)`"
 
-  - # Observer Marker Volume
-    set: (>B:OBS_AUDIO_PNL_MKR_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Observer PA Volume
     get: L:MD11_OBS_AUDIO_PNL_PA_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_PA_VOL_KB)`"
-
-  - # Observer PA Volume
-    set: (>B:OBS_AUDIO_PNL_PA_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Observer Satellite Mic Select
     get: L:MD11_OBS_AUDIO_PNL_SAT_MIC_BT
@@ -223,9 +122,6 @@ shared:
     get: L:MD11_OBS_AUDIO_PNL_SAT_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_SAT_VOL_KB)`"
 
-  - # Observer Satellite Volume
-    set: (>B:OBS_AUDIO_PNL_SAT_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Observer VHF1 Mic Select
     get: L:MD11_OBS_AUDIO_PNL_VHF1_MIC_BT
     set: "value ? '(>B:OBS_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:OBS_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_DOWN)'"
@@ -233,9 +129,6 @@ shared:
   - # Observer VHF1 Volume
     get: L:MD11_OBS_AUDIO_PNL_VHF1_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VHF1_VOL_KB)`"
-
-  - # Observer VHF1 Volume
-    set: (>B:OBS_AUDIO_PNL_VHF1_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Observer VHF2 Mic Select
     get: L:MD11_OBS_AUDIO_PNL_VHF2_MIC_BT
@@ -245,46 +138,25 @@ shared:
     get: L:MD11_OBS_AUDIO_PNL_VHF2_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VHF2_VOL_KB)`"
 
-  - # Observer VHF2 Volume
-    set: (>B:OBS_AUDIO_PNL_VHF2_VOL_KB_LEFT_BUTTON_DOWN)
-
-  - # Observer VHF3 Mic Select
-    set: (>B:OBS_AUDIO_PNL_VHF3_MIC_BT_LEFT_BUTTON_UP)
-
   - # Observer VHF3 Volume
     get: L:MD11_OBS_AUDIO_PNL_VHF3_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VHF3_VOL_KB)`"
-
-  - # Observer VHF3 Volume
-    set: (>B:OBS_AUDIO_PNL_VHF3_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Observer VOR1 Volume
     get: L:MD11_OBS_AUDIO_PNL_VOR1_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VOR1_VOL_KB)`"
 
-  - # Observer VOR1 Volume
-    set: (>B:OBS_AUDIO_PNL_VOR1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Observer VOR2 Volume
     get: L:MD11_OBS_AUDIO_PNL_VOR2_VOL_KB
     set: "`${value} (>L:MD11_OBS_AUDIO_PNL_VOR2_VOL_KB)`"
-
-  - # Observer VOR2 Volume
-    set: (>B:OBS_AUDIO_PNL_VOR2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Captain ADF1 Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_ADF1_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_ADF1_VOL_KB)`"
 
-  - # Captain ADF1 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_ADF1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Captain ADF2 Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_ADF2_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_ADF2_VOL_KB)`"
-
-  - # Captain ADF2 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_ADF2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Captain Cabin Mic Select
     get: L:MD11_PED_CPT_AUDIO_PNL_CAB_MIC_BT
@@ -294,9 +166,6 @@ shared:
     get: L:MD11_PED_CPT_AUDIO_PNL_CAB_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_CAB_VOL_KB)`"
 
-  - # Captain Cabin Volume
-    set: (>B:PED_CPT_AUDIO_PNL_CAB_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Captain HF1 Mic Select
     get: L:MD11_PED_CPT_AUDIO_PNL_HF1_MIC_BT
     set: "value ? '(>B:PED_CPT_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_DOWN)'"
@@ -304,9 +173,6 @@ shared:
   - # Captain HF1 Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_HF1_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_HF1_VOL_KB)`"
-
-  - # Captain HF1 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_HF1_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Captain HF2 Mic Select
     get: L:MD11_PED_CPT_AUDIO_PNL_HF2_MIC_BT
@@ -316,9 +182,6 @@ shared:
     get: L:MD11_PED_CPT_AUDIO_PNL_HF2_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_HF2_VOL_KB)`"
 
-  - # Captain HF2 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_HF2_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Captain Ident
     get: L:MD11_PED_CPT_AUDIO_PNL_IDENT_BT
     set: "value ? '(>B:PED_CPT_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_DOWN)'"
@@ -327,46 +190,25 @@ shared:
     get: L:MD11_PED_CPT_AUDIO_PNL_ILS1_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_ILS1_VOL_KB)`"
 
-  - # Captain ILS1 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_ILS1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Captain ILS2 Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_ILS2_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_ILS2_VOL_KB)`"
-
-  - # Captain ILS2 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_ILS2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Captain Interphone Mic Select
     get: L:MD11_PED_CPT_AUDIO_PNL_INT_MIC_BT
     set: "value ? '(>B:PED_CPT_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Captain Interphone/Radio Override
-    set: (>B:PED_CPT_AUDIO_PNL_INT_RADIO_SW_LEFT_BUTTON_DOWN)
-
-  - # Captain Interphone/Radio Override (Right)
-    set: (>B:PED_CPT_AUDIO_PNL_INT_RADIO_SW_RIGHT_BUTTON_DOWN)
-
   - # Captain Interphone Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_INT_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_INT_VOL_KB)`"
-
-  - # Captain Interphone Volume
-    set: (>B:PED_CPT_AUDIO_PNL_INT_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Captain Marker Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_MKR_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_MKR_VOL_KB)`"
 
-  - # Captain Marker Volume
-    set: (>B:PED_CPT_AUDIO_PNL_MKR_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Captain PA Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_PA_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_PA_VOL_KB)`"
-
-  - # Captain PA Volume
-    set: (>B:PED_CPT_AUDIO_PNL_PA_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Captain Satellite Mic Select
     get: L:MD11_PED_CPT_AUDIO_PNL_SAT_MIC_BT
@@ -384,9 +226,6 @@ shared:
     get: L:MD11_PED_CPT_AUDIO_PNL_VHF1_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VHF1_VOL_KB)`"
 
-  - # Captain VHF1 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_VHF1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Captain VHF2 Mic Select
     get: L:MD11_PED_CPT_AUDIO_PNL_VHF2_MIC_BT
     set: "value ? '(>B:PED_CPT_AUDIO_PNL_VHF2_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_CPT_AUDIO_PNL_VHF2_MIC_BT_LEFT_BUTTON_DOWN)'"
@@ -394,9 +233,6 @@ shared:
   - # Captain VHF2 Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_VHF2_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VHF2_VOL_KB)`"
-
-  - # Captain VHF2 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_VHF2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Captain VHF3 Mic Select
     get: L:MD11_PED_CPT_AUDIO_PNL_VHF3_MIC_BT
@@ -406,36 +242,21 @@ shared:
     get: L:MD11_PED_CPT_AUDIO_PNL_VHF3_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VHF3_VOL_KB)`"
 
-  - # Captain VHF3 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_VHF3_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # Captain VOR1 Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_VOR1_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VOR1_VOL_KB)`"
-
-  - # Captain VOR1 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_VOR1_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # Captain VOR2 Volume
     get: L:MD11_PED_CPT_AUDIO_PNL_VOR2_VOL_KB
     set: "`${value} (>L:MD11_PED_CPT_AUDIO_PNL_VOR2_VOL_KB)`"
 
-  - # Captain VOR2 Volume
-    set: (>B:PED_CPT_AUDIO_PNL_VOR2_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer ADF1 Volume
     get: L:MD11_PED_FO_AUDIO_PNL_ADF1_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_ADF1_VOL_KB)`"
 
-  - # First Officer ADF1 Volume
-    set: (>B:PED_FO_AUDIO_PNL_ADF1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer ADF2 Volume
     get: L:MD11_PED_FO_AUDIO_PNL_ADF2_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_ADF2_VOL_KB)`"
-
-  - # First Officer ADF2 Volume
-    set: (>B:PED_FO_AUDIO_PNL_ADF2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # First Officer Cabin Mic Select
     get: L:MD11_PED_FO_AUDIO_PNL_CAB_MIC_BT
@@ -445,9 +266,6 @@ shared:
     get: L:MD11_PED_FO_AUDIO_PNL_CAB_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_CAB_VOL_KB)`"
 
-  - # First Officer Cabin Volume
-    set: (>B:PED_FO_AUDIO_PNL_CAB_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer HF1 Mic Select
     get: L:MD11_PED_FO_AUDIO_PNL_HF1_MIC_BT
     set: "value ? '(>B:PED_FO_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_HF1_MIC_BT_LEFT_BUTTON_DOWN)'"
@@ -455,9 +273,6 @@ shared:
   - # First Officer HF1 Volume
     get: L:MD11_PED_FO_AUDIO_PNL_HF1_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_HF1_VOL_KB)`"
-
-  - # First Officer HF1 Volume
-    set: (>B:PED_FO_AUDIO_PNL_HF1_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # First Officer HF2 Mic Select
     get: L:MD11_PED_FO_AUDIO_PNL_HF2_MIC_BT
@@ -467,9 +282,6 @@ shared:
     get: L:MD11_PED_FO_AUDIO_PNL_HF2_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_HF2_VOL_KB)`"
 
-  - # First Officer HF2 Volume
-    set: (>B:PED_FO_AUDIO_PNL_HF2_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer Ident
     get: L:MD11_PED_FO_AUDIO_PNL_IDENT_BT
     set: "value ? '(>B:PED_FO_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_IDENT_BT_LEFT_BUTTON_DOWN)'"
@@ -478,39 +290,21 @@ shared:
     get: L:MD11_PED_FO_AUDIO_PNL_ILS1_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_ILS1_VOL_KB)`"
 
-  - # First Officer ILS1 Volume
-    set: (>B:PED_FO_AUDIO_PNL_ILS1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer ILS2 Volume
     get: L:MD11_PED_FO_AUDIO_PNL_ILS2_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_ILS2_VOL_KB)`"
-
-  - # First Officer ILS2 Volume
-    set: (>B:PED_FO_AUDIO_PNL_ILS2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # First Officer Interphone Mic Select
     get: L:MD11_PED_FO_AUDIO_PNL_INT_MIC_BT
     set: "value ? '(>B:PED_FO_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_INT_MIC_BT_LEFT_BUTTON_DOWN)'"
 
-  - # First Officer Interphone/Radio Override
-    set: (>B:PED_FO_AUDIO_PNL_INT_RADIO_SW_LEFT_BUTTON_DOWN)
-
-  - # First Officer Interphone/Radio Override (Right)
-    set: (>B:PED_FO_AUDIO_PNL_INT_RADIO_SW_RIGHT_BUTTON_DOWN)
-
   - # First Officer Interphone Volume
     get: L:MD11_PED_FO_AUDIO_PNL_INT_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_INT_VOL_KB)`"
 
-  - # First Officer Interphone Volume
-    set: (>B:PED_FO_AUDIO_PNL_INT_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer Marker Volume
     get: L:MD11_PED_FO_AUDIO_PNL_MKR_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_MKR_VOL_KB)`"
-
-  - # First Officer Marker Volume
-    set: (>B:PED_FO_AUDIO_PNL_MKR_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # First Officer PA Volume
     get: L:MD11_PED_FO_AUDIO_PNL_PA_VOL_KB
@@ -524,9 +318,6 @@ shared:
     get: L:MD11_PED_FO_AUDIO_PNL_SAT_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_SAT_VOL_KB)`"
 
-  - # First Officer Satellite Volume
-    set: (>B:PED_FO_AUDIO_PNL_SAT_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer VHF1 Mic Select
     get: L:MD11_PED_FO_AUDIO_PNL_VHF1_MIC_BT
     set: "value ? '(>B:PED_FO_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_UP)' : '(>B:PED_FO_AUDIO_PNL_VHF1_MIC_BT_LEFT_BUTTON_DOWN)'"
@@ -535,18 +326,9 @@ shared:
     get: L:MD11_PED_FO_AUDIO_PNL_VHF1_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VHF1_VOL_KB)`"
 
-  - # First Officer VHF1 Volume
-    set: (>B:PED_FO_AUDIO_PNL_VHF1_VOL_KB_LEFT_BUTTON_DOWN)
-
-  - # First Officer VHF2 Mic Select
-    set: (>B:PED_FO_AUDIO_PNL_VHF2_MIC_BT_LEFT_BUTTON_DOWN)
-
   - # First Officer VHF2 Volume
     get: L:MD11_PED_FO_AUDIO_PNL_VHF2_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VHF2_VOL_KB)`"
-
-  - # First Officer VHF2 Volume
-    set: (>B:PED_FO_AUDIO_PNL_VHF2_VOL_KB_LEFT_BUTTON_DOWN)
 
   - # First Officer VHF3 Mic Select
     get: L:MD11_PED_FO_AUDIO_PNL_VHF3_MIC_BT
@@ -556,28 +338,13 @@ shared:
     get: L:MD11_PED_FO_AUDIO_PNL_VHF3_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VHF3_VOL_KB)`"
 
-  - # First Officer VHF3 Volume
-    set: (>B:PED_FO_AUDIO_PNL_VHF3_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer VOR1 Volume
     get: L:MD11_PED_FO_AUDIO_PNL_VOR1_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VOR1_VOL_KB)`"
 
-  - # First Officer VOR1 Volume
-    set: (>B:PED_FO_AUDIO_PNL_VOR1_VOL_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer VOR2 Volume
     get: L:MD11_PED_FO_AUDIO_PNL_VOR2_VOL_KB
     set: "`${value} (>L:MD11_PED_FO_AUDIO_PNL_VOR2_VOL_KB)`"
-
-  - # First Officer VOR2 Volume
-    set: (>B:PED_FO_AUDIO_PNL_VOR2_VOL_KB_LEFT_BUTTON_DOWN)
-  - # Autoflight System 1 Override
-    set: (>B:CGS_AFSOVRD1_SW_LEFT_BUTTON_DOWN)
-
-  - # Autoflight System 2 Override
-    set: (>B:CGS_AFSOVRD2_SW_LEFT_BUTTON_DOWN)
-
   - # Autopilot Altitude Select
     get: L:MD11_CGS_ALT_KB
     set: "`${value} (>L:MD11_CGS_ALT_KB)`"
@@ -614,12 +381,6 @@ shared:
     get: L:MD11_CGS_HDGTRK_BT
     set: "value ? '(>B:CGS_HDGTRK_BT_LEFT_BUTTON_UP)' : '(>B:CGS_HDGTRK_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Autopilot Bank Angle Limiter
-    set: (>B:CGS_HDG_BASE_KB_LEFT_BUTTON_DOWN)
-
-  - # Autopilot Bank Angle Limiter
-    set: (>B:CGS_HDG_BASE_KB_RIGHT_BUTTON_DOWN)
-
   - # Autopilot %
     get: L:MD11_CGS_HDG_KB
     set: "`${value} (>L:MD11_CGS_HDG_KB)`"
@@ -652,9 +413,6 @@ shared:
     get: L:MD11_CGS_SPD_KB
     set: "`${value} (>L:MD11_CGS_SPD_KB)`"
 
-  - # Spd Pull
-    set: (>B:CGS_SPD_PULL_BT_LEFT_BUTTON_UP)
-
   - # Spd Push
     get: L:MD11_CGS_SPD_PUSH_BT
     set: "value ? '(>B:CGS_SPD_PUSH_BT_LEFT_BUTTON_UP)' : '(>B:CGS_SPD_PUSH_BT_LEFT_BUTTON_DOWN)'"
@@ -670,71 +428,10 @@ shared:
     get: L:MD11_CTR_ANTISKID_BT
     set: "value ? '(>B:CTR_ANTISKID_BT_LEFT_BUTTON_UP)' : '(>B:CTR_ANTISKID_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Autobrake Switch
-    set: (>B:CTR_AUTOBRAKE_SW_LEFT_BUTTON_DOWN)
-
-  - # Autobrake Switch (Right)
-    set: (>B:CTR_AUTOBRAKE_SW_RIGHT_BUTTON_DOWN)
-
-  - # Auxiliary Hydraulic Pump 1
-    set: (>B:CTR_AUX_HYD_PUMP_BT_LEFT_BUTTON_DOWN)
-
-  - # Fltno1
-    set: (>B:CTR_FLTNO1_SW_WHEEL_DOWN)
-
-  - # Fltno1
-    set: (>B:CTR_FLTNO1_SW_WHEEL_UP)
-
-  - # Fltno2
-    set: (>B:CTR_FLTNO2_SW_WHEEL_DOWN)
-
-  - # Fltno2
-    set: (>B:CTR_FLTNO2_SW_WHEEL_UP)
-
-  - # Fltno3
-    set: (>B:CTR_FLTNO3_SW_WHEEL_DOWN)
-
-  - # Fltno3
-    set: (>B:CTR_FLTNO3_SW_WHEEL_UP)
-
-  - # Fltno4
-    set: (>B:CTR_FLTNO4_SW_WHEEL_DOWN)
-
-  - # Fltno4
-    set: (>B:CTR_FLTNO4_SW_WHEEL_UP)
-
   - # Slat Stow
     get: L:MD11_CTR_SLAT_STOW_BT
     set: "value ? '(>B:CTR_SLAT_STOW_BT_LEFT_BUTTON_UP)' : '(>B:CTR_SLAT_STOW_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Slat Stow (Guard)
-    set: (>B:CTR_SLAT_STOW_GRD_LEFT_BUTTON_DOWN)
-  - # Dial-A-Flap
-    set: (>B:DIALAFLAP_WHEEL_RNG_WHEEL_DOWN)
-
-  - # Dial-A-Flap
-    set: (>B:DIALAFLAP_WHEEL_RNG_WHEEL_UP)
-
-  - # EFB_TOGGLE_LEFT_BUTTON_DOWN
-    set: (>B:EFB_TOGGLE_LEFT_BUTTON_DOWN)
-
-  - # Flaps/Slats
-    set: (>B:FLAP_LATCH_WHEEL_DOWN)
-
-  - # Flaps/Slats
-    set: (>B:FLAP_LATCH_WHEEL_UP)
-
-  - # FLIGHTDECK_DOOR_LEFT_BUTTON_DOWN
-    set: (>B:FLIGHTDECK_DOOR_LEFT_BUTTON_DOWN)
-
-  - # Spoilers
-    set: (>B:SPDBRK_HANDLE_LEFT_BUTTON_DOWN)
-
-  - # Spoilers
-    set: (>B:SPDBRK_HANDLE_WHEEL_DOWN)
-
-  - # Spoilers
-    set: (>B:SPDBRK_HANDLE_WHEEL_UP)
   - # 0
     get: L:MD11_CMCDU_0_BT
     set: "value ? '(>B:CMCDU_0_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_0_BT_LEFT_BUTTON_DOWN)'"
@@ -799,9 +496,6 @@ shared:
     get: L:MD11_CMCDU_DIR_INTC_BT
     set: "value ? '(>B:CMCDU_DIR_INTC_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_DIR_INTC_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Dot
-    set: (>B:CMCDU_DOT_BT_LEFT_BUTTON_DOWN)
-
   - # Down
     get: L:MD11_CMCDU_DOWN_BT
     set: "value ? '(>B:CMCDU_DOWN_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_DOWN_BT_LEFT_BUTTON_DOWN)'"
@@ -841,9 +535,6 @@ shared:
   - # Init
     get: L:MD11_CMCDU_INIT_BT
     set: "value ? '(>B:CMCDU_INIT_BT_LEFT_BUTTON_UP)' : '(>B:CMCDU_INIT_BT_LEFT_BUTTON_DOWN)'"
-
-  - # I
-    set: (>B:CMCDU_I_BT_LEFT_BUTTON_UP)
 
   - # J
     get: L:MD11_CMCDU_J_BT
@@ -1213,9 +904,6 @@ shared:
     get: L:MD11_LMCDU_O_BT
     set: "value ? '(>B:LMCDU_O_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_O_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Perf
-    set: (>B:LMCDU_PERF_BT_LEFT_BUTTON_UP)
-
   - # Plus
     get: L:MD11_LMCDU_PLUS_BT
     set: "value ? '(>B:LMCDU_PLUS_BT_LEFT_BUTTON_UP)' : '(>B:LMCDU_PLUS_BT_LEFT_BUTTON_DOWN)'"
@@ -1356,9 +1044,6 @@ shared:
     get: L:MD11_RMCDU_DIR_INTC_BT
     set: "value ? '(>B:RMCDU_DIR_INTC_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_DIR_INTC_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Dot
-    set: (>B:RMCDU_DOT_BT_LEFT_BUTTON_UP)
-
   - # Down
     get: L:MD11_RMCDU_DOWN_BT
     set: "value ? '(>B:RMCDU_DOWN_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_DOWN_BT_LEFT_BUTTON_DOWN)'"
@@ -1366,9 +1051,6 @@ shared:
   - # D
     get: L:MD11_RMCDU_D_BT
     set: "value ? '(>B:RMCDU_D_BT_LEFT_BUTTON_UP)' : '(>B:RMCDU_D_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Eng Out
-    set: (>B:RMCDU_ENG_OUT_BT_LEFT_BUTTON_DOWN)
 
   - # E
     get: L:MD11_RMCDU_E_BT
@@ -1607,21 +1289,6 @@ shared:
     get: L:MD11_LECP_ARPT_BT
     set: "value ? '(>B:LECP_ARPT_BT_LEFT_BUTTON_UP)' : '(>B:LECP_ARPT_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Captain Altimeter Setting
-    set: (>B:LECP_BAROSET_CAP_LEFT_BUTTON_DOWN)
-
-  - # Captain Altimeter Setting
-    set: (>B:LECP_BAROSET_CAP_LEFT_BUTTON_UP)
-
-  - # Captain Altimeter Setting
-    set: (>B:LECP_BAROSET_CAP_WHEEL_DOWN)
-
-  - # Captain Altimeter Setting
-    set: (>B:LECP_BAROSET_CAP_WHEEL_UP)
-
-  - # Captain Altimeter Mode
-    set: (>B:LECP_BAROSET_KB_LEFT_BUTTON_DOWN)
-
   - # Captain ND Data Display
     get: L:MD11_LECP_DATA_BT
     set: "value ? '(>B:LECP_DATA_BT_LEFT_BUTTON_UP)' : '(>B:LECP_DATA_BT_LEFT_BUTTON_DOWN)'"
@@ -1645,21 +1312,6 @@ shared:
   - # Captain ND Map Mode
     get: L:MD11_LECP_MAP_BT
     set: "value ? '(>B:LECP_MAP_BT_LEFT_BUTTON_UP)' : '(>B:LECP_MAP_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Captain Minimums Setting
-    set: (>B:LECP_MINIMUMS_CAP_LEFT_BUTTON_DOWN)
-
-  - # Captain Minimums Setting
-    set: (>B:LECP_MINIMUMS_CAP_LEFT_BUTTON_UP)
-
-  - # Captain Minimums Setting
-    set: (>B:LECP_MINIMUMS_CAP_WHEEL_DOWN)
-
-  - # Captain Minimums Setting
-    set: (>B:LECP_MINIMUMS_CAP_WHEEL_UP)
-
-  - # Captain Minimums Mode
-    set: (>B:LECP_MINIMUMS_KB_LEFT_BUTTON_DOWN)
 
   - # Captain ND Plan Mode
     get: L:MD11_LECP_PLAN_BT
@@ -1696,21 +1348,9 @@ shared:
   - # Captain Weather Radar/Terrain Display Brightness
     get: L:MD11_LECP_WXBRT_KB
     set: "`${value} (>L:MD11_LECP_WXBRT_KB)`"
-
-  - # Captain Weather Radar/Terrain Display Brightness
-    set: (>B:LECP_WXBRT_KB_LEFT_BUTTON_DOWN)
-
-  - # Captain Weather Radar/Terrain Display Brightness
-    set: (>B:LECP_WXBRT_KB_LEFT_BUTTON_UP)
   - # Captain Briefcase Light
     get: L:MD11_LSIDE_BRIEFCASE_KB
     set: "`${value} (>L:MD11_LSIDE_BRIEFCASE_KB)`"
-
-  - # Captain Floor Light
-    set: (>B:LSIDE_FLOOR_SW_LEFT_BUTTON_DOWN)
-
-  - # Captain Floor Light (Right)
-    set: (>B:LSIDE_FLOOR_SW_RIGHT_BUTTON_DOWN)
 
   - # Captain ILS Source
     get: L:MD11_LSIDE_INP_APPR_BT
@@ -1719,12 +1359,6 @@ shared:
   - # Captain Air Data Source
     get: L:MD11_LSIDE_INP_CADC_BT
     set: "value ? '(>B:LSIDE_INP_CADC_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_INP_CADC_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Captain EIS Source
-    set: (>B:LSIDE_INP_EIS_KB_LEFT_BUTTON_DOWN)
-
-  - # Captain EIS Source
-    set: (>B:LSIDE_INP_EIS_KB_RIGHT_BUTTON_DOWN)
 
   - # Captain Flight Director
     get: L:MD11_LSIDE_INP_FLTDIROFF_BT
@@ -1753,54 +1387,12 @@ shared:
   - # Captain Timer Start/Reset
     get: L:MD11_LSIDE_TIMER_BT
     set: "value ? '(>B:LSIDE_TIMER_BT_LEFT_BUTTON_UP)' : '(>B:LSIDE_TIMER_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Captain Timer Mode
-    set: (>B:LSIDE_TIMER_SW_LEFT_BUTTON_DOWN)
-
-  - # Captain Timer Mode (Right)
-    set: (>B:LSIDE_TIMER_SW_RIGHT_BUTTON_DOWN)
   - # Captain Autopilot Disconnect
     get: L:MD11_LYOKE_AP_BT
     set: "value ? '(>B:LYOKE_AP_BT_LEFT_BUTTON_UP)' : '(>B:LYOKE_AP_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Captain Elevator Trim Switch
-    set: (>B:LYOKE_TRIM_SW_LEFT_BUTTON_DOWN)
-
-  - # Captain Elevator Trim Switch (Right)
-    set: (>B:LYOKE_TRIM_SW_RIGHT_BUTTON_DOWN)
-
-  - # Captain Elevator Trim Switch
-    set: (>B:LYOKE_TRIM_SW_LEFT_BUTTON_UP)
-
-  - # Captain Elevator Trim Switch
-    set: (>B:LYOKE_TRIM_SW_RIGHT_BUTTON_UP)
-  - # Captain FDR Event Marker
-    set: (>B:MIP_CAPT_EVTMKR_SW_LEFT_BUTTON_DOWN)
-
-  - # Center Main Gear Uplock
-    set: (>B:MIP_CTR_GEAR_BT_LEFT_BUTTON_DOWN)
-
-  - # Center Main Gear Uplock (Guard)
-    set: (>B:MIP_CTR_GEAR_GRD_LEFT_BUTTON_DOWN)
-
-  - # First Officer FDR Event Marker
-    set: (>B:MIP_FO_EVTMKR_SW_LEFT_BUTTON_DOWN)
-
-  - # Gear Lever
-    set: (>B:MIP_GEAR_SW_LEFT_BUTTON_DOWN)
-
-  - # Gear Lever Release
-    set: (>B:MIP_HANDLEREL_BT_LEFT_BUTTON_UP)
-
   - # Integrated Standby Flight Display Altimeter Setting
     get: L:MD11_MIP_ISFD_BARO_KB
     set: "`${value} (>L:MD11_MIP_ISFD_BARO_KB)`"
-
-  - # Integrated Standby Flight Display Altimeter Setting
-    set: (>B:MIP_ISFD_BARO_KB_LEFT_BUTTON_DOWN)
-
-  - # Integrated Standby Flight Display Altimeter Setting
-    set: (>B:MIP_ISFD_BARO_KB_LEFT_BUTTON_UP)
 
   - # Integrated Standby Flight Display Altimeter Unit Select
     get: L:MD11_MIP_ISFD_INHP_BT
@@ -1820,21 +1412,6 @@ shared:
   - # Circuit Breaker Panel Lighting
     get: L:MD11_OBS_CKTBKR_LT_KB
     set: "`${value} (>L:MD11_OBS_CKTBKR_LT_KB)`"
-
-  - # Pax Load Selector
-    set: (>B:OVHD_100_PAX_LOAD_SW_LEFT_BUTTON_DOWN)
-
-  - # Pax Load Selector (Right)
-    set: (>B:OVHD_100_PAX_LOAD_SW_RIGHT_BUTTON_DOWN)
-
-  - # Pax Load Selector (Right)
-    set: (>B:OVHD_10_PAX_LOAD_SW_RIGHT_BUTTON_DOWN)
-
-  - # Pax Load Selector
-    set: (>B:OVHD_1_PAX_LOAD_SW_LEFT_BUTTON_DOWN)
-
-  - # Pax Load Selector (Right)
-    set: (>B:OVHD_1_PAX_LOAD_SW_RIGHT_BUTTON_DOWN)
 
   - # Aice Auto
     get: L:MD11_OVHD_AICE_AUTO_BT
@@ -1868,12 +1445,6 @@ shared:
     get: L:MD11_OVHD_AIL_DEFL_OVRD_BT
     set: "value ? '(>B:OVHD_AIL_DEFL_OVRD_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_AIL_DEFL_OVRD_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Aileron Deflect Override (Guard)
-    set: (>B:OVHD_AIL_DEFL_OVRD_GRD_LEFT_BUTTON_DOWN)
-
-  - # Annunciator Light Brightness
-    set: (>B:OVHD_ANNUNLT_BRTDIM_BT_LEFT_BUTTON_DOWN)
-
   - # Annunciator test
     get: L:MD11_OVHD_ANNUNLT_TEST_BT
     set: "value ? '(>B:OVHD_ANNUNLT_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ANNUNLT_TEST_BT_LEFT_BUTTON_DOWN)'"
@@ -1906,9 +1477,6 @@ shared:
     get: L:MD11_OVHD_ELEC_AC_TIE3_BT
     set: "value ? '(>B:OVHD_ELEC_AC_TIE3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_AC_TIE3_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Air Driven Generator
-    set: (>B:OVHD_ELEC_ADG_ELEC_BT_LEFT_BUTTON_DOWN)
-
   - # APU Power
     get: L:MD11_OVHD_ELEC_APU_PWR_BT
     set: "value ? '(>B:OVHD_ELEC_APU_PWR_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_APU_PWR_BT_LEFT_BUTTON_DOWN)'"
@@ -1917,15 +1485,6 @@ shared:
     get: L:MD11_OVHD_ELEC_BATT_BT
     set: "value ? '(>B:OVHD_ELEC_BATT_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_BATT_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Battery (Guard)
-    set: (>B:OVHD_ELEC_BATT_GRD_LEFT_BUTTON_DOWN)
-
-  - # Cabin Bus
-    set: (>B:OVHD_ELEC_CAB_BUS_BT_LEFT_BUTTON_DOWN)
-
-  - # Cabin Bus (Guard)
-    set: (>B:OVHD_ELEC_CAB_BUS_GRD_LEFT_BUTTON_DOWN)
-
   - # DC Bus Tie 1
     get: L:MD11_OVHD_ELEC_DC_TIE1_BT
     set: "value ? '(>B:OVHD_ELEC_DC_TIE1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_DC_TIE1_BT_LEFT_BUTTON_DOWN)'"
@@ -1933,12 +1492,6 @@ shared:
   - # DC Bus Tie 3
     get: L:MD11_OVHD_ELEC_DC_TIE3_BT
     set: "value ? '(>B:OVHD_ELEC_DC_TIE3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_DC_TIE3_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Emergency Power
-    set: (>B:OVHD_ELEC_EMER_PWR_KB_LEFT_BUTTON_DOWN)
-
-  - # Emergency Power
-    set: (>B:OVHD_ELEC_EMER_PWR_KB_RIGHT_BUTTON_DOWN)
 
   - # External Power
     get: L:MD11_OVHD_ELEC_EXT_PWR_BT
@@ -1952,18 +1505,9 @@ shared:
     get: L:MD11_OVHD_ELEC_GEN1_DRIVE_BT
     set: "value ? '(>B:OVHD_ELEC_GEN1_DRIVE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GEN1_DRIVE_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Generator 1 IDG Disconnect (Guard)
-    set: (>B:OVHD_ELEC_GEN1_DRIVE_GRD_LEFT_BUTTON_DOWN)
-
-  - # Generator 2
-    set: (>B:OVHD_ELEC_GEN2_BT_LEFT_BUTTON_UP)
-
   - # Generator 2 IDG Disconnect
     get: L:MD11_OVHD_ELEC_GEN2_DRIVE_BT
     set: "value ? '(>B:OVHD_ELEC_GEN2_DRIVE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GEN2_DRIVE_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Generator 2 IDG Disconnect (Guard)
-    set: (>B:OVHD_ELEC_GEN2_DRIVE_GRD_LEFT_BUTTON_DOWN)
 
   - # Generator 3
     get: L:MD11_OVHD_ELEC_GEN3_BT
@@ -1973,21 +1517,9 @@ shared:
     get: L:MD11_OVHD_ELEC_GEN3_DRIVE_BT
     set: "value ? '(>B:OVHD_ELEC_GEN3_DRIVE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GEN3_DRIVE_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Generator 3 IDG Disconnect (Guard)
-    set: (>B:OVHD_ELEC_GEN3_DRIVE_GRD_LEFT_BUTTON_DOWN)
-
   - # External Galley Power
     get: L:MD11_OVHD_ELEC_GLY_EXT_PWR_BT
     set: "value ? '(>B:OVHD_ELEC_GLY_EXT_PWR_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ELEC_GLY_EXT_PWR_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Smoke Electric/Air System Off
-    set: (>B:OVHD_ELEC_SMOKE_ELEC_AIR_KB_LEFT_BUTTON_DOWN)
-
-  - # Smoke Electric/Air System Off
-    set: (>B:OVHD_ELEC_SMOKE_ELEC_AIR_KB_RIGHT_BUTTON_DOWN)
-
-  - # Electrical System Mode
-    set: (>B:OVHD_ELEC_SYSTEM_SEL_BT_LEFT_BUTTON_DOWN)
 
   - # Reset Engine Limit Exceedance Pointers
     get: L:MD11_OVHD_ENGMAXPTRRESET_BT
@@ -2005,22 +1537,13 @@ shared:
     get: L:MD11_OVHD_ENG_FADEC_1_BT
     set: "value ? '(>B:OVHD_ENG_FADEC_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_FADEC_1_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Engine 1 FADEC Mode (Guard)
-    set: (>B:OVHD_ENG_FADEC_1_GRD_LEFT_BUTTON_DOWN)
-
   - # Engine 2 FADEC Mode
     get: L:MD11_OVHD_ENG_FADEC_2_BT
     set: "value ? '(>B:OVHD_ENG_FADEC_2_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_FADEC_2_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Engine 2 FADEC Mode (Guard)
-    set: (>B:OVHD_ENG_FADEC_2_GRD_LEFT_BUTTON_DOWN)
-
   - # Engine 3 FADEC Mode
     get: L:MD11_OVHD_ENG_FADEC_3_BT
     set: "value ? '(>B:OVHD_ENG_FADEC_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_ENG_FADEC_3_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Engine 3 FADEC Mode (Guard)
-    set: (>B:OVHD_ENG_FADEC_3_GRD_LEFT_BUTTON_DOWN)
 
   - # Engine Ignition System Override
     get: L:MD11_OVHD_ENG_IGN_OVRD_BT
@@ -2029,12 +1552,6 @@ shared:
   - # Elevator Feel
     get: L:MD11_OVHD_FLTCTL_ELEVFEEL_KB
     set: "`${value} (>L:MD11_OVHD_FLTCTL_ELEVFEEL_KB)`"
-
-  - # Flap Limit
-    set: (>B:OVHD_FLTCTL_FLAPLIM_KB_LEFT_BUTTON_DOWN)
-
-  - # Flap Limit
-    set: (>B:OVHD_FLTCTL_FLAPLIM_KB_RIGHT_BUTTON_DOWN)
 
   - # Left Inboard Elevator LSAS
     get: L:MD11_OVHD_FLTCTL_LLI_BT
@@ -2056,9 +1573,6 @@ shared:
     get: L:MD11_OVHD_FLTCTL_RLI_BT
     set: "value ? '(>B:OVHD_FLTCTL_RLI_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_RLI_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Right Outboard Elevator LSAS
-    set: (>B:OVHD_FLTCTL_RLO_BT_LEFT_BUTTON_DOWN)
-
   - # Upper Rudder Yaw Damper Channel A
     get: L:MD11_OVHD_FLTCTL_UYDA_BT
     set: "value ? '(>B:OVHD_FLTCTL_UYDA_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FLTCTL_UYDA_BT_LEFT_BUTTON_DOWN)'"
@@ -2079,15 +1593,9 @@ shared:
     get: L:MD11_OVHD_FUEL_DUMP_BT
     set: "value ? '(>B:OVHD_FUEL_DUMP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_DUMP_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Fuel Dump (Guard)
-    set: (>B:OVHD_FUEL_DUMP_GRD_LEFT_BUTTON_DOWN)
-
   - # Fuel Dump Emergency Stop
     get: L:MD11_OVHD_FUEL_DUMP_STOP_BT
     set: "value ? '(>B:OVHD_FUEL_DUMP_STOP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_DUMP_STOP_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Fuel Dump Emergency Stop (Guard)
-    set: (>B:OVHD_FUEL_DUMP_STOP_GRD_LEFT_BUTTON_DOWN)
 
   - # Tank 1 Fill Valve
     get: L:MD11_OVHD_FUEL_FILL_TANK_1_BT
@@ -2116,9 +1624,6 @@ shared:
   - # Fuel Manifold Drain
     get: L:MD11_OVHD_FUEL_MANF_DRAIN_BT
     set: "value ? '(>B:OVHD_FUEL_MANF_DRAIN_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_MANF_DRAIN_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Fuel Manifold Drain (Guard)
-    set: (>B:OVHD_FUEL_MANF_DRAIN_GRD_LEFT_BUTTON_DOWN)
 
   - # Tank 1 Fuel Pumps
     get: L:MD11_OVHD_FUEL_PUMP_TANK_1_BT
@@ -2164,9 +1669,6 @@ shared:
     get: L:MD11_OVHD_FUEL_UPRAUX_BYP_BT
     set: "value ? '(>B:OVHD_FUEL_UPRAUX_BYP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_UPRAUX_BYP_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Upper Auxiliary Tank Bypass (Guard)
-    set: (>B:OVHD_FUEL_UPRAUX_BYP_GRD_LEFT_BUTTON_DOWN)
-
   - # Tank 1 Cross Feed Valve
     get: L:MD11_OVHD_FUEL_XFEED_TANK_1_BT
     set: "value ? '(>B:OVHD_FUEL_XFEED_TANK_1_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_FUEL_XFEED_TANK_1_BT_LEFT_BUTTON_DOWN)'"
@@ -2191,25 +1693,13 @@ shared:
     get: L:MD11_OVHD_GALLEY_BUS_3_BT
     set: "value ? '(>B:OVHD_GALLEY_BUS_3_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_GALLEY_BUS_3_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Generator 1 Bus Fault Reset
-    set: (>B:OVHD_GEN_BUS_1_RESET_BT_LEFT_BUTTON_UP)
-
-  - # Generator 1 Bus Fault Reset (Guard)
-    set: (>B:OVHD_GEN_BUS_1_RESET_GRD_LEFT_BUTTON_DOWN)
-
   - # Generator 2 Bus Fault Reset
     get: L:MD11_OVHD_GEN_BUS_2_RESET_BT
     set: "value ? '(>B:OVHD_GEN_BUS_2_RESET_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_GEN_BUS_2_RESET_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Generator 2 Bus Fault Reset (Guard)
-    set: (>B:OVHD_GEN_BUS_2_RESET_GRD_LEFT_BUTTON_DOWN)
-
   - # Generator 3 Bus Fault Reset
     get: L:MD11_OVHD_GEN_BUS_3_RESET_BT
     set: "value ? '(>B:OVHD_GEN_BUS_3_RESET_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_GEN_BUS_3_RESET_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Generator 3 Bus Fault Reset (Guard)
-    set: (>B:OVHD_GEN_BUS_3_RESET_GRD_LEFT_BUTTON_DOWN)
 
   - # Hydraulic System 1<->3 Reversible Motor Pump
     get: L:MD11_OVHD_HYD_1_3_RMP_BT
@@ -2255,21 +1745,9 @@ shared:
     get: L:MD11_OVHD_HYD_HYD_TEST_BT
     set: "value ? '(>B:OVHD_HYD_HYD_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_HYD_TEST_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Hydraulic System Test (Guard)
-    set: (>B:OVHD_HYD_HYD_TEST_GRD_LEFT_BUTTON_DOWN)
-
   - # Hydraulic System Mode
     get: L:MD11_OVHD_HYD_SYSTEM_SEL_BT
     set: "value ? '(>B:OVHD_HYD_SYSTEM_SEL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_HYD_SYSTEM_SEL_BT_LEFT_BUTTON_DOWN)'"
-
-  - # IRS 1
-    set: (>B:OVHD_IRS_1_KB_LEFT_BUTTON_DOWN)
-
-  - # IRS 2
-    set: (>B:OVHD_IRS_2_KB_LEFT_BUTTON_DOWN)
-
-  - # Auxiliary IRS
-    set: (>B:OVHD_IRS_3_KB_LEFT_BUTTON_DOWN)
 
   - # Aft Attendant Call
     get: L:MD11_OVHD_LTS_AFT_ATTND_BT
@@ -2291,12 +1769,6 @@ shared:
     get: L:MD11_OVHD_LTS_DOME_BT
     set: "value ? '(>B:OVHD_LTS_DOME_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_DOME_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Emergency Lights
-    set: (>B:OVHD_LTS_EMER_SW_LEFT_BUTTON_DOWN)
-
-  - # Emergency Lights (Right)
-    set: (>B:OVHD_LTS_EMER_SW_RIGHT_BUTTON_DOWN)
-
   - # Emergency Lights Test
     get: L:MD11_OVHD_LTS_EMER_TEST_BT
     set: "value ? '(>B:OVHD_LTS_EMER_TEST_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_EMER_TEST_BT_LEFT_BUTTON_DOWN)'"
@@ -2305,9 +1777,6 @@ shared:
     get: L:MD11_OVHD_LTS_FWD_ATTND_BT
     set: "value ? '(>B:OVHD_LTS_FWD_ATTND_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_FWD_ATTND_BT_LEFT_BUTTON_DOWN)'"
 
-  - # High Intensity Lights
-    set: (>B:OVHD_LTS_HI_INT_BT_LEFT_BUTTON_UP)
-
   - # Main Instrument Panel and Pedestal Flood Lighting
     get: L:MD11_OVHD_LTS_INNER_INSTR_PED_PNL_FLOOD_KB
     set: "`${value} (>L:MD11_OVHD_LTS_INNER_INSTR_PED_PNL_FLOOD_KB)`"
@@ -2315,18 +1784,6 @@ shared:
   - # Overhead Flood Lighting
     get: L:MD11_OVHD_LTS_INNER_OVHD_PNL_FLOOD_KB
     set: "`${value} (>L:MD11_OVHD_LTS_INNER_OVHD_PNL_FLOOD_KB)`"
-
-  - # Left Landing Light
-    set: (>B:OVHD_LTS_LDG_L_SW_LEFT_BUTTON_DOWN)
-
-  - # Left Landing Light (Right)
-    set: (>B:OVHD_LTS_LDG_L_SW_RIGHT_BUTTON_DOWN)
-
-  - # Right Landing Light
-    set: (>B:OVHD_LTS_LDG_R_SW_LEFT_BUTTON_DOWN)
-
-  - # Right Landing Light (Right)
-    set: (>B:OVHD_LTS_LDG_R_SW_RIGHT_BUTTON_DOWN)
 
   - # Logo Light
     get: L:MD11_OVHD_LTS_LOGO_BT
@@ -2347,18 +1804,6 @@ shared:
   - # Navigation Lights
     get: L:MD11_OVHD_LTS_NAV_BT
     set: "value ? '(>B:OVHD_LTS_NAV_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_NAV_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Nose Light
-    set: (>B:OVHD_LTS_NOSE_SW_LEFT_BUTTON_DOWN)
-
-  - # Nose Light (Right)
-    set: (>B:OVHD_LTS_NOSE_SW_RIGHT_BUTTON_DOWN)
-
-  - # No Smoking Signs
-    set: (>B:OVHD_LTS_NO_SMOKE_SW_LEFT_BUTTON_DOWN)
-
-  - # No Smoking Signs (Right)
-    set: (>B:OVHD_LTS_NO_SMOKE_SW_RIGHT_BUTTON_DOWN)
 
   - # Main Instrument Panel and Pedestal Panel Lighting
     get: L:MD11_OVHD_LTS_OUTER_INSTR_PED_PNL_FLOOD_KB
@@ -2384,28 +1829,13 @@ shared:
     get: L:MD11_OVHD_LTS_RWY_TURNOFF_R_BT
     set: "value ? '(>B:OVHD_LTS_RWY_TURNOFF_R_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_RWY_TURNOFF_R_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Seat Belt Signs
-    set: (>B:OVHD_LTS_SEAT_BELTS_SW_LEFT_BUTTON_DOWN)
-
-  - # Seat Belt Signs (Right)
-    set: (>B:OVHD_LTS_SEAT_BELTS_SW_RIGHT_BUTTON_DOWN)
-
   - # Standby Compass Light
     get: L:MD11_OVHD_LTS_STBY_COMP_BT
     set: "value ? '(>B:OVHD_LTS_STBY_COMP_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_LTS_STBY_COMP_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Thunderstorm Dome Light
-    set: (>B:OVHD_LTS_THNDRSTRM_SW_LEFT_BUTTON_DOWN)
-
   - # L Rain Replnt
     get: L:MD11_OVHD_L_RAIN_REPLNT_BT
     set: "value ? '(>B:OVHD_L_RAIN_REPLNT_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_L_RAIN_REPLNT_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Left Windshield Wiper
-    set: (>B:OVHD_L_WIPER_KB_LEFT_BUTTON_DOWN)
-
-  - # Left Windshield Wiper
-    set: (>B:OVHD_L_WIPER_KB_RIGHT_BUTTON_DOWN)
 
   - # Air System 1<->2 Isolation Valve
     get: L:MD11_OVHD_PNEU_1_2_ISOL_BT
@@ -2414,18 +1844,6 @@ shared:
   - # Air System 1<->3 Isolation Valve
     get: L:MD11_OVHD_PNEU_1_3_ISOL_BT
     set: "value ? '(>B:OVHD_PNEU_1_3_ISOL_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_1_3_ISOL_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Aft Cabin Temperature
-    set: (>B:OVHD_PNEU_AFT_CAB_TEMP_LEFT_BUTTON_DOWN)
-
-  - # Aft Cabin Temperature
-    set: (>B:OVHD_PNEU_AFT_CAB_TEMP_RIGHT_BUTTON_DOWN)
-
-  - # Aft Lower Cargo Temperature
-    set: (>B:OVHD_PNEU_AFT_CARGO_TEMP_LEFT_BUTTON_DOWN)
-
-  - # Aft Lower Cargo Temperature
-    set: (>B:OVHD_PNEU_AFT_CARGO_TEMP_RIGHT_BUTTON_DOWN)
 
   - # APU Bleed
     get: L:MD11_OVHD_PNEU_APU_BLEED_BT
@@ -2467,72 +1885,21 @@ shared:
     get: L:MD11_OVHD_PNEU_CAB_AIR_BT
     set: "value ? '(>B:OVHD_PNEU_CAB_AIR_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_CAB_AIR_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Cabin Air (Guard)
-    set: (>B:OVHD_PNEU_CAB_AIR_GRD_LEFT_BUTTON_DOWN)
-
-  - # Cabin Climb/Descend
-    set: (>B:OVHD_PNEU_CLBDES_KB_LEFT_BUTTON_DOWN)
-
-  - # Cabin Climb/Descend
-    set: (>B:OVHD_PNEU_CLBDES_KB_LEFT_BUTTON_UP)
-
-  - # Cabin Climb/Descend
-    set: (>B:OVHD_PNEU_CLBDES_KB_RIGHT_BUTTON_DOWN)
-
-  - # Cabin Climb/Descend
-    set: (>B:OVHD_PNEU_CLBDES_KB_RIGHT_BUTTON_UP)
-
-  - # Cockpit Temperature
-    set: (>B:OVHD_PNEU_COCKPIT_TEMP_LEFT_BUTTON_DOWN)
-
-  - # Cockpit Temperature
-    set: (>B:OVHD_PNEU_COCKPIT_TEMP_RIGHT_BUTTON_DOWN)
-
   - # Cabin Pressurization Ditching Mode
     get: L:MD11_OVHD_PNEU_DITCHING_BT
     set: "value ? '(>B:OVHD_PNEU_DITCHING_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_DITCHING_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Cabin Pressurization Ditching Mode (Guard)
-    set: (>B:OVHD_PNEU_DITCHING_GRD_LEFT_BUTTON_DOWN)
 
   - # ECON Mode
     get: L:MD11_OVHD_PNEU_ECON_BT
     set: "value ? '(>B:OVHD_PNEU_ECON_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_ECON_BT_LEFT_BUTTON_DOWN)'"
 
-  - # %
-    set: (>B:OVHD_PNEU_FWD_CAB_TEMP_LEFT_BUTTON_DOWN)
-
-  - # %
-    set: (>B:OVHD_PNEU_FWD_CAB_TEMP_RIGHT_BUTTON_DOWN)
-
-  - # Forward Lower Cargo Temperature
-    set: (>B:OVHD_PNEU_FWD_CARGO_TEMP_LEFT_BUTTON_DOWN)
-
-  - # Forward Lower Cargo Temperature
-    set: (>B:OVHD_PNEU_FWD_CARGO_TEMP_RIGHT_BUTTON_DOWN)
-
   - # Passenger Oxygen Masks Manual Deploy
     get: L:MD11_OVHD_PNEU_MASKS_BT
     set: "value ? '(>B:OVHD_PNEU_MASKS_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_PNEU_MASKS_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Passenger Oxygen Masks Manual Deploy (Guard)
-    set: (>B:OVHD_PNEU_MASKS_GRD_LEFT_BUTTON_DOWN)
-
-  - # %
-    set: (>B:OVHD_PNEU_MID_CAB_TEMP_LEFT_BUTTON_DOWN)
-
-  - # %
-    set: (>B:OVHD_PNEU_MID_CAB_TEMP_RIGHT_BUTTON_DOWN)
-
   - # Manual Landing Elevation
     get: L:MD11_OVHD_PNEU_MLDG_ALT_KB
     set: "`${value} (>L:MD11_OVHD_PNEU_MLDG_ALT_KB)`"
-
-  - # Pneu Outflow Valve Pos
-    set: (>B:OVHD_PNEU_OUTFLOW_VALVE_POS_SW_LEFT_BUTTON_DOWN)
-
-  - # Pneu Outflow Valve Pos (Right)
-    set: (>B:OVHD_PNEU_OUTFLOW_VALVE_POS_SW_RIGHT_BUTTON_DOWN)
 
   - # Pack 1
     get: L:MD11_OVHD_PNEU_PACK_1_BT
@@ -2558,15 +1925,6 @@ shared:
     get: L:MD11_OVHD_R_RAIN_REPLNT_BT
     set: "value ? '(>B:OVHD_R_RAIN_REPLNT_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_R_RAIN_REPLNT_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Right Windshield Wiper
-    set: (>B:OVHD_R_WIPER_KB_LEFT_BUTTON_DOWN)
-
-  - # Right Windshield Wiper
-    set: (>B:OVHD_R_WIPER_KB_RIGHT_BUTTON_DOWN)
-
-  - # Standby Compass
-    set: (>B:OVHD_STBY_CMPS_SW_LEFT_BUTTON_DOWN)
-
   - # Windshield Anti Ice Strength
     get: L:MD11_OVHD_WNDSHLD_AICE_BT
     set: "value ? '(>B:OVHD_WNDSHLD_AICE_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_WNDSHLD_AICE_BT_LEFT_BUTTON_DOWN)'"
@@ -2582,25 +1940,13 @@ shared:
   - # Right Windshield Anti Ice
     get: L:MD11_OVHD_WNDSHLD_AICE_R_BT
     set: "value ? '(>B:OVHD_WNDSHLD_AICE_R_BT_LEFT_BUTTON_UP)' : '(>B:OVHD_WNDSHLD_AICE_R_BT_LEFT_BUTTON_DOWN)'"
-  - # ADG Deploy Lever
-    set: (>B:PED_ADG_LVR_LEFT_BUTTON_DOWN)
-
   - # Aileron Trim
     get: L:MD11_PED_AIL_TRIM_KB
     set: "`${value} (>L:MD11_PED_AIL_TRIM_KB)`"
 
-  - # Cockpit Door Lock
-    set: (>B:PED_CKPTDOOR_LOCK_KB_LEFT_BUTTON_DOWN)
-
-  - # Cockpit Door Lock
-    set: (>B:PED_CKPTDOOR_LOCK_KB_RIGHT_BUTTON_DOWN)
-
   - # Captain KHz Tuner
     get: L:MD11_PED_CPT_INNER_RADIO_FREQ_SEL_KB
     set: "`${value} (>L:MD11_PED_CPT_INNER_RADIO_FREQ_SEL_KB)`"
-
-  - # Captain MHz Tuner (Wheel Up)
-    set: (>B:PED_CPT_OUTER_RADIO_FREQ_SEL_KB_WHEEL_UP)
 
   - # DU1 Brightness
     get: L:MD11_PED_DU1_BRT_KB
@@ -2641,21 +1987,6 @@ shared:
   - # Observer MHz Tuner
     get: L:MD11_PED_OBS_OUTER_RADIO_FREQ_SEL_KB
     set: "`${value} (>L:MD11_PED_OBS_OUTER_RADIO_FREQ_SEL_KB)`"
-
-  - # Rudder Trim
-    set: (>B:PED_RUD_TRIM_SW_LEFT_BUTTON_DOWN)
-
-  - # Rudder Trim (Right)
-    set: (>B:PED_RUD_TRIM_SW_RIGHT_BUTTON_DOWN)
-
-  - # Rudder Trim
-    set: (>B:PED_RUD_TRIM_SW_LEFT_BUTTON_UP)
-
-  - # Rudder Trim
-    set: (>B:PED_RUD_TRIM_SW_RIGHT_BUTTON_UP)
-
-  - # SD Air Page
-    set: (>B:PED_SD_AIR_BT_LEFT_BUTTON_UP)
 
   - # SD Configuration Page
     get: L:MD11_PED_SD_CONFIG_BT
@@ -2765,15 +2096,6 @@ shared:
     get: L:MD11_PED_XPNDR_7_BT
     set: "value ? '(>B:PED_XPNDR_7_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_7_BT_LEFT_BUTTON_DOWN)'"
 
-  - # TCAS Filter
-    set: (>B:PED_XPNDR_ABV_BLW_SW_LEFT_BUTTON_DOWN)
-
-  - # TCAS Filter (Right)
-    set: (>B:PED_XPNDR_ABV_BLW_SW_RIGHT_BUTTON_DOWN)
-
-  - # Transponder Altitude Reporting
-    set: (>B:PED_XPNDR_ALT_RPTG_KB_LEFT_BUTTON_DOWN)
-
   - # Xpndr Clr
     get: L:MD11_PED_XPNDR_CLR_BT
     set: "value ? '(>B:PED_XPNDR_CLR_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_CLR_BT_LEFT_BUTTON_DOWN)'"
@@ -2781,15 +2103,6 @@ shared:
   - # Transponder Ident
     get: L:MD11_PED_XPNDR_IDENT_BT
     set: "value ? '(>B:PED_XPNDR_IDENT_BT_LEFT_BUTTON_UP)' : '(>B:PED_XPNDR_IDENT_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Transponder/TCAS Mode
-    set: (>B:PED_XPNDR_MODE_KB_LEFT_BUTTON_DOWN)
-
-  - # Transponder/TCAS Mode
-    set: (>B:PED_XPNDR_MODE_KB_RIGHT_BUTTON_DOWN)
-
-  - # Transponder System Select
-    set: (>B:PED_XPNDR_SEL_KB_LEFT_BUTTON_DOWN)
 
   - # TCAS Test
     get: L:MD11_PED_XPNDR_TEST_BT
@@ -2881,21 +2194,6 @@ shared:
     get: L:MD11_RECP_ARPT_BT
     set: "value ? '(>B:RECP_ARPT_BT_LEFT_BUTTON_UP)' : '(>B:RECP_ARPT_BT_LEFT_BUTTON_DOWN)'"
 
-  - # First Officer Altimeter Setting
-    set: (>B:RECP_BAROSET_CAP_LEFT_BUTTON_DOWN)
-
-  - # First Officer Altimeter Setting
-    set: (>B:RECP_BAROSET_CAP_LEFT_BUTTON_UP)
-
-  - # First Officer Altimeter Setting
-    set: (>B:RECP_BAROSET_CAP_WHEEL_DOWN)
-
-  - # First Officer Altimeter Setting
-    set: (>B:RECP_BAROSET_CAP_WHEEL_UP)
-
-  - # First Officer Altimeter Mode
-    set: (>B:RECP_BAROSET_KB_LEFT_BUTTON_DOWN)
-
   - # First Officer ND Data Display
     get: L:MD11_RECP_DATA_BT
     set: "value ? '(>B:RECP_DATA_BT_LEFT_BUTTON_UP)' : '(>B:RECP_DATA_BT_LEFT_BUTTON_DOWN)'"
@@ -2919,21 +2217,6 @@ shared:
   - # First Officer ND Map Mode
     get: L:MD11_RECP_MAP_BT
     set: "value ? '(>B:RECP_MAP_BT_LEFT_BUTTON_UP)' : '(>B:RECP_MAP_BT_LEFT_BUTTON_DOWN)'"
-
-  - # First Officer Minimums Setting
-    set: (>B:RECP_MINIMUMS_CAP_LEFT_BUTTON_DOWN)
-
-  - # First Officer Minimums Setting
-    set: (>B:RECP_MINIMUMS_CAP_LEFT_BUTTON_UP)
-
-  - # First Officer Minimums Setting
-    set: (>B:RECP_MINIMUMS_CAP_WHEEL_DOWN)
-
-  - # First Officer Minimums Setting
-    set: (>B:RECP_MINIMUMS_CAP_WHEEL_UP)
-
-  - # First Officer Minimums Mode
-    set: (>B:RECP_MINIMUMS_KB_LEFT_BUTTON_DOWN)
 
   - # First Officer ND Plan Mode
     get: L:MD11_RECP_PLAN_BT
@@ -2970,18 +2253,9 @@ shared:
   - # First Officer Weather Radar/Terrain Display Brightness
     get: L:MD11_RECP_WXBRT_KB
     set: "`${value} (>L:MD11_RECP_WXBRT_KB)`"
-
-  - # First Officer Weather Radar/Terrain Display Brightness
-    set: (>B:RECP_WXBRT_KB_LEFT_BUTTON_DOWN)
-
-  - # First Officer Weather Radar/Terrain Display Brightness
-    set: (>B:RECP_WXBRT_KB_LEFT_BUTTON_UP)
   - # First Officer Briefcase Light
     get: L:MD11_RSIDE_BRIEFCASE_KB
     set: "`${value} (>L:MD11_RSIDE_BRIEFCASE_KB)`"
-
-  - # First Officer Floor Light (Right)
-    set: (>B:RSIDE_FLOOR_SW_RIGHT_BUTTON_DOWN)
 
   - # First Officer ILS Source
     get: L:MD11_RSIDE_INP_APPR_BT
@@ -2990,12 +2264,6 @@ shared:
   - # First Officer Air Data Source
     get: L:MD11_RSIDE_INP_CADC_BT
     set: "value ? '(>B:RSIDE_INP_CADC_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_INP_CADC_BT_LEFT_BUTTON_DOWN)'"
-
-  - # First Officer EIS Source
-    set: (>B:RSIDE_INP_EIS_KB_LEFT_BUTTON_DOWN)
-
-  - # First Officer EIS Source
-    set: (>B:RSIDE_INP_EIS_KB_RIGHT_BUTTON_DOWN)
 
   - # First Officer Flight Director
     get: L:MD11_RSIDE_INP_FLTDIROFF_BT
@@ -3024,33 +2292,9 @@ shared:
   - # First Officer Timer Start/Reset
     get: L:MD11_RSIDE_TIMER_BT
     set: "value ? '(>B:RSIDE_TIMER_BT_LEFT_BUTTON_UP)' : '(>B:RSIDE_TIMER_BT_LEFT_BUTTON_DOWN)'"
-
-  - # First Officer Timer Mode
-    set: (>B:RSIDE_TIMER_SW_LEFT_BUTTON_DOWN)
-
-  - # First Officer Timer Mode (Right)
-    set: (>B:RSIDE_TIMER_SW_RIGHT_BUTTON_DOWN)
   - # First Officer Autopilot Disconnect
     get: L:MD11_RYOKE_AP_BT
     set: "value ? '(>B:RYOKE_AP_BT_LEFT_BUTTON_UP)' : '(>B:RYOKE_AP_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Trim
-    set: (>B:RYOKE_TRIM_SW_LEFT_BUTTON_DOWN)
-
-  - # Trim (Right)
-    set: (>B:RYOKE_TRIM_SW_RIGHT_BUTTON_DOWN)
-
-  - # Trim
-    set: (>B:RYOKE_TRIM_SW_LEFT_BUTTON_UP)
-
-  - # Trim
-    set: (>B:RYOKE_TRIM_SW_RIGHT_BUTTON_UP)
-  - # Engine 2 Fuel
-    set: (>B:THR_C_FUEL_SW_LEFT_BUTTON_DOWN)
-
-  - # Engine 2 Starter
-    set: (>B:THR_C_START_SW_LEFT_BUTTON_DOWN)
-
   - # Go Around Mode
     get: L:MD11_THR_GA_BT
     set: "value ? '(>B:THR_GA_BT_LEFT_BUTTON_UP)' : '(>B:THR_GA_BT_LEFT_BUTTON_DOWN)'"
@@ -3059,37 +2303,10 @@ shared:
     get: L:MD11_THR_GEAR_HORN_BT
     set: "value ? '(>B:THR_GEAR_HORN_BT_LEFT_BUTTON_UP)' : '(>B:THR_GEAR_HORN_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Elevator Trim
-    set: (>B:THR_LONG_TRIM_SW_LEFT_BUTTON_DOWN)
-
-  - # Elevator Trim (Right)
-    set: (>B:THR_LONG_TRIM_SW_RIGHT_BUTTON_DOWN)
-
-  - # Elevator Trim
-    set: (>B:THR_LONG_TRIM_SW_LEFT_BUTTON_UP)
-
-  - # Elevator Trim
-    set: (>B:THR_LONG_TRIM_SW_RIGHT_BUTTON_UP)
-
   - # Autothrust Disconnect
     get: L:MD11_THR_L_ATS_BT
     set: "value ? '(>B:THR_L_ATS_BT_LEFT_BUTTON_UP)' : '(>B:THR_L_ATS_BT_LEFT_BUTTON_DOWN)'"
 
-  - # Engine 1 Fuel
-    set: (>B:THR_L_FUEL_SW_LEFT_BUTTON_DOWN)
-
-  - # Engine 1 Starter
-    set: (>B:THR_L_START_SW_LEFT_BUTTON_DOWN)
-
-  - # Parking Brake
-    set: (>B:THR_PARK_LVR_LEFT_BUTTON_DOWN)
-
   - # Autothrust Disconnect
     get: L:MD11_THR_R_ATS_BT
     set: "value ? '(>B:THR_R_ATS_BT_LEFT_BUTTON_UP)' : '(>B:THR_R_ATS_BT_LEFT_BUTTON_DOWN)'"
-
-  - # Engine 3 Fuel
-    set: (>B:THR_R_FUEL_SW_LEFT_BUTTON_DOWN)
-
-  - # Engine 3 Starter
-    set: (>B:THR_R_START_SW_LEFT_BUTTON_DOWN)

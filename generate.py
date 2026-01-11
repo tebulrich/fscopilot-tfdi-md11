@@ -261,6 +261,33 @@ def get_aircraft_file_path(custom_output_path=None):
         # Default location: FS Copilot uses Definitions/ folder
         return script_dir / "Definitions" / aircraft_filename
 
+def get_local_aircraft_file_path():
+    """Get the local Definitions folder path for the aircraft YAML file."""
+    script_dir = Path(__file__).parent
+    aircraft_filename = "TFDi_Design_MD-11.yaml"
+    return script_dir / "Definitions" / aircraft_filename
+
+def write_file_to_multiple_locations(content, file_path, also_write_local=True):
+    """Write content to file_path and optionally also to local Definitions folder.
+    
+    Args:
+        content: Content to write
+        file_path: Primary file path (may be custom output path)
+        also_write_local: If True, also write to local Definitions folder
+    """
+    # Write to primary location
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+    
+    # Also write to local Definitions folder if requested and different from primary
+    if also_write_local:
+        local_file_path = get_local_aircraft_file_path()
+        if local_file_path != file_path:
+            local_file_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(local_file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+
 def load_variables():
     """Load L: variables from variables.json file."""
     script_dir = Path(__file__).parent
@@ -899,18 +926,24 @@ def merge_all_categories_to_aircraft_file(aircraft_file, data_dir, variables):
         output_lines.append("")
         output_lines.append(parsed['master'])
     
-    with open(aircraft_file, 'w') as f:
-        content = '\n'.join(output_lines)
-        if not content.endswith('\n'):
-            content += '\n'
-        f.write(content)
+    content = '\n'.join(output_lines)
+    if not content.endswith('\n'):
+        content += '\n'
+    
+    # Write to both custom path (if specified) and local Definitions folder
+    write_file_to_multiple_locations(content, aircraft_file, also_write_local=True)
     
     validation_error = validate_yaml_file(aircraft_file)
     if validation_error:
         print(f"ERROR: Invalid YAML: {validation_error}")
         sys.exit(1)
     
-    print(f"Merged {len(category_files)} categories into {aircraft_file}")
+    local_file = get_local_aircraft_file_path()
+    if local_file != aircraft_file:
+        print(f"Merged {len(category_files)} categories into {aircraft_file}")
+        print(f"Also written to local: {local_file}")
+    else:
+        print(f"Merged {len(category_files)} categories into {aircraft_file}")
 
 def update_aircraft_file_includes(aircraft_file, category_files):
     """Update the aircraft file to include all generated TFDI MD-11 modules (FS Copilot format)."""
@@ -981,10 +1014,11 @@ def update_aircraft_file_includes(aircraft_file, category_files):
         output_lines.append(parsed['master'])
     
     # Write the file
-    with open(aircraft_file, 'w') as f:
-        f.write('\n'.join(output_lines))
-        if not output_lines[-1].endswith('\n'):
-            f.write('\n')
+    content = '\n'.join(output_lines)
+    if not output_lines[-1].endswith('\n'):
+        content += '\n'
+    
+    write_file_to_multiple_locations(content, aircraft_file, also_write_local=True)
     
     # Validate the updated aircraft file
     validation_error = validate_yaml_file(aircraft_file)
@@ -993,7 +1027,11 @@ def update_aircraft_file_includes(aircraft_file, category_files):
         print(f"{validation_error}")
         sys.exit(1)
     
-    print(f"Updated aircraft file includes: {len(tfdi_includes)} TFDI modules")
+    local_file = get_local_aircraft_file_path()
+    if local_file != aircraft_file:
+        print(f"Updated aircraft file includes: {len(tfdi_includes)} TFDI modules (also written to local)")
+    else:
+        print(f"Updated aircraft file includes: {len(tfdi_includes)} TFDI modules")
 
 def update_existing_yaml(output_file, events, description, variables):
     """Update existing YAML file with new events, preserving structure."""
@@ -1412,10 +1450,11 @@ def regenerate_all_modules(split_mode=False, grouped_split=False, custom_output_
                     output_lines.append("")
                     output_lines.append(parsed['master'])
                 
-                with open(aircraft_file, 'w') as f:
-                    f.write('\n'.join(output_lines))
-                    if not output_lines[-1].endswith('\n'):
-                        f.write('\n')
+                content = '\n'.join(output_lines)
+                if not output_lines[-1].endswith('\n'):
+                    content += '\n'
+                
+                write_file_to_multiple_locations(content, aircraft_file, also_write_local=True)
                 
                 # Validate
                 validation_error = validate_yaml_file(aircraft_file)
@@ -1738,18 +1777,22 @@ def main():
             output_lines.append("")
             output_lines.append(parsed['master'])
         
-        with open(aircraft_file, 'w') as f:
-            content = '\n'.join(output_lines)
-            if not content.endswith('\n'):
-                content += '\n'
-            f.write(content)
+        content = '\n'.join(output_lines)
+        if not content.endswith('\n'):
+            content += '\n'
+        
+        write_file_to_multiple_locations(content, aircraft_file, also_write_local=True)
         
         validation_error = validate_yaml_file(aircraft_file)
         if validation_error:
             print(f"ERROR: Invalid YAML: {validation_error}")
             sys.exit(1)
         
-        print(f"Merged {category} into: {aircraft_file}")
+        local_file = get_local_aircraft_file_path()
+        if local_file != aircraft_file:
+            print(f"Merged {category} into: {aircraft_file} (also written to local)")
+        else:
+            print(f"Merged {category} into: {aircraft_file}")
         print(f"Events: {len(events)}")
         
         # Count FS Copilot format entries
